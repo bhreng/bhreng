@@ -24,6 +24,13 @@ def tree():
             ('start/welcome.html', 'Welcome to the shop'),
             ('start/how-class-works.html', 'How this class works'),
         ]),
+        ('grades', 'Your year', 'grades/index.html', [
+            ('grades/index.html', 'Which year are you?'),
+            ('grades/9.html', 'Grade 9 \u2014 Engineering I'),
+            ('grades/10.html', 'Grade 10 \u2014 Engineering II'),
+            ('grades/11.html', 'Grade 11 \u2014 Engineering III'),
+            ('grades/12.html', 'Grade 12 \u2014 Engineering IV'),
+        ]),
         ('logbook', 'Logbook', 'logbook/index.html', []),
         ('pathways', 'The seven pathways', 'pathways/index.html',
          [('pathways/index.html', 'Which one is for you?')] +

@@ -26,6 +26,8 @@ import search_ui as SUI         # noqa: E402  (search box, styles, behaviour)
 import pathway_nav as PNAV      # noqa: E402  (per-hub section summaries)
 import site_nav as SNAV        # noqa: E402  (the site-wide rail)
 import theme_ui as THEME       # noqa: E402  (light / dark switch)
+import build_grades as GR      # noqa: E402  (the four grade homes)
+import grade_data as GD        # noqa: E402
 
 FONTS = {
     'a': dict(name='Space Grotesk + Literata',
@@ -54,6 +56,7 @@ OUT = '/tmp/outputs/site'
 NAV = [
     ('Home',        'index.html',                  'home'),
     ('Start here',  'start/welcome.html',          'start'),
+    ('Grades',      'grades/index.html',           'grades'),
     ('Logbook',     'logbook/index.html',          'logbook'),
     ('Pathways',    'pathways/index.html',         'pathways'),
     ('Safety',      'shop/index.html',             'shop'),
@@ -300,7 +303,7 @@ HOME = '''
 
   <section>
     <h2>Start here</h2>
-    <p class="sub">Six doors. If you are new, take the first one.</p>
+    <p class="sub">Seven doors. If you are new, take the first one.</p>
     <div class="doors">
       <a href="start/welcome.html">
         <span class="n">New here</span>
@@ -311,6 +314,11 @@ HOME = '''
         <span class="n">The ground rules</span>
         <b>How this class works</b>
         <span>The rules, the uniform, and exactly how your grade is put together.</span>
+      </a>
+      <a href="grades/index.html">
+        <span class="n">Your year</span>
+        <b>Grade 9, 10, 11 or 12</b>
+        <span>Each year has its own home: the units it covers, and the assignments that fill them.</span>
       </a>
       <a href="logbook/index.html">
         <span class="n">Every day</span>
@@ -413,6 +421,22 @@ def build_404():
                             path='404.html', page_css=NOTFOUND_CSS,
                             desc='That page is not here — try the hub, safety, '
                                  'the pathways, or the search box.'))
+
+
+def build_grades():
+    write('grades/index.html',
+          shell('Find your year', GR.index(), depth=1, section='grades',
+                path='grades/index.html', page_css=GR.INDEX_CSS,
+                desc='The four grade homes -- Engineering I to IV, who '
+                     'delivers each, and what the year holds.'))
+    for g in GD.GRADES:
+        write('grades/%s.html' % g['key'],
+              shell('Grade %d &mdash; %s' % (g['num'], g['course']),
+                    GR.page(g['key']), depth=1, section='grades',
+                    path='grades/%s.html' % g['key'], page_css=GR.CSS,
+                    desc='Grade %d Engineering Technology at Blue Hills '
+                         'Regional: units, assignments and what each one asks '
+                         'for.' % g['num']))
 
 
 def build_home():
@@ -1097,6 +1121,7 @@ if __name__ == '__main__':
     print('  cache tags: %s' % ', '.join('%s=%s' % kv for kv in sorted(ASSET_V.items())))
 
     build_home()
+    build_grades()
     build_404()
     build_welcome()
     build_ported()

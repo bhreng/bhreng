@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Welcome to the Shop &middot; BHR Engineering</title>
-<meta name="description" content="Who to ask for what, what to wear, what you can earn, and the safety essentials for your first week.">
+<title>Grade 9 &mdash; Engineering I &middot; BHR Engineering</title>
+<meta name="description" content="Grade 9 Engineering Technology at Blue Hills Regional: units, assignments and what each one asks for.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
@@ -12,21 +12,124 @@
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <link rel="stylesheet" href="../assets/site.css?v=f4305d62">
 <style>
-.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;
-  background:var(--card);border:1px solid var(--rule)}
-.two article{background:var(--card);padding:18px 20px;box-shadow:0 0 0 1px var(--rule);
-  display:flex;flex-direction:column;gap:8px}
-.two .who{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-3)}
-.two b{font-family:var(--sans);font-weight:600;font-size:16px;line-height:1.35}
-.two ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;
-  font-size:15px;color:var(--ink-2)}
-.two li{line-height:1.5}
-.pdf{display:inline-flex;align-items:center;gap:9px;text-decoration:none;
-  font-family:var(--sans);font-weight:600;font-size:15px;color:var(--accent);
-  background:var(--accent-soft);border:1px solid var(--rule);padding:11px 17px;
-  align-self:flex-start;margin-top:4px}
-.pdf:hover{background:var(--card)}
+/* --- grade pages -------------------------------------------------------- */
+/* Three variables per grade, set inline on the page:
+     --g-lt / --g-dk   the grade colour for light and for dark paper
+     --g-slt / --g-sdk its soft panel background, likewise
+   --g-band stays the deep colour in BOTH themes, because the hero scrim is a
+   solid block with white text on it -- swapping that to the light-theme-dark
+   variant would leave white on lilac. */
+.gradepage,.gcard{--g-ink:var(--g-lt);--g-soft:var(--g-slt);--g-band:var(--g-lt)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .gradepage,
+  :root:not([data-theme="light"]) .gcard{--g-ink:var(--g-dk);--g-soft:var(--g-sdk)}}
+:root[data-theme="dark"] .gradepage,:root[data-theme="dark"] .gcard{
+  --g-ink:var(--g-dk);--g-soft:var(--g-sdk)}
+.gradepage{--accent:var(--g-ink);--accent-soft:var(--g-soft)}
+
+.ghero{position:relative;margin:0 0 4px;border:1px solid var(--rule);
+  border-radius:8px;overflow:hidden;background:var(--g-soft)}
+.ghero img{display:block;width:100%;height:158px;object-fit:cover;
+  /* 84%, not centre: the left of every banner is the AI-generated tablet, whose
+     invented labels do not survive a close look. The right side -- the drawings,
+     the turbine, the panels -- is clean. */
+  object-position:84% 50%}
+.ghero .scrim{position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:center;padding:0 26px;
+  background:linear-gradient(90deg,var(--g-band) 0%,var(--g-band) 34%,
+    rgba(0,0,0,0) 78%)}
+.ghero .gnum{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.82);margin:0 0 4px}
+.ghero .gname{font-family:var(--sans);font-weight:var(--w-heavy);
+  font-size:clamp(26px,4.4vw,40px);line-height:1.02;color:#fff;margin:0;
+  letter-spacing:-.02em;text-shadow:0 1px 14px rgba(0,0,0,.3)}
+.ghero .gwho{font-family:var(--sans);font-size:13.5px;font-weight:600;
+  color:rgba(255,255,255,.88);margin:7px 0 0}
+
+.ghook{font-family:var(--sans);font-weight:600;font-size:20px;line-height:1.35;
+  color:var(--g-ink);margin:22px 0 10px;letter-spacing:-.01em}
+.gradepage .lede,.gi .lede{font-size:18px;line-height:1.62;color:var(--ink-2);
+  max-width:64ch;margin:0}
+
+/* the grade chooser on the index */
+.gcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:16px}
+.gcard{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+  border-radius:8px;overflow:hidden;background:var(--card);transition:transform .12s}
+.gcard:hover{transform:translateY(-2px);border-color:var(--g-ink)}
+.gcard img{display:block;width:100%;height:96px;object-fit:cover;object-position:88% 50%}
+.gcard .cb{padding:14px 17px 16px}
+.gcard .cn{font-family:var(--mono);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--g-ink);font-weight:700}
+.gcard .ct{font-family:var(--sans);font-weight:700;font-size:19px;margin:3px 0 0;
+  color:var(--ink);letter-spacing:-.01em}
+.gcard .cs{font-size:14px;color:var(--ink-2);margin:6px 0 0;line-height:1.45}
+.gcard .cw{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);margin:9px 0 0}
+
+/* a term block */
+.term{margin:0 0 6px}
+.termhd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  padding:0 0 9px;border-bottom:2px solid var(--g-ink);margin:0 0 16px}
+.termhd h2{margin:0;font-size:1.5rem;letter-spacing:-.015em}
+.termhd .tc{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);margin-left:auto}
+
+/* one assignment */
+.asg{border:1px solid var(--rule);border-left:4px solid var(--g-ink);
+  border-radius:0 6px 6px 0;background:var(--card);margin:0 0 12px;
+  padding:17px 20px 18px}
+.asg .ah{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.asg h3{margin:0;font-family:var(--sans);font-weight:700;font-size:18.5px;
+  letter-spacing:-.01em;line-height:1.25}
+.asg .wk{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);border:1px solid var(--rule);
+  border-radius:2px;padding:1px 6px;flex:none}
+.asg .kind{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--g-ink);font-weight:700;margin-left:auto;
+  flex:none}
+.asg .hook{margin:8px 0 0;font-size:16px;line-height:1.5;color:var(--ink)}
+.asg .bd{margin:12px 0 0}
+.asg .bd p{margin:0 0 9px;font-size:15px;line-height:1.6;color:var(--ink-2)}
+.asg .bd p:last-child{margin-bottom:0}
+.asg .gives{margin:13px 0 0;padding:13px 16px;background:var(--g-soft);
+  border-radius:5px}
+.asg .gives .gl{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--g-ink);font-weight:700;margin:0 0 7px}
+.asg .gives ul{margin:0;padding-left:18px}
+.asg .gives li{font-size:14.5px;line-height:1.5;color:var(--ink);margin:0 0 5px}
+.asg .gives li:last-child{margin:0}
+.asg .meta{display:flex;flex-wrap:wrap;gap:7px 16px;margin:13px 0 0;
+  padding-top:11px;border-top:1px solid var(--rule-soft);
+  font-family:var(--sans);font-size:12.5px;color:var(--ink-3)}
+.asg .meta b{color:var(--ink-2);font-weight:600}
+.asg .meta a{color:var(--g-ink);font-weight:600}
+.asg .anote{margin:12px 0 0;padding:10px 14px;border-left:3px solid var(--blue);
+  background:var(--blue-soft);font-size:14px;line-height:1.5;color:var(--ink)}
+
+/* the unit map, used on every grade */
+.units{border:1px solid var(--rule);background:var(--card);border-radius:6px;
+  overflow:hidden}
+.units .u{display:flex;gap:15px;padding:14px 18px;border-bottom:1px solid var(--rule-soft)}
+.units .u:last-child{border-bottom:0}
+.units .n{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--g-ink);
+  flex:none;padding-top:2px;width:20px}
+.units .ut{font-family:var(--sans);font-weight:700;font-size:16px;margin:0;
+  color:var(--ink);line-height:1.3}
+.units .ud{margin:4px 0 0;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
+
+.gempty{border:1px dashed var(--rule);border-radius:6px;padding:20px 22px;
+  background:var(--card)}
+.gempty p{margin:0 0 9px;font-size:15px;line-height:1.6;color:var(--ink-2)}
+.gempty p:last-child{margin:0}
+
+@media(max-width:640px){
+  .ghero img{height:124px}
+  .ghero .scrim{padding:0 18px;
+    background:linear-gradient(90deg,var(--g-band) 0%,var(--g-band) 52%,
+      rgba(0,0,0,.15) 100%)}
+  .asg{padding:15px 16px 16px}
+  .asg .kind{margin-left:0}
+}
 </style>
 <script>
 (function(){try{var t=localStorage.getItem('bhr-theme');
@@ -66,14 +169,20 @@ catch(e){}})();
     <li><a href="../index.html" class="sec">Home</a>
     </li>
     <li><a href="../start/welcome.html" class="sec">Start here</a>
-      <ul class="kids">
-        <li><a href="../start/welcome.html" class="here">Welcome to the shop</a>
-        </li>
-        <li><a href="../start/how-class-works.html">How this class works</a>
-        </li>
-      </ul>
     </li>
     <li><a href="../grades/index.html" class="sec">Your year</a>
+      <ul class="kids">
+        <li><a href="../grades/index.html">Which year are you?</a>
+        </li>
+        <li><a href="../grades/9.html" class="here">Grade 9 — Engineering I</a>
+        </li>
+        <li><a href="../grades/10.html">Grade 10 — Engineering II</a>
+        </li>
+        <li><a href="../grades/11.html">Grade 11 — Engineering III</a>
+        </li>
+        <li><a href="../grades/12.html">Grade 12 — Engineering IV</a>
+        </li>
+      </ul>
     </li>
     <li><a href="../logbook/index.html" class="sec">Logbook</a>
     </li>
@@ -87,121 +196,35 @@ catch(e){}})();
   </div>
 </div>
 <div class="main">
-
-<div class="wrap">
-
-  <header class="hero">
-    <p class="kicker">Engineering Technology &middot; Welcome</p>
-    <h1>Welcome to the shop</h1>
-    <p>Everything you need for your first week: who to ask for what, what to wear,
-      how the shop runs, and how you are graded.</p>
-  </header>
-
-  <section>
-    <h2>What this program is</h2>
-    <p>You are joining a program that treats you like an engineer rather than a student
-      who happens to be in a shop. You will design things, build them, test them, and
-      explain why they worked or did not. Some of what you make will fail. That is part
-      of it &mdash; what matters is that you can say why.</p>
-  </section>
-
-  <section>
-    <h2>Who to ask for what</h2>
-    <p class="sub">Both of us teach across all four years. Go to whoever fits the problem in
-      front of you &mdash; you will not be sent away for asking the wrong one.</p>
-    <div class="two">
-      <article>
-        <span class="who">Mr. Frank &middot; Grades 11 &amp; 12</span>
-        <b>Helps you make it real</b>
-        <ul>
-          <li>Designing in CAD so it works and looks right</li>
-          <li>Getting a part ready to 3D print or laser cut</li>
-          <li>Making a structure that holds up</li>
-          <li>Drawings someone else could build from</li>
-          <li>Fixing a prototype that came out wrong</li>
-        </ul>
-      </article>
-      <article>
-        <span class="who">Mr. Dryer &middot; Grades 9 &amp; 10</span>
-        <b>Helps you make it work</b>
-        <ul>
-          <li>Designing or troubleshooting a circuit</li>
-          <li>Writing and debugging code for a board or robot</li>
-          <li>Working out why a system misbehaves</li>
-          <li>Getting sensors and motors working together</li>
-          <li>Showing with data that it does what you claim</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <section>
-    <h2>What you can earn here</h2>
-    <dl class="defs">
-      <dt>OSHA 10 &mdash; Construction</dt>
-      <dd>In Grade 10. The credential that lets you work on the equipment, and it is
-        recognized well outside this building.</dd>
-      <dt>Autodesk Certified User</dt>
-      <dd>In Inventor, Fusion 360 and Revit Architecture. Which ones you go for depends on
-        the work you are doing and when you are ready.</dd>
-      <dt>Cooperative education</dt>
-      <dd>Working in a real engineering setting for part of your schedule. Available to
-        juniors from Term 3 and seniors from Term 1.</dd>
-    </dl>
-  </section>
-
-  <section>
-    <h2>What to wear</h2>
-    <p class="sub">You wear a uniform during your shop week. It is not about looking smart
-      &mdash; it is about being dressed for a room with machines in it.</p>
-    <div class="tw"><table>
-      <thead><tr><th>Item</th><th>What is required</th></tr></thead>
-      <tbody>
-        <tr><td class="k" data-label="Item">Shop attire</td><td data-label="What is required">Anything carrying the Engineering Technology logo, bought through the school store &mdash; T-shirts long or short sleeve, hoodies, crew necks, quarter-zips, sweaters. Any of it counts.</td></tr>
-        <tr><td class="k" data-label="Item">Footwear</td><td data-label="What is required">Shoes, sneakers or work boots. <strong>No open-toed shoes, sandals or Crocs</strong> in the Makerspace.</td></tr>
-        <tr><td class="k" data-label="Item">Eye protection</td><td data-label="What is required">Required in the Makerspace. Situational in the main shop &mdash; if you are unsure, put them on.</td></tr>
-      </tbody>
-    </table></div>
-    <p class="note"><strong>Ordering.</strong> Uniforms are ordered at
-      <a href="https://store.bluehills.org/">store.bluehills.org</a> during the window posted
-      on the website &mdash; that is when pricing is best and delivery to the school is free.
-      There is no limit on how many you buy; most students get at least two. Refer to the
-      Blue Hills Parent/Student Handbook for anything else about attire.</p>
-  </section>
-
-  <section>
-    <h2>Safety, in short</h2>
-    <p class="sub">The full rules are posted in the shop and you will be trained on them.
-      These are the ones that matter before you touch anything.</p>
-    <ul class="ticks">
-      <li>Report every injury immediately, however small. If a chemical gets in your eyes,
-        wash for <strong>15 minutes</strong> before seeking treatment.</li>
-      <li>Never use a tool you have not been trained and authorized on.</li>
-      <li>Never work alone with power tools &mdash; two people, both visible to each other.</li>
-      <li>Machines run only with all guards and shields in place. Never walk away from a
-        running tool.</li>
-      <li>Clean your area every time you leave it, including the floor.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Next</h2>
-    <p class="sub">Two things worth reading in your first week.</p>
-    <div class="grid">
-      <article>
-        <b><a href="how-class-works.html">How this class works</a></b>
-        <p>The classroom rules, and exactly how your grade is put together &mdash; including
-          why half of it is about how you work rather than what you make.</p>
-      </article>
-      <article>
-        <b><a href="../logbook/index.html">Your engineering logbook</a></b>
-        <p>You fill one in every shop day. Read this before your first one, not after.</p>
-      </article>
-    </div>
-  </section>
-
+<div class="wrap gradepage" style="--g-lt:#a03c36;--g-dk:#e59089;--g-slt:#fbeceb;--g-sdk:#3a1e1c">
+<div class="ghero">
+  <img src="../assets/grade-1.jpg" alt="" loading="lazy">
+  <div class="scrim">
+    <p class="gnum">Grade 9 &middot; Engineering I</p>
+    <p class="gname">Engineering I</p>
+    <p class="gwho">Delivered by Mr. Dryer</p>
+  </div>
 </div>
-
+<section>
+  <p class="ghook">One week to find out whether this is your shop.</p>
+  <p class="lede">Grade 9 is exploratory. You spend one week in each of nine shops before you choose the one you will be in for the next three and a half years. This page is what that week looks like here.</p>
+</section>
+<section>
+  <h2>The units for the year</h2>
+  <p class="sub">Quoted from the shop&rsquo;s Grade 9 unit breakdown. The order is the plan, not a promise.</p>
+<div class="units">
+  <div class="u"><span class="n">1</span><div><p class="ut">Exploratory &amp; Shop Readiness</p><p class="ud">What the shop is, how to be safe in it, and what engineering technology actually means as a trade.</p></div></div>
+  <div class="u"><span class="n">2</span><div><p class="ut">Intro to Digital Design &amp; CAD</p><p class="ud">Your first time making something on a screen that could be made for real.</p></div></div>
+  <div class="u"><span class="n">3</span><div><p class="ut">Engineering Design &amp; Planning</p><p class="ud">The design process: define the problem before you solve it.</p></div></div>
+  <div class="u"><span class="n">4</span><div><p class="ut">Graphics &amp; Documentation Basics</p><p class="ud">Drawing so that someone else can build from it.</p></div></div>
+  <div class="u"><span class="n">5</span><div><p class="ut">Intro to Fabrication &amp; Prototyping</p><p class="ud">Turning the file into a thing you can hold.</p></div></div>
+  <div class="u"><span class="n">6</span><div><p class="ut">Grade 9 EOY Project</p><p class="ud">Everything above, in one build, at the end of the year.</p></div></div>
+</div>
+</section>
+<section><div class="gempty"><p><strong>Assignments for this year live in Google Classroom.</strong> Mr. Dryer delivers Grade 9, and this page deliberately stops at the unit map rather than guessing at his assignments.</p><p>If you want the briefs here too, they can be added the same way Grades 11 and 12 were.</p></div></section>
+<section><div class="note"><p><strong>What exploratory means.</strong> In Grade 9 you spend one week in each of nine shops before choosing the one you stay in for the next three and a half years. One week is not long, so use it: ask what the seniors are building, and look at <a href="../pathways/index.html">the seven pathways</a> to see where this shop can actually take you.</p></div></section>
+<section><h2>Wherever you are in the shop</h2><div class="doors"><a href="../shop/index.html"><b>Safety</b><span>Rules, equipment checks, SDS sheets</span></a><a href="../start/how-class-works.html"><b>How this class works</b><span>Rules, uniform, grading</span></a><a href="../logbook/index.html"><b>The logbook</b><span>What goes in it, every day</span></a><a href="../resources/index.html"><b>Training and credentials</b><span>Every platform the shop uses</span></a></div></section>
+</div>
 </div>
 </div>
 

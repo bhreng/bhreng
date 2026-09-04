@@ -17,6 +17,8 @@ import pathway_sources as PS
 import resources_data as RD
 import safety_data as SD
 import equipment_data as EQ
+import grade_data as GD
+import grade_work as GW
 
 TOPIC_NAMES = {
     'field': 'Explore the Field',
@@ -32,6 +34,7 @@ KIND_LABEL = {
     'comp': 'Competition', 'software': 'Software', 'page': 'Page',
     'rule': 'Rule', 'check': 'Safety check', 'platform': 'Training',
     'sds': 'Safety data', 'pathway': 'Pathway',
+    'unit': 'Unit', 'assignment': 'Assignment',
 }
 
 
@@ -83,8 +86,25 @@ def build():
          'Practice for the shop safety test.'),
         ('Training and credentials', 'resources/index.html', 'Training',
          'Every platform and credential the shop uses or recommends.'),
+        ('Find your year', 'grades/index.html', 'Your year',
+         'The four grade homes: who delivers each year and what it holds.'),
     ]:
         add(title, url, where, 'page', note)
+
+    # --- the four grade homes, and every assignment on them --------------
+    for g in GD.GRADES:
+        add('Grade %d \u2014 %s' % (g['num'], g['course']),
+            'grades/%s.html' % g['key'], 'Your year', 'page',
+            g['hook'], g['teacher'])
+        for i, (ut, _ud) in enumerate(g['units'], 1):
+            add(ut, 'grades/%s.html' % g['key'],
+                'Grade %d unit %d' % (g['num'], i), 'unit', '', g['course'])
+        for a in GW.WORK.get(g['key'], []):
+            term = ('Term %s' % a['t']) if isinstance(a['t'], int) else \
+                   ('End of year' if a['t'] == 'eoy' else 'All year')
+            add(a['title'], 'grades/%s.html#term-%s' % (g['key'], a['t']),
+                'Grade %d \u00b7 %s' % (g['num'], term),
+                'assignment', a['hook'], a['tool'])
 
     # --- the seven pathways ----------------------------------------------
     for p in B.P:
