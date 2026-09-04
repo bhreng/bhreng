@@ -74,15 +74,37 @@ CSS = '''
 .main .wrap{max-width:820px;margin:0;padding-left:34px;padding-right:24px}
 .main .wrap.wide{max-width:960px}
 
+/* The toggle. Hidden on desktop, where the rail is simply always open.
+   A checkbox rather than JavaScript, so the menu opens with scripting off and
+   cannot flash open on load. */
+.railtog{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.railbtn{display:none}
+
 @media(max-width:940px){
   .shell{display:block;max-width:1040px}
   .rail{border-right:0;border-bottom:1px solid var(--rule)}
-  .railin{position:static;max-height:none;overflow:visible;padding:0 24px 12px}
+  .railin{position:static;max-height:none;overflow:visible;padding:0 24px 14px}
   .rail>.railin>nav>ul{display:grid;
     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0 14px}
   .rail .kids{margin-bottom:4px}
   .main .wrap,.main .wrap.wide{max-width:900px;margin:0 auto;padding-left:24px}
+
+  /* Closed by default. Without this a phone gets a screen and a half of link
+     list on top of every page before a word of the actual content. */
+  .railin{display:none}
+  .railtog:checked~.railin{display:block}
+  .railbtn{display:flex;align-items:center;gap:10px;cursor:pointer;
+    padding:11px 24px;font-size:14px;font-weight:600;color:var(--ink-2);
+    user-select:none;-webkit-user-select:none}
+  .railbtn:hover{color:var(--accent)}
+  .railbtn .bars{position:relative;width:16px;height:2px;flex:none;
+    background:currentColor;box-shadow:0 -5px 0 currentColor,0 5px 0 currentColor}
+  .railbtn .chev{margin-left:auto;font-size:11px;transition:transform .15s}
+  .railtog:checked~.railbtn .chev{transform:rotate(180deg)}
+  .railtog:checked~.railbtn{color:var(--accent)}
+  .railtog:focus-visible~.railbtn{outline:2px solid var(--accent);outline-offset:-2px}
 }
+@media(prefers-reduced-motion:reduce){.railbtn .chev{transition:none}}
 @media print{.rail{display:none}.shell{display:block}
   .main .wrap{max-width:none;padding:0}}
 '''
@@ -98,6 +120,10 @@ def render(current, rel, anchors=None):
     # NOT a <details>: Chrome's ::details-content establishes containment, which
     # silently breaks position:sticky for anything inside it.
     out = ['<div class="rail">',
+           '  <input type="checkbox" id="railtog" class="railtog"'
+           ' aria-label="Show site navigation">',
+           '  <label for="railtog" class="railbtn"><span class="bars"></span>'
+           'Browse the site<span class="chev">&#9660;</span></label>',
            '  <div class="railin">',
            '  <nav aria-label="Site"><ul>']
     for key, label, href, kids in tree():

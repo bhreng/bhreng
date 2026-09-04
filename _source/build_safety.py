@@ -104,8 +104,11 @@ ol.primary li.gate{background:var(--accent-soft)}
   border-radius:3px;width:230px;max-width:70vw}
 .whoami input:focus{outline:2px solid var(--accent);outline-offset:1px;
   border-color:var(--accent)}
-.slip{margin-top:16px;max-width:100%;border:1px solid var(--rule);
-  box-shadow:var(--shadow);display:block}
+.slip{margin-top:16px;width:100%;max-width:500px;height:auto;
+  border:1px solid var(--rule);box-shadow:var(--shadow);display:block;
+  margin-left:auto;margin-right:auto}
+.sliphint{margin:10px 0 0;font-size:13px;color:var(--ink-3);display:none}
+@media(hover:none) and (pointer:coarse){.sliphint{display:block}}
 .slipbtns{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-top:13px}
 .slipbtns button{font-family:var(--sans);font-weight:600;font-size:14.5px;
   padding:10px 18px;border:1.5px solid var(--accent);background:var(--card);
@@ -297,18 +300,29 @@ def quiz_html(key, table=None):
       'acknowledgement in Google Classroom.</p>' +
       '<div class="whoami"><label for="nm">Your name</label>' +
       '<input id="nm" type="text" autocomplete="name" placeholder="First and last"></div>' +
-      '<canvas class="slip" id="slip" role="img" aria-label="Completion slip"></canvas>' +
+      // The canvas draws it; a plain <img> displays it. On a phone that is the
+      // whole difference between a slip you can keep and one you cannot: iOS
+      // has no press-and-hold "Save Image" on a <canvas>, and its Save button
+      // opens the file rather than saving it.
+      '<canvas id="slip" hidden></canvas>' +
+      '<img class="slip" id="slipimg" alt="Completion slip">' +
       '<div class="slipbtns">' +
       '<button type="button" class="solid" id="save">Save image</button>' +
       '<button type="button" id="copy">Copy image</button></div>' +
+      '<p class="sliphint">On a phone: press and hold the slip, then choose ' +
+      'Save Image.</p>' +
       '<p class="slipnote" id="snote"></p>' +
       '<button class="qagain" type="button" id="ag">Run through it again</button></div>';
 
     var canvas = document.getElementById('slip'),
+        shown = document.getElementById('slipimg'),
         nm = document.getElementById('nm'),
         note = document.getElementById('snote');
 
-    function redraw(){ drawSlip(canvas, nm.value.trim(), d); }
+    function redraw(){
+      drawSlip(canvas, nm.value.trim(), d);
+      try { shown.src = canvas.toDataURL('image/png'); } catch (e) {}
+    }
     // webfonts may still be loading when the panel first appears
     redraw();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);

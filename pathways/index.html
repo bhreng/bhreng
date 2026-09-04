@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
 <link rel="icon" href="../assets/icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
-<link rel="stylesheet" href="../assets/site.css?v=c3afc4c9">
+<link rel="stylesheet" href="../assets/site.css?v=f4305d62">
 <style>
 .wrap{max-width:1000px;margin:0 auto;padding:36px 24px 100px;
   display:flex;flex-direction:column;gap:44px}
@@ -338,6 +338,8 @@ catch(e){}})();
 
 <div class="shell">
 <div class="rail">
+  <input type="checkbox" id="railtog" class="railtog" aria-label="Show site navigation">
+  <label for="railtog" class="railbtn"><span class="bars"></span>Browse the site<span class="chev">&#9660;</span></label>
   <div class="railin">
   <nav aria-label="Site"><ul>
     <li><a href="../index.html" class="sec">Home</a>
@@ -616,13 +618,13 @@ catch(e){}})();
     <div class="tw"><table>
       <thead><tr><th>Pathway</th><th>Standard</th><th>Ask</th><th>You spend the term on</th></tr></thead>
       <tbody>
-        <tr><td class="k">Industrial Design</td><td class="s">8</td><td>Mr. Frank</td><td>Form, ergonomics, and designing for the machine that will make it</td></tr>
-        <tr><td class="k">Architecture &amp; Civil</td><td class="s">10</td><td>Mr. Frank</td><td>Structures, sites, drainage, and construction documents</td></tr>
-        <tr><td class="k">Mechanical</td><td class="s">7</td><td>Mr. Frank</td><td>Forces, motion, materials, and testing to failure</td></tr>
-        <tr><td class="k">Electrical</td><td class="s">5</td><td>Mr. Dryer</td><td>Circuits, power, and instrument measurement</td></tr>
-        <tr><td class="k">Software</td><td class="s">6</td><td>Mr. Dryer</td><td>Logic, code, and controlling physical hardware</td></tr>
-        <tr><td class="k">Automation &amp; Robotics</td><td class="s">9</td><td>Both</td><td>Mechatronics &mdash; all three of the above at once</td></tr>
-        <tr><td class="k">Project Management</td><td class="s">4</td><td>Both</td><td>Scope, schedule, resources, and getting it finished</td></tr>
+        <tr><td class="k" data-label="Pathway">Industrial Design</td><td class="s" data-label="Standard">8</td><td data-label="Ask">Mr. Frank</td><td data-label="You spend the term on">Form, ergonomics, and designing for the machine that will make it</td></tr>
+        <tr><td class="k" data-label="Pathway">Architecture &amp; Civil</td><td class="s" data-label="Standard">10</td><td data-label="Ask">Mr. Frank</td><td data-label="You spend the term on">Structures, sites, drainage, and construction documents</td></tr>
+        <tr><td class="k" data-label="Pathway">Mechanical</td><td class="s" data-label="Standard">7</td><td data-label="Ask">Mr. Frank</td><td data-label="You spend the term on">Forces, motion, materials, and testing to failure</td></tr>
+        <tr><td class="k" data-label="Pathway">Electrical</td><td class="s" data-label="Standard">5</td><td data-label="Ask">Mr. Dryer</td><td data-label="You spend the term on">Circuits, power, and instrument measurement</td></tr>
+        <tr><td class="k" data-label="Pathway">Software</td><td class="s" data-label="Standard">6</td><td data-label="Ask">Mr. Dryer</td><td data-label="You spend the term on">Logic, code, and controlling physical hardware</td></tr>
+        <tr><td class="k" data-label="Pathway">Automation &amp; Robotics</td><td class="s" data-label="Standard">9</td><td data-label="Ask">Both</td><td data-label="You spend the term on">Mechatronics &mdash; all three of the above at once</td></tr>
+        <tr><td class="k" data-label="Pathway">Project Management</td><td class="s" data-label="Standard">4</td><td data-label="Ask">Both</td><td data-label="You spend the term on">Scope, schedule, resources, and getting it finished</td></tr>
       </tbody>
     </table></div>
   </div>
@@ -633,11 +635,11 @@ catch(e){}})();
     <div class="tw"><table>
       <thead><tr><th>Topic</th><th>Sorting question</th><th>What belongs there</th></tr></thead>
       <tbody>
-        <tr><td class="k">Explore the Field</td><td>Would this help someone decide whether to pick this pathway?</td><td>Careers, roles, what practitioners actually do</td></tr>
-        <tr><td class="k">Learn the Concepts</td><td>Is this something you study to understand how the work works?</td><td>Texts, theory, the science behind the decisions</td></tr>
-        <tr><td class="k">Build Your Skills</td><td>Is this a procedure you practice until you can do it?</td><td>Software walkthroughs, equipment training, technique</td></tr>
-        <tr><td class="k">Find a Project</td><td>Is this something you could go build?</td><td>Design briefs, challenges, project seeds</td></tr>
-        <tr><td class="k">Get the Files</td><td>Would you open this while working, rather than read start to finish?</td><td>Templates, forms, rubrics, safety rules</td></tr>
+        <tr><td class="k" data-label="Topic">Explore the Field</td><td data-label="Sorting question">Would this help someone decide whether to pick this pathway?</td><td data-label="What belongs there">Careers, roles, what practitioners actually do</td></tr>
+        <tr><td class="k" data-label="Topic">Learn the Concepts</td><td data-label="Sorting question">Is this something you study to understand how the work works?</td><td data-label="What belongs there">Texts, theory, the science behind the decisions</td></tr>
+        <tr><td class="k" data-label="Topic">Build Your Skills</td><td data-label="Sorting question">Is this a procedure you practice until you can do it?</td><td data-label="What belongs there">Software walkthroughs, equipment training, technique</td></tr>
+        <tr><td class="k" data-label="Topic">Find a Project</td><td data-label="Sorting question">Is this something you could go build?</td><td data-label="What belongs there">Design briefs, challenges, project seeds</td></tr>
+        <tr><td class="k" data-label="Topic">Get the Files</td><td data-label="Sorting question">Would you open this while working, rather than read start to finish?</td><td data-label="What belongs there">Templates, forms, rubrics, safety rules</td></tr>
       </tbody>
     </table></div>
   </div>
@@ -678,7 +680,7 @@ catch(e){}})();
     <span>Blue Hills Regional Technical School</span>
     <span>Engineering Technology &middot; Room E-126</span>
     <span>Mr. Frank &middot; Mr. Dryer</span>
-    <span class="build">Build 04 Sep 2026, 16:23</span>
+    <span class="build">Build 04 Sep 2026, 16:38</span>
   </div>
 </footer>
 

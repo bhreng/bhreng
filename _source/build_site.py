@@ -134,9 +134,52 @@ def shell(title, body, depth=0, section='', page_css='', desc='',
                 js=SUI.JS % dict(r=r, rel=repr(r), sv=v('search-index.js')) + SNAV.JS + THEME.JS)
 
 
+def label_table_cells(html):
+    """Stamp each <td> with the text of its column heading.
+
+    On a phone a four-column table has to stack, and a stacked cell with no
+    column name is meaningless -- "35%" on its own line tells a student
+    nothing. The stylesheet prints these labels back in at narrow widths.
+    Done here, at build time, so no page has to remember to do it and a table
+    added later gets it for free.
+    """
+    def one(m):
+        table = m.group(0)
+        head = re.search(r'<thead>(.*?)</thead>', table, re.S)
+        if not head:
+            return table
+        heads = [re.sub(r'<[^>]+>', '', h).strip()
+                 for h in re.findall(r'<th[^>]*>(.*?)</th>', head.group(1), re.S)]
+        if not heads:
+            return table
+
+        body_start = table.find('</thead>')
+        head_part, body_part = table[:body_start], table[body_start:]
+
+        def row(rm):
+            col = [0]
+
+            def cell(cm):
+                i = col[0]
+                col[0] += 1
+                if i >= len(heads) or 'data-label' in cm.group(1):
+                    return cm.group(0)
+                lbl = heads[i].replace('"', '&quot;')
+                return '<td%s data-label="%s">%s</td>' % (cm.group(1), lbl,
+                                                          cm.group(2))
+            return re.sub(r'<td([^>]*)>(.*?)</td>', cell, rm.group(0), flags=re.S)
+
+        body_part = re.sub(r'<tr.*?</tr>', row, body_part, flags=re.S)
+        return head_part + body_part
+
+    return re.sub(r'<table.*?</table>', one, html, flags=re.S)
+
+
 def write(path, text):
     full = os.path.join(OUT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
+    if path.endswith('.html'):
+        text = label_table_cells(text)
     open(full, 'w', encoding='utf-8').write(text)
     print('  %-42s %6d' % (path, len(text)))
 
