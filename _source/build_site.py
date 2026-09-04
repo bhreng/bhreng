@@ -110,11 +110,11 @@ def shell(title, body, depth=0, section='', page_css='', desc='',
       <img class="mark" src="%(r)sassets/logo-96.png" alt="" width="34" height="29">
       <span>Engineering&nbsp;Technology</span>
     </a>
+%(qbar)s
 %(srch)s
 %(themebtn)s
   </div>
 </header>
-%(qbar)s
 
 <div class="shell">
 %(rail)s
@@ -1135,9 +1135,9 @@ if __name__ == '__main__':
         if token not in c:
             raise SystemExit('build: %s missing from site.css' % token)
     if '.srch{' not in c or '.railin{' not in c or '.themebtn{' not in c \
-            or '.qbar{' not in c:
-        raise SystemExit('build: search, rail, theme or quick-bar CSS did not '
-                         'get stamped in')
+            or '.qnav{' not in c:
+        raise SystemExit('build: search, rail, theme or quick-link CSS did '
+                         'not get stamped in')
     open(css_path, 'w', encoding='utf-8').write(c)
     print('  fonts: %s' % f['name'])
 
