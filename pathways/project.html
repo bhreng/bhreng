@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project Management &middot; BHR Engineering</title>
+<meta name="description" content="Project Management pathway guide — Standard 4. Making a project finish on time, with the parts you actually ordered.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="../assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/site.css?v=c3afc4c9">
+<style>
+max-width:1140px;margin:0 auto;padding:28px 24px 90px;align-items:start}
+@media(max-width:900px){.shell{grid-template-columns:1fr;gap:24px}}
+  border-right:1px solid var(--rule);padding-right:18px}
+@media(max-width:900px){nav{position:static;border-right:0;
+  border-bottom:1px solid var(--rule);padding:0 0 18px}}
+  font-family:var(--mono);margin:0 0 11px}
+  background:none;border:0;cursor:pointer;color:var(--ink-2);font-size:13.5px;
+  font-weight:500;padding:6px 8px;border-radius:3px;font-family:inherit;line-height:1.35}
+nav .std{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none;width:22px}
+.ph{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:34px;
+  display:flex;flex-direction:column;gap:9px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0}
+h2{font-family:var(--sans);font-weight:var(--w-heavy);
+  font-size:clamp(28px,4.6vw,42px);line-height:1.04;letter-spacing:-.028em;margin:0;
+  text-wrap:balance;max-width:18ch}
+.tag{margin:0;font-family:var(--sans);font-weight:600;font-size:18px;
+  color:var(--ink-2);max-width:52ch;line-height:1.35;text-wrap:balance}
+.intro{margin:4px 0 0;font-size:16.5px;color:var(--ink-2);max-width:64ch}
+.newflag{margin:6px 0 0;font-size:14px;color:var(--moss);background:var(--moss-soft);
+  border-radius:3px;padding:8px 12px;max-width:64ch;line-height:1.45}
+.topic{margin-bottom:44px}
+.th{display:flex;gap:15px;align-items:flex-start;margin-bottom:14px}
+.tn{font-family:var(--sans);font-weight:700;font-size:14px;color:var(--accent);
+  background:var(--accent-soft);width:28px;height:28px;flex:none;border-radius:4px;
+  display:grid;place-items:center;margin-top:2px}
+h3{font-family:var(--sans);font-weight:700;font-size:22px;letter-spacing:-.015em;
+  margin:0;line-height:1.2}
+.tq{margin:3px 0 0;font-size:14px;font-style:italic;color:var(--ink-3);max-width:60ch}
+.blurb{margin:0 0 16px;color:var(--ink-2);max-width:66ch}
+.roles{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.roles div{background:var(--card);padding:13px 18px;display:grid;
+  grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:3px 22px}
+.roles b{font-family:var(--sans);font-weight:600;font-size:15px;line-height:1.4}
+.roles span{color:var(--ink-2);font-size:15px;line-height:1.5}
+@media(max-width:620px){.roles div{grid-template-columns:1fr}}
+dl.defs{margin:0;display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+dl.defs dt{background:var(--card);padding:14px 18px 4px;font-family:var(--sans);
+  font-weight:600;font-size:15.5px;line-height:1.35}
+dl.defs dd{background:var(--card);margin:0;padding:0 18px 14px;color:var(--ink-2);
+  font-size:15.5px;line-height:1.55}
+.pullout{margin-top:16px;background:var(--card);border:1px solid var(--rule);
+  border-left:3px solid var(--accent);padding:15px 20px}
+.pullout b{font-family:var(--sans);font-weight:600;font-size:15.5px;display:block;
+  margin-bottom:4px}
+.pullout p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.55;max-width:66ch}
+.cred{background:var(--accent-soft);border:1px solid var(--rule);padding:15px 20px;
+  margin-bottom:16px;display:flex;flex-direction:column;gap:3px}
+.cred span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent)}
+.cred b{font-family:var(--sans);font-weight:700;font-size:17px;line-height:1.3;
+  color:var(--ink)}
+.cred em{font-style:normal;font-size:14px;color:var(--ink-2);margin-top:3px}
+ul.ticks,ul.files{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;
+  gap:1px;background:var(--rule);border:1px solid var(--rule)}
+ul.ticks li,ul.files li{background:var(--card);padding:11px 18px 11px 40px;position:relative;
+  font-size:15.5px;line-height:1.5}
+ul.ticks li::before{content:"";position:absolute;left:19px;top:20px;width:7px;height:7px;
+  border-radius:50%;background:var(--accent)}
+ul.files li::before{content:"";position:absolute;left:18px;top:17px;width:9px;height:11px;
+  border:1.4px solid var(--accent);border-radius:1px}
+.briefs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.briefs article{background:var(--card);padding:16px 19px;display:flex;flex-direction:column;
+  gap:6px;box-shadow:0 0 0 1px var(--rule)}
+.briefs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.briefs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+.note{margin:16px 0 0;font-size:14.5px;color:var(--ink-2);background:var(--card);
+  border:1px solid var(--rule);border-left:3px solid var(--ink-3);padding:12px 16px;
+  max-width:70ch;line-height:1.5}
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--card);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th{font-family:var(--sans);font-weight:600;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);text-align:left;padding:11px 14px;
+  border-bottom:1.5px solid var(--rule);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:0}
+td.k{font-family:var(--sans);font-weight:600;white-space:nowrap}
+td.s{font-family:var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
+em{font-style:italic}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pathnav{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule);margin-top:-18px}
+.pathnav a{background:var(--card);box-shadow:0 0 0 1px var(--rule);
+  padding:10px 14px;text-decoration:none;
+  color:var(--ink-2);font-size:13.5px;font-family:var(--sans);font-weight:500;
+  display:flex;gap:8px;align-items:baseline}
+.pathnav a:hover{background:var(--accent-soft);color:var(--accent)}
+.pathnav a[aria-current="page"]{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.pathnav .std{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none}
+.pathnav a[aria-current="page"] .std{color:var(--accent)}
+.pagebody{display:flex;flex-direction:column}
+
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px}
+.filters button{font-family:var(--sans);font-size:13px;font-weight:500;
+  background:var(--card);color:var(--ink-2);border:1px solid var(--rule);
+  padding:6px 13px;border-radius:20px;cursor:pointer;line-height:1.3}
+.filters button:hover{border-color:var(--accent);color:var(--accent)}
+.filters button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.rlist{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.r{background:var(--card);padding:17px 20px;display:flex;flex-direction:column;gap:8px}
+.r.hide{display:none}
+.rhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px}
+.r h3{margin:0;font-size:17px}
+.r h3 a{text-decoration:none}
+.r h3 a:hover{text-decoration:underline}
+.pill{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
+  padding:3px 8px;border-radius:3px;white-space:nowrap}
+.pill.ok{color:var(--green);background:var(--green-soft)}
+.pill.deep{color:var(--blue);background:var(--blue-soft)}
+.pill.hard{color:var(--ink-2);background:transparent;box-shadow:inset 0 0 0 1px var(--rule)}
+.pill.warn{color:var(--warm);background:var(--warm-soft)}
+.pill.school{color:var(--accent);background:var(--accent-soft)}
+.rcost{font-size:13.5px;color:var(--ink-3);font-family:var(--sans)}
+.r p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.55;max-width:70ch}
+.r .meta{display:flex;flex-wrap:wrap;gap:5px 18px;font-size:13.5px;color:var(--ink-3);
+  font-family:var(--sans)}
+.r .meta b{font-weight:600;color:var(--ink-2)}
+.r .why{font-size:15px;color:var(--ink);background:var(--paper);border-left:2px solid var(--accent);
+  padding:8px 13px;line-height:1.5;max-width:70ch}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tags i{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);border:1px solid var(--rule);
+  padding:2px 6px;border-radius:2px}
+
+.creds{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.creds div{background:var(--card);padding:16px 20px;display:grid;
+  grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:6px 24px;align-items:start}
+.creds b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.35}
+.creds .who{font-size:13.5px;color:var(--ink-3);font-family:var(--sans);display:block;
+  margin-top:2px}
+.creds .cost{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-top:5px}
+.creds p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.55}
+.creds .cnote{margin-top:7px;font-size:14.5px;color:var(--warm)}
+@media(max-width:620px){.creds div{grid-template-columns:1fr}}
+
+.trainbox{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.trainbox a{background:var(--card);padding:13px 18px;text-decoration:none;color:inherit;
+  display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr) auto;gap:4px 18px;
+  align-items:baseline}
+.trainbox a:hover{background:var(--accent-soft)}
+.trainbox b{font-family:var(--sans);font-weight:600;font-size:15px}
+.trainbox span{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+@media(max-width:620px){.trainbox a{grid-template-columns:1fr}}
+
+.srcs{display:flex;flex-direction:column;gap:1px;background:var(--card);
+  border:1px solid var(--rule);margin-top:14px}
+.srcs a{background:var(--card);box-shadow:0 0 0 1px var(--rule);padding:14px 18px;
+  text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:5px}
+.srcs a:hover{background:var(--accent-soft)}
+.srcs .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.srcs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.srcs .kind{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3)}
+.srcs p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.5;max-width:70ch}
+.srchead{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-top:20px}
+.srchead h4{margin:0;font-family:var(--sans);font-weight:700;font-size:14px;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
+.srchead span{font-size:13.5px;color:var(--ink-3)}
+
+.pathlayout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px;
+  align-items:start}
+.pside{position:sticky;top:74px;font-family:var(--sans)}
+.pside .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 9px;padding-left:2px}
+.pside ol{list-style:none;margin:0 0 16px;padding:0;
+  border:1px solid var(--rule);background:var(--card)}
+.pside li{border-bottom:1px solid var(--rule-soft)}
+.pside li:last-child{border-bottom:0}
+.pside a{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;
+  padding:11px 13px;text-decoration:none;color:inherit;align-items:start}
+.pside a:hover{background:var(--accent-soft)}
+.pside .n{font-family:var(--mono);font-size:11px;color:var(--ink-3);
+  padding-top:2px;min-width:9px}
+.pside b{font-weight:600;font-size:14.5px;line-height:1.25;color:var(--ink);
+  display:block}
+.pside .pl{display:block;font-family:var(--serif);font-size:13px;color:var(--ink-2);
+  line-height:1.4;margin-top:2px}
+.pside .ct{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);
+  margin-top:4px}
+.pside a.on{background:var(--accent-soft)}
+.pside a.on .n,.pside a.on b{color:var(--accent)}
+.pside a.on b{font-weight:700}
+.pside .up{font-size:13px;color:var(--ink-2);text-decoration:none;
+  display:inline-block;padding:2px}
+.pside .up:hover{color:var(--accent)}
+.topic{scroll-margin-top:78px}
+@media(max-width:900px){
+  .pathlayout{grid-template-columns:1fr;gap:26px}
+  .pside{position:static}
+  .pside ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:1px;background:var(--rule)}
+  .pside li{border-bottom:0;background:var(--card)}
+}
+@media print{.pside{display:none}.pathlayout{display:block}}
+
+.firstmove{border:1px solid var(--rule);border-left:4px solid var(--brand);
+  background:var(--card);padding:20px 24px 22px;margin:0 0 34px}
+.firstmove h2{font-family:var(--sans);font-weight:700;font-size:19px;margin:0 0 4px;
+  color:var(--ink);letter-spacing:-.01em;max-width:none;text-wrap:pretty}
+.firstmove>p{margin:0 0 14px;color:var(--ink-2);font-size:15.5px;max-width:64ch}
+.firstmove ol{list-style:none;counter-reset:fm;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:11px}
+.firstmove li{counter-increment:fm;position:relative;padding-left:34px;
+  font-size:15.5px;line-height:1.55;max-width:66ch}
+.firstmove li::before{content:counter(fm);position:absolute;left:0;top:1px;
+  width:22px;height:22px;display:grid;place-items:center;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);
+  font-family:var(--sans);font-weight:700;font-size:12px}
+.firstmove .ask{margin:16px 0 0;font-size:14.5px;color:var(--ink-3);
+  padding-top:13px;border-top:1px solid var(--rule-soft)}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('bhr-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+</head>
+<body>
+
+<header class="sitebar">
+  <div class="in">
+    <a class="brand" href="../index.html">
+      <img class="mark" src="../assets/logo-96.png" alt="" width="34" height="29">
+      <span>Engineering&nbsp;Technology</span>
+    </a>
+      <div class="srch">
+        <span class="sbox">
+          <input type="search" id="q" placeholder="Search" autocomplete="off"
+                 aria-label="Search the site" aria-expanded="false" aria-controls="sres">
+          <kbd>/</kbd>
+        </span>
+        <div class="sres" id="sres" role="listbox" hidden></div>
+      </div>
+      <button class="themebtn" id="theme" type="button"
+              title="Switch between light and dark" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span><span class="lbl">Theme</span>
+      </button>
+  </div>
+</header>
+
+<div class="shell">
+<div class="rail">
+  <div class="railin">
+  <nav aria-label="Site"><ul>
+    <li><a href="../index.html" class="sec">Home</a>
+    </li>
+    <li><a href="../start/welcome.html" class="sec">Start here</a>
+    </li>
+    <li><a href="../logbook/index.html" class="sec">Logbook</a>
+    </li>
+    <li><a href="../pathways/index.html" class="sec">The seven pathways</a>
+      <ul class="kids">
+        <li><a href="../pathways/index.html">Which one is for you?</a>
+        </li>
+        <li><a href="../pathways/industrial.html">Industrial Design</a>
+        </li>
+        <li><a href="../pathways/architecture.html">Architecture &amp; Civil</a>
+        </li>
+        <li><a href="../pathways/mechanical.html">Mechanical</a>
+        </li>
+        <li><a href="../pathways/electrical.html">Electrical</a>
+        </li>
+        <li><a href="../pathways/software.html">Software</a>
+        </li>
+        <li><a href="../pathways/automation.html">Automation &amp; Robotics</a>
+        </li>
+        <li><a href="../pathways/project.html" class="here">Project Management</a>
+          <ul class="kids anch">
+            <li><a href="#t1"><span class="n">1</span>Explore the Field</a></li>
+            <li><a href="#t2"><span class="n">2</span>Learn the Concepts</a></li>
+            <li><a href="#t3"><span class="n">3</span>Build Your Skills</a></li>
+            <li><a href="#ttrain"><span class="n">&middot;</span>Where to train</a></li>
+            <li><a href="#t4"><span class="n">4</span>Find a Project</a></li>
+            <li><a href="#t5"><span class="n">5</span>Get the Files</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="../shop/index.html" class="sec">Shop safety</a>
+    </li>
+    <li><a href="../resources/index.html" class="sec">Training and credentials</a>
+    </li>
+  </ul></nav>
+  </div>
+</div>
+<div class="main">
+<div class="wrap">
+<div class="pagebody">
+<div class="ph">
+<p class="eyebrow">Standard S4 &middot; Mr. Frank and Mr. Dryer</p>
+<h2>Project Management</h2>
+<p class="tag">Making a project finish on time, with the parts you actually ordered.</p>
+<p class="intro">This pathway is unusual: the technical work happens in the other six, and what you own here is whether it gets done. It is the pathway for people who want to run the project rather than build one part of it.</p>
+</div>
+  <section class="firstmove">
+    <h2>New to this pathway? Start here.</h2>
+    <p>Nothing on this page is compulsory and there is no order you have to follow.
+      If you want a way in, this is the one I would take.</p>
+    <ol>
+      <li>Open <a href="https://www.bls.gov/ooh/business-and-financial/project-management-specialists.htm"><strong>Project management specialists — Occupational Outlook</strong></a> from Explore the Field, and ask yourself honestly whether that work appeals to you.</li>
+      <li>If it does, pick <strong>one</strong> thing from Learn the Concepts &mdash; there are 6 to choose from &mdash; and actually finish it.</li>
+      <li>Then go to Build Your Skills and do something with your hands. 7 options, and you do not have to take them in order.</li>
+      <li>Write down what you did in your logbook, including what did not work.</li>
+    </ol>
+    <p class="ask">Stuck, or want to talk it through? Ask <strong>Mr. Frank and Mr. Dryer</strong>.</p>
+  </section>
+<div class="topic" id="t1"><div class="th"><span class="tn">1</span><div><h3>Explore the Field</h3><p class="tq">Would this help someone decide whether to pick this pathway?</p></div></div>
+<p class="blurb">Project management in engineering is scope, schedule, resources and risk. The engineering judgment is in deciding what to cut when something slips.</p>
+<div class="roles">
+<div><b>Project manager</b><span>Owns scope, schedule and budget, and makes the call when they conflict.</span></div>
+<div><b>Construction manager</b><span>Runs a build on site — sequence, safety, subcontractors, compliance.</span></div>
+<div><b>Systems integrator</b><span>Coordinates hardware and software work across teams that do not naturally talk.</span></div>
+<div><b>Quality engineer</b><span>Defines what &ldquo;acceptable&rdquo; means and builds the inspection that checks it.</span></div>
+</div>
+<p class="note">This pathway is co-led. Take the physical and fabrication side to Mr. Frank and the systems and software side to Mr. Dryer &mdash; but the schedule is yours.</p>
+</div>
+<div class="srchead"><h4>Go and look</h4><span>4 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://www.bls.gov/ooh/business-and-financial/project-management-specialists.htm" target="_blank" rel="noopener"><span class="top"><b>Project management specialists — Occupational Outlook</b><span class="pill ok">Start here</span><span class="kind">doc</span></span><p>Bureau of Labor Statistics. Duties, pay and growth, with no one trying to sell you a certification.</p></a>
+  <a href="https://www.bls.gov/ooh/management/construction-managers.htm" target="_blank" rel="noopener"><span class="top"><b>Construction managers — Occupational Outlook</b><span class="pill ok">Start here</span><span class="kind">doc</span></span><p>The construction side, including an honest description of a job spent on site rather than at a desk.</p></a>
+  <a href="https://www.onetonline.org/link/summary/13-1082.00" target="_blank" rel="noopener"><span class="top"><b>What project managers actually do all day</b><span class="pill ok">Start here</span><span class="kind">doc</span></span><p>O*NET. Twenty concrete daily tasks and the software really used.</p></a>
+  <a href="https://www.ted.com/talks/tres_roeder_a_sixth_sense_for_project_management" target="_blank" rel="noopener"><span class="top"><b>A sixth sense for project management</b><span class="pill ok">Start here</span><span class="kind">talk</span></span><p>Tres Roeder, TED. Aimed at people moving into work, and about the people side rather than the charts.</p></a>
+</div>
+<div class="topic" id="t2"><div class="th"><span class="tn">2</span><div><h3>Learn the Concepts</h3><p class="tq">Is this something you study to understand how the work works?</p></div></div>
+<p class="blurb">Four tools, all of which you will use on your capstone whether or not you choose this pathway.</p>
+<dl class="defs">
+<dt>Work breakdown structure</dt><dd>Decompose the whole scope into deliverables small enough to estimate. If a task cannot be estimated, it has not been broken down far enough.</dd>
+<dt>Gantt charts and the critical path</dt><dd>Map the breakdown onto a timeline, then find the sequence where any delay pushes the end date. Tasks off the critical path have slack; tasks on it do not. Track lead time for material procurement as its own task — parts that have not arrived are the most common reason a project misses.</dd>
+<dt>Decision matrices</dt><dd>Score competing solutions against weighted criteria. Its real value is that it forces you to write down what you are optimizing for before you know which option wins.</dd>
+<dt>Requirements analysis</dt><dd>Separate user needs — what the customer wants — from functional specifications — the measurable technical targets. Confusing the two is how projects deliver the wrong thing on time.</dd>
+</dl>
+<div class="pullout"><b>Agile and the design process</b><p>Software teams often work in sprints rather than one long plan. A sprint backlog is the same idea as planning a solution; the daily loop is improve and redesign; the sprint review is test and evaluate. Different vocabulary, same cycle, shorter turns.</p></div>
+</div>
+<div class="srchead"><h4>Go and look</h4><span>6 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://www.pmi.org/-/media/pmi/documents/public/pdf/pmief/skills-for-life-english.pdf" target="_blank" rel="noopener"><span class="top"><b>Project Management Skills for Life</b><span class="pill ok">Start here</span><span class="kind">doc</span></span><p>The best thing found for this pathway. Sixty-two pages written for ages 12 to 19 by the PMI Educational Foundation, covering the whole process with worked examples and a pack of blank templates. Free PDF, no login.</p></a>
+  <a href="https://agilemanifesto.org/principles.html" target="_blank" rel="noopener"><span class="top"><b>The Agile Manifesto principles</b><span class="pill ok">Start here</span><span class="kind">doc</span></span><p>Twelve principles on one page. The original document, not somebody summarising it.</p></a>
+  <a href="https://scrumguides.org/scrum-guide.html" target="_blank" rel="noopener"><span class="top"><b>The Scrum Guide</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>Thirteen pages by the people who invented Scrum. Beats any second-hand explainer.</p></a>
+  <a href="https://www.apm.org.uk/resources/what-is-project-management/what-is-risk-management/" target="_blank" rel="noopener"><span class="top"><b>What is risk management?</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>The UK&rsquo;s chartered body for the profession. Separates the cause, the risk event and the effect properly &mdash; which is the bit everyone gets wrong in a feasibility check.</p></a>
+  <a href="https://www.open.edu/openlearn/money-business/leadership-management/project-management-the-start-the-project-journey/content-section-0" target="_blank" rel="noopener"><span class="top"><b>Project management: the start of the journey</b><span class="pill deep">Going deeper</span><span class="kind">course</span></span><p>The Open University, free, and it ends in a statement of participation. Feasibility, life cycle, and the manager&rsquo;s actual role.</p></a>
+  <a href="https://ocw.mit.edu/courses/16-842-fundamentals-of-systems-engineering-fall-2015/pages/lecture-notes/" target="_blank" rel="noopener"><span class="top"><b>Requirements definition (MIT 16.842)</b><span class="pill hard">College level</span><span class="kind">doc</span></span><p>Session 2 covers turning stakeholder needs into functional requirements &mdash; the hardest topic here to find taught well. Graduate level; read the one session rather than the course.</p></a>
+</div>
+<div class="topic" id="t3"><div class="th"><span class="tn">3</span><div><h3>Build Your Skills</h3><p class="tq">Is this a procedure you practice until you can do it?</p></div></div>
+<div class="cred"><span>Credential of value</span><b>Demonstrated work breakdown structure and Gantt chart mastery</b><em>Base requirement for every pathway: OSHA&nbsp;10 &mdash; Construction</em></div>
+<p class="blurb">Assessed on real project documents from your own capstone, not on an exam.</p>
+<ul class="ticks">
+<li>Build a work breakdown structure for a real project and decompose to estimable tasks.</li>
+<li>Produce a Gantt chart and identify the critical path.</li>
+<li>Track lead times and dependencies in a Bill of Materials.</li>
+<li>Run a decision matrix with weighted criteria and defend the weights.</li>
+<li>Write functional specifications that are measurable.</li>
+<li>Maintain a weekly milestone plan and update it when reality disagrees.</li>
+<li>Brilliant for the logic and mathematics behind critical path analysis.</li>
+</ul></div>
+<div class="srchead"><h4>Go and look</h4><span>7 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://www.youtube.com/watch?v=akO2Lf1fHmM" target="_blank" rel="noopener"><span class="top"><b>What is a work breakdown structure?</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Under five minutes, from a chartered project manager rather than a software company.</p></a>
+  <a href="https://www.youtube.com/watch?v=rxGcV0tuxRU" target="_blank" rel="noopener"><span class="top"><b>What is the critical path method?</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Same educator. Finding the sequence where any delay moves your end date.</p></a>
+  <a href="https://www.youtube.com/watch?v=JxqZ47Ilzis" target="_blank" rel="noopener"><span class="top"><b>Gantt chart in Google Sheets</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Built by a teacher, in a tool you already have, for nothing.</p></a>
+  <a href="https://www.sciencebuddies.org/science-fair-projects/engineering-design-process/engineering-design-process-steps" target="_blank" rel="noopener"><span class="top"><b>Specifying requirements</b><span class="pill ok">Start here</span><span class="kind">doc</span></span><p>Science Buddies. The clearest treatment of user needs against measurable design requirements written at this level.</p></a>
+  <a href="https://www.youtube.com/watch?v=PyR2VLP3xnA" target="_blank" rel="noopener"><span class="top"><b>Building a WBS properly</b><span class="pill deep">Going deeper</span><span class="kind">video</span></span><p>The long version: decomposition rules, how far down to go, and where people go wrong.</p></a>
+  <a href="https://courses.grainger.illinois.edu/me170/sp2020/Concept%20Selection.pdf" target="_blank" rel="noopener"><span class="top"><b>Concept selection and decision matrices</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>University of Illinois. Two pages covering both the weighted decision matrix and Pugh convergence. Exactly the decision matrix method, done rigorously.</p></a>
+  <a href="https://ocw.mit.edu/courses/esd-36-system-project-management-fall-2012/pages/lecture-notes/" target="_blank" rel="noopener"><span class="top"><b>Scheduling, earned value and risk (MIT ESD.36)</b><span class="pill hard">College level</span><span class="kind">doc</span></span><p>Free lecture notes with dedicated sessions on critical path, WBS, PERT, earned value and risk. The densest free coverage of this material anywhere.</p></a>
+</div>
+<div class="topic" id="ttrain"><div class="th"><span class="tn">&mdash;</span><div><h3>Where to train</h3>
+<p class="tq">Platforms that serve this pathway. Full details, costs and sign-up notes on
+the <a href="../resources/index.html">Training &amp; Credentials</a> page.</p></div></div>
+<div class="trainbox">
+  <a href="../resources/index.html"><b>Brilliant</b><span>Interactive maths, logic, computer science and data courses.</span><span class="pill warn">Free, with limits</span></a>
+  <a href="../resources/index.html"><b>HP LIFE</b><span>Short business and entrepreneurship modules — business planning, finance, operations, marketing.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>IBM SkillsBuild</b><span>IBM's free programme built for ages 13 to 18.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>OpenLearn badged courses</b><span>The Open University's free courses with assessment.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>PMI KICKOFF</b><span>The Project Management Institute's own free course — about 45 minutes, in predictive and agile versions, with a downloadable tool kit.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>Autodesk free software</b><span>Fusion, Inventor, AutoCAD, Revit, Civil 3D — the full professional suite on your own machine, free while you are a student.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>Khan Academy</b><span>Free maths and physics, from algebra through calculus and mechanics.</span><span class="pill ok">Free</span></a>
+</div>
+</div>
+<div class="topic" id="t4"><div class="th"><span class="tn">4</span><div><h3>Find a Project</h3><p class="tq">Is this something you could go build?</p></div></div>
+<p class="blurb">Manage a real project — ideally somebody else&rsquo;s as well as your own.</p>
+<div class="briefs">
+<article><b>Full capstone plan</b><p>Take a junior or senior capstone and produce the complete management set: breakdown structure, Gantt with critical path, Bill of Materials with lead times, and a risk list. Then run it and record where the plan was wrong.</p></article>
+<article><b>The revitalization pitch</b><p>Act as lead developer for a proposal to transform an existing space, and pitch it to stakeholders. Before-and-after visuals, technical justification for every change, and a schedule and budget that hold up to questions.</p></article>
+<article><b>Post-mortem</b><p>Take a finished project — yours or a documented one — and analyze what drove the schedule. What was on the critical path, what slipped, and what would you have done differently at week one.</p></article>
+</div>
+</div>
+<div class="srchead"><h4>Go and look</h4><span>5 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://pmief.org/library/resources/project-management-for-career-and-technical-education" target="_blank" rel="noopener"><span class="top"><b>Project management for CTE</b><span class="pill ok">Start here</span><span class="kind">doc</span></span><p>Three ready-made projects built for exactly this kind of course &mdash; charter, scope, quality planning, risk, and a lessons-learned review. Free, but you need an account to download.</p></a>
+  <a href="https://www.teachengineering.org/curricularunits/view/cub_creative_curricularunit" target="_blank" rel="noopener"><span class="top"><b>Creative engineering design unit</b><span class="pill ok">Start here</span><span class="kind">doc</span></span><p>Grades 9 to 12, six activities across the design process, and the challenge is yours to choose. Maps almost directly onto a capstone.</p></a>
+  <a href="https://www.sba.gov/business-guide/plan-your-business/write-your-business-plan" target="_blank" rel="noopener"><span class="top"><b>Write your business plan</b><span class="pill ok">Start here</span><span class="kind">doc</span></span><p>US Small Business Administration. Two full worked plans, a one-page canvas, a startup cost worksheet and a break-even calculator. This is the Standard 11 business plan, resourced properly.</p></a>
+  <a href="https://www.teachengineering.org/activities/ind-2472-trust-truss-design-wooden-bridge-activity" target="_blank" rel="noopener"><span class="top"><b>Design a wooden bridge</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>Grades 11 and 12, teams of four, and material cost counts in the scoring &mdash; so it is a real Bill of Materials exercise, not a toy.</p></a>
+  <a href="https://www.nspe.org/career-growth/ethics/board-ethical-review-cases" target="_blank" rel="noopener"><span class="top"><b>Engineering ethics case files</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>Real adjudicated cases from the National Society of Professional Engineers, sorted by topic. What professional judgement looks like when it is tested.</p></a>
+</div>
+<div class="topic" id="t5"><div class="th"><span class="tn">5</span><div><h3>Get the Files</h3><p class="tq">Would you open this while working, rather than read start to finish?</p></div></div>
+<ul class="files">
+<li>Logbook template.</li>
+<li>Weekly planner — milestones, dates, resources.</li>
+<li>Work breakdown structure template.</li>
+<li>Gantt chart template.</li>
+<li>Bill of Materials worksheet with lead time and unit cost.</li>
+<li>Decision matrix template.</li>
+<li>E.E.P. term-end reflection.</li>
+</ul>
+<p class="note">Logbook rules are the same in every pathway &mdash; see <em>Your Engineering Logbook</em>. Anything you read in an older hub guide about notebook rules is superseded by it.</p>
+</div>
+
+<div class="srchead"><h4>Go and look</h4><span>5 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://www.ganttproject.biz/" target="_blank" rel="noopener"><span class="top"><b>GanttProject</b><span class="pill ok">Start here</span><span class="kind">tool</span></span><p>Free forever, open source, desktop. Does WBS, Gantt, critical path and resources offline. The download page asks for an optional contribution &mdash; the software itself costs nothing.</p></a>
+  <a href="https://app.diagrams.net/" target="_blank" rel="noopener"><span class="top"><b>draw.io</b><span class="pill ok">Start here</span><span class="kind">tool</span></span><p>For WBS trees and network diagrams. Free forever, no sign-up, no account, saves to your own Drive. The cleanest tool on this page.</p></a>
+  <a href="https://www.vertex42.com/ExcelTemplates/excel-gantt-chart.html" target="_blank" rel="noopener"><span class="top"><b>Free Gantt chart template</b><span class="pill ok">Start here</span><span class="kind">tool</span></span><p>A Google Sheets version, free, no registration, no macros. Pairs with the Gantt video above.</p></a>
+  <a href="https://www.projectlibre.com/" target="_blank" rel="noopener"><span class="top"><b>ProjectLibre</b><span class="pill deep">Going deeper</span><span class="kind">tool</span></span><p>The open-source equivalent of Microsoft Project. Ignore the cloud subscription they advertise; the free desktop download is the one.</p></a>
+  <a href="https://asq.org/quality-resources/quality-assurance-vs-control" target="_blank" rel="noopener"><span class="top"><b>Quality assurance against quality control</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>The American Society for Quality&rsquo;s own definitions &mdash; the one authoritative page in a subject where everything else online is a software advert.</p></a>
+</div></div>
+</div>
+</div>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology &middot; Room E-126</span>
+    <span>Mr. Frank &middot; Mr. Dryer</span>
+    <span class="build">Build 04 Sep 2026, 16:23</span>
+  </div>
+</footer>
+
+
+<script src="../assets/search-index.js?v=003b2e2b" defer></script>
+<script defer>
+(function(){
+  var REL = '../';
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var box = document.getElementById('q'), out = document.getElementById('sres');
+    if (!box || !window.BHR_INDEX) return;
+    var IDX = window.BHR_INDEX, cur = -1, rows = [];
+
+    var KIND = {video:'Video',course:'Course',site:'Site',tool:'Tool',read:'Reading',
+      podcast:'Podcast',book:'Book',data:'Data',comp:'Competition',doc:'Doc',
+      software:'Software',page:'Page',rule:'Rule',check:'Safety check',
+      platform:'Training',sds:'Safety data',pathway:'Pathway',talk:'Talk',
+      playlist:'Playlist'};
+
+    function esc(s){ return s.replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    function hi(s, terms){
+      s = esc(s);
+      terms.forEach(function(t){
+        if (t.length < 2) return;
+        s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'ig'),
+                      '<mark>$1</mark>');
+      });
+      return s;
+    }
+
+    // Score by where the match lands: a title hit beats a note hit, and a hit at
+    // the start of the title beats one in the middle. Every term must appear
+    // somewhere, so multi-word queries narrow rather than widen.
+    function score(r, terms){
+      var t = r.t.toLowerCase(), n = (r.n + ' ' + r.x).toLowerCase(),
+          w = r.w.toLowerCase(), s = 0;
+      for (var i = 0; i < terms.length; i++){
+        var q = terms[i], hit = 0;
+        if (t.indexOf(q) === 0) hit = 100;
+        else if (t.indexOf(' ' + q) > -1) hit = 70;
+        else if (t.indexOf(q) > -1) hit = 50;
+        else if (w.indexOf(q) > -1) hit = 30;
+        else if (n.indexOf(q) > -1) hit = 20;
+        if (!hit) return 0;
+        s += hit;
+      }
+      if (r.k === 'page' || r.k === 'pathway') s += 12;   // structure floats up
+      return s;
+    }
+
+    function run(){
+      var qv = box.value.trim().toLowerCase();
+      if (qv.length < 2){ close(); return; }
+      var terms = qv.split(/\s+/);
+      rows = IDX.map(function(r){ return {r:r, s:score(r, terms)}; })
+                .filter(function(x){ return x.s > 0; })
+                .sort(function(a,b){ return b.s - a.s || a.r.t.length - b.r.t.length; })
+                .slice(0, 30);
+      draw(terms);
+    }
+
+    function draw(terms){
+      if (!rows.length){
+        out.innerHTML = '<p class="none">Nothing matches &ldquo;' +
+          esc(box.value.trim()) + '&rdquo;.</p>';
+      } else {
+        var h = '<div class="hd">' + rows.length +
+                (rows.length === 30 ? '+ matches' : ' match' + (rows.length>1?'es':'')) +
+                '</div>';
+        rows.forEach(function(x, i){
+          var r = x.r,
+              ext = /^https?:/.test(r.u),
+              href = ext ? r.u : REL + r.u;
+          h += '<a href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') +
+               ' data-i="' + i + '" role="option">' +
+               '<span class="ti">' + hi(r.t, terms) +
+                 (ext ? ' <span class="ext">&#8599;</span>' : '') + '</span>' +
+               '<span class="me"><span class="kd">' + (KIND[r.k] || r.k) + '</span>' +
+               '<span class="wh">' + hi(r.w, terms) + '</span></span>' +
+               (r.n ? '<span class="nt">' + hi(r.n, terms) + '</span>' : '') +
+               '</a>';
+        });
+        out.innerHTML = h;
+      }
+      out.hidden = false; box.setAttribute('aria-expanded','true'); cur = -1;
+    }
+
+    function close(){ out.hidden = true; box.setAttribute('aria-expanded','false'); cur = -1; }
+
+    function move(d){
+      var links = out.querySelectorAll('a');
+      if (!links.length) return;
+      if (cur > -1) links[cur].classList.remove('on');
+      cur = (cur + d + links.length) % links.length;
+      links[cur].classList.add('on');
+      links[cur].scrollIntoView({block:'nearest'});
+    }
+
+    box.addEventListener('input', run);
+    box.addEventListener('focus', function(){ if (box.value.trim().length > 1) run(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter'){
+        var links = out.querySelectorAll('a');
+        if (cur > -1 && links[cur]){ e.preventDefault(); links[cur].click(); }
+      }
+      else if (e.key === 'Escape'){ close(); box.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.srch')) close();
+    });
+    // "/" from anywhere jumps to the box, the way every developer tool does it
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); box.focus(); box.select();
+      }
+    });
+  });
+})();
+</script>
+<script defer>
+// Track which in-page section you are actually looking at and mark it in the
+// rail. Only runs where the rail has anchor links.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var links = [].slice.call(document.querySelectorAll('.rail .anch a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {}, pos = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        pos[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null;
+      });
+      var best = null, near = Infinity;
+      Object.keys(pos).forEach(function(id){
+        if (pos[id] === null) return;
+        var d = Math.abs(pos[id] - 90);
+        if (d < near){ near = d; best = id; }
+      });
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if (best && map[best]) map[best].classList.add('on');
+    }, {rootMargin:'-70px 0px -55% 0px', threshold:[0,1]});
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) io.observe(el);
+    });
+  });
+})();
+</script>
+<script defer>
+// Three states, cycled by one button: follow the system, force light, force dark.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var btn = document.getElementById('theme'), root = document.documentElement;
+    if (!btn) return;
+    function get(){ try { return localStorage.getItem('bhr-theme') || 'system'; }
+                    catch(e){ return 'system'; } }
+    function label(){
+      var m = get();
+      btn.querySelector('.lbl').textContent =
+        m === 'system' ? 'Theme' : (m === 'light' ? 'Light' : 'Dark');
+      btn.title = m === 'system'
+        ? 'Following your computer. Click for light.'
+        : (m === 'light' ? 'Light. Click for dark.'
+                         : 'Dark. Click to follow your computer.');
+    }
+    function set(m){
+      try { m === 'system' ? localStorage.removeItem('bhr-theme')
+                           : localStorage.setItem('bhr-theme', m); } catch(e){}
+      if (m === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', m);
+      label();
+    }
+    label();
+    btn.addEventListener('click', function(){
+      var m = get();
+      set(m === 'system' ? 'light' : (m === 'light' ? 'dark' : 'system'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

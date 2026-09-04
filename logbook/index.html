@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your Engineering Logbook &middot; BHR Engineering</title>
+<meta name="description" content="How to keep the daily engineering logbook: status codes, the three intervals, the rules, and a worked example.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="../assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/site.css?v=c3afc4c9">
+<style>
+.wrap{max-width:940px;margin:0 auto;padding:36px 24px 100px;
+  display:flex;flex-direction:column;gap:46px}
+.hero{display:flex;flex-direction:column;gap:14px;padding-bottom:28px;
+  border-bottom:2px solid var(--ink)}
+.kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--accent);margin:0}
+h1{font-family:var(--sans);font-weight:var(--w-heavy);
+  font-size:clamp(32px,6vw,50px);line-height:1.02;letter-spacing:-.03em;margin:0;
+  text-wrap:balance;max-width:16ch}
+.hero p{margin:0;font-size:19px;color:var(--ink-2);max-width:58ch}
+section{display:flex;flex-direction:column}
+h2{font-family:var(--sans);font-weight:700;font-size:26px;letter-spacing:-.015em;
+  margin:0 0 8px;text-wrap:balance}
+.sub{margin:0 0 18px;color:var(--ink-2);max-width:64ch;font-size:17px}
+h3{font-family:var(--sans);font-weight:600;font-size:17.5px;margin:0 0 6px}
+p{margin:0 0 13px;max-width:66ch}
+p:last-child{margin-bottom:0}
+strong{font-weight:600}
+/* status code chips */
+.codes{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.codes div{background:var(--card);padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.chip{font-family:var(--mono);font-weight:600;font-size:13px;
+  letter-spacing:.06em;color:var(--accent);background:var(--accent-soft);
+  align-self:flex-start;padding:3px 9px;border-radius:3px}
+.codes b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.codes span{font-size:14.5px;color:var(--ink-2);line-height:1.45}
+/* three intervals */
+.ivs{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.iv{background:var(--card);padding:18px 20px;display:grid;
+  grid-template-columns:minmax(0,168px) minmax(0,1fr);gap:6px 24px;align-items:start}
+.iv .when{display:flex;flex-direction:column;gap:4px}
+.iv .when em{font-family:var(--mono);font-style:normal;font-size:10.5px;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+.iv .when b{font-family:var(--sans);font-weight:600;font-size:16px;line-height:1.3}
+.iv ul{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:5px;font-size:15.5px}
+.iv ul li{line-height:1.5}
+@media(max-width:620px){.iv{grid-template-columns:1fr}}
+/* rules */
+ol.rules{list-style:none;counter-reset:r;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+ol.rules li{background:var(--card);counter-increment:r;padding:15px 20px 15px 56px;
+  position:relative;font-size:16px;line-height:1.55}
+ol.rules li::before{content:counter(r);position:absolute;left:20px;top:15px;
+  font-family:var(--sans);font-weight:700;font-size:14px;color:var(--accent);
+  width:24px;height:24px;display:grid;place-items:center;
+  background:var(--accent-soft);border-radius:3px}
+/* aside */
+.aside{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);
+  padding:20px 24px;display:flex;flex-direction:column;gap:9px}
+.aside .kicker{color:var(--ink-3)}
+.aside p{font-size:16px;color:var(--ink-2);margin:0}
+.aside p+p{margin-top:2px}
+/* good vs weak entries */
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.cmp article{background:var(--card);padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.cmp .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;align-self:flex-start;padding:3px 8px;border-radius:3px}
+.cmp .no .tag{color:var(--warm);background:var(--warm-soft)}
+.cmp .yes .tag{color:var(--moss);background:var(--moss-soft)}
+.cmp blockquote{margin:0;font-family:var(--mono);font-size:13.5px;
+  line-height:1.6;color:var(--ink);background:var(--paper);border:1px solid var(--rule-soft);
+  padding:13px 15px;white-space:pre-wrap}
+.cmp .why{font-size:14.5px;color:var(--ink-2);line-height:1.5;margin:0}
+/* plain table */
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--card);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:15.5px}
+th{font-family:var(--sans);font-weight:600;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);text-align:left;padding:11px 14px;
+  border-bottom:1.5px solid var(--rule);white-space:nowrap}
+td{padding:12px 14px;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:0}
+td.k{font-family:var(--sans);font-weight:600;white-space:nowrap}
+/* misses */
+.miss{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.miss div{background:var(--card);padding:14px 20px;display:grid;
+  grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:4px 22px;font-size:15.5px}
+.miss b{font-family:var(--sans);font-weight:600;line-height:1.45}
+.miss span{color:var(--ink-2);line-height:1.5}
+@media(max-width:620px){.miss div{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--rule);padding-top:18px;font-size:14px;color:var(--ink-3);
+  display:flex;flex-wrap:wrap;gap:6px 18px}
+footer span{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;
+  text-transform:uppercase}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('bhr-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+</head>
+<body>
+
+<header class="sitebar">
+  <div class="in">
+    <a class="brand" href="../index.html">
+      <img class="mark" src="../assets/logo-96.png" alt="" width="34" height="29">
+      <span>Engineering&nbsp;Technology</span>
+    </a>
+      <div class="srch">
+        <span class="sbox">
+          <input type="search" id="q" placeholder="Search" autocomplete="off"
+                 aria-label="Search the site" aria-expanded="false" aria-controls="sres">
+          <kbd>/</kbd>
+        </span>
+        <div class="sres" id="sres" role="listbox" hidden></div>
+      </div>
+      <button class="themebtn" id="theme" type="button"
+              title="Switch between light and dark" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span><span class="lbl">Theme</span>
+      </button>
+  </div>
+</header>
+
+<div class="shell">
+<div class="rail">
+  <div class="railin">
+  <nav aria-label="Site"><ul>
+    <li><a href="../index.html" class="sec">Home</a>
+    </li>
+    <li><a href="../start/welcome.html" class="sec">Start here</a>
+    </li>
+    <li><a href="../logbook/index.html" class="here">Logbook</a>
+    </li>
+    <li><a href="../pathways/index.html" class="sec">The seven pathways</a>
+    </li>
+    <li><a href="../shop/index.html" class="sec">Shop safety</a>
+    </li>
+    <li><a href="../resources/index.html" class="sec">Training and credentials</a>
+    </li>
+  </ul></nav>
+  </div>
+</div>
+<div class="main">
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">BHR Engineering Technology · Student Guide 03</p>
+    <h1>Your Engineering Logbook</h1>
+    <p>You fill one in every shop day. It is the record of what you did, what went wrong,
+      and what you decided — and it is the only proof that the work was yours.</p>
+  </header>
+
+  <section>
+    <h2>Why we keep one</h2>
+    <p class="sub">Every engineer who has ever had to defend a design has done it out of a logbook.</p>
+    <p>A finished project shows what worked. It does not show the three approaches you
+      abandoned, the measurement that came back wrong twice, or the reason you switched
+      materials in week four. Those decisions are the engineering. The logbook is where
+      they live.</p>
+    <p>It is also how the state expects the work to be documented. Standard <strong>S3-e</strong>
+      requires you to maintain an engineering journal for projects to document design
+      solutions. This is ours.</p>
+
+    <div class="aside">
+      <p class="kicker">Why the rules are strict</p>
+      <p>In 1943 the U.S. Supreme Court took the patent for radio away from Marconi and gave
+        priority to Nikola Tesla. Tesla had lost the commercial race by years. What he had
+        was dated, witnessed notebooks showing he had described the system first.</p>
+      <p>Nobody is going to sue you over a laser-cut bracket. But the habit that decided that
+        case — write it down when it happens, date it, do not tidy it afterward — is the
+        habit we are teaching, and it is a real one that working engineers are held to.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>The five status codes</h2>
+    <p class="sub">Each interval gets a code from the drop-down. Pick the one that describes
+      what you actually spent the time on, not the one you wish you had.</p>
+    <div class="codes">
+      <div><span class="chip">PI</span><b>Problem Identification</b>
+        <span>Defining the problem, researching, gathering constraints and criteria.</span></div>
+      <div><span class="chip">DD</span><b>Detailed Design</b>
+        <span>CAD, modeling, drawings, schematics, calculations — designing the thing on screen or paper.</span></div>
+      <div><span class="chip">FAB</span><b>Fabrication</b>
+        <span>Building it. Printing, cutting, wiring, assembling, coding it up.</span></div>
+      <div><span class="chip">TE</span><b>Testing &amp; Evaluation</b>
+        <span>Running it, measuring it, finding out whether it does what you claimed.</span></div>
+      <div><span class="chip">IR</span><b>Improve &amp; Redesign</b>
+        <span>Acting on what testing told you. Changing the design and saying why.</span></div>
+    </div>
+    <p style="margin-top:14px;font-size:15.5px;color:var(--ink-2)">Five codes cover the eight
+      stages of the design process on purpose. At the start of an interval you should not have
+      to decide whether you are technically in "Develop Solutions" or "Plan a Solution" — pick
+      the code that fits and get to work. The eight stages are what we use when we talk about
+      the process itself.</p>
+  </section>
+
+  <section>
+    <h2>One day, three intervals</h2>
+    <p class="sub">Fill each one during or right after the interval it covers — not all three at 2:15.</p>
+    <div class="ivs">
+      <div class="iv">
+        <div class="when"><em>Interval 1</em><b>Prior to break</b></div>
+        <ul>
+          <li><strong>Work highlights and observations.</strong> Tasks completed, who you consulted, reviews, anything unexpected.</li>
+          <li><strong>Roadblocks.</strong> The specific failure, and what you plan to do about it.</li>
+          <li><strong>Visual evidence.</strong> A render, a diagram, a photo — captioned and described.</li>
+        </ul>
+      </div>
+      <div class="iv">
+        <div class="when"><em>Interval 2</em><b>Break to lunch</b></div>
+        <ul>
+          <li>Same three fields. A new status code if the work moved on.</li>
+          <li>If nothing changed from Interval 1, say what you were stuck on rather than repeating yourself.</li>
+        </ul>
+      </div>
+      <div class="iv">
+        <div class="when"><em>Interval 3</em><b>Lunch to end of day, plus wrap-up</b></div>
+        <ul>
+          <li><strong>Challenges and troubleshooting.</strong> Pull together the day's failures and the workarounds you proposed.</li>
+          <li><strong>Daily synthesis.</strong> A technical summary — decisions you made, and whether you are on track.</li>
+          <li><strong>Next class's agenda.</strong> What you will start on when you walk in. Your future self is the reader.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:14px;font-size:15.5px;color:var(--ink-2)">The header — project engineer,
+      date, active projects, tools and software used — gets filled in before Interval 1.</p>
+  </section>
+
+  <section>
+    <h2>The rules</h2>
+    <p class="sub">One set, for everyone, in every pathway. These replace anything different
+      you may have read in a pathway hub guide.</p>
+    <ol class="rules">
+      <li><strong>Write it the day it happens.</strong> An entry reconstructed from memory a week later is not a record, and it reads like one.</li>
+      <li><strong>Every day gets an entry, including bad ones.</strong> "Printer jammed twice, lost the period" is a legitimate entry. A missing day is not.</li>
+      <li><strong>Never delete.</strong> If you were wrong, strike the line through and write the correction underneath. The wrong idea and the moment you caught it are both worth keeping.</li>
+      <li><strong>Record the failures in more detail than the successes.</strong> Anyone can tell what worked by looking at the finished part. Only your logbook can say what didn't.</li>
+      <li><strong>Be specific enough to be repeated.</strong> Not "adjusted settings" — which setting, from what to what, and what changed as a result.</li>
+      <li><strong>Numbers carry units.</strong> 4 mm, 0.2 in, 12 V, 240 °C. A number without a unit is not data.</li>
+      <li><strong>Every image gets a caption.</strong> Say what it shows and why you took it. An uncaptioned screenshot proves nothing.</li>
+      <li><strong>Name who helped.</strong> If a classmate solved it, a teacher pointed you somewhere, or you found it in a video, write down who or what. Credit is part of the record.</li>
+      <li><strong>Write for someone who was not there.</strong> The test is whether a student from another shop could pick up your project on Monday and know where you left it.</li>
+      <li><strong>It is yours.</strong> Your logbook covers your work. Team projects still get individual entries — what <em>you</em> did.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>What a real entry looks like</h2>
+    <p class="sub">Same interval, same student, same problem. One of these is a record.</p>
+    <div class="cmp">
+      <article class="no">
+        <span class="tag">Not an entry</span>
+        <blockquote>INTERVAL 2 — [DD]
+• Worked on CAD
+• Had some issues
+• Fixed it</blockquote>
+        <p class="why">Nothing here can be checked, repeated, or picked up by anyone else.
+          In six weeks it will not remind even you of what happened.</p>
+      </article>
+      <article class="yes">
+        <span class="tag">An entry</span>
+        <blockquote>INTERVAL 2 — [DD]
+• Rebuilt the bracket in Fusion 360 as a
+  single body; the two-body version kept
+  failing the fillet at the base.
+• Fillet radius 3 mm errored. Dropped to
+  2 mm and it solved. Wall is only 2.5 mm
+  there, so 3 mm had nowhere to go.
+• Asked Mr. Frank re: whether to thicken
+  the wall instead — leaving it at 2 mm
+  for now, revisit after the load test.
+
+ROADBLOCK: Won't know if 2 mm fillet is
+strong enough until Thursday's test.</blockquote>
+        <p class="why">Specific, with units, names the decision <em>and</em> the fact that it
+          is provisional. Thursday's entry has something to answer.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>How it is graded</h2>
+    <p class="sub">The logbook counts twice, which is why skipping it is expensive.</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Where</th><th>What is being looked at</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Weekly grade</td><td>Preparation asks whether your written instrument is present. An open, current logbook is what that means in this shop.</td></tr>
+          <tr><td class="k">Classwork</td><td>The entries themselves — completeness, specificity, and whether the day's decisions are actually recorded.</td></tr>
+          <tr><td class="k">Projects</td><td>When a project is reviewed, the logbook is the evidence of process. A strong final product with no record behind it is a weaker grade than it looks.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Where marks get lost</h2>
+    <p class="sub">Not because the work was bad — because the record was.</p>
+    <div class="miss">
+      <div><b>Filling all three intervals at the end of the day</b><span>It shows. Detail collapses, and the roadblock you actually solved at 10am is gone by 2pm.</span></div>
+      <div><b>Copying Interval 1 into Intervals 2 and 3</b><span>Three identical entries say you stopped paying attention, not that nothing happened.</span></div>
+      <div><b>Only recording the version that worked</b><span>The abandoned attempts are the part that demonstrates engineering judgment.</span></div>
+      <div><b>Screenshots with no captions</b><span>An image nobody explained is decoration. Say what it shows and why it is there.</span></div>
+      <div><b>Backfilling a missed day</b><span>Write the day you missed it and why instead. An honest gap beats invented detail, and we can tell the difference.</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology · Room E-126</span>
+    <span>Template: BHR ENG Document — Logbook Template, in Google Classroom</span>
+  </footer>
+
+</div>
+</div>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology &middot; Room E-126</span>
+    <span>Mr. Frank &middot; Mr. Dryer</span>
+    <span class="build">Build 04 Sep 2026, 16:23</span>
+  </div>
+</footer>
+
+
+<script src="../assets/search-index.js?v=003b2e2b" defer></script>
+<script defer>
+(function(){
+  var REL = '../';
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var box = document.getElementById('q'), out = document.getElementById('sres');
+    if (!box || !window.BHR_INDEX) return;
+    var IDX = window.BHR_INDEX, cur = -1, rows = [];
+
+    var KIND = {video:'Video',course:'Course',site:'Site',tool:'Tool',read:'Reading',
+      podcast:'Podcast',book:'Book',data:'Data',comp:'Competition',doc:'Doc',
+      software:'Software',page:'Page',rule:'Rule',check:'Safety check',
+      platform:'Training',sds:'Safety data',pathway:'Pathway',talk:'Talk',
+      playlist:'Playlist'};
+
+    function esc(s){ return s.replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    function hi(s, terms){
+      s = esc(s);
+      terms.forEach(function(t){
+        if (t.length < 2) return;
+        s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'ig'),
+                      '<mark>$1</mark>');
+      });
+      return s;
+    }
+
+    // Score by where the match lands: a title hit beats a note hit, and a hit at
+    // the start of the title beats one in the middle. Every term must appear
+    // somewhere, so multi-word queries narrow rather than widen.
+    function score(r, terms){
+      var t = r.t.toLowerCase(), n = (r.n + ' ' + r.x).toLowerCase(),
+          w = r.w.toLowerCase(), s = 0;
+      for (var i = 0; i < terms.length; i++){
+        var q = terms[i], hit = 0;
+        if (t.indexOf(q) === 0) hit = 100;
+        else if (t.indexOf(' ' + q) > -1) hit = 70;
+        else if (t.indexOf(q) > -1) hit = 50;
+        else if (w.indexOf(q) > -1) hit = 30;
+        else if (n.indexOf(q) > -1) hit = 20;
+        if (!hit) return 0;
+        s += hit;
+      }
+      if (r.k === 'page' || r.k === 'pathway') s += 12;   // structure floats up
+      return s;
+    }
+
+    function run(){
+      var qv = box.value.trim().toLowerCase();
+      if (qv.length < 2){ close(); return; }
+      var terms = qv.split(/\s+/);
+      rows = IDX.map(function(r){ return {r:r, s:score(r, terms)}; })
+                .filter(function(x){ return x.s > 0; })
+                .sort(function(a,b){ return b.s - a.s || a.r.t.length - b.r.t.length; })
+                .slice(0, 30);
+      draw(terms);
+    }
+
+    function draw(terms){
+      if (!rows.length){
+        out.innerHTML = '<p class="none">Nothing matches &ldquo;' +
+          esc(box.value.trim()) + '&rdquo;.</p>';
+      } else {
+        var h = '<div class="hd">' + rows.length +
+                (rows.length === 30 ? '+ matches' : ' match' + (rows.length>1?'es':'')) +
+                '</div>';
+        rows.forEach(function(x, i){
+          var r = x.r,
+              ext = /^https?:/.test(r.u),
+              href = ext ? r.u : REL + r.u;
+          h += '<a href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') +
+               ' data-i="' + i + '" role="option">' +
+               '<span class="ti">' + hi(r.t, terms) +
+                 (ext ? ' <span class="ext">&#8599;</span>' : '') + '</span>' +
+               '<span class="me"><span class="kd">' + (KIND[r.k] || r.k) + '</span>' +
+               '<span class="wh">' + hi(r.w, terms) + '</span></span>' +
+               (r.n ? '<span class="nt">' + hi(r.n, terms) + '</span>' : '') +
+               '</a>';
+        });
+        out.innerHTML = h;
+      }
+      out.hidden = false; box.setAttribute('aria-expanded','true'); cur = -1;
+    }
+
+    function close(){ out.hidden = true; box.setAttribute('aria-expanded','false'); cur = -1; }
+
+    function move(d){
+      var links = out.querySelectorAll('a');
+      if (!links.length) return;
+      if (cur > -1) links[cur].classList.remove('on');
+      cur = (cur + d + links.length) % links.length;
+      links[cur].classList.add('on');
+      links[cur].scrollIntoView({block:'nearest'});
+    }
+
+    box.addEventListener('input', run);
+    box.addEventListener('focus', function(){ if (box.value.trim().length > 1) run(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter'){
+        var links = out.querySelectorAll('a');
+        if (cur > -1 && links[cur]){ e.preventDefault(); links[cur].click(); }
+      }
+      else if (e.key === 'Escape'){ close(); box.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.srch')) close();
+    });
+    // "/" from anywhere jumps to the box, the way every developer tool does it
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); box.focus(); box.select();
+      }
+    });
+  });
+})();
+</script>
+<script defer>
+// Track which in-page section you are actually looking at and mark it in the
+// rail. Only runs where the rail has anchor links.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var links = [].slice.call(document.querySelectorAll('.rail .anch a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {}, pos = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        pos[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null;
+      });
+      var best = null, near = Infinity;
+      Object.keys(pos).forEach(function(id){
+        if (pos[id] === null) return;
+        var d = Math.abs(pos[id] - 90);
+        if (d < near){ near = d; best = id; }
+      });
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if (best && map[best]) map[best].classList.add('on');
+    }, {rootMargin:'-70px 0px -55% 0px', threshold:[0,1]});
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) io.observe(el);
+    });
+  });
+})();
+</script>
+<script defer>
+// Three states, cycled by one button: follow the system, force light, force dark.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var btn = document.getElementById('theme'), root = document.documentElement;
+    if (!btn) return;
+    function get(){ try { return localStorage.getItem('bhr-theme') || 'system'; }
+                    catch(e){ return 'system'; } }
+    function label(){
+      var m = get();
+      btn.querySelector('.lbl').textContent =
+        m === 'system' ? 'Theme' : (m === 'light' ? 'Light' : 'Dark');
+      btn.title = m === 'system'
+        ? 'Following your computer. Click for light.'
+        : (m === 'light' ? 'Light. Click for dark.'
+                         : 'Dark. Click to follow your computer.');
+    }
+    function set(m){
+      try { m === 'system' ? localStorage.removeItem('bhr-theme')
+                           : localStorage.setItem('bhr-theme', m); } catch(e){}
+      if (m === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', m);
+      label();
+    }
+    label();
+    btn.addEventListener('click', function(){
+      var m = get();
+      set(m === 'system' ? 'light' : (m === 'light' ? 'dark' : 'system'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,16 +1,97 @@
-## Hi there 👋
+# BHR Engineering Technology — Shop Hub
 
-<!--
-**bhreng/bhreng** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+The public reference site for the Engineering Technology program at
+Blue Hills Regional Technical School. Google Classroom assignments link here
+instead of repeating instructions; this site holds the version that is current.
 
-Here are some ideas to get you started:
+## The one rule
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+**No student data, ever.** No names, no rosters, no submitted work, no grades,
+no photographs of students, no contact details. A public repository keeps every
+file in its history permanently — deleting something later does not remove it.
+Everything here is material any student would be handed on day one.
+
+Also not here: budget, purchasing, personnel documents, recommendation letters.
+
+## Working on it locally
+
+There is no build step and no dependencies. Open `index.html` in a browser and
+the whole site works off disk — every link is relative and every page ends in
+`.html`, which is also why it works unchanged on any host.
+
+## Layout
+
+    index.html                 home — four doors
+    404.html                   served for any address that does not exist
+    assets/site.css            palette, base type, site chrome, shared components
+    start/welcome.html         welcome packet
+    start/how-class-works.html rules, uniform, grading
+    logbook/index.html         the daily logbook guide
+    pathways/index.html        chooser + how the hubs are organised
+    pathways/<name>.html       one per pathway, seven of them
+    shop/index.html            safety hub
+    shop/makerspace.html       the 32 Makerspace rules + self-check
+    shop/sds.html              safety data sheet library
+    shop/3d-printing.html      3D printer certification ladder
+
+Page-specific layout lives in a `<style>` block in that page. Anything shared —
+colour, type, tables, notes, the header and footer — lives in `assets/site.css`,
+so a palette change is one edit.
+
+Shop colour is purple (`--accent`). School colours, blue and green, are accents
+only. Both light and dark themes are defined; test any change in both.
+
+## Putting it on GitHub, from nothing
+
+1. New repository. Any name — `bhr-shop-hub` reads well in the URL. **Public**:
+   Pages on a private repo needs a paid plan, and nothing here is sensitive.
+   Do not let GitHub add a README, a `.gitignore` or a licence — this folder
+   already has what it needs and the extra files only cause a merge conflict
+   on the first push.
+2. Drag **the contents of this folder** into the upload box — `index.html` has
+   to land at the top level of the repository, not inside a `site` folder.
+   Dotfiles (`.nojekyll`, `.gitignore`) do not always come along in a drag on
+   Windows; if `.nojekyll` is missing afterwards, add it with **Add file →
+   Create new file**, name it `.nojekyll`, leave it empty, commit. Without it
+   GitHub runs Jekyll over the site and refuses to serve the `_source` folder.
+3. Settings → Pages → Source: **Deploy from a branch**, branch `main`, folder
+   `/ (root)`. Save.
+4. Wait a minute or two, then load the URL it shows you. The first build is
+   the slow one.
+
+The address will be `https://<your-account>.github.io/<repo-name>/`. Every link
+on the site is relative, so the subfolder in that address changes nothing — the
+same files work from a repo subpath, from a custom domain, and from your own
+disk with no edits.
+
+**Before you hand the URL to students**, open it once on the school network and
+once off it. Some districts filter `github.io` wholesale. If it is blocked,
+that is a conversation with IT rather than a problem with the site, and it is
+worth having before the QR-code poster gets printed.
+
+## Publishing elsewhere
+
+**GitLab Pages** — `.gitlab-ci.yml` is already here and does the whole job. Push
+to the default branch and the pipeline publishes. Check with your administrator
+that Pages is enabled, and that a Pages site is reachable from off the school
+network — students need this at home.
+
+Leave Pages Access Control **off**. Nothing on this site is sensitive, and a
+login wall between a student and their instructions costs more than it protects.
+
+## Linking a Drive template so each student gets their own copy
+
+1. Set the template to "anyone with the link — viewer".
+2. Take its URL and replace everything from `/edit` onward with `/copy`.
+3. Put that link on a page here.
+
+Note this only works from a link on this site. Attaching a `/copy` link inside a
+Google Classroom assignment does not work — Classroom overrides it and shares
+the original. For work you collect and grade, use Classroom's own
+"make a copy for each student" attachment.
+
+## Rebuilding
+
+Most pages are generated by `build_site.py` (which pulls pathway content from
+`build_hubs.py`). Editing the generated HTML directly is fine for a quick fix,
+but a rebuild overwrites it — put lasting changes in the source scripts.

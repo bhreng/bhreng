@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Shop Hub &middot; BHR Engineering</title>
+<meta name="description" content="Engineering Technology at Blue Hills Regional — rules, logbook, grading and the seven pathway guides.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="stylesheet" href="assets/site.css?v=c3afc4c9">
+<style>
+.doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(292px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.doors a{background:var(--card);padding:22px 22px 24px;text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;gap:7px;box-shadow:0 0 0 1px var(--rule);
+  transition:background .12s ease}
+.doors a:hover{background:var(--accent-soft)}
+.doors .n{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-3)}
+.doors b{font-family:var(--sans);font-weight:700;font-size:19px;line-height:1.2;
+  letter-spacing:-.015em}
+.doors span{font-size:15px;color:var(--ink-2);line-height:1.5}
+.quicklinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(152px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.quicklinks a{background:var(--card);box-shadow:0 0 0 1px var(--rule);
+  padding:13px 17px;text-decoration:none;
+  color:var(--ink-2);font-size:15px;font-family:var(--sans);font-weight:500}
+.quicklinks a:hover{background:var(--accent-soft);color:var(--accent)}
+.stripe{display:flex;height:6px;margin-top:-24px}
+.stripe i{flex:1}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('bhr-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+</head>
+<body>
+
+<header class="sitebar">
+  <div class="in">
+    <a class="brand" href="index.html">
+      <img class="mark" src="assets/logo-96.png" alt="" width="34" height="29">
+      <span>Engineering&nbsp;Technology</span>
+    </a>
+      <div class="srch">
+        <span class="sbox">
+          <input type="search" id="q" placeholder="Search" autocomplete="off"
+                 aria-label="Search the site" aria-expanded="false" aria-controls="sres">
+          <kbd>/</kbd>
+        </span>
+        <div class="sres" id="sres" role="listbox" hidden></div>
+      </div>
+      <button class="themebtn" id="theme" type="button"
+              title="Switch between light and dark" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span><span class="lbl">Theme</span>
+      </button>
+  </div>
+</header>
+
+<div class="shell">
+<div class="rail">
+  <div class="railin">
+  <nav aria-label="Site"><ul>
+    <li><a href="index.html" class="here">Home</a>
+    </li>
+    <li><a href="start/welcome.html" class="sec">Start here</a>
+    </li>
+    <li><a href="logbook/index.html" class="sec">Logbook</a>
+    </li>
+    <li><a href="pathways/index.html" class="sec">The seven pathways</a>
+    </li>
+    <li><a href="shop/index.html" class="sec">Shop safety</a>
+    </li>
+    <li><a href="resources/index.html" class="sec">Training and credentials</a>
+    </li>
+  </ul></nav>
+  </div>
+</div>
+<div class="main">
+
+<div class="wrap wide">
+
+  <header class="hero">
+    <p class="kicker">Blue Hills Regional Technical School</p>
+    <h1>The Shop Hub</h1>
+    <p>Everything for Engineering Technology in one place &mdash; how the shop runs,
+      what is expected, and where to go deep. Your assignments live in Google Classroom
+      and link back here.</p>
+  </header>
+
+  <section>
+    <h2>Start here</h2>
+    <p class="sub">Six doors. If you are new, take the first one.</p>
+    <div class="doors">
+      <a href="start/welcome.html">
+        <span class="n">New here</span>
+        <b>Welcome to the shop</b>
+        <span>Who to ask for what, what to wear, what you can earn, and how the first week goes.</span>
+      </a>
+      <a href="start/how-class-works.html">
+        <span class="n">The ground rules</span>
+        <b>How this class works</b>
+        <span>The rules, the uniform, and exactly how your grade is put together.</span>
+      </a>
+      <a href="logbook/index.html">
+        <span class="n">Every day</span>
+        <b>Your engineering logbook</b>
+        <span>The status codes, the three intervals, and what a real entry looks like.</span>
+      </a>
+      <a href="pathways/index.html">
+        <span class="n">Juniors and seniors</span>
+        <b>Pick a pathway</b>
+        <span>Seven fields to spend a term going deep on. Start with the chooser.</span>
+      </a>
+      <a href="shop/index.html">
+        <span class="n">Before you build</span>
+        <b>Shop safety</b>
+        <span>The Makerspace rules, machine certification, and the safety data sheets.</span>
+      </a>
+      <a href="resources/index.html">
+        <span class="n">Go further</span>
+        <b>Training and credentials</b>
+        <span>Every platform and certificate the shop uses or recommends, and what each
+          one is actually good for.</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>The seven pathways</h2>
+    <p class="sub">Each one is the home of one state technical standard. Straight to a guide:</p>
+    <div class="quicklinks">
+      <a href="pathways/industrial.html">Industrial Design</a>
+      <a href="pathways/architecture.html">Architecture &amp; Civil</a>
+      <a href="pathways/mechanical.html">Mechanical</a>
+      <a href="pathways/electrical.html">Electrical</a>
+      <a href="pathways/software.html">Software</a>
+      <a href="pathways/automation.html">Automation &amp; Robotics</a>
+      <a href="pathways/project.html">Project Management</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Where things live</h2>
+    <dl class="defs">
+      <dt>This site</dt>
+      <dd>Instructions, rules, guides, examples and rubrics &mdash; everything that is the same
+        for everyone. It is always the current version, so an old assignment still points at
+        the right thing.</dd>
+      <dt>Google Classroom</dt>
+      <dd>Your assignments, your copies of the templates, and turning work in. Grades are there,
+        not here.</dd>
+      <dt>Your Google Drive</dt>
+      <dd>Your own work. Your logbook, your CAD, your reports. Nothing of yours is ever
+        posted on this site.</dd>
+    </dl>
+    <p class="note">Something out of date, wrong, or missing? Tell Mr. Frank &mdash; pages here
+      get fixed the same day rather than at the end of the year.</p>
+  </section>
+
+</div>
+
+</div>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology &middot; Room E-126</span>
+    <span>Mr. Frank &middot; Mr. Dryer</span>
+    <span class="build">Build 04 Sep 2026, 16:23</span>
+  </div>
+</footer>
+
+
+<script src="assets/search-index.js?v=003b2e2b" defer></script>
+<script defer>
+(function(){
+  var REL = '';
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var box = document.getElementById('q'), out = document.getElementById('sres');
+    if (!box || !window.BHR_INDEX) return;
+    var IDX = window.BHR_INDEX, cur = -1, rows = [];
+
+    var KIND = {video:'Video',course:'Course',site:'Site',tool:'Tool',read:'Reading',
+      podcast:'Podcast',book:'Book',data:'Data',comp:'Competition',doc:'Doc',
+      software:'Software',page:'Page',rule:'Rule',check:'Safety check',
+      platform:'Training',sds:'Safety data',pathway:'Pathway',talk:'Talk',
+      playlist:'Playlist'};
+
+    function esc(s){ return s.replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    function hi(s, terms){
+      s = esc(s);
+      terms.forEach(function(t){
+        if (t.length < 2) return;
+        s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'ig'),
+                      '<mark>$1</mark>');
+      });
+      return s;
+    }
+
+    // Score by where the match lands: a title hit beats a note hit, and a hit at
+    // the start of the title beats one in the middle. Every term must appear
+    // somewhere, so multi-word queries narrow rather than widen.
+    function score(r, terms){
+      var t = r.t.toLowerCase(), n = (r.n + ' ' + r.x).toLowerCase(),
+          w = r.w.toLowerCase(), s = 0;
+      for (var i = 0; i < terms.length; i++){
+        var q = terms[i], hit = 0;
+        if (t.indexOf(q) === 0) hit = 100;
+        else if (t.indexOf(' ' + q) > -1) hit = 70;
+        else if (t.indexOf(q) > -1) hit = 50;
+        else if (w.indexOf(q) > -1) hit = 30;
+        else if (n.indexOf(q) > -1) hit = 20;
+        if (!hit) return 0;
+        s += hit;
+      }
+      if (r.k === 'page' || r.k === 'pathway') s += 12;   // structure floats up
+      return s;
+    }
+
+    function run(){
+      var qv = box.value.trim().toLowerCase();
+      if (qv.length < 2){ close(); return; }
+      var terms = qv.split(/\s+/);
+      rows = IDX.map(function(r){ return {r:r, s:score(r, terms)}; })
+                .filter(function(x){ return x.s > 0; })
+                .sort(function(a,b){ return b.s - a.s || a.r.t.length - b.r.t.length; })
+                .slice(0, 30);
+      draw(terms);
+    }
+
+    function draw(terms){
+      if (!rows.length){
+        out.innerHTML = '<p class="none">Nothing matches &ldquo;' +
+          esc(box.value.trim()) + '&rdquo;.</p>';
+      } else {
+        var h = '<div class="hd">' + rows.length +
+                (rows.length === 30 ? '+ matches' : ' match' + (rows.length>1?'es':'')) +
+                '</div>';
+        rows.forEach(function(x, i){
+          var r = x.r,
+              ext = /^https?:/.test(r.u),
+              href = ext ? r.u : REL + r.u;
+          h += '<a href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') +
+               ' data-i="' + i + '" role="option">' +
+               '<span class="ti">' + hi(r.t, terms) +
+                 (ext ? ' <span class="ext">&#8599;</span>' : '') + '</span>' +
+               '<span class="me"><span class="kd">' + (KIND[r.k] || r.k) + '</span>' +
+               '<span class="wh">' + hi(r.w, terms) + '</span></span>' +
+               (r.n ? '<span class="nt">' + hi(r.n, terms) + '</span>' : '') +
+               '</a>';
+        });
+        out.innerHTML = h;
+      }
+      out.hidden = false; box.setAttribute('aria-expanded','true'); cur = -1;
+    }
+
+    function close(){ out.hidden = true; box.setAttribute('aria-expanded','false'); cur = -1; }
+
+    function move(d){
+      var links = out.querySelectorAll('a');
+      if (!links.length) return;
+      if (cur > -1) links[cur].classList.remove('on');
+      cur = (cur + d + links.length) % links.length;
+      links[cur].classList.add('on');
+      links[cur].scrollIntoView({block:'nearest'});
+    }
+
+    box.addEventListener('input', run);
+    box.addEventListener('focus', function(){ if (box.value.trim().length > 1) run(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter'){
+        var links = out.querySelectorAll('a');
+        if (cur > -1 && links[cur]){ e.preventDefault(); links[cur].click(); }
+      }
+      else if (e.key === 'Escape'){ close(); box.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.srch')) close();
+    });
+    // "/" from anywhere jumps to the box, the way every developer tool does it
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); box.focus(); box.select();
+      }
+    });
+  });
+})();
+</script>
+<script defer>
+// Track which in-page section you are actually looking at and mark it in the
+// rail. Only runs where the rail has anchor links.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var links = [].slice.call(document.querySelectorAll('.rail .anch a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {}, pos = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        pos[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null;
+      });
+      var best = null, near = Infinity;
+      Object.keys(pos).forEach(function(id){
+        if (pos[id] === null) return;
+        var d = Math.abs(pos[id] - 90);
+        if (d < near){ near = d; best = id; }
+      });
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if (best && map[best]) map[best].classList.add('on');
+    }, {rootMargin:'-70px 0px -55% 0px', threshold:[0,1]});
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) io.observe(el);
+    });
+  });
+})();
+</script>
+<script defer>
+// Three states, cycled by one button: follow the system, force light, force dark.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var btn = document.getElementById('theme'), root = document.documentElement;
+    if (!btn) return;
+    function get(){ try { return localStorage.getItem('bhr-theme') || 'system'; }
+                    catch(e){ return 'system'; } }
+    function label(){
+      var m = get();
+      btn.querySelector('.lbl').textContent =
+        m === 'system' ? 'Theme' : (m === 'light' ? 'Light' : 'Dark');
+      btn.title = m === 'system'
+        ? 'Following your computer. Click for light.'
+        : (m === 'light' ? 'Light. Click for dark.'
+                         : 'Dark. Click to follow your computer.');
+    }
+    function set(m){
+      try { m === 'system' ? localStorage.removeItem('bhr-theme')
+                           : localStorage.setItem('bhr-theme', m); } catch(e){}
+      if (m === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', m);
+      label();
+    }
+    label();
+    btn.addEventListener('click', function(){
+      var m = get();
+      set(m === 'system' ? 'light' : (m === 'light' ? 'dark' : 'system'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

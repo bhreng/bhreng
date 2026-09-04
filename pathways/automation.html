@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Automation and Robotics &middot; BHR Engineering</title>
+<meta name="description" content="Automation and Robotics pathway guide — Standard 9. Where the mechanical, the electrical and the code have to work as one system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="../assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/site.css?v=c3afc4c9">
+<style>
+max-width:1140px;margin:0 auto;padding:28px 24px 90px;align-items:start}
+@media(max-width:900px){.shell{grid-template-columns:1fr;gap:24px}}
+  border-right:1px solid var(--rule);padding-right:18px}
+@media(max-width:900px){nav{position:static;border-right:0;
+  border-bottom:1px solid var(--rule);padding:0 0 18px}}
+  font-family:var(--mono);margin:0 0 11px}
+  background:none;border:0;cursor:pointer;color:var(--ink-2);font-size:13.5px;
+  font-weight:500;padding:6px 8px;border-radius:3px;font-family:inherit;line-height:1.35}
+nav .std{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none;width:22px}
+.ph{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:34px;
+  display:flex;flex-direction:column;gap:9px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0}
+h2{font-family:var(--sans);font-weight:var(--w-heavy);
+  font-size:clamp(28px,4.6vw,42px);line-height:1.04;letter-spacing:-.028em;margin:0;
+  text-wrap:balance;max-width:18ch}
+.tag{margin:0;font-family:var(--sans);font-weight:600;font-size:18px;
+  color:var(--ink-2);max-width:52ch;line-height:1.35;text-wrap:balance}
+.intro{margin:4px 0 0;font-size:16.5px;color:var(--ink-2);max-width:64ch}
+.newflag{margin:6px 0 0;font-size:14px;color:var(--moss);background:var(--moss-soft);
+  border-radius:3px;padding:8px 12px;max-width:64ch;line-height:1.45}
+.topic{margin-bottom:44px}
+.th{display:flex;gap:15px;align-items:flex-start;margin-bottom:14px}
+.tn{font-family:var(--sans);font-weight:700;font-size:14px;color:var(--accent);
+  background:var(--accent-soft);width:28px;height:28px;flex:none;border-radius:4px;
+  display:grid;place-items:center;margin-top:2px}
+h3{font-family:var(--sans);font-weight:700;font-size:22px;letter-spacing:-.015em;
+  margin:0;line-height:1.2}
+.tq{margin:3px 0 0;font-size:14px;font-style:italic;color:var(--ink-3);max-width:60ch}
+.blurb{margin:0 0 16px;color:var(--ink-2);max-width:66ch}
+.roles{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.roles div{background:var(--card);padding:13px 18px;display:grid;
+  grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:3px 22px}
+.roles b{font-family:var(--sans);font-weight:600;font-size:15px;line-height:1.4}
+.roles span{color:var(--ink-2);font-size:15px;line-height:1.5}
+@media(max-width:620px){.roles div{grid-template-columns:1fr}}
+dl.defs{margin:0;display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+dl.defs dt{background:var(--card);padding:14px 18px 4px;font-family:var(--sans);
+  font-weight:600;font-size:15.5px;line-height:1.35}
+dl.defs dd{background:var(--card);margin:0;padding:0 18px 14px;color:var(--ink-2);
+  font-size:15.5px;line-height:1.55}
+.pullout{margin-top:16px;background:var(--card);border:1px solid var(--rule);
+  border-left:3px solid var(--accent);padding:15px 20px}
+.pullout b{font-family:var(--sans);font-weight:600;font-size:15.5px;display:block;
+  margin-bottom:4px}
+.pullout p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.55;max-width:66ch}
+.cred{background:var(--accent-soft);border:1px solid var(--rule);padding:15px 20px;
+  margin-bottom:16px;display:flex;flex-direction:column;gap:3px}
+.cred span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent)}
+.cred b{font-family:var(--sans);font-weight:700;font-size:17px;line-height:1.3;
+  color:var(--ink)}
+.cred em{font-style:normal;font-size:14px;color:var(--ink-2);margin-top:3px}
+ul.ticks,ul.files{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;
+  gap:1px;background:var(--rule);border:1px solid var(--rule)}
+ul.ticks li,ul.files li{background:var(--card);padding:11px 18px 11px 40px;position:relative;
+  font-size:15.5px;line-height:1.5}
+ul.ticks li::before{content:"";position:absolute;left:19px;top:20px;width:7px;height:7px;
+  border-radius:50%;background:var(--accent)}
+ul.files li::before{content:"";position:absolute;left:18px;top:17px;width:9px;height:11px;
+  border:1.4px solid var(--accent);border-radius:1px}
+.briefs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.briefs article{background:var(--card);padding:16px 19px;display:flex;flex-direction:column;
+  gap:6px;box-shadow:0 0 0 1px var(--rule)}
+.briefs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.briefs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+.note{margin:16px 0 0;font-size:14.5px;color:var(--ink-2);background:var(--card);
+  border:1px solid var(--rule);border-left:3px solid var(--ink-3);padding:12px 16px;
+  max-width:70ch;line-height:1.5}
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--card);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th{font-family:var(--sans);font-weight:600;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);text-align:left;padding:11px 14px;
+  border-bottom:1.5px solid var(--rule);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:0}
+td.k{font-family:var(--sans);font-weight:600;white-space:nowrap}
+td.s{font-family:var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
+em{font-style:italic}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pathnav{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule);margin-top:-18px}
+.pathnav a{background:var(--card);box-shadow:0 0 0 1px var(--rule);
+  padding:10px 14px;text-decoration:none;
+  color:var(--ink-2);font-size:13.5px;font-family:var(--sans);font-weight:500;
+  display:flex;gap:8px;align-items:baseline}
+.pathnav a:hover{background:var(--accent-soft);color:var(--accent)}
+.pathnav a[aria-current="page"]{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.pathnav .std{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none}
+.pathnav a[aria-current="page"] .std{color:var(--accent)}
+.pagebody{display:flex;flex-direction:column}
+
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px}
+.filters button{font-family:var(--sans);font-size:13px;font-weight:500;
+  background:var(--card);color:var(--ink-2);border:1px solid var(--rule);
+  padding:6px 13px;border-radius:20px;cursor:pointer;line-height:1.3}
+.filters button:hover{border-color:var(--accent);color:var(--accent)}
+.filters button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.rlist{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.r{background:var(--card);padding:17px 20px;display:flex;flex-direction:column;gap:8px}
+.r.hide{display:none}
+.rhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px}
+.r h3{margin:0;font-size:17px}
+.r h3 a{text-decoration:none}
+.r h3 a:hover{text-decoration:underline}
+.pill{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
+  padding:3px 8px;border-radius:3px;white-space:nowrap}
+.pill.ok{color:var(--green);background:var(--green-soft)}
+.pill.deep{color:var(--blue);background:var(--blue-soft)}
+.pill.hard{color:var(--ink-2);background:transparent;box-shadow:inset 0 0 0 1px var(--rule)}
+.pill.warn{color:var(--warm);background:var(--warm-soft)}
+.pill.school{color:var(--accent);background:var(--accent-soft)}
+.rcost{font-size:13.5px;color:var(--ink-3);font-family:var(--sans)}
+.r p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.55;max-width:70ch}
+.r .meta{display:flex;flex-wrap:wrap;gap:5px 18px;font-size:13.5px;color:var(--ink-3);
+  font-family:var(--sans)}
+.r .meta b{font-weight:600;color:var(--ink-2)}
+.r .why{font-size:15px;color:var(--ink);background:var(--paper);border-left:2px solid var(--accent);
+  padding:8px 13px;line-height:1.5;max-width:70ch}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tags i{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);border:1px solid var(--rule);
+  padding:2px 6px;border-radius:2px}
+
+.creds{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.creds div{background:var(--card);padding:16px 20px;display:grid;
+  grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:6px 24px;align-items:start}
+.creds b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.35}
+.creds .who{font-size:13.5px;color:var(--ink-3);font-family:var(--sans);display:block;
+  margin-top:2px}
+.creds .cost{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-top:5px}
+.creds p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.55}
+.creds .cnote{margin-top:7px;font-size:14.5px;color:var(--warm)}
+@media(max-width:620px){.creds div{grid-template-columns:1fr}}
+
+.trainbox{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.trainbox a{background:var(--card);padding:13px 18px;text-decoration:none;color:inherit;
+  display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr) auto;gap:4px 18px;
+  align-items:baseline}
+.trainbox a:hover{background:var(--accent-soft)}
+.trainbox b{font-family:var(--sans);font-weight:600;font-size:15px}
+.trainbox span{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+@media(max-width:620px){.trainbox a{grid-template-columns:1fr}}
+
+.srcs{display:flex;flex-direction:column;gap:1px;background:var(--card);
+  border:1px solid var(--rule);margin-top:14px}
+.srcs a{background:var(--card);box-shadow:0 0 0 1px var(--rule);padding:14px 18px;
+  text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:5px}
+.srcs a:hover{background:var(--accent-soft)}
+.srcs .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.srcs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.srcs .kind{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3)}
+.srcs p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.5;max-width:70ch}
+.srchead{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-top:20px}
+.srchead h4{margin:0;font-family:var(--sans);font-weight:700;font-size:14px;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
+.srchead span{font-size:13.5px;color:var(--ink-3)}
+
+.pathlayout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px;
+  align-items:start}
+.pside{position:sticky;top:74px;font-family:var(--sans)}
+.pside .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 9px;padding-left:2px}
+.pside ol{list-style:none;margin:0 0 16px;padding:0;
+  border:1px solid var(--rule);background:var(--card)}
+.pside li{border-bottom:1px solid var(--rule-soft)}
+.pside li:last-child{border-bottom:0}
+.pside a{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;
+  padding:11px 13px;text-decoration:none;color:inherit;align-items:start}
+.pside a:hover{background:var(--accent-soft)}
+.pside .n{font-family:var(--mono);font-size:11px;color:var(--ink-3);
+  padding-top:2px;min-width:9px}
+.pside b{font-weight:600;font-size:14.5px;line-height:1.25;color:var(--ink);
+  display:block}
+.pside .pl{display:block;font-family:var(--serif);font-size:13px;color:var(--ink-2);
+  line-height:1.4;margin-top:2px}
+.pside .ct{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);
+  margin-top:4px}
+.pside a.on{background:var(--accent-soft)}
+.pside a.on .n,.pside a.on b{color:var(--accent)}
+.pside a.on b{font-weight:700}
+.pside .up{font-size:13px;color:var(--ink-2);text-decoration:none;
+  display:inline-block;padding:2px}
+.pside .up:hover{color:var(--accent)}
+.topic{scroll-margin-top:78px}
+@media(max-width:900px){
+  .pathlayout{grid-template-columns:1fr;gap:26px}
+  .pside{position:static}
+  .pside ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:1px;background:var(--rule)}
+  .pside li{border-bottom:0;background:var(--card)}
+}
+@media print{.pside{display:none}.pathlayout{display:block}}
+
+.firstmove{border:1px solid var(--rule);border-left:4px solid var(--brand);
+  background:var(--card);padding:20px 24px 22px;margin:0 0 34px}
+.firstmove h2{font-family:var(--sans);font-weight:700;font-size:19px;margin:0 0 4px;
+  color:var(--ink);letter-spacing:-.01em;max-width:none;text-wrap:pretty}
+.firstmove>p{margin:0 0 14px;color:var(--ink-2);font-size:15.5px;max-width:64ch}
+.firstmove ol{list-style:none;counter-reset:fm;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:11px}
+.firstmove li{counter-increment:fm;position:relative;padding-left:34px;
+  font-size:15.5px;line-height:1.55;max-width:66ch}
+.firstmove li::before{content:counter(fm);position:absolute;left:0;top:1px;
+  width:22px;height:22px;display:grid;place-items:center;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);
+  font-family:var(--sans);font-weight:700;font-size:12px}
+.firstmove .ask{margin:16px 0 0;font-size:14.5px;color:var(--ink-3);
+  padding-top:13px;border-top:1px solid var(--rule-soft)}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('bhr-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+</head>
+<body>
+
+<header class="sitebar">
+  <div class="in">
+    <a class="brand" href="../index.html">
+      <img class="mark" src="../assets/logo-96.png" alt="" width="34" height="29">
+      <span>Engineering&nbsp;Technology</span>
+    </a>
+      <div class="srch">
+        <span class="sbox">
+          <input type="search" id="q" placeholder="Search" autocomplete="off"
+                 aria-label="Search the site" aria-expanded="false" aria-controls="sres">
+          <kbd>/</kbd>
+        </span>
+        <div class="sres" id="sres" role="listbox" hidden></div>
+      </div>
+      <button class="themebtn" id="theme" type="button"
+              title="Switch between light and dark" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span><span class="lbl">Theme</span>
+      </button>
+  </div>
+</header>
+
+<div class="shell">
+<div class="rail">
+  <div class="railin">
+  <nav aria-label="Site"><ul>
+    <li><a href="../index.html" class="sec">Home</a>
+    </li>
+    <li><a href="../start/welcome.html" class="sec">Start here</a>
+    </li>
+    <li><a href="../logbook/index.html" class="sec">Logbook</a>
+    </li>
+    <li><a href="../pathways/index.html" class="sec">The seven pathways</a>
+      <ul class="kids">
+        <li><a href="../pathways/index.html">Which one is for you?</a>
+        </li>
+        <li><a href="../pathways/industrial.html">Industrial Design</a>
+        </li>
+        <li><a href="../pathways/architecture.html">Architecture &amp; Civil</a>
+        </li>
+        <li><a href="../pathways/mechanical.html">Mechanical</a>
+        </li>
+        <li><a href="../pathways/electrical.html">Electrical</a>
+        </li>
+        <li><a href="../pathways/software.html">Software</a>
+        </li>
+        <li><a href="../pathways/automation.html" class="here">Automation &amp; Robotics</a>
+          <ul class="kids anch">
+            <li><a href="#t1"><span class="n">1</span>Explore the Field</a></li>
+            <li><a href="#t2"><span class="n">2</span>Learn the Concepts</a></li>
+            <li><a href="#t3"><span class="n">3</span>Build Your Skills</a></li>
+            <li><a href="#ttrain"><span class="n">&middot;</span>Where to train</a></li>
+            <li><a href="#t4"><span class="n">4</span>Find a Project</a></li>
+            <li><a href="#t5"><span class="n">5</span>Get the Files</a></li>
+          </ul>
+        </li>
+        <li><a href="../pathways/project.html">Project Management</a>
+        </li>
+      </ul>
+    </li>
+    <li><a href="../shop/index.html" class="sec">Shop safety</a>
+    </li>
+    <li><a href="../resources/index.html" class="sec">Training and credentials</a>
+    </li>
+  </ul></nav>
+  </div>
+</div>
+<div class="main">
+<div class="wrap">
+<div class="pagebody">
+<div class="ph">
+<p class="eyebrow">Standard S9 &middot; Mr. Frank and Mr. Dryer</p>
+<h2>Automation and Robotics</h2>
+<p class="tag">Where the mechanical, the electrical and the code have to work as one system.</p>
+<p class="intro">This is the pathway that pulls the others together. A robot is a mechanism that has to be built, a circuit that has to be powered and sensed, and a program that has to decide — and it fails at whichever of the three you neglected. It is the only pathway with two instructors, because it genuinely needs both.</p>
+<p class="newflag">New guide &mdash; this hub had no written guide before. Built from the standards crosswalk and the Grade&nbsp;11 and 12 unit maps.</p>
+</div>
+  <section class="firstmove">
+    <h2>New to this pathway? Start here.</h2>
+    <p>Nothing on this page is compulsory and there is no order you have to follow.
+      If you want a way in, this is the one I would take.</p>
+    <ol>
+      <li>Open <a href="https://www.youtube.com/watch?v=3dnC_y8bDrU"><strong>The robot sidekicks of Jorvon Moss</strong></a> from Explore the Field, and ask yourself honestly whether that work appeals to you.</li>
+      <li>If it does, pick <strong>one</strong> thing from Learn the Concepts &mdash; there are 4 to choose from &mdash; and actually finish it.</li>
+      <li>Then go to Build Your Skills and do something with your hands. 10 options, and you do not have to take them in order.</li>
+      <li>Write down what you did in your logbook, including what did not work.</li>
+    </ol>
+    <p class="ask">Stuck, or want to talk it through? Ask <strong>Mr. Frank and Mr. Dryer</strong>.</p>
+  </section>
+<div class="topic" id="t1"><div class="th"><span class="tn">1</span><div><h3>Explore the Field</h3><p class="tq">Would this help someone decide whether to pick this pathway?</p></div></div>
+<p class="blurb">Automation and robotics is mechatronics and computer integrated manufacturing: physical systems that sense, decide and act without a person driving them moment to moment.</p>
+<div class="roles">
+<div><b>Robotics engineer</b><span>Designs the whole system — mechanism, sensing, control — and owns the integration.</span></div>
+<div><b>Controls engineer</b><span>Programs and tunes the PLCs and controllers that run production equipment.</span></div>
+<div><b>Automation technician</b><span>Installs, commissions and troubleshoots automated cells on a live floor.</span></div>
+<div><b>Mechatronics engineer</b><span>Works deliberately across mechanical, electrical and software rather than specializing in one.</span></div>
+<div><b>CIM specialist</b><span>Coordinates CNC equipment, robots and material handling into one production system.</span></div>
+</div>
+<p class="note">Ask Mr. Frank for the physical side — chassis, drive systems, work envelope, manufacturability of the parts. Ask Mr. Dryer for the intelligence — control code, circuit troubleshooting, validation of the control loop.</p>
+</div>
+<div class="srchead"><h4>Go and look</h4><span>3 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://www.youtube.com/watch?v=3dnC_y8bDrU" target="_blank" rel="noopener"><span class="top"><b>The robot sidekicks of Jorvon Moss</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Adam Savage&rsquo;s Tested. A working maker whose robots are companions rather than machines &mdash; a real career built out of this pathway.</p></a>
+  <a href="https://www.youtube.com/watch?v=CdPLzA4xIF0" target="_blank" rel="noopener"><span class="top"><b>Devices that morph and transform</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Brigham Young University. Compliant mechanisms &mdash; things that move without joints. Research engineering you can actually watch.</p></a>
+  <a href="https://compliantmechanisms.byu.edu/" target="_blank" rel="noopener"><span class="top"><b>BYU Compliant Mechanisms Research</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>The lab behind that video, with papers and downloadable models.</p></a>
+</div>
+<div class="topic" id="t2"><div class="th"><span class="tn">2</span><div><h3>Learn the Concepts</h3><p class="tq">Is this something you study to understand how the work works?</p></div></div>
+<p class="blurb">This pathway draws on four standards at once, which is the point of it. You need enough of each to make the system work.</p>
+<dl class="defs">
+<dt>From electrical (S5)</dt><dd>Analog circuit requirements, power distribution, and how sensors are wired and powered. A robot that browns out under load is an electrical problem, not a code problem.</dd>
+<dt>From digital and software (S6)</dt><dd>Boolean design, logic frameworks, and PLC programming. This is where the system&rsquo;s decisions live.</dd>
+<dt>From mechanical (S7)</dt><dd>Drive system design and assembly, kinematics of the work envelope, and fabricating a chassis that stays rigid. Backlash and flex show up as control problems and get blamed on the code.</dd>
+<dt>Automated systems (S9) &mdash; the anchor</dt><dd>CIM system components, robotic controllers, end-of-arm tooling, and the working relationship between CNC equipment and robotics.</dd>
+<dt>Feedback, specifically</dt><dd>Open loop means the system acts and hopes. Closed loop means it measures the result and corrects. Know which one you have built and be able to say why that was the right choice.</dd>
+</dl>
+</div>
+<div class="srchead"><h4>Go and look</h4><span>4 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://www.youtube.com/watch?v=Um_g8sQ_p3Y" target="_blank" rel="noopener"><span class="top"><b>How things are made</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>The Efficient Engineer. Animated tour of manufacturing processes &mdash; casting, forming, machining, joining. Where to start.</p></a>
+  <a href="https://archive.org/details/ost-engineering-plcbook5_1" target="_blank" rel="noopener"><span class="top"><b>Automating Manufacturing Systems with PLCs</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>Hugh Jack&rsquo;s full textbook, free and open. The best free PLC reference there is. The author&rsquo;s old site is dead &mdash; this Internet Archive copy is the live one.</p></a>
+  <a href="https://mechatronics.colostate.edu/" target="_blank" rel="noopener"><span class="top"><b>Mechatronics video demos and lab manual</b><span class="pill deep">Going deeper</span><span class="kind">course</span></span><p>Colorado State&rsquo;s free companion site to the standard mechatronics textbook. Video demonstrations and a full lab manual, no book needed.</p></a>
+  <a href="https://see.stanford.edu/Course/CS223A" target="_blank" rel="noopener"><span class="top"><b>Introduction to Robotics (Stanford CS223A)</b><span class="pill hard">College level</span><span class="kind">course</span></span><p>Oussama Khatib&rsquo;s course, free through Stanford Engineering Everywhere. Serious mathematics &mdash; but it is the real thing.</p></a>
+</div>
+<div class="topic" id="t3"><div class="th"><span class="tn">3</span><div><h3>Build Your Skills</h3><p class="tq">Is this a procedure you practice until you can do it?</p></div></div>
+<div class="cred"><span>Credential of value</span><b>Universal Robots Academy</b><em>Base requirement for every pathway: OSHA&nbsp;10 &mdash; Construction</em></div>
+<p class="blurb">Both platforms are self-paced and run in simulation, so you can get a long way before you touch a robot. Universal Robots issues a completion record; Festo LX is training only.</p>
+<ul class="ticks">
+<li>Festo LX — industrial automation, mechatronics and ladder logic modules.</li>
+<li>Universal Robots Academy — collaborative robot programming, free and online.</li>
+<li>PLC programming — ladder logic, inputs and outputs, timers and counters.</li>
+<li>Robot controller setup — teaching positions, defining a work envelope, setting safe speeds.</li>
+<li>End-of-arm tooling — selecting or designing the gripper for the part being handled.</li>
+<li>Sensor and actuator loops — limit switches, proximity, encoders, and acting on what they report.</li>
+<li>CAD and fabrication of the mechanism itself, in Inventor or Fusion 360.</li>
+<li>Systematic commissioning — power, then I/O verification, then motion at reduced speed, then full rate.</li>
+</ul></div>
+<div class="srchead"><h4>Go and look</h4><span>10 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://academy.universal-robots.com/free-e-learning/" target="_blank" rel="noopener"><span class="top"><b>Universal Robots Academy — free e-learning</b><span class="pill ok">Start here</span><span class="kind">course</span></span><p>Six tracks on programming collaborative robots, all in simulation so no robot is needed. Start with UR20/30, then e-Series. This is the manufacturer of the UR3 and UR5 in our own shop, so it maps straight onto real hardware. Free account required.</p></a>
+  <a href="https://academy.universal-robots.com/free-e-learning/" target="_blank" rel="noopener"><span class="top"><b>Universal Robots Academy — Risk Assessment track</b><span class="pill ok">Start here</span><span class="kind">course</span></span><p>The module worth doing even if you never program a robot. A cobot is not inherently safe — only the application around it can be, and this is how that judgement is actually made. Pairs with the shop cobot safety check.</p></a>
+  <a href="https://www.youtube.com/watch?v=ZiPO2J3ZBG8" target="_blank" rel="noopener"><span class="top"><b>PLC programming with Micro800</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Tim Wilborne. Connected Components Workbench from scratch.</p></a>
+  <a href="https://www.youtube.com/watch?v=y8p8SfeOOks" target="_blank" rel="noopener"><span class="top"><b>Getting started with PLCs — classroom projects</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Aimed at high school specifically. Note the channel is an equipment vendor, so there is some product placement.</p></a>
+  <a href="https://www.youtube.com/watch?v=QaEV0gNT2Ug" target="_blank" rel="noopener"><span class="top"><b>Dobot Magician and Dobot Studio</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Setup and first program on the desktop arm.</p></a>
+  <a href="https://academy.titansofcnc.com/" target="_blank" rel="noopener"><span class="top"><b>Titans of CNC Academy</b><span class="pill ok">Start here</span><span class="kind">course</span></span><p>Free CNC training, start to finish. A free account is needed to watch, but nothing is paid.</p></a>
+  <a href="https://academy.titansofcnc.com/video/how-to-program-the-titan-2m" target="_blank" rel="noopener"><span class="top"><b>Program the TITAN-2M in Fusion 360</b><span class="pill deep">Going deeper</span><span class="kind">video</span></span><p>CAM in the software you already use, on a real machine.</p></a>
+  <a href="https://www.youtube.com/watch?v=3bhboLZCbm8" target="_blank" rel="noopener"><span class="top"><b>Robotiq wrist camera — parametric object teaching</b><span class="pill deep">Going deeper</span><span class="kind">video</span></span><p>Teaching a robot to find an object by sight rather than by coordinate.</p></a>
+  <a href="https://elearning.robotiq.com/course/view.php?id=5&section=4" target="_blank" rel="noopener"><span class="top"><b>Robotiq eLearning</b><span class="pill deep">Going deeper</span><span class="kind">course</span></span><p>Full lessons on grippers and vision. Open with guest access &mdash; no login needed.</p></a>
+  <a href="https://www.siemens.com/en-us/content/sce-educational-institutions/documents/" target="_blank" rel="noopener"><span class="top"><b>Siemens SCE training documents</b><span class="pill hard">College level</span><span class="kind">doc</span></span><p>Industrial-grade PLC and TIA Portal curriculum, free. It does require a Siemens account to download, which is a slog &mdash; worth it if you are going deep on PLCs.</p></a>
+</div>
+<div class="topic" id="ttrain"><div class="th"><span class="tn">&mdash;</span><div><h3>Where to train</h3>
+<p class="tq">Platforms that serve this pathway. Full details, costs and sign-up notes on
+the <a href="../resources/index.html">Training &amp; Credentials</a> page.</p></div></div>
+<div class="trainbox">
+  <a href="../resources/index.html"><b>All About Circuits</b><span>A full DC, AC and semiconductor textbook, used in two-year electronics programmes.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>Arduino Docs and Project Hub</b><span>Official Arduino tutorials, language reference, and thousands of documented projects with code and wiring.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>Cisco Networking Academy</b><span>Python Essentials 1 and 2, Computer Hardware Basics, Introduction to IoT.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>Festo LX</b><span>Festo's industrial training portal.</span><span class="pill school">School provides</span></a>
+  <a href="../resources/index.html"><b>Siemens SCE</b><span>Siemens' industrial training documents for PLC programming and TIA Portal — the same material used to train technicians.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>Tinkercad</b><span>Browser-based 3D modelling, circuit simulation and Codeblocks.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>Universal Robots Academy</b><span>Six free tracks on programming collaborative robots — UR20/30 (start here), e-Series, CB3, PolyScope X, URScript, and Risk Assessment.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>Autodesk free software</b><span>Fusion, Inventor, AutoCAD, Revit, Civil 3D — the full professional suite on your own machine, free while you are a student.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>Khan Academy</b><span>Free maths and physics, from algebra through calculus and mechanics.</span><span class="pill ok">Free</span></a>
+</div>
+</div>
+<div class="topic" id="t4"><div class="th"><span class="tn">4</span><div><h3>Find a Project</h3><p class="tq">Is this something you could go build?</p></div></div>
+<p class="blurb">Pick something with a real cycle to it. A demo that runs once is not an automated system.</p>
+<div class="briefs">
+<article><b>Automated sorting cell</b><p>Sense a property of an incoming part — color, height, weight, material — and route it. Report the throughput and the error rate over a run of at least fifty parts.</p></article>
+<article><b>Pick and place with custom tooling</b><p>Design and fabricate the end effector yourself for a specific awkward part, then program the arm to handle it reliably. The gripper is the engineering.</p></article>
+<article><b>Machine tending</b><p>Use a robot to load and unload a piece of shop equipment. Cycle time and safe interaction are the constraints, and the safety interlock is not optional.</p></article>
+<article><b>Closed-loop control demo</b><p>Build something that holds a target — position, speed, level, temperature. Show the response with and without feedback and explain the difference in the data.</p></article>
+</div>
+</div>
+<div class="srchead"><h4>Go and look</h4><span>3 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://www.youtube.com/watch?v=UOrwMG7Eqks" target="_blank" rel="noopener"><span class="top"><b>I built cute robots for your desk... again</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Creative Chance. Small, achievable, and genuinely charming. A good first robot that is not a kit.</p></a>
+  <a href="https://www.youtube.com/watch?v=GdFVIEM5KBo" target="_blank" rel="noopener"><span class="top"><b>How do welding squares get made?</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Fireball Tool. Manufacturing a precision tool from raw stock &mdash; tolerance and fixturing made visible.</p></a>
+  <a href="https://www.youtube.com/watch?v=-XxDSFjIRa0" target="_blank" rel="noopener"><span class="top"><b>Machining aluminium isogrid coasters</b><span class="pill deep">Going deeper</span><span class="kind">video</span></span><p>Winston Moy. Isogrid is the structure used on rocket bodies, cut here at coaster scale. Small project, real technique.</p></a>
+</div>
+<div class="topic" id="t5"><div class="th"><span class="tn">5</span><div><h3>Get the Files</h3><p class="tq">Would you open this while working, rather than read start to finish?</p></div></div>
+<ul class="files">
+<li>Logbook template.</li>
+<li>I/O map — every input and output, what it is wired to, and what it means.</li>
+<li>Commissioning checklist.</li>
+<li>Cycle time and error rate log.</li>
+<li>Bill of Materials worksheet.</li>
+<li>&ldquo;Do Now!&rdquo; reflection and E.E.P. term-end reflection.</li>
+<li>Machine safety rules — guarding, lockout/tagout, and safe interaction distances.</li>
+</ul>
+<p class="note">Logbook rules are the same in every pathway &mdash; see <em>Your Engineering Logbook</em>. Anything you read in an older hub guide about notebook rules is superseded by it.</p>
+</div>
+
+<div class="srchead"><h4>Go and look</h4><span>2 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://svgnest.com/" target="_blank" rel="noopener"><span class="top"><b>SVGnest</b><span class="pill ok">Start here</span><span class="kind">tool</span></span><p>Free open-source nesting &mdash; packs your parts onto a sheet with the least waste. Use it before every laser or plasma job.</p></a>
+  <a href="https://deepnest.io/" target="_blank" rel="noopener"><span class="top"><b>Deepnest</b><span class="pill ok">Start here</span><span class="kind">tool</span></span><p>The same author&rsquo;s successor to SVGnest, more capable for laser and plasma. Also free and open source.</p></a>
+</div></div>
+</div>
+</div>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology &middot; Room E-126</span>
+    <span>Mr. Frank &middot; Mr. Dryer</span>
+    <span class="build">Build 04 Sep 2026, 16:23</span>
+  </div>
+</footer>
+
+
+<script src="../assets/search-index.js?v=003b2e2b" defer></script>
+<script defer>
+(function(){
+  var REL = '../';
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var box = document.getElementById('q'), out = document.getElementById('sres');
+    if (!box || !window.BHR_INDEX) return;
+    var IDX = window.BHR_INDEX, cur = -1, rows = [];
+
+    var KIND = {video:'Video',course:'Course',site:'Site',tool:'Tool',read:'Reading',
+      podcast:'Podcast',book:'Book',data:'Data',comp:'Competition',doc:'Doc',
+      software:'Software',page:'Page',rule:'Rule',check:'Safety check',
+      platform:'Training',sds:'Safety data',pathway:'Pathway',talk:'Talk',
+      playlist:'Playlist'};
+
+    function esc(s){ return s.replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    function hi(s, terms){
+      s = esc(s);
+      terms.forEach(function(t){
+        if (t.length < 2) return;
+        s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'ig'),
+                      '<mark>$1</mark>');
+      });
+      return s;
+    }
+
+    // Score by where the match lands: a title hit beats a note hit, and a hit at
+    // the start of the title beats one in the middle. Every term must appear
+    // somewhere, so multi-word queries narrow rather than widen.
+    function score(r, terms){
+      var t = r.t.toLowerCase(), n = (r.n + ' ' + r.x).toLowerCase(),
+          w = r.w.toLowerCase(), s = 0;
+      for (var i = 0; i < terms.length; i++){
+        var q = terms[i], hit = 0;
+        if (t.indexOf(q) === 0) hit = 100;
+        else if (t.indexOf(' ' + q) > -1) hit = 70;
+        else if (t.indexOf(q) > -1) hit = 50;
+        else if (w.indexOf(q) > -1) hit = 30;
+        else if (n.indexOf(q) > -1) hit = 20;
+        if (!hit) return 0;
+        s += hit;
+      }
+      if (r.k === 'page' || r.k === 'pathway') s += 12;   // structure floats up
+      return s;
+    }
+
+    function run(){
+      var qv = box.value.trim().toLowerCase();
+      if (qv.length < 2){ close(); return; }
+      var terms = qv.split(/\s+/);
+      rows = IDX.map(function(r){ return {r:r, s:score(r, terms)}; })
+                .filter(function(x){ return x.s > 0; })
+                .sort(function(a,b){ return b.s - a.s || a.r.t.length - b.r.t.length; })
+                .slice(0, 30);
+      draw(terms);
+    }
+
+    function draw(terms){
+      if (!rows.length){
+        out.innerHTML = '<p class="none">Nothing matches &ldquo;' +
+          esc(box.value.trim()) + '&rdquo;.</p>';
+      } else {
+        var h = '<div class="hd">' + rows.length +
+                (rows.length === 30 ? '+ matches' : ' match' + (rows.length>1?'es':'')) +
+                '</div>';
+        rows.forEach(function(x, i){
+          var r = x.r,
+              ext = /^https?:/.test(r.u),
+              href = ext ? r.u : REL + r.u;
+          h += '<a href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') +
+               ' data-i="' + i + '" role="option">' +
+               '<span class="ti">' + hi(r.t, terms) +
+                 (ext ? ' <span class="ext">&#8599;</span>' : '') + '</span>' +
+               '<span class="me"><span class="kd">' + (KIND[r.k] || r.k) + '</span>' +
+               '<span class="wh">' + hi(r.w, terms) + '</span></span>' +
+               (r.n ? '<span class="nt">' + hi(r.n, terms) + '</span>' : '') +
+               '</a>';
+        });
+        out.innerHTML = h;
+      }
+      out.hidden = false; box.setAttribute('aria-expanded','true'); cur = -1;
+    }
+
+    function close(){ out.hidden = true; box.setAttribute('aria-expanded','false'); cur = -1; }
+
+    function move(d){
+      var links = out.querySelectorAll('a');
+      if (!links.length) return;
+      if (cur > -1) links[cur].classList.remove('on');
+      cur = (cur + d + links.length) % links.length;
+      links[cur].classList.add('on');
+      links[cur].scrollIntoView({block:'nearest'});
+    }
+
+    box.addEventListener('input', run);
+    box.addEventListener('focus', function(){ if (box.value.trim().length > 1) run(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter'){
+        var links = out.querySelectorAll('a');
+        if (cur > -1 && links[cur]){ e.preventDefault(); links[cur].click(); }
+      }
+      else if (e.key === 'Escape'){ close(); box.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.srch')) close();
+    });
+    // "/" from anywhere jumps to the box, the way every developer tool does it
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); box.focus(); box.select();
+      }
+    });
+  });
+})();
+</script>
+<script defer>
+// Track which in-page section you are actually looking at and mark it in the
+// rail. Only runs where the rail has anchor links.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var links = [].slice.call(document.querySelectorAll('.rail .anch a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {}, pos = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        pos[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null;
+      });
+      var best = null, near = Infinity;
+      Object.keys(pos).forEach(function(id){
+        if (pos[id] === null) return;
+        var d = Math.abs(pos[id] - 90);
+        if (d < near){ near = d; best = id; }
+      });
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if (best && map[best]) map[best].classList.add('on');
+    }, {rootMargin:'-70px 0px -55% 0px', threshold:[0,1]});
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) io.observe(el);
+    });
+  });
+})();
+</script>
+<script defer>
+// Three states, cycled by one button: follow the system, force light, force dark.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var btn = document.getElementById('theme'), root = document.documentElement;
+    if (!btn) return;
+    function get(){ try { return localStorage.getItem('bhr-theme') || 'system'; }
+                    catch(e){ return 'system'; } }
+    function label(){
+      var m = get();
+      btn.querySelector('.lbl').textContent =
+        m === 'system' ? 'Theme' : (m === 'light' ? 'Light' : 'Dark');
+      btn.title = m === 'system'
+        ? 'Following your computer. Click for light.'
+        : (m === 'light' ? 'Light. Click for dark.'
+                         : 'Dark. Click to follow your computer.');
+    }
+    function set(m){
+      try { m === 'system' ? localStorage.removeItem('bhr-theme')
+                           : localStorage.setItem('bhr-theme', m); } catch(e){}
+      if (m === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', m);
+      label();
+    }
+    label();
+    btn.addEventListener('click', function(){
+      var m = get();
+      set(m === 'system' ? 'light' : (m === 'light' ? 'dark' : 'system'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

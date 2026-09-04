@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Training and Credentials &middot; BHR Engineering</title>
+<meta name="description" content="Every training platform and credential the shop uses or recommends, with what it actually costs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="../assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/site.css?v=c3afc4c9">
+<style>
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px}
+.filters button{font-family:var(--sans);font-size:13px;font-weight:500;
+  background:var(--card);color:var(--ink-2);border:1px solid var(--rule);
+  padding:6px 13px;border-radius:20px;cursor:pointer;line-height:1.3}
+.filters button:hover{border-color:var(--accent);color:var(--accent)}
+.filters button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.rlist{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.r{background:var(--card);padding:17px 20px;display:flex;flex-direction:column;gap:8px}
+.r.hide{display:none}
+.rhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px}
+.r h3{margin:0;font-size:17px}
+.r h3 a{text-decoration:none}
+.r h3 a:hover{text-decoration:underline}
+.pill{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
+  padding:3px 8px;border-radius:3px;white-space:nowrap}
+.pill.ok{color:var(--green);background:var(--green-soft)}
+.pill.deep{color:var(--blue);background:var(--blue-soft)}
+.pill.hard{color:var(--ink-2);background:transparent;box-shadow:inset 0 0 0 1px var(--rule)}
+.pill.warn{color:var(--warm);background:var(--warm-soft)}
+.pill.school{color:var(--accent);background:var(--accent-soft)}
+.rcost{font-size:13.5px;color:var(--ink-3);font-family:var(--sans)}
+.r p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.55;max-width:70ch}
+.r .meta{display:flex;flex-wrap:wrap;gap:5px 18px;font-size:13.5px;color:var(--ink-3);
+  font-family:var(--sans)}
+.r .meta b{font-weight:600;color:var(--ink-2)}
+.r .why{font-size:15px;color:var(--ink);background:var(--paper);border-left:2px solid var(--accent);
+  padding:8px 13px;line-height:1.5;max-width:70ch}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tags i{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);border:1px solid var(--rule);
+  padding:2px 6px;border-radius:2px}
+
+.creds{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.creds div{background:var(--card);padding:16px 20px;display:grid;
+  grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:6px 24px;align-items:start}
+.creds b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.35}
+.creds .who{font-size:13.5px;color:var(--ink-3);font-family:var(--sans);display:block;
+  margin-top:2px}
+.creds .cost{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-top:5px}
+.creds p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.55}
+.creds .cnote{margin-top:7px;font-size:14.5px;color:var(--warm)}
+@media(max-width:620px){.creds div{grid-template-columns:1fr}}
+
+.trainbox{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.trainbox a{background:var(--card);padding:13px 18px;text-decoration:none;color:inherit;
+  display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr) auto;gap:4px 18px;
+  align-items:baseline}
+.trainbox a:hover{background:var(--accent-soft)}
+.trainbox b{font-family:var(--sans);font-weight:600;font-size:15px}
+.trainbox span{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+@media(max-width:620px){.trainbox a{grid-template-columns:1fr}}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('bhr-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+</head>
+<body>
+
+<header class="sitebar">
+  <div class="in">
+    <a class="brand" href="../index.html">
+      <img class="mark" src="../assets/logo-96.png" alt="" width="34" height="29">
+      <span>Engineering&nbsp;Technology</span>
+    </a>
+      <div class="srch">
+        <span class="sbox">
+          <input type="search" id="q" placeholder="Search" autocomplete="off"
+                 aria-label="Search the site" aria-expanded="false" aria-controls="sres">
+          <kbd>/</kbd>
+        </span>
+        <div class="sres" id="sres" role="listbox" hidden></div>
+      </div>
+      <button class="themebtn" id="theme" type="button"
+              title="Switch between light and dark" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span><span class="lbl">Theme</span>
+      </button>
+  </div>
+</header>
+
+<div class="shell">
+<div class="rail">
+  <div class="railin">
+  <nav aria-label="Site"><ul>
+    <li><a href="../index.html" class="sec">Home</a>
+    </li>
+    <li><a href="../start/welcome.html" class="sec">Start here</a>
+    </li>
+    <li><a href="../logbook/index.html" class="sec">Logbook</a>
+    </li>
+    <li><a href="../pathways/index.html" class="sec">The seven pathways</a>
+    </li>
+    <li><a href="../shop/index.html" class="sec">Shop safety</a>
+    </li>
+    <li><a href="../resources/index.html" class="here">Training and credentials</a>
+    </li>
+  </ul></nav>
+  </div>
+</div>
+<div class="main">
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Training &amp; Credentials</p>
+    <h1>Where to learn it, and what you can earn</h1>
+    <p>Every platform the shop uses or recommends. All of it is either free or already
+      paid for by the shop &mdash; none of it costs you anything. Filter by pathway, or
+      read the lot.</p>
+  </header>
+
+  <section>
+    <h2>Read the labels</h2>
+    <p class="sub">Plenty of things online are advertised as free and are not. These
+      labels mean exactly what they say, and none of them means you pay.</p>
+    <dl class="defs">
+      <dt><span class="pill ok">Free</span></dt>
+      <dd>Costs nothing, including any badge or certificate it awards. No card, no trial
+        that turns into a bill.</dd>
+      <dt><span class="pill warn">Free, with limits</span></dt>
+      <dd>You can use it without paying, but there is a cap you will hit. The cap is
+        stated. Do not pay for anything yourself before asking.</dd>
+      <dt><span class="pill school">School provides</span></dt>
+      <dd>The shop already pays for this. Ask Mr. Frank for access rather than signing
+        up yourself &mdash; there is nothing for you to buy.</dd>
+    </dl>
+    <p class="note warn"><strong>You should never need to pay for anything on this
+      page.</strong> Everything here is either free or already covered by the shop. If a
+      site starts asking you for card details, stop and ask Mr. Frank &mdash; there is
+      almost always a free school route that is not obvious from the website.</p>
+  </section>
+
+  <section>
+    <h2>The platforms</h2>
+    <p class="sub">26 of them. Filter to your pathway if the full list is too much.</p>
+    <div class="filters">
+      <button class="on" data-f="all">Everything</button>
+      <button data-f="industrial">Industrial Design</button>
+      <button data-f="architecture">Architecture &amp; Civil</button>
+      <button data-f="mechanical">Mechanical</button>
+      <button data-f="electrical">Electrical</button>
+      <button data-f="software">Software</button>
+      <button data-f="automation">Automation &amp; Robotics</button>
+      <button data-f="project">Project Management</button>
+    </div>
+    <div class="rlist" id="rlist">
+  <article class="r" data-p="industrial architecture mechanical">
+    <div class="rhead">
+      <h3><a href="https://www.gmetrix.com/" target="_blank" rel="noopener">GMetrix</a></h3>
+      <span class="pill school">School provides</span>
+      <span class="rcost">Mr. Frank gives you a classroom code</span>
+    </div>
+    <p>Practice tests and training for the Autodesk certifications. Two modes: training mode walks you through each question, testing mode is timed like the real thing.</p>
+    <p class="why">New this year. Use it until you are consistently passing in testing mode — that is the signal you are ready to sit the real one.</p>
+    <div class="meta"><span><b>Credential:</b> Practice only — the real exam is separate</span></div>
+    <div class="tags"><i>Industrial Design</i><i>Architecture & Civil</i><i>Mechanical</i></div>
+  </article>
+  <article class="r" data-p="automation electrical mechanical">
+    <div class="rhead">
+      <h3><a href="https://www.festo.com/us/en/e/technical-education/digital-learning/festo-learning-experience-id_642130" target="_blank" rel="noopener">Festo LX</a></h3>
+      <span class="pill school">School provides</span>
+      <span class="rcost">School subscription — ask for access</span>
+    </div>
+    <p>Festo's industrial training portal. Factory automation, pneumatics and hydraulics, electrical engineering, mechatronics, and Industry 4.0, built by the company that makes the equipment.</p>
+    <p class="why">Closest thing in the program to what an automation technician actually trains on at work.</p>
+    <div class="meta"><span><b>Credential:</b> Training only</span></div>
+    <div class="tags"><i>Automation & Robotics</i><i>Electrical</i><i>Mechanical</i></div>
+  </article>
+  <article class="r" data-p="industrial architecture mechanical">
+    <div class="rhead">
+      <h3><a href="https://www.certiport.com/" target="_blank" rel="noopener">Certiport</a></h3>
+      <span class="pill school">School provides</span>
+      <span class="rcost">Exams are run here, by Mr. Frank</span>
+    </div>
+    <p>The testing platform the Autodesk certification exams run on. Mr. Frank is the certified proctor, so you sit the exam in this building on a normal school day.</p>
+    <p class="why">Get the consent form signed early in the year. Not the week you are ready to test — that is how people miss a testing window.</p>
+    <div class="meta"><span><b>Credential:</b> The real Autodesk certification</span><span><b>Sign-up:</b> Under 18 needs a parent or guardian consent form on file first</span></div>
+    <div class="tags"><i>Industrial Design</i><i>Architecture & Civil</i><i>Mechanical</i></div>
+  </article>
+  <article class="r" data-p="industrial architecture mechanical electrical software automation project">
+    <div class="rhead">
+      <h3><a href="https://www.autodesk.com/education/edu-software" target="_blank" rel="noopener">Autodesk free software</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free 1-year education licence, renewable</span>
+    </div>
+    <p>Fusion, Inventor, AutoCAD, Revit, Civil 3D — the full professional suite on your own machine, free while you are a student. You verify your enrolment once.</p>
+    <p class="why">Install it at home. Everything you do in the shop, you can carry on with.</p>
+    
+    <div class="tags"><i>Every pathway</i></div>
+  </article>
+  <article class="r" data-p="industrial architecture mechanical">
+    <div class="rhead">
+      <h3><a href="https://www.autodesk.com/learn" target="_blank" rel="noopener">Autodesk Learning</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free with an Autodesk account</span>
+    </div>
+    <p>Autodesk's own course catalogue, including free certification prep courses for Fusion, Inventor, Revit, AutoCAD and Civil 3D — most run 5 to 15 hours.</p>
+    
+    <div class="meta"><span><b>Sign-up:</b> Autodesk account is 13+</span></div>
+    <div class="tags"><i>Industrial Design</i><i>Architecture & Civil</i><i>Mechanical</i></div>
+  </article>
+  <article class="r" data-p="industrial electrical automation software">
+    <div class="rhead">
+      <h3><a href="https://www.tinkercad.com/" target="_blank" rel="noopener">Tinkercad</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free, join with a class code</span>
+    </div>
+    <p>Browser-based 3D modelling, circuit simulation and Codeblocks. Fastest way to test a circuit or a shape without installing anything.</p>
+    <p class="why">Circuits mode simulates a real breadboard with an Arduino on it — you can debug a build before you wire it.</p>
+    
+    <div class="tags"><i>Industrial Design</i><i>Electrical</i><i>Automation & Robotics</i><i>Software</i></div>
+  </article>
+  <article class="r" data-p="industrial mechanical electrical">
+    <div class="rhead">
+      <h3><a href="https://www.instructables.com/" target="_blank" rel="noopener">Instructables</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost"></span>
+    </div>
+    <p>Project write-ups and free classes on 3D printing, CNC, laser cutting and electronics. Owned by Autodesk.</p>
+    
+    
+    <div class="tags"><i>Industrial Design</i><i>Mechanical</i><i>Electrical</i></div>
+  </article>
+  <article class="r" data-p="software">
+    <div class="rhead">
+      <h3><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">freeCodeCamp</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free, and the certifications are free too</span>
+    </div>
+    <p>Eleven certifications in web development, Python, data analysis and more. Each one takes five real projects, not a multiple-choice test.</p>
+    <p class="why">One of the very few places where the credential itself costs nothing.</p>
+    <div class="meta"><span><b>Credential:</b> Free certification</span></div>
+    <div class="tags"><i>Software</i></div>
+  </article>
+  <article class="r" data-p="software">
+    <div class="rhead">
+      <h3><a href="https://cs50.harvard.edu/x/" target="_blank" rel="noopener">Harvard CS50x</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free — including the CS50 certificate</span>
+    </div>
+    <p>Harvard's introduction to computer science, taught properly. C, Python, SQL, algorithms, and a final project you design yourself.</p>
+    <p class="why">Hard, and worth it. Take it directly from cs50.harvard.edu — the version listed on other course sites is the same material.</p>
+    <div class="meta"><span><b>Credential:</b> Free CS50 certificate at 70%+</span></div>
+    <div class="tags"><i>Software</i></div>
+  </article>
+  <article class="r" data-p="software automation electrical">
+    <div class="rhead">
+      <h3><a href="https://www.netacad.com/" target="_blank" rel="noopener">Cisco Networking Academy</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free courses, free badges</span>
+    </div>
+    <p>Python Essentials 1 and 2, Computer Hardware Basics, Introduction to IoT. Self-paced, with a Credly digital badge at the end of each.</p>
+    
+    <div class="meta"><span><b>Credential:</b> Free digital badge</span><span><b>Sign-up:</b> Enrol through the school, not on your own</span></div>
+    <div class="tags"><i>Software</i><i>Automation & Robotics</i><i>Electrical</i></div>
+  </article>
+  <article class="r" data-p="software">
+    <div class="rhead">
+      <h3><a href="https://aws.amazon.com/education/awseducate/" target="_blank" rel="noopener">AWS Educate</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free — email address only, no card</span>
+    </div>
+    <p>Hands-on cloud and computing labs with free shareable badges. No AWS account and no credit card needed.</p>
+    
+    <div class="meta"><span><b>Credential:</b> Free digital badge</span><span><b>Sign-up:</b> 13+</span></div>
+    <div class="tags"><i>Software</i></div>
+  </article>
+  <article class="r" data-p="software project">
+    <div class="rhead">
+      <h3><a href="https://skillsbuild.org/high-school" target="_blank" rel="noopener">IBM SkillsBuild</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free, badges included</span>
+    </div>
+    <p>IBM's free programme built for ages 13 to 18. AI Literacy, Cybersecurity Fundamentals, Data Fundamentals, Web Development, Cloud Computing, Project Management Fundamentals — most run 4 to 12 hours.</p>
+    <p class="why">The strongest free-credential option in the whole programme. Badges come from IBM and go straight on a resume.</p>
+    <div class="meta"><span><b>Credential:</b> Free IBM digital badges via Credly</span><span><b>Sign-up:</b> 13 to 18 — under-18s may need a parent to approve</span></div>
+    <div class="tags"><i>Software</i><i>Project Management</i></div>
+  </article>
+  <article class="r" data-p="software mechanical electrical project">
+    <div class="rhead">
+      <h3><a href="https://brilliant.org/" target="_blank" rel="noopener">Brilliant</a></h3>
+      <span class="pill warn">Free, with limits</span>
+      <span class="rcost">Free tier is capped at 2 lessons a day</span>
+    </div>
+    <p>Interactive maths, logic, computer science and data courses. Built around solving rather than watching.</p>
+    <p class="why">Ask Mr. Frank before signing up yourself — the school can enrol you for full access with no daily cap, free, through Brilliant for Educators.</p>
+    <div class="meta"><span><b>Sign-up:</b> 13+</span></div>
+    <div class="tags"><i>Software</i><i>Mechanical</i><i>Electrical</i><i>Project Management</i></div>
+  </article>
+  <article class="r" data-p="industrial architecture mechanical electrical software automation project">
+    <div class="rhead">
+      <h3><a href="https://www.khanacademy.org/" target="_blank" rel="noopener">Khan Academy</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost"></span>
+    </div>
+    <p>Free maths and physics, from algebra through calculus and mechanics. The backstop when a formula in a pathway guide does not make sense yet.</p>
+    
+    
+    <div class="tags"><i>Every pathway</i></div>
+  </article>
+  <article class="r" data-p="mechanical architecture">
+    <div class="rhead">
+      <h3><a href="https://ocw.mit.edu/" target="_blank" rel="noopener">MIT OpenCourseWare</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free, no account</span>
+    </div>
+    <p>Complete MIT course materials, including 2.001 Mechanics and Materials. Lecture notes, problem sets and solutions.</p>
+    <p class="why">University-level and unapologetic about it. Use it when you want the real derivation rather than the summary.</p>
+    <div class="meta"><span><b>Credential:</b> No credential</span></div>
+    <div class="tags"><i>Mechanical</i><i>Architecture & Civil</i></div>
+  </article>
+  <article class="r" data-p="electrical automation">
+    <div class="rhead">
+      <h3><a href="https://www.allaboutcircuits.com/textbook/" target="_blank" rel="noopener">All About Circuits</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free open textbook</span>
+    </div>
+    <p>A full DC, AC and semiconductor textbook, used in two-year electronics programmes. Clear on the things that trip people up.</p>
+    
+    
+    <div class="tags"><i>Electrical</i><i>Automation & Robotics</i></div>
+  </article>
+  <article class="r" data-p="electrical">
+    <div class="rhead">
+      <h3><a href="https://www.ti.com/video/series/precision-labs.html" target="_blank" rel="noopener">TI Precision Labs</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free</span>
+    </div>
+    <p>Texas Instruments' own analog training — op amps, ADCs, instrumentation amplifiers, noise. Written by the engineers who design the parts.</p>
+    <p class="why">Genuinely respected by practising engineers. Steeper than it looks.</p>
+    
+    <div class="tags"><i>Electrical</i></div>
+  </article>
+  <article class="r" data-p="electrical software automation">
+    <div class="rhead">
+      <h3><a href="https://docs.arduino.cc/" target="_blank" rel="noopener">Arduino Docs and Project Hub</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free to browse and use</span>
+    </div>
+    <p>Official Arduino tutorials, language reference, and thousands of documented projects with code and wiring.</p>
+    <p class="why">Arduino Cloud's free tier caps you at 25 compiles a day — fine for a lesson, tight for a build day. The desktop IDE has no limit.</p>
+    <div class="meta"><span><b>Sign-up:</b> Under 18 needs a parent-approved account to publish or use Cloud</span></div>
+    <div class="tags"><i>Electrical</i><i>Software</i><i>Automation & Robotics</i></div>
+  </article>
+  <article class="r" data-p="industrial mechanical">
+    <div class="rhead">
+      <h3><a href="https://support.stratasys.com/en/Welcome/Training/PolyJet/J5-Series" target="_blank" rel="noopener">Stratasys Academy — J5 Series</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Manufacturer training</span>
+    </div>
+    <p>Online training for the J5 series, which is our J55 — organised as Getting Started, Operating, Designing and Post-Processing. The Designing track is design for additive manufacturing generally, so it is useful even if you never touch the machine.</p>
+    <p class="why">Stratasys runs a separate PolyJet Certification for AM Designers beyond these modules. Access terms for the online courses are not stated on the page — check before sending a class at it.</p>
+    
+    <div class="tags"><i>Industrial Design</i><i>Mechanical</i></div>
+  </article>
+  <article class="r" data-p="automation">
+    <div class="rhead">
+      <h3><a href="https://academy.universal-robots.com/free-e-learning/" target="_blank" rel="noopener">Universal Robots Academy</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free, simulation-based</span>
+    </div>
+    <p>Six free tracks on programming collaborative robots — UR20/30 (start here), e-Series, CB3, PolyScope X, URScript, and Risk Assessment. Runs in simulation, so you can do the whole thing without touching a robot. Free account required.</p>
+    <p class="why">This is the training for the arms in our own shop — we have a UR3 and a UR5. Do the e-Series track and the Risk Assessment track before you go near them. CB3 takes under two hours; Risk Assessment is the one that matters most, because a cobot is only as safe as the application built around it.</p>
+    
+    <div class="tags"><i>Automation & Robotics</i></div>
+  </article>
+  <article class="r" data-p="automation electrical">
+    <div class="rhead">
+      <h3><a href="https://www.siemens.com/en-us/content/sce-educational-institutions/documents/" target="_blank" rel="noopener">Siemens SCE</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free downloads</span>
+    </div>
+    <p>Siemens' industrial training documents for PLC programming and TIA Portal — the same material used to train technicians.</p>
+    
+    
+    <div class="tags"><i>Automation & Robotics</i><i>Electrical</i></div>
+  </article>
+  <article class="r" data-p="architecture">
+    <div class="rhead">
+      <h3><a href="https://support.usgbc.org/hc/en-us/articles/4404880158227-Learning-Lab" target="_blank" rel="noopener">USGBC Learning Lab</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free with a USGBC account</span>
+    </div>
+    <p>Over a hundred green-building and sustainability lessons written for high school, standards-aligned, in English and Spanish.</p>
+    <p class="why">The best free sustainable-design material available anywhere.</p>
+    
+    <div class="tags"><i>Architecture & Civil</i></div>
+  </article>
+  <article class="r" data-p="architecture">
+    <div class="rhead">
+      <h3><a href="https://learn.arcgis.com/" target="_blank" rel="noopener">Learn ArcGIS</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free public account; free for US schools</span>
+    </div>
+    <p>Mapping and spatial analysis tutorials. Useful for site work, drainage, and anything where the ground matters.</p>
+    
+    
+    <div class="tags"><i>Architecture & Civil</i></div>
+  </article>
+  <article class="r" data-p="project">
+    <div class="rhead">
+      <h3><a href="https://www.pmi.org/kickoff" target="_blank" rel="noopener">PMI KICKOFF</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free, badge included</span>
+    </div>
+    <p>The Project Management Institute's own free course — about 45 minutes, in predictive and agile versions, with a downloadable tool kit.</p>
+    <p class="why">PMI is the body that issues the PMP. A free badge with their name on it is worth the 45 minutes.</p>
+    <div class="meta"><span><b>Credential:</b> Free digital badge</span></div>
+    <div class="tags"><i>Project Management</i></div>
+  </article>
+  <article class="r" data-p="project">
+    <div class="rhead">
+      <h3><a href="https://www.open.edu/openlearn/badged-courses" target="_blank" rel="noopener">OpenLearn badged courses</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free, badge included</span>
+    </div>
+    <p>The Open University's free courses with assessment. "Project management: the start of the project journey" fits this pathway directly.</p>
+    
+    <div class="meta"><span><b>Credential:</b> Free digital badge and statement of participation</span></div>
+    <div class="tags"><i>Project Management</i></div>
+  </article>
+  <article class="r" data-p="project">
+    <div class="rhead">
+      <h3><a href="https://www.life-global.org/" target="_blank" rel="noopener">HP LIFE</a></h3>
+      <span class="pill ok">Free</span>
+      <span class="rcost">Free, certificate included</span>
+    </div>
+    <p>Short business and entrepreneurship modules — business planning, finance, operations, marketing.</p>
+    <p class="why">Lines up with the business plan Standard 11 asks for.</p>
+    <div class="meta"><span><b>Credential:</b> Free completion certificate</span></div>
+    <div class="tags"><i>Project Management</i></div>
+  </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Credentials you can actually earn here</h2>
+    <p class="sub">The difference between training and a credential is that someone else
+      vouches for the second one.</p>
+    <div class="creds">
+  <div>
+    <div><b>OSHA 10 — Construction</b><span class="who">Every student, Grade 10</span><span class="cost">School provides</span></div>
+    <div><p>The safety credential that lets you work on the equipment here, and it is recognised well outside this building. Nothing in a hub happens without it.</p></div>
+  </div>
+  <div>
+    <div><b><a href="https://certiport.pearsonvue.com/Certifications/Autodesk/Certifications/Certify.aspx" target="_blank" rel="noopener">Autodesk Certified User</a></b><span class="who">Fusion, Inventor, Revit or AutoCAD</span><span class="cost">School provides</span></div>
+    <div><p>The industry certification for the CAD tools we use. You prepare in GMetrix and Autodesk's free prep courses, then sit the real exam here in the shop — Mr. Frank is the certified proctor, so you never leave the building.</p><p class="cnote">If you are under 18, a parent or guardian has to sign a consent form before you can sit the exam. Ask early, not the week of.</p></div>
+  </div>
+  <div>
+    <div><b><a href="https://skillsbuild.org/high-school" target="_blank" rel="noopener">IBM digital badges</a></b><span class="who">Anyone, any time</span><span class="cost">Free</span></div>
+    <div><p>No exam, no proctor, no scheduling. Work through a course and the badge is yours. The fastest real credential you can earn in this programme.</p></div>
+  </div>
+  <div>
+    <div><b><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">freeCodeCamp certifications</a></b><span class="who">Software pathway</span><span class="cost">Free</span></div>
+    <div><p>Five projects per certification. Slower than a badge, and it shows a lot more.</p></div>
+  </div>
+  <div>
+    <div><b><a href="https://cs50.harvard.edu/x/certificate/" target="_blank" rel="noopener">CS50 certificate</a></b><span class="who">Software pathway</span><span class="cost">Free</span></div>
+    <div><p>Finish every problem set and the final project at 70% or better.</p></div>
+  </div>
+  <div>
+    <div><b><a href="https://www.pmi.org/kickoff" target="_blank" rel="noopener">PMI KICKOFF badge</a></b><span class="who">Project Management pathway</span><span class="cost">Free</span></div>
+    <div><p>About 45 minutes, from the body that issues the PMP.</p></div>
+  </div>
+    </div>
+    <p class="note">Some pathways have excellent free training but no widely respected
+      free credential &mdash; Mechanical, Electrical and Architecture are the honest
+      examples. That is a fact about the industry rather than a gap in the programme. In
+      those pathways the Autodesk certification is the one to go for, and the school
+      covers it.</p>
+  </section>
+
+  <section>
+    <h2>A word on AI tools</h2>
+    <p class="sub">Worth being straight with you about this.</p>
+    <p>Most of the well-known AI assistants, Claude included, require you to be
+      <strong>18 or older</strong> to hold an account. That is their rule, not the
+      school&rsquo;s, and it applies at home as much as here. If you are under 18, do not
+      sign up for one and do not use a family member&rsquo;s account to get around it.</p>
+    <p>There is good AI <em>learning</em> that is open to you now &mdash; IBM
+      SkillsBuild&rsquo;s AI Literacy credential is free, built for ages 13 to 18, and
+      gives you a badge at the end. Start there. Ask Mr. Frank before using any AI tool
+      for schoolwork, in this shop or any other class.</p>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('.filters button');
+  var items=document.querySelectorAll('#rlist .r');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      var f=b.dataset.f;
+      items.forEach(function(it){
+        var show = f==='all' || it.dataset.p.split(' ').indexOf(f)!==-1;
+        it.classList.toggle('hide', !show);
+      });
+    });
+  });
+})();
+</script>
+
+</div>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology &middot; Room E-126</span>
+    <span>Mr. Frank &middot; Mr. Dryer</span>
+    <span class="build">Build 04 Sep 2026, 16:23</span>
+  </div>
+</footer>
+
+
+<script src="../assets/search-index.js?v=003b2e2b" defer></script>
+<script defer>
+(function(){
+  var REL = '../';
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var box = document.getElementById('q'), out = document.getElementById('sres');
+    if (!box || !window.BHR_INDEX) return;
+    var IDX = window.BHR_INDEX, cur = -1, rows = [];
+
+    var KIND = {video:'Video',course:'Course',site:'Site',tool:'Tool',read:'Reading',
+      podcast:'Podcast',book:'Book',data:'Data',comp:'Competition',doc:'Doc',
+      software:'Software',page:'Page',rule:'Rule',check:'Safety check',
+      platform:'Training',sds:'Safety data',pathway:'Pathway',talk:'Talk',
+      playlist:'Playlist'};
+
+    function esc(s){ return s.replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    function hi(s, terms){
+      s = esc(s);
+      terms.forEach(function(t){
+        if (t.length < 2) return;
+        s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'ig'),
+                      '<mark>$1</mark>');
+      });
+      return s;
+    }
+
+    // Score by where the match lands: a title hit beats a note hit, and a hit at
+    // the start of the title beats one in the middle. Every term must appear
+    // somewhere, so multi-word queries narrow rather than widen.
+    function score(r, terms){
+      var t = r.t.toLowerCase(), n = (r.n + ' ' + r.x).toLowerCase(),
+          w = r.w.toLowerCase(), s = 0;
+      for (var i = 0; i < terms.length; i++){
+        var q = terms[i], hit = 0;
+        if (t.indexOf(q) === 0) hit = 100;
+        else if (t.indexOf(' ' + q) > -1) hit = 70;
+        else if (t.indexOf(q) > -1) hit = 50;
+        else if (w.indexOf(q) > -1) hit = 30;
+        else if (n.indexOf(q) > -1) hit = 20;
+        if (!hit) return 0;
+        s += hit;
+      }
+      if (r.k === 'page' || r.k === 'pathway') s += 12;   // structure floats up
+      return s;
+    }
+
+    function run(){
+      var qv = box.value.trim().toLowerCase();
+      if (qv.length < 2){ close(); return; }
+      var terms = qv.split(/\s+/);
+      rows = IDX.map(function(r){ return {r:r, s:score(r, terms)}; })
+                .filter(function(x){ return x.s > 0; })
+                .sort(function(a,b){ return b.s - a.s || a.r.t.length - b.r.t.length; })
+                .slice(0, 30);
+      draw(terms);
+    }
+
+    function draw(terms){
+      if (!rows.length){
+        out.innerHTML = '<p class="none">Nothing matches &ldquo;' +
+          esc(box.value.trim()) + '&rdquo;.</p>';
+      } else {
+        var h = '<div class="hd">' + rows.length +
+                (rows.length === 30 ? '+ matches' : ' match' + (rows.length>1?'es':'')) +
+                '</div>';
+        rows.forEach(function(x, i){
+          var r = x.r,
+              ext = /^https?:/.test(r.u),
+              href = ext ? r.u : REL + r.u;
+          h += '<a href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') +
+               ' data-i="' + i + '" role="option">' +
+               '<span class="ti">' + hi(r.t, terms) +
+                 (ext ? ' <span class="ext">&#8599;</span>' : '') + '</span>' +
+               '<span class="me"><span class="kd">' + (KIND[r.k] || r.k) + '</span>' +
+               '<span class="wh">' + hi(r.w, terms) + '</span></span>' +
+               (r.n ? '<span class="nt">' + hi(r.n, terms) + '</span>' : '') +
+               '</a>';
+        });
+        out.innerHTML = h;
+      }
+      out.hidden = false; box.setAttribute('aria-expanded','true'); cur = -1;
+    }
+
+    function close(){ out.hidden = true; box.setAttribute('aria-expanded','false'); cur = -1; }
+
+    function move(d){
+      var links = out.querySelectorAll('a');
+      if (!links.length) return;
+      if (cur > -1) links[cur].classList.remove('on');
+      cur = (cur + d + links.length) % links.length;
+      links[cur].classList.add('on');
+      links[cur].scrollIntoView({block:'nearest'});
+    }
+
+    box.addEventListener('input', run);
+    box.addEventListener('focus', function(){ if (box.value.trim().length > 1) run(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter'){
+        var links = out.querySelectorAll('a');
+        if (cur > -1 && links[cur]){ e.preventDefault(); links[cur].click(); }
+      }
+      else if (e.key === 'Escape'){ close(); box.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.srch')) close();
+    });
+    // "/" from anywhere jumps to the box, the way every developer tool does it
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); box.focus(); box.select();
+      }
+    });
+  });
+})();
+</script>
+<script defer>
+// Track which in-page section you are actually looking at and mark it in the
+// rail. Only runs where the rail has anchor links.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var links = [].slice.call(document.querySelectorAll('.rail .anch a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {}, pos = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        pos[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null;
+      });
+      var best = null, near = Infinity;
+      Object.keys(pos).forEach(function(id){
+        if (pos[id] === null) return;
+        var d = Math.abs(pos[id] - 90);
+        if (d < near){ near = d; best = id; }
+      });
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if (best && map[best]) map[best].classList.add('on');
+    }, {rootMargin:'-70px 0px -55% 0px', threshold:[0,1]});
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) io.observe(el);
+    });
+  });
+})();
+</script>
+<script defer>
+// Three states, cycled by one button: follow the system, force light, force dark.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var btn = document.getElementById('theme'), root = document.documentElement;
+    if (!btn) return;
+    function get(){ try { return localStorage.getItem('bhr-theme') || 'system'; }
+                    catch(e){ return 'system'; } }
+    function label(){
+      var m = get();
+      btn.querySelector('.lbl').textContent =
+        m === 'system' ? 'Theme' : (m === 'light' ? 'Light' : 'Dark');
+      btn.title = m === 'system'
+        ? 'Following your computer. Click for light.'
+        : (m === 'light' ? 'Light. Click for dark.'
+                         : 'Dark. Click to follow your computer.');
+    }
+    function set(m){
+      try { m === 'system' ? localStorage.removeItem('bhr-theme')
+                           : localStorage.setItem('bhr-theme', m); } catch(e){}
+      if (m === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', m);
+      label();
+    }
+    label();
+    btn.addEventListener('click', function(){
+      var m = get();
+      set(m === 'system' ? 'light' : (m === 'light' ? 'dark' : 'system'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

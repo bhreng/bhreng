@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Architecture and Civil Engineering &middot; BHR Engineering</title>
+<meta name="description" content="Architecture and Civil Engineering pathway guide — Standard 10. Buildings, sites, and the loads that hold them up.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="../assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/site.css?v=c3afc4c9">
+<style>
+max-width:1140px;margin:0 auto;padding:28px 24px 90px;align-items:start}
+@media(max-width:900px){.shell{grid-template-columns:1fr;gap:24px}}
+  border-right:1px solid var(--rule);padding-right:18px}
+@media(max-width:900px){nav{position:static;border-right:0;
+  border-bottom:1px solid var(--rule);padding:0 0 18px}}
+  font-family:var(--mono);margin:0 0 11px}
+  background:none;border:0;cursor:pointer;color:var(--ink-2);font-size:13.5px;
+  font-weight:500;padding:6px 8px;border-radius:3px;font-family:inherit;line-height:1.35}
+nav .std{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none;width:22px}
+.ph{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:34px;
+  display:flex;flex-direction:column;gap:9px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0}
+h2{font-family:var(--sans);font-weight:var(--w-heavy);
+  font-size:clamp(28px,4.6vw,42px);line-height:1.04;letter-spacing:-.028em;margin:0;
+  text-wrap:balance;max-width:18ch}
+.tag{margin:0;font-family:var(--sans);font-weight:600;font-size:18px;
+  color:var(--ink-2);max-width:52ch;line-height:1.35;text-wrap:balance}
+.intro{margin:4px 0 0;font-size:16.5px;color:var(--ink-2);max-width:64ch}
+.newflag{margin:6px 0 0;font-size:14px;color:var(--moss);background:var(--moss-soft);
+  border-radius:3px;padding:8px 12px;max-width:64ch;line-height:1.45}
+.topic{margin-bottom:44px}
+.th{display:flex;gap:15px;align-items:flex-start;margin-bottom:14px}
+.tn{font-family:var(--sans);font-weight:700;font-size:14px;color:var(--accent);
+  background:var(--accent-soft);width:28px;height:28px;flex:none;border-radius:4px;
+  display:grid;place-items:center;margin-top:2px}
+h3{font-family:var(--sans);font-weight:700;font-size:22px;letter-spacing:-.015em;
+  margin:0;line-height:1.2}
+.tq{margin:3px 0 0;font-size:14px;font-style:italic;color:var(--ink-3);max-width:60ch}
+.blurb{margin:0 0 16px;color:var(--ink-2);max-width:66ch}
+.roles{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.roles div{background:var(--card);padding:13px 18px;display:grid;
+  grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:3px 22px}
+.roles b{font-family:var(--sans);font-weight:600;font-size:15px;line-height:1.4}
+.roles span{color:var(--ink-2);font-size:15px;line-height:1.5}
+@media(max-width:620px){.roles div{grid-template-columns:1fr}}
+dl.defs{margin:0;display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+dl.defs dt{background:var(--card);padding:14px 18px 4px;font-family:var(--sans);
+  font-weight:600;font-size:15.5px;line-height:1.35}
+dl.defs dd{background:var(--card);margin:0;padding:0 18px 14px;color:var(--ink-2);
+  font-size:15.5px;line-height:1.55}
+.pullout{margin-top:16px;background:var(--card);border:1px solid var(--rule);
+  border-left:3px solid var(--accent);padding:15px 20px}
+.pullout b{font-family:var(--sans);font-weight:600;font-size:15.5px;display:block;
+  margin-bottom:4px}
+.pullout p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.55;max-width:66ch}
+.cred{background:var(--accent-soft);border:1px solid var(--rule);padding:15px 20px;
+  margin-bottom:16px;display:flex;flex-direction:column;gap:3px}
+.cred span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent)}
+.cred b{font-family:var(--sans);font-weight:700;font-size:17px;line-height:1.3;
+  color:var(--ink)}
+.cred em{font-style:normal;font-size:14px;color:var(--ink-2);margin-top:3px}
+ul.ticks,ul.files{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;
+  gap:1px;background:var(--rule);border:1px solid var(--rule)}
+ul.ticks li,ul.files li{background:var(--card);padding:11px 18px 11px 40px;position:relative;
+  font-size:15.5px;line-height:1.5}
+ul.ticks li::before{content:"";position:absolute;left:19px;top:20px;width:7px;height:7px;
+  border-radius:50%;background:var(--accent)}
+ul.files li::before{content:"";position:absolute;left:18px;top:17px;width:9px;height:11px;
+  border:1.4px solid var(--accent);border-radius:1px}
+.briefs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.briefs article{background:var(--card);padding:16px 19px;display:flex;flex-direction:column;
+  gap:6px;box-shadow:0 0 0 1px var(--rule)}
+.briefs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.briefs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+.note{margin:16px 0 0;font-size:14.5px;color:var(--ink-2);background:var(--card);
+  border:1px solid var(--rule);border-left:3px solid var(--ink-3);padding:12px 16px;
+  max-width:70ch;line-height:1.5}
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--card);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th{font-family:var(--sans);font-weight:600;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);text-align:left;padding:11px 14px;
+  border-bottom:1.5px solid var(--rule);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:0}
+td.k{font-family:var(--sans);font-weight:600;white-space:nowrap}
+td.s{font-family:var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
+em{font-style:italic}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pathnav{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule);margin-top:-18px}
+.pathnav a{background:var(--card);box-shadow:0 0 0 1px var(--rule);
+  padding:10px 14px;text-decoration:none;
+  color:var(--ink-2);font-size:13.5px;font-family:var(--sans);font-weight:500;
+  display:flex;gap:8px;align-items:baseline}
+.pathnav a:hover{background:var(--accent-soft);color:var(--accent)}
+.pathnav a[aria-current="page"]{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.pathnav .std{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none}
+.pathnav a[aria-current="page"] .std{color:var(--accent)}
+.pagebody{display:flex;flex-direction:column}
+
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px}
+.filters button{font-family:var(--sans);font-size:13px;font-weight:500;
+  background:var(--card);color:var(--ink-2);border:1px solid var(--rule);
+  padding:6px 13px;border-radius:20px;cursor:pointer;line-height:1.3}
+.filters button:hover{border-color:var(--accent);color:var(--accent)}
+.filters button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.rlist{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.r{background:var(--card);padding:17px 20px;display:flex;flex-direction:column;gap:8px}
+.r.hide{display:none}
+.rhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px}
+.r h3{margin:0;font-size:17px}
+.r h3 a{text-decoration:none}
+.r h3 a:hover{text-decoration:underline}
+.pill{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
+  padding:3px 8px;border-radius:3px;white-space:nowrap}
+.pill.ok{color:var(--green);background:var(--green-soft)}
+.pill.deep{color:var(--blue);background:var(--blue-soft)}
+.pill.hard{color:var(--ink-2);background:transparent;box-shadow:inset 0 0 0 1px var(--rule)}
+.pill.warn{color:var(--warm);background:var(--warm-soft)}
+.pill.school{color:var(--accent);background:var(--accent-soft)}
+.rcost{font-size:13.5px;color:var(--ink-3);font-family:var(--sans)}
+.r p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.55;max-width:70ch}
+.r .meta{display:flex;flex-wrap:wrap;gap:5px 18px;font-size:13.5px;color:var(--ink-3);
+  font-family:var(--sans)}
+.r .meta b{font-weight:600;color:var(--ink-2)}
+.r .why{font-size:15px;color:var(--ink);background:var(--paper);border-left:2px solid var(--accent);
+  padding:8px 13px;line-height:1.5;max-width:70ch}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tags i{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);border:1px solid var(--rule);
+  padding:2px 6px;border-radius:2px}
+
+.creds{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.creds div{background:var(--card);padding:16px 20px;display:grid;
+  grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:6px 24px;align-items:start}
+.creds b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.35}
+.creds .who{font-size:13.5px;color:var(--ink-3);font-family:var(--sans);display:block;
+  margin-top:2px}
+.creds .cost{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-top:5px}
+.creds p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.55}
+.creds .cnote{margin-top:7px;font-size:14.5px;color:var(--warm)}
+@media(max-width:620px){.creds div{grid-template-columns:1fr}}
+
+.trainbox{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.trainbox a{background:var(--card);padding:13px 18px;text-decoration:none;color:inherit;
+  display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr) auto;gap:4px 18px;
+  align-items:baseline}
+.trainbox a:hover{background:var(--accent-soft)}
+.trainbox b{font-family:var(--sans);font-weight:600;font-size:15px}
+.trainbox span{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+@media(max-width:620px){.trainbox a{grid-template-columns:1fr}}
+
+.srcs{display:flex;flex-direction:column;gap:1px;background:var(--card);
+  border:1px solid var(--rule);margin-top:14px}
+.srcs a{background:var(--card);box-shadow:0 0 0 1px var(--rule);padding:14px 18px;
+  text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:5px}
+.srcs a:hover{background:var(--accent-soft)}
+.srcs .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.srcs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.srcs .kind{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3)}
+.srcs p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.5;max-width:70ch}
+.srchead{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-top:20px}
+.srchead h4{margin:0;font-family:var(--sans);font-weight:700;font-size:14px;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
+.srchead span{font-size:13.5px;color:var(--ink-3)}
+
+.pathlayout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px;
+  align-items:start}
+.pside{position:sticky;top:74px;font-family:var(--sans)}
+.pside .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 9px;padding-left:2px}
+.pside ol{list-style:none;margin:0 0 16px;padding:0;
+  border:1px solid var(--rule);background:var(--card)}
+.pside li{border-bottom:1px solid var(--rule-soft)}
+.pside li:last-child{border-bottom:0}
+.pside a{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;
+  padding:11px 13px;text-decoration:none;color:inherit;align-items:start}
+.pside a:hover{background:var(--accent-soft)}
+.pside .n{font-family:var(--mono);font-size:11px;color:var(--ink-3);
+  padding-top:2px;min-width:9px}
+.pside b{font-weight:600;font-size:14.5px;line-height:1.25;color:var(--ink);
+  display:block}
+.pside .pl{display:block;font-family:var(--serif);font-size:13px;color:var(--ink-2);
+  line-height:1.4;margin-top:2px}
+.pside .ct{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);
+  margin-top:4px}
+.pside a.on{background:var(--accent-soft)}
+.pside a.on .n,.pside a.on b{color:var(--accent)}
+.pside a.on b{font-weight:700}
+.pside .up{font-size:13px;color:var(--ink-2);text-decoration:none;
+  display:inline-block;padding:2px}
+.pside .up:hover{color:var(--accent)}
+.topic{scroll-margin-top:78px}
+@media(max-width:900px){
+  .pathlayout{grid-template-columns:1fr;gap:26px}
+  .pside{position:static}
+  .pside ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:1px;background:var(--rule)}
+  .pside li{border-bottom:0;background:var(--card)}
+}
+@media print{.pside{display:none}.pathlayout{display:block}}
+
+.firstmove{border:1px solid var(--rule);border-left:4px solid var(--brand);
+  background:var(--card);padding:20px 24px 22px;margin:0 0 34px}
+.firstmove h2{font-family:var(--sans);font-weight:700;font-size:19px;margin:0 0 4px;
+  color:var(--ink);letter-spacing:-.01em;max-width:none;text-wrap:pretty}
+.firstmove>p{margin:0 0 14px;color:var(--ink-2);font-size:15.5px;max-width:64ch}
+.firstmove ol{list-style:none;counter-reset:fm;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:11px}
+.firstmove li{counter-increment:fm;position:relative;padding-left:34px;
+  font-size:15.5px;line-height:1.55;max-width:66ch}
+.firstmove li::before{content:counter(fm);position:absolute;left:0;top:1px;
+  width:22px;height:22px;display:grid;place-items:center;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);
+  font-family:var(--sans);font-weight:700;font-size:12px}
+.firstmove .ask{margin:16px 0 0;font-size:14.5px;color:var(--ink-3);
+  padding-top:13px;border-top:1px solid var(--rule-soft)}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('bhr-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+</head>
+<body>
+
+<header class="sitebar">
+  <div class="in">
+    <a class="brand" href="../index.html">
+      <img class="mark" src="../assets/logo-96.png" alt="" width="34" height="29">
+      <span>Engineering&nbsp;Technology</span>
+    </a>
+      <div class="srch">
+        <span class="sbox">
+          <input type="search" id="q" placeholder="Search" autocomplete="off"
+                 aria-label="Search the site" aria-expanded="false" aria-controls="sres">
+          <kbd>/</kbd>
+        </span>
+        <div class="sres" id="sres" role="listbox" hidden></div>
+      </div>
+      <button class="themebtn" id="theme" type="button"
+              title="Switch between light and dark" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span><span class="lbl">Theme</span>
+      </button>
+  </div>
+</header>
+
+<div class="shell">
+<div class="rail">
+  <div class="railin">
+  <nav aria-label="Site"><ul>
+    <li><a href="../index.html" class="sec">Home</a>
+    </li>
+    <li><a href="../start/welcome.html" class="sec">Start here</a>
+    </li>
+    <li><a href="../logbook/index.html" class="sec">Logbook</a>
+    </li>
+    <li><a href="../pathways/index.html" class="sec">The seven pathways</a>
+      <ul class="kids">
+        <li><a href="../pathways/index.html">Which one is for you?</a>
+        </li>
+        <li><a href="../pathways/industrial.html">Industrial Design</a>
+        </li>
+        <li><a href="../pathways/architecture.html" class="here">Architecture &amp; Civil</a>
+          <ul class="kids anch">
+            <li><a href="#t1"><span class="n">1</span>Explore the Field</a></li>
+            <li><a href="#t2"><span class="n">2</span>Learn the Concepts</a></li>
+            <li><a href="#t3"><span class="n">3</span>Build Your Skills</a></li>
+            <li><a href="#ttrain"><span class="n">&middot;</span>Where to train</a></li>
+            <li><a href="#t4"><span class="n">4</span>Find a Project</a></li>
+            <li><a href="#t5"><span class="n">5</span>Get the Files</a></li>
+          </ul>
+        </li>
+        <li><a href="../pathways/mechanical.html">Mechanical</a>
+        </li>
+        <li><a href="../pathways/electrical.html">Electrical</a>
+        </li>
+        <li><a href="../pathways/software.html">Software</a>
+        </li>
+        <li><a href="../pathways/automation.html">Automation &amp; Robotics</a>
+        </li>
+        <li><a href="../pathways/project.html">Project Management</a>
+        </li>
+      </ul>
+    </li>
+    <li><a href="../shop/index.html" class="sec">Shop safety</a>
+    </li>
+    <li><a href="../resources/index.html" class="sec">Training and credentials</a>
+    </li>
+  </ul></nav>
+  </div>
+</div>
+<div class="main">
+<div class="wrap">
+<div class="pagebody">
+<div class="ph">
+<p class="eyebrow">Standard S10 &middot; Mr. Frank</p>
+<h2>Architecture and Civil Engineering</h2>
+<p class="tag">Buildings, sites, and the loads that hold them up.</p>
+<p class="intro">Everything in this pathway has to stand up, drain, and be legal. You work at a scale where a mistake is expensive and permanent, which is why the documentation in this pathway is the most demanding in the program.</p>
+</div>
+  <section class="firstmove">
+    <h2>New to this pathway? Start here.</h2>
+    <p>Nothing on this page is compulsory and there is no order you have to follow.
+      If you want a way in, this is the one I would take.</p>
+    <ol>
+      <li>Open <a href="https://www.ted.com/talks/peter_calthorpe_7_principles_for_building_better_cities"><strong>7 principles for building better cities</strong></a> from Explore the Field, and ask yourself honestly whether that work appeals to you.</li>
+      <li>If it does, pick <strong>one</strong> thing from Learn the Concepts &mdash; there are 8 to choose from &mdash; and actually finish it.</li>
+      <li>Then go to Build Your Skills and do something with your hands. 8 options, and you do not have to take them in order.</li>
+      <li>Write down what you did in your logbook, including what did not work.</li>
+    </ol>
+    <p class="ask">Stuck, or want to talk it through? Ask <strong>Mr. Frank</strong>.</p>
+  </section>
+<div class="topic" id="t1"><div class="th"><span class="tn">1</span><div><h3>Explore the Field</h3><p class="tq">Would this help someone decide whether to pick this pathway?</p></div></div>
+<p class="blurb">Architecture and civil engineering cover the built environment — how a structure carries load, how a site handles water and traffic, and how the whole thing gets documented so a contractor can build it.</p>
+<div class="roles">
+<div><b>Structural engineer</b><span>Proves the building will not fall down, and shows the math.</span></div>
+<div><b>Architectural designer</b><span>Resolves how a space is used into a form that can be built.</span></div>
+<div><b>Civil / site engineer</b><span>Grading, drainage, circulation, and how the site meets the road.</span></div>
+<div><b>BIM coordinator</b><span>Keeps the model coordinated across disciplines and catches clashes before they reach the field.</span></div>
+<div><b>Construction manager</b><span>Runs the build — sequence, safety, and compliance on site.</span></div>
+</div>
+<p class="note">Ask Mr. Dryer instead when your building gets smart — automated facades, sensors, controlled systems. The structure is here; the intelligence is over there.</p>
+</div>
+<div class="srchead"><h4>Go and look</h4><span>4 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://www.ted.com/talks/peter_calthorpe_7_principles_for_building_better_cities" target="_blank" rel="noopener"><span class="top"><b>7 principles for building better cities</b><span class="pill ok">Start here</span><span class="kind">talk</span></span><p>Peter Calthorpe, TED. Why cities are shaped the way they are, and what would have to change.</p></a>
+  <a href="https://www.youtube.com/watch?v=RKEGqwZBfn0" target="_blank" rel="noopener"><span class="top"><b>First year architecture student project</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>What an end-of-term submission and studio life actually look like. The most honest preview of the next step after here.</p></a>
+  <a href="https://www.youtube.com/watch?v=-hdmy7cK6cI" target="_blank" rel="noopener"><span class="top"><b>How to create an architecture portfolio</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>DamiLee. Relevant sooner than you think &mdash; your E.E.P. work is the portfolio.</p></a>
+  <a href="https://www.youtube.com/watch?v=1suurGcp8BI" target="_blank" rel="noopener"><span class="top"><b>Peter Cook on the benefits of drawing by hand</b><span class="pill deep">Going deeper</span><span class="kind">talk</span></span><p>Louisiana Channel. An architect arguing for the pencil in a CAD world.</p></a>
+</div>
+<div class="topic" id="t2"><div class="th"><span class="tn">2</span><div><h3>Learn the Concepts</h3><p class="tq">Is this something you study to understand how the work works?</p></div></div>
+<p class="blurb">You are learning to see a building as a set of forces travelling to the ground.</p>
+<dl class="defs">
+<dt>Structural systems</dt><dd>Steel frames, concrete frames, and foundations. Model forces, moments and stability in MD Solids or equivalent. Trace how gravity load moves from the roof to the earth.</dd>
+<dt>Material behavior</dt><dd>Steel, concrete and timber under load. Moment of inertia calculations to evaluate resistance to bending; stress-strain diagrams to predict what a material does before it fails.</dd>
+<dt>Sustainable and regenerative design</dt><dd>Sustainable design reduces harm — energy efficiency, less waste. Regenerative design goes further and tries to leave the site and community better than it found them. Know which one you are claiming.</dd>
+<dt>Drafting standards</dt><dd>Madsen, <em>Engineering Drawing and Design</em>, is the reference for this pathway — ANSI/ASME standards, visualization, and descriptive geometry.</dd>
+</dl>
+</div>
+<div class="srchead"><h4>Go and look</h4><span>8 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://www.youtube.com/watch?v=Hn_iozUo9m4" target="_blank" rel="noopener"><span class="top"><b>Understanding and analysing trusses</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>The Efficient Engineer. Method of joints and method of sections, clearly.</p></a>
+  <a href="https://www.youtube.com/watch?v=vrTJ25lx7bo" target="_blank" rel="noopener"><span class="top"><b>How to read architectural plans</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>For beginners. Start here before your first drawing set.</p></a>
+  <a href="https://www.youtube.com/watch?v=8opn2McSc0E" target="_blank" rel="noopener"><span class="top"><b>Architectural plans explained</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Stewart Hicks. Why plans are drawn the way they are.</p></a>
+  <a href="https://www.youtube.com/watch?v=kNph_SxgcPg" target="_blank" rel="noopener"><span class="top"><b>How this tower barely touches the ground</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Stewart Hicks. A structure that looks impossible, explained &mdash; the Unique Concept capstone in one video.</p></a>
+  <a href="https://www.youtube.com/watch?v=oqUNMGr0lo8" target="_blank" rel="noopener"><span class="top"><b>Harvard model bridge testing</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Trusses and beams tested to failure. Watch what actually breaks first.</p></a>
+  <a href="https://www.istructe.org/resources/guidance/an-introduction-to-building-information-modelling/" target="_blank" rel="noopener"><span class="top"><b>An introduction to BIM</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>Institution of Structural Engineers. Free download, no membership needed.</p></a>
+  <a href="https://ocw.mit.edu/courses/4-440-basic-structural-design-spring-2009/" target="_blank" rel="noopener"><span class="top"><b>Basic Structural Design (MIT 4.440)</b><span class="pill hard">College level</span><span class="kind">course</span></span><p>Full MIT course materials, free. From 2009 &mdash; the structures have not changed.</p></a>
+  <a href="https://nibs.org/nbims/v4/bud/" target="_blank" rel="noopener"><span class="top"><b>BIM Use Definitions standard</b><span class="pill hard">College level</span><span class="kind">doc</span></span><p>National Institute of Building Sciences. What each BIM use formally means.</p></a>
+</div>
+<div class="topic" id="t3"><div class="th"><span class="tn">3</span><div><h3>Build Your Skills</h3><p class="tq">Is this a procedure you practice until you can do it?</p></div></div>
+<div class="cred"><span>Credential of value</span><b>Autodesk Certified User — Revit Architecture</b><em>Base requirement for every pathway: OSHA&nbsp;10 &mdash; Construction</em></div>
+<p class="blurb">Revit for the building, Fusion 360 for the components you fabricate.</p>
+<ul class="ticks">
+<li>Coordinated 3D modeling — walls, floors, roofs that update together.</li>
+<li>Clash detection — finding where the ductwork runs through a beam before anyone builds it.</li>
+<li>Schedules and interoperability — door and window schedules, IFC and DWG export.</li>
+<li>Sheet sets — title blocks, section cuts, a construction document set someone could build from.</li>
+<li>Total station — angle and distance measurement.</li>
+<li>Levels — elevation and grading.</li>
+<li>GPS — site mapping.</li>
+</ul></div>
+<div class="srchead"><h4>Go and look</h4><span>8 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://www.youtube.com/playlist?list=PLe_I-JWckL7HnPkUSHT3FhT4mEEz8OTYe" target="_blank" rel="noopener"><span class="top"><b>Revit for beginners</b><span class="pill ok">Start here</span><span class="kind">playlist</span></span><p>Complete beginner playlist. Revit is the ACU certification for this pathway, so this is the one to work through.</p></a>
+  <a href="https://www.youtube.com/watch?v=nPLskWcmUrI" target="_blank" rel="noopener"><span class="top"><b>AutoCAD Civil 3D for beginners</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Full walkthrough. This is the site and grading tool.</p></a>
+  <a href="https://www.youtube.com/watch?v=SKD_lTiAf4k" target="_blank" rel="noopener"><span class="top"><b>A better way to draw in AutoCAD</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>One setting that changes how drawing feels. Worth six minutes.</p></a>
+  <a href="https://www.youtube.com/watch?v=lEAWy2ms7gw" target="_blank" rel="noopener"><span class="top"><b>Three styles to sketch like an architect</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Henry Gao. Sketching is still how ideas get out fastest.</p></a>
+  <a href="https://www.youtube.com/watch?v=24rnfO8s0hU" target="_blank" rel="noopener"><span class="top"><b>Draw like an architect</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>30X40 Design Workshop. Essential drawing tips.</p></a>
+  <a href="https://www.youtube.com/watch?v=v8gTCuvQxBc" target="_blank" rel="noopener"><span class="top"><b>Sketching and designing architectural details</b><span class="pill deep">Going deeper</span><span class="kind">video</span></span><p>30X40 Design Workshop. Where a building actually gets resolved.</p></a>
+  <a href="https://www.youtube.com/watch?v=nfOtPvts3Tw" target="_blank" rel="noopener"><span class="top"><b>Skyscraper in Revit</b><span class="pill deep">Going deeper</span><span class="kind">video</span></span><p>Balkan Architect. A full tower, start to finish.</p></a>
+  <a href="https://www.youtube.com/watch?v=Mj7Z1P2hUWk" target="_blank" rel="noopener"><span class="top"><b>3D terrain from Google Maps in Blender</b><span class="pill deep">Going deeper</span><span class="kind">video</span></span><p>CG Geek. How to get real site topography into a model.</p></a>
+</div>
+<div class="topic" id="ttrain"><div class="th"><span class="tn">&mdash;</span><div><h3>Where to train</h3>
+<p class="tq">Platforms that serve this pathway. Full details, costs and sign-up notes on
+the <a href="../resources/index.html">Training &amp; Credentials</a> page.</p></div></div>
+<div class="trainbox">
+  <a href="../resources/index.html"><b>Autodesk Learning</b><span>Autodesk's own course catalogue, including free certification prep courses for Fusion, Inventor, Revit, AutoCAD and Civil 3D — most run 5 to 15 hours.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>Certiport</b><span>The testing platform the Autodesk certification exams run on.</span><span class="pill school">School provides</span></a>
+  <a href="../resources/index.html"><b>GMetrix</b><span>Practice tests and training for the Autodesk certifications.</span><span class="pill school">School provides</span></a>
+  <a href="../resources/index.html"><b>Learn ArcGIS</b><span>Mapping and spatial analysis tutorials.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>MIT OpenCourseWare</b><span>Complete MIT course materials, including 2.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>USGBC Learning Lab</b><span>Over a hundred green-building and sustainability lessons written for high school, standards-aligned, in English and Spanish.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>Autodesk free software</b><span>Fusion, Inventor, AutoCAD, Revit, Civil 3D — the full professional suite on your own machine, free while you are a student.</span><span class="pill ok">Free</span></a>
+  <a href="../resources/index.html"><b>Khan Academy</b><span>Free maths and physics, from algebra through calculus and mechanics.</span><span class="pill ok">Free</span></a>
+</div>
+</div>
+<div class="topic" id="t4"><div class="th"><span class="tn">4</span><div><h3>Find a Project</h3><p class="tq">Is this something you could go build?</p></div></div>
+<p class="blurb">Two briefs, both of which end in a pitch to people who are not engineers.</p>
+<div class="briefs">
+<article><b>The unique structure</b><p>Design an original structure with a gravity-defying or unusual structural element — then prove it works, with MD Solids simulation or physical load testing. The proof is the assignment; the shape is the easy part.</p></article>
+<article><b>The revitalization pitch</b><p>Pick a real existing building and bring it back. Branding, usability, aesthetics, and a before-and-after that convinces a town board.</p></article>
+<article><b>Site design set</b><p>A complete professional site plan: soil testing results, cut and fill volume calculations, engineered drainage, parking, roads, and ADA circulation.</p></article>
+</div>
+</div>
+<div class="srchead"><h4>Go and look</h4><span>5 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://aetlabs.com/events/structural-design-for-laser-cutting-student-project-ideas/" target="_blank" rel="noopener"><span class="top"><b>Structural design for laser cutting</b><span class="pill ok">Start here</span><span class="kind">doc</span></span><p>Student project ideas, free recorded session. Note this is an equipment vendor&rsquo;s page, so it is part sales pitch &mdash; the project ideas are still good.</p></a>
+  <a href="https://www.youtube.com/watch?v=sw9zpH717ts" target="_blank" rel="noopener"><span class="top"><b>Flexible buildings: the future of architecture</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>Free Documentary. Buildings that adapt rather than get demolished.</p></a>
+  <a href="https://www.youtube.com/watch?v=2b7uMJkvS0o" target="_blank" rel="noopener"><span class="top"><b>This city concept breaks architecture</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>DamiLee on THE LINE. A serious critique of a famous megaproject &mdash; good model for the Revitalization pitch.</p></a>
+  <a href="https://www.youtube.com/watch?v=gGCJrqv0xPQ" target="_blank" rel="noopener"><span class="top"><b>The CityTree</b><span class="pill ok">Start here</span><span class="kind">video</span></span><p>CNET. Moss that cleans and cools city air. Regenerative design, built.</p></a>
+  <a href="https://www.youtube.com/watch?v=CfgYtMGmSxM" target="_blank" rel="noopener"><span class="top"><b>Large high-rise model building</b><span class="pill deep">Going deeper</span><span class="kind">video</span></span><p>Korean model-building technique, full process. If you are making a physical model, watch this first.</p></a>
+</div>
+<div class="topic" id="t5"><div class="th"><span class="tn">5</span><div><h3>Get the Files</h3><p class="tq">Would you open this while working, rather than read start to finish?</p></div></div>
+<ul class="files">
+<li>Logbook template.</li>
+<li>Site design checklist — soil, cut and fill, drainage, circulation.</li>
+<li>Bill of Materials worksheet.</li>
+<li>Sheet set title block template.</li>
+<li>&ldquo;Do Now!&rdquo; reflection and E.E.P. term-end reflection.</li>
+<li>Makerspace safety rules.</li>
+</ul>
+<p class="note">Logbook rules are the same in every pathway &mdash; see <em>Your Engineering Logbook</em>. Anything you read in an older hub guide about notebook rules is superseded by it.</p>
+</div>
+
+<div class="srchead"><h4>Go and look</h4><span>11 checked links &mdash; every one opens, free.</span></div>
+<div class="srcs">
+  <a href="https://cad-blocks.net/" target="_blank" rel="noopener"><span class="top"><b>Free CAD blocks (.dwg)</b><span class="pill ok">Start here</span><span class="kind">tool</span></span><p>Doors, windows, furniture, vehicles. Free, no sign-up. Stop drawing a toilet from scratch.</p></a>
+  <a href="https://www.mass.gov/guides/massachusetts-stormwater-handbook-and-stormwater-standards" target="_blank" rel="noopener"><span class="top"><b>Massachusetts Stormwater Handbook and Standards</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>Where drainage requirements on a site plan come from.</p></a>
+  <a href="https://www.mass.gov/info-details/stormwater-management-unit" target="_blank" rel="noopener"><span class="top"><b>MassDOT stormwater design guide</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>The state highway version. Link goes to the landing page; the guide itself is a very large download.</p></a>
+  <a href="https://www.mass.gov/doc/stormwater-report-checklist/download" target="_blank" rel="noopener"><span class="top"><b>Stormwater report checklist</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>MassDEP. A real professional checklist &mdash; use it on your site plan.</p></a>
+  <a href="https://www.mass.gov/info-details/bim-guidelines-for-design-and-construction" target="_blank" rel="noopener"><span class="top"><b>BIM guidelines for design and construction</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>DCAMM. How the Commonwealth expects BIM to be delivered on its projects.</p></a>
+  <a href="https://web.mit.edu/facilities/maps/DesignStandards/T03%20-%20BIM%20and%20CAD%20Drawing%20Standards%202022.pdf" target="_blank" rel="noopener"><span class="top"><b>MIT design standards — BIM and CAD drawing</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>A real institution&rsquo;s drawing standard, 2022. Layer naming, file structure, the unglamorous part that makes a set usable.</p></a>
+  <a href="https://www.mass.gov/lists/architects-statutes-and-regulations" target="_blank" rel="noopener"><span class="top"><b>Architects: Massachusetts statutes and regulations</b><span class="pill deep">Going deeper</span><span class="kind">doc</span></span><p>231 CMR &mdash; what it takes to be a registered architect in this state.</p></a>
+  <a href="https://www.mass.gov/handbook/tenth-edition-of-the-ma-state-building-code-780" target="_blank" rel="noopener"><span class="top"><b>Massachusetts State Building Code, 10th edition</b><span class="pill hard">College level</span><span class="kind">doc</span></span><p>The actual code your buildings would be held to, 780 CMR. Published as one page per chapter &mdash; this is the index.</p></a>
+  <a href="https://www.mass.gov/regulations/780-CMR-tenth-edition-chapter-16-structural-design-amendments" target="_blank" rel="noopener"><span class="top"><b>780 CMR Chapter 16 — Structural Design</b><span class="pill hard">College level</span><span class="kind">doc</span></span><p>The structural chapter, if you want to see what a real load requirement looks like written down.</p></a>
+  <a href="https://www.mass.gov/info-details/designer-procedures-and-guidelines" target="_blank" rel="noopener"><span class="top"><b>Designer procedures and guidelines</b><span class="pill hard">College level</span><span class="kind">doc</span></span><p>DCAMM. What a designer is actually contracted to produce.</p></a>
+  <a href="https://www.wbdg.org/FFC/ARMYCOE/COETM/ARCHIVES/tm_5_803_14.pdf" target="_blank" rel="noopener"><span class="top"><b>Site planning and design (TM 5-803-14)</b><span class="pill hard">College level</span><span class="kind">doc</span></span><p>US Army manual on site planning. Archived and superseded &mdash; read it as a thorough reference, not as current practice.</p></a>
+</div></div>
+</div>
+</div>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology &middot; Room E-126</span>
+    <span>Mr. Frank &middot; Mr. Dryer</span>
+    <span class="build">Build 04 Sep 2026, 16:23</span>
+  </div>
+</footer>
+
+
+<script src="../assets/search-index.js?v=003b2e2b" defer></script>
+<script defer>
+(function(){
+  var REL = '../';
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var box = document.getElementById('q'), out = document.getElementById('sres');
+    if (!box || !window.BHR_INDEX) return;
+    var IDX = window.BHR_INDEX, cur = -1, rows = [];
+
+    var KIND = {video:'Video',course:'Course',site:'Site',tool:'Tool',read:'Reading',
+      podcast:'Podcast',book:'Book',data:'Data',comp:'Competition',doc:'Doc',
+      software:'Software',page:'Page',rule:'Rule',check:'Safety check',
+      platform:'Training',sds:'Safety data',pathway:'Pathway',talk:'Talk',
+      playlist:'Playlist'};
+
+    function esc(s){ return s.replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    function hi(s, terms){
+      s = esc(s);
+      terms.forEach(function(t){
+        if (t.length < 2) return;
+        s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'ig'),
+                      '<mark>$1</mark>');
+      });
+      return s;
+    }
+
+    // Score by where the match lands: a title hit beats a note hit, and a hit at
+    // the start of the title beats one in the middle. Every term must appear
+    // somewhere, so multi-word queries narrow rather than widen.
+    function score(r, terms){
+      var t = r.t.toLowerCase(), n = (r.n + ' ' + r.x).toLowerCase(),
+          w = r.w.toLowerCase(), s = 0;
+      for (var i = 0; i < terms.length; i++){
+        var q = terms[i], hit = 0;
+        if (t.indexOf(q) === 0) hit = 100;
+        else if (t.indexOf(' ' + q) > -1) hit = 70;
+        else if (t.indexOf(q) > -1) hit = 50;
+        else if (w.indexOf(q) > -1) hit = 30;
+        else if (n.indexOf(q) > -1) hit = 20;
+        if (!hit) return 0;
+        s += hit;
+      }
+      if (r.k === 'page' || r.k === 'pathway') s += 12;   // structure floats up
+      return s;
+    }
+
+    function run(){
+      var qv = box.value.trim().toLowerCase();
+      if (qv.length < 2){ close(); return; }
+      var terms = qv.split(/\s+/);
+      rows = IDX.map(function(r){ return {r:r, s:score(r, terms)}; })
+                .filter(function(x){ return x.s > 0; })
+                .sort(function(a,b){ return b.s - a.s || a.r.t.length - b.r.t.length; })
+                .slice(0, 30);
+      draw(terms);
+    }
+
+    function draw(terms){
+      if (!rows.length){
+        out.innerHTML = '<p class="none">Nothing matches &ldquo;' +
+          esc(box.value.trim()) + '&rdquo;.</p>';
+      } else {
+        var h = '<div class="hd">' + rows.length +
+                (rows.length === 30 ? '+ matches' : ' match' + (rows.length>1?'es':'')) +
+                '</div>';
+        rows.forEach(function(x, i){
+          var r = x.r,
+              ext = /^https?:/.test(r.u),
+              href = ext ? r.u : REL + r.u;
+          h += '<a href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') +
+               ' data-i="' + i + '" role="option">' +
+               '<span class="ti">' + hi(r.t, terms) +
+                 (ext ? ' <span class="ext">&#8599;</span>' : '') + '</span>' +
+               '<span class="me"><span class="kd">' + (KIND[r.k] || r.k) + '</span>' +
+               '<span class="wh">' + hi(r.w, terms) + '</span></span>' +
+               (r.n ? '<span class="nt">' + hi(r.n, terms) + '</span>' : '') +
+               '</a>';
+        });
+        out.innerHTML = h;
+      }
+      out.hidden = false; box.setAttribute('aria-expanded','true'); cur = -1;
+    }
+
+    function close(){ out.hidden = true; box.setAttribute('aria-expanded','false'); cur = -1; }
+
+    function move(d){
+      var links = out.querySelectorAll('a');
+      if (!links.length) return;
+      if (cur > -1) links[cur].classList.remove('on');
+      cur = (cur + d + links.length) % links.length;
+      links[cur].classList.add('on');
+      links[cur].scrollIntoView({block:'nearest'});
+    }
+
+    box.addEventListener('input', run);
+    box.addEventListener('focus', function(){ if (box.value.trim().length > 1) run(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter'){
+        var links = out.querySelectorAll('a');
+        if (cur > -1 && links[cur]){ e.preventDefault(); links[cur].click(); }
+      }
+      else if (e.key === 'Escape'){ close(); box.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.srch')) close();
+    });
+    // "/" from anywhere jumps to the box, the way every developer tool does it
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); box.focus(); box.select();
+      }
+    });
+  });
+})();
+</script>
+<script defer>
+// Track which in-page section you are actually looking at and mark it in the
+// rail. Only runs where the rail has anchor links.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var links = [].slice.call(document.querySelectorAll('.rail .anch a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {}, pos = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        pos[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null;
+      });
+      var best = null, near = Infinity;
+      Object.keys(pos).forEach(function(id){
+        if (pos[id] === null) return;
+        var d = Math.abs(pos[id] - 90);
+        if (d < near){ near = d; best = id; }
+      });
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if (best && map[best]) map[best].classList.add('on');
+    }, {rootMargin:'-70px 0px -55% 0px', threshold:[0,1]});
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) io.observe(el);
+    });
+  });
+})();
+</script>
+<script defer>
+// Three states, cycled by one button: follow the system, force light, force dark.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var btn = document.getElementById('theme'), root = document.documentElement;
+    if (!btn) return;
+    function get(){ try { return localStorage.getItem('bhr-theme') || 'system'; }
+                    catch(e){ return 'system'; } }
+    function label(){
+      var m = get();
+      btn.querySelector('.lbl').textContent =
+        m === 'system' ? 'Theme' : (m === 'light' ? 'Light' : 'Dark');
+      btn.title = m === 'system'
+        ? 'Following your computer. Click for light.'
+        : (m === 'light' ? 'Light. Click for dark.'
+                         : 'Dark. Click to follow your computer.');
+    }
+    function set(m){
+      try { m === 'system' ? localStorage.removeItem('bhr-theme')
+                           : localStorage.setItem('bhr-theme', m); } catch(e){}
+      if (m === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', m);
+      label();
+    }
+    label();
+    btn.addEventListener('click', function(){
+      var m = get();
+      set(m === 'system' ? 'light' : (m === 'light' ? 'dark' : 'system'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

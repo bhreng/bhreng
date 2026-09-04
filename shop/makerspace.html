@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Makerspace Rules &middot; BHR Engineering</title>
+<meta name="description" content="The thirty-two Makerspace rules, plus a self-check you must get entirely right.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="../assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/site.css?v=c3afc4c9">
+<style>
+.rulegroup{border:1px solid var(--rule);background:var(--card);margin-bottom:1px}
+.rulegroup .rh{padding:15px 20px 13px;border-bottom:1px solid var(--rule-soft);
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.rulegroup .rh b{font-family:var(--sans);font-weight:700;font-size:18px;
+  letter-spacing:-.015em}
+.rulegroup .rh span{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3)}
+.rulegroup ul{margin:0;padding:6px 0;list-style:none}
+.rulegroup li{padding:8px 20px 8px 42px;position:relative;font-size:15.5px;
+  line-height:1.5;color:var(--ink-2)}
+.rulegroup li::before{content:"";position:absolute;left:22px;top:16px;width:6px;height:6px;
+  border-radius:50%;background:var(--accent)}
+ol.primary{list-style:none;counter-reset:pr;margin:0;padding:0;
+  border:1px solid var(--rule);background:var(--card)}
+ol.primary li{counter-increment:pr;position:relative;padding:14px 20px 14px 58px;
+  border-bottom:1px solid var(--rule-soft);font-size:16px;line-height:1.5}
+ol.primary li:last-child{border-bottom:0}
+ol.primary li::before{content:counter(pr);position:absolute;left:20px;top:14px;
+  width:26px;height:26px;display:grid;place-items:center;
+  background:var(--accent);color:#fff;border-radius:50%;
+  font-family:var(--sans);font-weight:700;font-size:13px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) ol.primary li::before{color:#150f22}}
+:root[data-theme="dark"] ol.primary li::before{color:#150f22}
+ol.primary li.gate{background:var(--accent-soft)}
+.gatedefs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:14px}
+.gatedefs div{background:var(--card);padding:16px 20px}
+.gatedefs b{display:block;font-family:var(--sans);font-weight:700;font-size:17px;
+  color:var(--accent);margin-bottom:4px}
+.gatedefs span{font-size:15px;color:var(--ink-2);line-height:1.5}
+.occ{display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;margin-top:16px;
+  border:1px solid var(--rule);border-left:3px solid var(--blue);
+  background:var(--card);padding:15px 20px}
+.occ b{font-family:var(--sans);font-weight:800;font-size:30px;color:var(--blue);
+  line-height:1}
+.occ span{font-size:15px;color:var(--ink-2);line-height:1.5;max-width:56ch}
+.emerg{background:var(--warm-soft);border:1px solid var(--warm);
+  border-left-width:4px;padding:16px 21px;font-size:16px;line-height:1.5}
+.emerg b{font-family:var(--sans)}
+
+.sdslist{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.sdslist a{background:var(--card);box-shadow:0 0 0 1px var(--rule);padding:17px 20px;
+  text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px}
+.sdslist a:hover{background:var(--accent-soft)}
+.sdslist b{font-family:var(--sans);font-weight:700;font-size:16.5px;color:var(--ink)}
+.sdslist a:hover b{color:var(--accent)}
+.sdslist span{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+
+/* --- quiz ------------------------------------------------------------- */
+.quiz{border:1px solid var(--rule);background:var(--card);box-shadow:var(--shadow)}
+.qbar{display:flex;gap:4px;padding:14px 20px;border-bottom:1px solid var(--rule-soft);
+  align-items:center;flex-wrap:wrap}
+.qbar .dot{width:9px;height:9px;border-radius:50%;background:var(--rule);flex:none}
+.qbar .dot.done{background:var(--moss)}
+.qbar .dot.now{background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.qbar .count{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3)}
+.qbody{padding:22px 24px 24px}
+.qtext{font-family:var(--sans);font-weight:700;font-size:20px;line-height:1.3;
+  letter-spacing:-.02em;margin:0 0 18px;max-width:44ch}
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:block;width:100%;text-align:left;font:inherit;font-size:16px;line-height:1.45;
+  background:var(--card);color:var(--ink);border:1.5px solid var(--rule);
+  padding:13px 17px;cursor:pointer;transition:border-color .12s,background .12s}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.opt:disabled{cursor:default}
+.opt.wrong{border-color:var(--warm);background:var(--warm-soft);color:var(--ink-2);
+  text-decoration:line-through;text-decoration-color:var(--warm)}
+.opt.right{border-color:var(--moss);background:var(--moss-soft);font-weight:600}
+.why{margin-top:14px;border-left:4px solid var(--warm);background:var(--warm-soft);
+  padding:14px 18px;font-size:15.5px;line-height:1.55}
+.why.good{border-left-color:var(--moss);background:var(--moss-soft)}
+.why .lbl{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:5px;color:var(--ink-3)}
+.qnext{margin-top:16px;font-family:var(--sans);font-weight:600;font-size:15.5px;
+  background:var(--accent);color:#fff;border:0;padding:12px 22px;cursor:pointer}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .qnext{color:#150f22}}
+:root[data-theme="dark"] .qnext{color:#150f22}
+.qnext:hover{filter:brightness(1.1)}
+.done-card{padding:30px 26px;text-align:center;display:flex;flex-direction:column;
+  gap:10px;align-items:center}
+.done-card .tick{width:46px;height:46px;border-radius:50%;background:var(--moss);
+  color:var(--paper);display:grid;place-items:center;font-size:25px;font-weight:700}
+.done-card h3{font-family:var(--sans);font-weight:var(--w-heavy);font-size:24px;margin:4px 0 0;
+  letter-spacing:-.02em}
+.done-card p{color:var(--ink-2);max-width:46ch;margin:0}
+.done-card .stamp{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);
+  border:1px dashed var(--rule);padding:9px 15px;margin-top:6px}
+.whoami{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;
+  margin-top:14px}
+.whoami label{font-family:var(--sans);font-weight:600;font-size:14px;color:var(--ink-2)}
+.whoami input{font:inherit;font-family:var(--sans);font-size:15px;padding:8px 12px;
+  border:1.5px solid var(--rule);background:var(--card);color:var(--ink);
+  border-radius:3px;width:230px;max-width:70vw}
+.whoami input:focus{outline:2px solid var(--accent);outline-offset:1px;
+  border-color:var(--accent)}
+.slip{margin-top:16px;max-width:100%;border:1px solid var(--rule);
+  box-shadow:var(--shadow);display:block}
+.slipbtns{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-top:13px}
+.slipbtns button{font-family:var(--sans);font-weight:600;font-size:14.5px;
+  padding:10px 18px;border:1.5px solid var(--accent);background:var(--card);
+  color:var(--accent);cursor:pointer;border-radius:3px}
+.slipbtns button:hover{background:var(--accent-soft)}
+.slipbtns button.solid{background:var(--accent);color:#fff;border-color:var(--accent)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .slipbtns button.solid{color:#150f22}}
+:root[data-theme="dark"] .slipbtns button.solid{color:#150f22}
+.slipnote{font-family:var(--sans);font-size:13px;color:var(--ink-3);margin-top:10px;
+  max-width:44ch}
+.qagain{background:none;border:0;color:var(--ink-3);font:inherit;font-size:14px;
+  text-decoration:underline;cursor:pointer;padding:4px}
+@media print{.quiz{display:none}}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('bhr-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+</head>
+<body>
+
+<header class="sitebar">
+  <div class="in">
+    <a class="brand" href="../index.html">
+      <img class="mark" src="../assets/logo-96.png" alt="" width="34" height="29">
+      <span>Engineering&nbsp;Technology</span>
+    </a>
+      <div class="srch">
+        <span class="sbox">
+          <input type="search" id="q" placeholder="Search" autocomplete="off"
+                 aria-label="Search the site" aria-expanded="false" aria-controls="sres">
+          <kbd>/</kbd>
+        </span>
+        <div class="sres" id="sres" role="listbox" hidden></div>
+      </div>
+      <button class="themebtn" id="theme" type="button"
+              title="Switch between light and dark" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span><span class="lbl">Theme</span>
+      </button>
+  </div>
+</header>
+
+<div class="shell">
+<div class="rail">
+  <div class="railin">
+  <nav aria-label="Site"><ul>
+    <li><a href="../index.html" class="sec">Home</a>
+    </li>
+    <li><a href="../start/welcome.html" class="sec">Start here</a>
+    </li>
+    <li><a href="../logbook/index.html" class="sec">Logbook</a>
+    </li>
+    <li><a href="../pathways/index.html" class="sec">The seven pathways</a>
+    </li>
+    <li><a href="../shop/index.html" class="sec">Shop safety</a>
+      <ul class="kids">
+        <li><a href="../shop/makerspace.html" class="here">Makerspace rules</a>
+        </li>
+        <li><a href="../shop/equipment.html">Equipment checks</a>
+        </li>
+        <li><a href="../shop/technology.html">Technology use</a>
+        </li>
+        <li><a href="../shop/3d-printing.html">3D printer certification</a>
+        </li>
+        <li><a href="../shop/sds.html">Safety data sheets</a>
+        </li>
+        <li><a href="../shop/themes.html">Which theme? (practice)</a>
+        </li>
+      </ul>
+    </li>
+    <li><a href="../resources/index.html" class="sec">Training and credentials</a>
+    </li>
+  </ul></nav>
+  </div>
+</div>
+<div class="main">
+
+<div class="wrap">
+  <a class="back" href="index.html">&larr; Safety</a>
+
+  <header class="hero">
+    <p class="kicker">Shop safety &middot; Makerspace</p>
+    <h1>Makerspace rules</h1>
+    <p>These apply the moment you walk in. Not while you are working &mdash; from the
+      door.</p>
+  </header>
+
+  <section>
+    <p class="emerg"><b>If someone is hurt:</b> report it, however small it seems.
+      The school nurse is extension&nbsp;2230. Do not attempt to remove a foreign
+      object from an eye or from the body. If a chemical gets in the eyes, wash them
+      under open flowing water for <strong>15 minutes</strong> before going for
+      treatment.</p>
+  </section>
+
+  <section>
+    <h2>The ten primary rules</h2>
+    <p class="sub">These are the conditions of entry. They are the shortest list
+      in the shop and the one you are actually tested on.</p>
+    <ol class="primary">
+      <li class="gate">Access to the Makerspace must be granted by an instructor.</li>
+      <li>Access may be revoked at any time at the discretion of an instructor.</li>
+      <li>Report all injuries.</li>
+      <li>Proper PPE is to be worn at all times. No safety glasses&hellip; No entry.</li>
+      <li>Proper attire must be worn.</li>
+      <li>Keep work areas as clean as possible before, during and after use.</li>
+      <li>No unapproved foods or drinks.</li>
+      <li class="gate">Only trained and authorized students are permitted to operate machinery and/or hand tools.</li>
+      <li>Be prepared. If you do not know something&hellip; Ask.</li>
+      <li>USE COMMON SENSE.</li>
+    </ol>
+
+    <h3 style="margin-top:26px">What rule 8 means</h3>
+    <p class="sub">Two different words, and you need both before you touch a
+      machine.</p>
+    <div class="gatedefs">
+      <div><b>Trained</b><span>You have completed all necessary provided training.</span></div>
+      <div><b>Authorized</b><span>You have successfully passed the appropriate safety tests.</span></div>
+    </div>
+    <p class="note">Training is the instruction. Authorization is the check that
+      you took it in. The <a href="equipment.html">equipment checks</a> on this
+      site are practice for the second half &mdash; the acknowledgement in Google
+      Classroom is what actually authorizes you.</p>
+
+    <p class="occ"><b>12</b><span><strong>Maximum occupancy.</strong> Not a hard
+      count on the door &mdash; if the room goes over, whether it carries on is
+      the instructor&rsquo;s call.</span></p>
+  </section>
+
+  <section>
+    <h2>The complete set</h2>
+    <p class="sub">Thirty-two rules in five groups &mdash; how to behave once you
+      are inside. Posted in the room as well; this is the same list, always
+      current.</p>
+    <div class="rulegroup">
+      <div class="rh"><b>Report all injuries.</b><span>Before anything else</span></div>
+      <ul>
+        <li>Do not attempt to remove foreign objects from the eye or body.</li>
+        <li>If chemicals get in the eye(s), wash eye(s) for 15 minutes in an open flow of water before proceeding for medical treatment.</li>
+      </ul>
+    </div>
+    <div class="rulegroup">
+      <div class="rh"><b>Use protective gear. Dress right.</b><span>Every time, working or not</span></div>
+      <ul>
+        <li>Wear eye protection: safety glasses with side shields, goggles, or face shields at all times, whether working or not.</li>
+        <li>Do not wear loose-fitting clothing around moving or rotating machinery.</li>
+        <li>Remove ties, jewelry, gloves, etc. especially around moving or rotating machinery.</li>
+        <li>Tie back or cover long hair to keep it away from moving machinery.</li>
+        <li>Wear only shoes that cover the entire foot, no open-toe shoes or sandals.</li>
+        <li>Wear suitable gloves when handling hot objects, glass, or sharp-edged items.</li>
+        <li>Wear appropriate clothing for the job (i.e., do not wear short sleeve shirts or short pants when welding).</li>
+      </ul>
+    </div>
+    <div class="rulegroup">
+      <div class="rh"><b>Prepare.</b><span>Before you touch a tool</span></div>
+      <ul>
+        <li>Safety is your top priority when using the shop. If you are not sure what you are doing, ask.</li>
+        <li>Know all the locations of all first aid, fire, and safety equipment.</li>
+        <li>Never use a tool unless you have been trained to use it safely.</li>
+        <li>Never work alone when using power tools. Two persons must be present and be able to see one another.</li>
+        <li>Do not work in the shop if tired, or in a hurry.</li>
+        <li>Do not fool around, startle, or distract anyone (not even with a conversation) while either one of you are using a tool.</li>
+        <li>Think through the entire job before starting. Prepare prints or drawings with all dimensions and specifications prior to using machines.</li>
+      </ul>
+    </div>
+    <div class="rulegroup">
+      <div class="rh"><b>Use tools right.</b><span>While you work</span></div>
+      <ul>
+        <li>Use tools only as they were designed to be used. (A wrench is not a hammer.)</li>
+        <li>Never use a broken tool.</li>
+        <li>Report any broken tools or machines immediately.</li>
+        <li>Do not remove tools from the room.</li>
+        <li>Never walk away from a tool that is still on.</li>
+        <li>A hard hammer should not be used to strike a hardened tool or any machine part. Use a soft-faced hammer.</li>
+        <li>Operate machines only with all required guards and shields in place.</li>
+      </ul>
+    </div>
+    <div class="rulegroup">
+      <div class="rh"><b>Clean up.</b><span>Every time you leave an area</span></div>
+      <ul>
+        <li>Clean up every time whenever you leave an area, including sweeping the floor.</li>
+        <li>Clean and return all tools to where you got them.</li>
+        <li>Use compressed air sparingly; never aim it at another person or use it to clean hair or clothes.</li>
+        <li>Shut off and unplug machines when cleaning, repairing, or oiling.</li>
+        <li>Never use a rag near moving machinery.</li>
+        <li>Use a brush, hook, or a special tool to remove chips, shavings, etc. from the work area. Never use the hands.</li>
+        <li>Keep fingers clear of the point of operation of machines by using special tools or devices, such as push sticks, hooks, pliers, etc.</li>
+        <li>Keep the floor around machines clean, dry, and free from trip hazards. Do not allow chips to accumulate.</li>
+        <li>Mop up spills immediately and put a chair or cone over them if they are wet enough to cause someone to slip.</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>Check yourself</h2>
+    <p class="sub">The rules that apply the moment you walk in, whatever you are working on. Every question has to be right before you finish &mdash; a wrong
+      answer tells you why, and you pick again. There is no score and no time limit.</p>
+    <div class="quiz" id="quiz"></div>
+    <p class="note">This check is not a record. Nothing you do here is sent anywhere or
+      stored. When you finish, screenshot the completion panel and attach it to the
+      acknowledgement in Google Classroom &mdash; that is what counts.</p>
+  </section>
+
+<script>
+(function(){
+  var Q = [{"q": "Who can give you access to the Makerspace?", "o": [["An instructor", true, "Correct &mdash; rule 1, and rule 2 is its other half: access can be taken away again at any time, at an instructor's discretion. It is permission, not a right you keep once you have it."], ["Any student who is already authorized", false, "No. A certified peer can supervise you on some machines once you have your own access, but only an instructor grants access in the first place."], ["Nobody &mdash; it is open to anyone in the program", false, "It is not. Rule 1 exists because the room contains things that will injure someone who wandered in."], ["Whoever is running the room that period", false, "Close, but the rule says an instructor specifically."]]}, {"q": "What does it take before you are allowed to operate machinery or hand tools?", "o": [["Being both trained and authorized", true, "Correct, and they are two different things. Trained means you have completed the provided training. Authorized means you have passed the appropriate safety test. Doing the training is not enough on its own, and neither is being confident."], ["Being trained", false, "Half of it. Training is the instruction; authorization is the check that you took it in. You need both."], ["Being authorized", false, "You cannot be authorized without the training that comes first. The rule names both words deliberately."], ["Having an instructor in the room", false, "Necessary but not sufficient. Supervision does not substitute for training and authorization on that specific machine."]]}, {"q": "The Makerspace has a maximum occupancy of twelve. The room has thirteen people in it.", "o": [["It is the instructor's call whether that carries on", true, "Correct. Twelve is the stated maximum, but it is a judgement rather than a turnstile &mdash; if the room goes over, the instructor decides whether the work happening is safe at that number."], ["Someone has to leave immediately, no exceptions", false, "Twelve is the number, but the rule is applied with judgement. What matters is whether the work in the room is safe at that count, and that is the instructor's decision."], ["It does not matter, occupancy is only a fire rule", false, "It is a working limit for a room full of machines, not just a building code number."], ["You should quietly carry on and say nothing", false, "Whether it continues is a decision for the instructor, which means they need to know."]]}, {"q": "You arrive at the Makerspace without safety glasses.", "o": [["You do not go in", true, "Correct, and the rule is written to be memorable: &ldquo;No safety glasses&hellip; No entry.&rdquo; PPE is a condition of being in the room at all, not something you put on when you start working."], ["Go in, but stay away from the machines", false, "The rule is about entry, not about what you plan to do. Other people's work can reach your eyes while you are standing still."], ["Go in and borrow a pair from someone", false, "Sort the glasses out first, then come in. That is the whole point of phrasing it as an entry condition."], ["Go in if an instructor is present", false, "An instructor being there does not change what is flying through the air."]]}, {"q": "You get a chemical splash in your eye. What do you do first?", "o": [["Go straight to the nurse", false, "Not first. Every second the chemical is in contact it keeps doing damage. Rinse first, then go for treatment — the nurse will ask whether you flushed, and the answer needs to be yes."], ["Rinse the eye under open flowing water for 15 minutes, then seek treatment", true, "Correct, and the 15 minutes is not a rough figure — it is the rule. It will feel far longer than it sounds. Have someone else fetch help while you stay at the water."], ["Rinse for a few seconds and see if it still hurts", false, "Pain is a bad gauge. Some chemicals numb the surface and some do their worst damage after the sting fades. The 15 minutes is the rule regardless of how it feels."], ["Try to wipe it out with a clean cloth", false, "This grinds the chemical across the surface of the eye and can scratch it. Never put anything into your eye — water only, and never try to remove a foreign object yourself."]]}, {"q": "When is eye protection required in the Makerspace?", "o": [["At all times, whether you are working or not", true, "Correct. This is the rule that most often gets bent, and the reason it is absolute is that you are not the only person in the room. Someone else's work can reach your eyes while you are just walking through."], ["Only when you are operating a machine", false, "Not enough. The hazard in a shared space comes from other people's work as much as your own. The rule is \"at all times, whether working or not.\""], ["Only when using anything that makes chips or sparks", false, "Too narrow, and it puts you in the position of judging the hazard before you are protected from it. Glasses go on when you enter."], ["Whenever the instructor says so", false, "The rule does not depend on being told. It is on you the moment you walk in."]]}, {"q": "You want to make one quick cut on a power tool. Nobody else is in the shop.", "o": [["Make the cut — it is only one and you know how", false, "This is the single most dangerous habit in a shop, and \"it was only going to take a second\" is what people say afterwards. Never work alone with power tools."], ["Wait until a second person is present and can see you", true, "Correct. Two people must be present and able to see one another. The point is not supervision — it is that if something goes wrong, someone knows immediately."], ["Prop the door open so someone would hear you", false, "Hearing is not seeing. The rule specifically requires two people who can see each other, because the injuries that matter most can leave you unable to call out."], ["Text a friend to say what you are doing", false, "A message is not a person in the room. The requirement is a second person present and in line of sight."]]}, {"q": "A machine is running and you need to step away for a moment.", "o": [["Shut it off before you go", true, "Correct. Never walk away from a tool that is still on. A running machine with nobody at it is a hazard to whoever walks past next."], ["Leave it — you will only be a few seconds", false, "This is exactly the case the rule exists for. A machine that is running and unattended is a hazard to everyone else in the room, and \"a few seconds\" has a way of becoming longer."], ["Ask someone nearby to keep an eye on it", false, "You have now made your machine someone else's problem while they are doing their own work. Shut it off."], ["Leave it if the guards are in place", false, "Guards protect the operator at the point of operation. They do not make an unattended running machine safe."]]}, {"q": "You need to clear metal chips and shavings off a machine bed.", "o": [["Use a brush, hook, or the proper tool", true, "Correct — and shut the machine off and unplug it first. Chips are sharp, often hot, and hide edges you cannot see."], ["Brush them off with your hand", false, "Never use your hands. Chips are razor-edged and frequently still hot; this is one of the most common shop injuries there is."], ["Blow them off with compressed air", false, "Compressed air is to be used sparingly, and never for this — it fires chips across the room and into people's eyes, including your own."], ["Wipe them off with a rag", false, "A rag near machinery can catch and pull your hand in. Never use a rag near moving machinery, and use the proper tool for chips."]]}, {"q": "A guard on a machine keeps getting in your way on an awkward cut.", "o": [["Remove it for this one cut, then put it back", false, "No. Machines run only with all required guards and shields in place — there is no version of this rule with an exception for awkward cuts."], ["Stop, and ask an instructor for a different approach", true, "Correct. If the guard is in the way, the setup is wrong, not the guard. There is almost always another way to hold the work or another machine for the job."], ["Work around it as carefully as you can", false, "Better than removing it, but you are still fighting the setup, and careful is not a control. Stop and ask — the answer is usually a better fixture."], ["Ask another student to hold the guard clear", false, "This puts a second pair of hands into the danger zone. Now two people are at risk instead of one."]]}, {"q": "You spot a tool with a cracked handle in the rack.", "o": [["Report it immediately", true, "Correct. Report any broken tool or machine straight away. Leaving it in the rack means the next person finds it the hard way."], ["Put it back and pick a different one", false, "You are safe, but the next person is not — and they may not notice the crack. A broken tool that stays in the rack will be used."], ["Use it gently, it is only a small crack", false, "Never use a broken tool. A cracked handle fails suddenly and under load, which is the worst possible moment."], ["Take it home to fix it", false, "Tools do not leave the room. Report it and let it be dealt with properly."]]}, {"q": "You are about to use a machine you have not been trained on, but you have watched a video and it looks straightforward.", "o": [["Get trained on it first", true, "Correct. Never use a tool unless you have been trained to use it safely. A video cannot show you this machine's condition, quirks or setup."], ["Try it — you understand how it works", false, "Understanding how a machine works and being able to run it safely are different things. Training exists for the gap between them."], ["Try it while someone watches", false, "An untrained observer cannot catch a mistake they also would not recognise. Get trained."], ["Try it on scrap material first", false, "The material does not change the hazard. The machine behaves the same way whether the piece matters or not."]]}];
+  var TITLE = "Makerspace general safety";
+  var root = document.getElementById('quiz');
+  var order, idx;
+
+  function shuffle(a){ a = a.slice();
+    for (var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random()*(i+1));
+      var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+
+  function start(){ order = shuffle(Q.map(function(_,i){return i;})); idx = 0; draw(); }
+
+  function bar(){
+    var s = '<div class="qbar">';
+    for (var i = 0; i < order.length; i++)
+      s += '<span class="dot' + (i < idx ? ' done' : i === idx ? ' now' : '') + '"></span>';
+    s += '<span class="count">' + Math.min(idx+1, order.length) + ' of ' + order.length + '</span></div>';
+    return s;
+  }
+
+  function draw(){
+    if (idx >= order.length) return finish();
+    var q = Q[order[idx]];
+    var opts = shuffle(q.o.map(function(_,i){return i;}));
+    var s = bar() + '<div class="qbody"><p class="qtext">' + q.q + '</p><div class="opts">';
+    opts.forEach(function(oi){
+      s += '<button class="opt" type="button" data-i="' + oi + '">' + q.o[oi][0] + '</button>';
+    });
+    s += '</div><div id="why"></div></div>';
+    root.innerHTML = s;
+    root.querySelectorAll('.opt').forEach(function(b){
+      b.addEventListener('click', function(){ pick(q, b); });
+    });
+  }
+
+  function pick(q, btn){
+    var o = q.o[+btn.dataset.i], ok = o[1], why = document.getElementById('why');
+    btn.disabled = true;
+    btn.className = 'opt ' + (ok ? 'right' : 'wrong');
+    why.innerHTML = '<div class="why' + (ok ? ' good' : '') + '">' +
+      '<span class="lbl">' + (ok ? 'That is right' : 'Not that one') + '</span>' + o[2] +
+      '</div>' + (ok ? '<button class="qnext" type="button" id="nx">Next question</button>' : '');
+    if (ok){
+      root.querySelectorAll('.opt').forEach(function(b){ b.disabled = true; });
+      document.getElementById('nx').addEventListener('click', function(){ idx++; draw(); });
+      document.getElementById('nx').focus();
+    }
+  }
+
+  // Draw the completion slip as a real image so it can be saved or pasted,
+  // rather than relying on the student cropping a screenshot. Everything is
+  // drawn with canvas primitives -- no external image is loaded, because a
+  // file:// page that draws one taints the canvas and toBlob then throws.
+  function drawSlip(canvas, name, dateStr){
+    var W = 1000, H = 520, S = 2;           // S = supersample for a crisp PNG
+    canvas.width = W * S; canvas.height = H * S;
+    canvas.style.width = '100%'; canvas.style.maxWidth = W + 'px';
+    var c = canvas.getContext('2d');
+    c.scale(S, S);
+    c.fillStyle = '#faf8f4'; c.fillRect(0, 0, W, H);
+    c.fillStyle = '#8d63ab'; c.fillRect(0, 0, W, 14);
+    c.strokeStyle = '#dedbd5'; c.lineWidth = 2; c.strokeRect(1, 1, W - 2, H - 2);
+
+    c.fillStyle = '#7d8394';
+    c.font = '600 17px "Space Mono", ui-monospace, monospace';
+    c.fillText('BHR ENGINEERING TECHNOLOGY', 56, 82);
+
+    c.fillStyle = '#262b39';
+    c.font = '700 30px "Chakra Petch", system-ui, sans-serif';
+    c.fillText('Safety check complete', 56, 132);
+
+    c.strokeStyle = '#dedbd5'; c.lineWidth = 1;
+    c.beginPath(); c.moveTo(56, 162); c.lineTo(W - 56, 162); c.stroke();
+
+    c.fillStyle = '#7d8394';
+    c.font = '600 14px "Space Mono", ui-monospace, monospace';
+    c.fillText('CHECK', 56, 208);
+    c.fillStyle = '#6b4785';
+    c.font = '700 40px "Chakra Petch", system-ui, sans-serif';
+    var t = TITLE, max = W - 112;
+    while (c.measureText(t).width > max && t.length > 8){ t = t.slice(0, -2); }
+    if (t !== TITLE) t += '…';
+    c.fillText(t, 56, 254);
+
+    c.fillStyle = '#7d8394';
+    c.font = '600 14px "Space Mono", ui-monospace, monospace';
+    c.fillText('COMPLETED BY', 56, 318);
+    c.fillStyle = name ? '#262b39' : '#a9adb8';
+    c.font = (name ? '600 ' : 'italic 600 ') + '30px "Source Serif 4", Georgia, serif';
+    c.fillText(name || 'add your name above', 56, 358);
+    c.strokeStyle = '#dedbd5';
+    c.beginPath(); c.moveTo(56, 374); c.lineTo(560, 374); c.stroke();
+
+    c.fillStyle = '#7d8394';
+    c.font = '600 14px "Space Mono", ui-monospace, monospace';
+    c.fillText('ON', 620, 318);
+    c.fillStyle = '#262b39';
+    c.font = '600 26px "Source Serif 4", Georgia, serif';
+    c.fillText(dateStr, 620, 356);
+
+    c.fillStyle = '#7d8394';
+    c.font = '400 15px "Source Serif 4", Georgia, serif';
+    c.fillText('A self-check on the shop hub, not a graded record. The acknowledgement',
+               56, 442);
+    c.fillText('in Google Classroom is what goes on file.', 56, 466);
+  }
+
+  function finish(){
+    var d = new Date().toLocaleDateString(undefined,
+      {year:'numeric', month:'long', day:'numeric'});
+    root.innerHTML = '<div class="done-card"><div class="tick">&#10003;</div>' +
+      '<h3>All correct</h3>' +
+      '<p>You answered every question in <strong>' + TITLE + '</strong>. ' +
+      'Put your name on it, then save or copy the slip and attach it to the ' +
+      'acknowledgement in Google Classroom.</p>' +
+      '<div class="whoami"><label for="nm">Your name</label>' +
+      '<input id="nm" type="text" autocomplete="name" placeholder="First and last"></div>' +
+      '<canvas class="slip" id="slip" role="img" aria-label="Completion slip"></canvas>' +
+      '<div class="slipbtns">' +
+      '<button type="button" class="solid" id="save">Save image</button>' +
+      '<button type="button" id="copy">Copy image</button></div>' +
+      '<p class="slipnote" id="snote"></p>' +
+      '<button class="qagain" type="button" id="ag">Run through it again</button></div>';
+
+    var canvas = document.getElementById('slip'),
+        nm = document.getElementById('nm'),
+        note = document.getElementById('snote');
+
+    function redraw(){ drawSlip(canvas, nm.value.trim(), d); }
+    // webfonts may still be loading when the panel first appears
+    redraw();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);
+    nm.addEventListener('input', redraw);
+
+    function fileName(){
+      var who = nm.value.trim().replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      var what = TITLE.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      return ('BHR-' + what + (who ? '-' + who : '') + '.png').toLowerCase();
+    }
+
+    document.getElementById('save').addEventListener('click', function(){
+      canvas.toBlob(function(blob){
+        var url = URL.createObjectURL(blob), a = document.createElement('a');
+        a.href = url; a.download = fileName();
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+        note.textContent = 'Saved as ' + fileName();
+      }, 'image/png');
+    });
+
+    document.getElementById('copy').addEventListener('click', function(){
+      if (!navigator.clipboard || !window.ClipboardItem){
+        note.textContent = 'This browser will not let a page copy an image. ' +
+                           'Use Save image instead.';
+        return;
+      }
+      canvas.toBlob(function(blob){
+        navigator.clipboard.write([new ClipboardItem({'image/png': blob})]).then(
+          function(){ note.textContent = 'Copied. Paste it straight into Classroom.'; },
+          function(){ note.textContent = 'Copying was blocked. Use Save image instead.'; });
+      }, 'image/png');
+    });
+
+    document.getElementById('ag').addEventListener('click', start);
+  }
+
+  start();
+})();
+</script>
+
+  <section>
+    <h2>Related</h2>
+    <div class="grid">
+      <article>
+        <b><a href="sds.html">Safety data sheets</a></b>
+        <p>What is in the materials you use, and what to do if one ends up somewhere it
+          should not.</p>
+      </article>
+      <article>
+        <b><a href="themes.html">Which theme?</a></b>
+        <p>Ten rules from the shop safety test. Practice sorting them into the five
+          groups before you sit it.</p>
+      </article>
+      <article>
+        <b><a href="3d-printing.html">3D printer certification</a></b>
+        <p>What you are allowed to print on which machine, and how to move up.</p>
+      </article>
+    </div>
+  </section>
+
+</div>
+
+</div>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology &middot; Room E-126</span>
+    <span>Mr. Frank &middot; Mr. Dryer</span>
+    <span class="build">Build 04 Sep 2026, 16:23</span>
+  </div>
+</footer>
+
+
+<script src="../assets/search-index.js?v=003b2e2b" defer></script>
+<script defer>
+(function(){
+  var REL = '../';
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var box = document.getElementById('q'), out = document.getElementById('sres');
+    if (!box || !window.BHR_INDEX) return;
+    var IDX = window.BHR_INDEX, cur = -1, rows = [];
+
+    var KIND = {video:'Video',course:'Course',site:'Site',tool:'Tool',read:'Reading',
+      podcast:'Podcast',book:'Book',data:'Data',comp:'Competition',doc:'Doc',
+      software:'Software',page:'Page',rule:'Rule',check:'Safety check',
+      platform:'Training',sds:'Safety data',pathway:'Pathway',talk:'Talk',
+      playlist:'Playlist'};
+
+    function esc(s){ return s.replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    function hi(s, terms){
+      s = esc(s);
+      terms.forEach(function(t){
+        if (t.length < 2) return;
+        s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'ig'),
+                      '<mark>$1</mark>');
+      });
+      return s;
+    }
+
+    // Score by where the match lands: a title hit beats a note hit, and a hit at
+    // the start of the title beats one in the middle. Every term must appear
+    // somewhere, so multi-word queries narrow rather than widen.
+    function score(r, terms){
+      var t = r.t.toLowerCase(), n = (r.n + ' ' + r.x).toLowerCase(),
+          w = r.w.toLowerCase(), s = 0;
+      for (var i = 0; i < terms.length; i++){
+        var q = terms[i], hit = 0;
+        if (t.indexOf(q) === 0) hit = 100;
+        else if (t.indexOf(' ' + q) > -1) hit = 70;
+        else if (t.indexOf(q) > -1) hit = 50;
+        else if (w.indexOf(q) > -1) hit = 30;
+        else if (n.indexOf(q) > -1) hit = 20;
+        if (!hit) return 0;
+        s += hit;
+      }
+      if (r.k === 'page' || r.k === 'pathway') s += 12;   // structure floats up
+      return s;
+    }
+
+    function run(){
+      var qv = box.value.trim().toLowerCase();
+      if (qv.length < 2){ close(); return; }
+      var terms = qv.split(/\s+/);
+      rows = IDX.map(function(r){ return {r:r, s:score(r, terms)}; })
+                .filter(function(x){ return x.s > 0; })
+                .sort(function(a,b){ return b.s - a.s || a.r.t.length - b.r.t.length; })
+                .slice(0, 30);
+      draw(terms);
+    }
+
+    function draw(terms){
+      if (!rows.length){
+        out.innerHTML = '<p class="none">Nothing matches &ldquo;' +
+          esc(box.value.trim()) + '&rdquo;.</p>';
+      } else {
+        var h = '<div class="hd">' + rows.length +
+                (rows.length === 30 ? '+ matches' : ' match' + (rows.length>1?'es':'')) +
+                '</div>';
+        rows.forEach(function(x, i){
+          var r = x.r,
+              ext = /^https?:/.test(r.u),
+              href = ext ? r.u : REL + r.u;
+          h += '<a href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') +
+               ' data-i="' + i + '" role="option">' +
+               '<span class="ti">' + hi(r.t, terms) +
+                 (ext ? ' <span class="ext">&#8599;</span>' : '') + '</span>' +
+               '<span class="me"><span class="kd">' + (KIND[r.k] || r.k) + '</span>' +
+               '<span class="wh">' + hi(r.w, terms) + '</span></span>' +
+               (r.n ? '<span class="nt">' + hi(r.n, terms) + '</span>' : '') +
+               '</a>';
+        });
+        out.innerHTML = h;
+      }
+      out.hidden = false; box.setAttribute('aria-expanded','true'); cur = -1;
+    }
+
+    function close(){ out.hidden = true; box.setAttribute('aria-expanded','false'); cur = -1; }
+
+    function move(d){
+      var links = out.querySelectorAll('a');
+      if (!links.length) return;
+      if (cur > -1) links[cur].classList.remove('on');
+      cur = (cur + d + links.length) % links.length;
+      links[cur].classList.add('on');
+      links[cur].scrollIntoView({block:'nearest'});
+    }
+
+    box.addEventListener('input', run);
+    box.addEventListener('focus', function(){ if (box.value.trim().length > 1) run(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter'){
+        var links = out.querySelectorAll('a');
+        if (cur > -1 && links[cur]){ e.preventDefault(); links[cur].click(); }
+      }
+      else if (e.key === 'Escape'){ close(); box.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.srch')) close();
+    });
+    // "/" from anywhere jumps to the box, the way every developer tool does it
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); box.focus(); box.select();
+      }
+    });
+  });
+})();
+</script>
+<script defer>
+// Track which in-page section you are actually looking at and mark it in the
+// rail. Only runs where the rail has anchor links.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var links = [].slice.call(document.querySelectorAll('.rail .anch a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {}, pos = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        pos[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null;
+      });
+      var best = null, near = Infinity;
+      Object.keys(pos).forEach(function(id){
+        if (pos[id] === null) return;
+        var d = Math.abs(pos[id] - 90);
+        if (d < near){ near = d; best = id; }
+      });
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if (best && map[best]) map[best].classList.add('on');
+    }, {rootMargin:'-70px 0px -55% 0px', threshold:[0,1]});
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) io.observe(el);
+    });
+  });
+})();
+</script>
+<script defer>
+// Three states, cycled by one button: follow the system, force light, force dark.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var btn = document.getElementById('theme'), root = document.documentElement;
+    if (!btn) return;
+    function get(){ try { return localStorage.getItem('bhr-theme') || 'system'; }
+                    catch(e){ return 'system'; } }
+    function label(){
+      var m = get();
+      btn.querySelector('.lbl').textContent =
+        m === 'system' ? 'Theme' : (m === 'light' ? 'Light' : 'Dark');
+      btn.title = m === 'system'
+        ? 'Following your computer. Click for light.'
+        : (m === 'light' ? 'Light. Click for dark.'
+                         : 'Dark. Click to follow your computer.');
+    }
+    function set(m){
+      try { m === 'system' ? localStorage.removeItem('bhr-theme')
+                           : localStorage.setItem('bhr-theme', m); } catch(e){}
+      if (m === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', m);
+      label();
+    }
+    label();
+    btn.addEventListener('click', function(){
+      var m = get();
+      set(m === 'system' ? 'light' : (m === 'light' ? 'dark' : 'system'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

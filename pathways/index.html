@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pick Your Pathway &middot; BHR Engineering</title>
+<meta name="description" content="Choose one of the seven Elective Engineering Pathways, and what each hub is for.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="../assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/site.css?v=c3afc4c9">
+<style>
+.wrap{max-width:1000px;margin:0 auto;padding:36px 24px 100px;
+  display:flex;flex-direction:column;gap:44px}
+/* hero */
+.hero{display:flex;flex-direction:column;gap:14px;padding-bottom:30px;
+  border-bottom:2px solid var(--ink)}
+.kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--accent);margin:0}
+h1{font-family:var(--sans);font-weight:var(--w-heavy);
+  font-size:clamp(32px,6vw,52px);line-height:1.02;letter-spacing:-.03em;margin:0;
+  text-wrap:balance;max-width:16ch}
+.hero p{margin:0;font-size:19px;color:var(--ink-2);max-width:56ch}
+h2{font-family:var(--sans);font-weight:700;font-size:26px;letter-spacing:-.015em;
+  margin:0 0 16px;text-wrap:balance}
+h3{font-family:var(--sans);font-weight:600;font-size:17px;margin:0 0 6px}
+p{margin:0 0 13px;max-width:66ch}
+section{display:flex;flex-direction:column}
+/* choosing */
+.ask{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.ask div{background:var(--card);padding:20px 22px}
+.ask .q{font-family:var(--sans);font-weight:700;font-size:17px;margin:0 0 7px;
+  color:var(--accent)}
+.ask p{font-size:15.5px;color:var(--ink-2);margin:0}
+/* pathway cards */
+.paths{display:flex;flex-direction:column;gap:20px}
+.path{background:var(--card);border:1px solid var(--rule);box-shadow:var(--shadow);
+  display:grid;grid-template-columns:200px minmax(0,1fr)}
+@media(max-width:760px){.path{grid-template-columns:1fr}}
+.path-side{padding:22px;border-right:1px solid var(--rule);display:flex;
+  flex-direction:column;gap:12px}
+@media(max-width:760px){.path-side{border-right:0;border-bottom:1px solid var(--rule)}}
+.path-side h3{font-size:20px;line-height:1.15;letter-spacing:-.015em;margin:0;
+  text-wrap:balance}
+.side-item{display:flex;flex-direction:column;gap:2px}
+.side-item dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3)}
+.side-item dd{margin:0;font-family:var(--sans);font-weight:600;font-size:13.5px;
+  line-height:1.3}
+.path-body{padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.hook{font-size:18px;color:var(--ink);margin:0;max-width:60ch;font-style:italic}
+.path-body .block{display:flex;flex-direction:column;gap:4px}
+.path-body .block h4{font-family:var(--sans);font-weight:600;font-size:12px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0}
+.path-body .block p{margin:0;font-size:15.5px;color:var(--ink-2);max-width:62ch}
+.builds{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.builds span{font-family:var(--sans);font-size:13px;font-weight:500;
+  background:var(--accent-soft);color:var(--accent);padding:3px 9px;border-radius:2px}
+/* teachers */
+.teachers{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+@media(max-width:620px){.teachers{grid-template-columns:1fr}}
+.teach{background:var(--card);padding:22px}
+.teach h3{font-size:19px;margin:0 0 8px}
+.teach p{font-size:16px;color:var(--ink-2);margin:0 0 10px}
+.teach ul{margin:0;padding-left:19px;font-size:15.5px;color:var(--ink-2)}
+.teach li{margin-bottom:4px}
+/* steps */
+ol.steps{list-style:none;counter-reset:s;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+ol.steps li{background:var(--card);counter-increment:s;padding:18px 22px 18px 62px;
+  position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:22px;top:17px;
+  font-family:var(--sans);font-weight:700;font-size:15px;color:var(--accent);
+  border:1.5px solid var(--accent);width:26px;height:26px;display:grid;place-items:center;
+  border-radius:50%}
+ol.steps h3{margin-bottom:4px}
+ol.steps p{font-size:15.5px;color:var(--ink-2);margin:0}
+.note{background:var(--card);border-left:4px solid var(--warm);padding:18px 20px;
+  box-shadow:var(--shadow)}
+.ntag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--warm);margin:0 0 7px}
+.note p:last-child{margin-bottom:0}
+footer{border-top:1px solid var(--rule);padding-top:18px;font-size:14px;color:var(--ink-3);
+  max-width:70ch}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}  max-width:1140px;margin:0 auto;padding:28px 24px 90px;align-items:start}
+@media(max-width:900px){.shell{grid-template-columns:1fr;gap:24px}}
+  border-right:1px solid var(--rule);padding-right:18px}
+@media(max-width:900px){nav{position:static;border-right:0;
+  border-bottom:1px solid var(--rule);padding:0 0 18px}}
+  font-family:var(--mono);margin:0 0 11px}
+  background:none;border:0;cursor:pointer;color:var(--ink-2);font-size:13.5px;
+  font-weight:500;padding:6px 8px;border-radius:3px;font-family:inherit;line-height:1.35}
+nav .std{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none;width:22px}
+.ph{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:34px;
+  display:flex;flex-direction:column;gap:9px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0}
+h2{font-family:var(--sans);font-weight:var(--w-heavy);
+  font-size:clamp(28px,4.6vw,42px);line-height:1.04;letter-spacing:-.028em;margin:0;
+  text-wrap:balance;max-width:18ch}
+.tag{margin:0;font-family:var(--sans);font-weight:600;font-size:18px;
+  color:var(--ink-2);max-width:52ch;line-height:1.35;text-wrap:balance}
+.intro{margin:4px 0 0;font-size:16.5px;color:var(--ink-2);max-width:64ch}
+.newflag{margin:6px 0 0;font-size:14px;color:var(--moss);background:var(--moss-soft);
+  border-radius:3px;padding:8px 12px;max-width:64ch;line-height:1.45}
+.topic{margin-bottom:44px}
+.th{display:flex;gap:15px;align-items:flex-start;margin-bottom:14px}
+.tn{font-family:var(--sans);font-weight:700;font-size:14px;color:var(--accent);
+  background:var(--accent-soft);width:28px;height:28px;flex:none;border-radius:4px;
+  display:grid;place-items:center;margin-top:2px}
+h3{font-family:var(--sans);font-weight:700;font-size:22px;letter-spacing:-.015em;
+  margin:0;line-height:1.2}
+.tq{margin:3px 0 0;font-size:14px;font-style:italic;color:var(--ink-3);max-width:60ch}
+.blurb{margin:0 0 16px;color:var(--ink-2);max-width:66ch}
+.roles{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.roles div{background:var(--card);padding:13px 18px;display:grid;
+  grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:3px 22px}
+.roles b{font-family:var(--sans);font-weight:600;font-size:15px;line-height:1.4}
+.roles span{color:var(--ink-2);font-size:15px;line-height:1.5}
+@media(max-width:620px){.roles div{grid-template-columns:1fr}}
+dl.defs{margin:0;display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+dl.defs dt{background:var(--card);padding:14px 18px 4px;font-family:var(--sans);
+  font-weight:600;font-size:15.5px;line-height:1.35}
+dl.defs dd{background:var(--card);margin:0;padding:0 18px 14px;color:var(--ink-2);
+  font-size:15.5px;line-height:1.55}
+.pullout{margin-top:16px;background:var(--card);border:1px solid var(--rule);
+  border-left:3px solid var(--accent);padding:15px 20px}
+.pullout b{font-family:var(--sans);font-weight:600;font-size:15.5px;display:block;
+  margin-bottom:4px}
+.pullout p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.55;max-width:66ch}
+.cred{background:var(--accent-soft);border:1px solid var(--rule);padding:15px 20px;
+  margin-bottom:16px;display:flex;flex-direction:column;gap:3px}
+.cred span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent)}
+.cred b{font-family:var(--sans);font-weight:700;font-size:17px;line-height:1.3;
+  color:var(--ink)}
+.cred em{font-style:normal;font-size:14px;color:var(--ink-2);margin-top:3px}
+ul.ticks,ul.files{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;
+  gap:1px;background:var(--rule);border:1px solid var(--rule)}
+ul.ticks li,ul.files li{background:var(--card);padding:11px 18px 11px 40px;position:relative;
+  font-size:15.5px;line-height:1.5}
+ul.ticks li::before{content:"";position:absolute;left:19px;top:20px;width:7px;height:7px;
+  border-radius:50%;background:var(--accent)}
+ul.files li::before{content:"";position:absolute;left:18px;top:17px;width:9px;height:11px;
+  border:1.4px solid var(--accent);border-radius:1px}
+.briefs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.briefs article{background:var(--card);padding:16px 19px;display:flex;flex-direction:column;
+  gap:6px;box-shadow:0 0 0 1px var(--rule)}
+.briefs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.briefs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+.note{margin:16px 0 0;font-size:14.5px;color:var(--ink-2);background:var(--card);
+  border:1px solid var(--rule);border-left:3px solid var(--ink-3);padding:12px 16px;
+  max-width:70ch;line-height:1.5}
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--card);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th{font-family:var(--sans);font-weight:600;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);text-align:left;padding:11px 14px;
+  border-bottom:1.5px solid var(--rule);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:0}
+td.k{font-family:var(--sans);font-weight:600;white-space:nowrap}
+td.s{font-family:var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
+em{font-style:italic}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pathnav{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule);margin-top:-18px}
+.pathnav a{background:var(--card);box-shadow:0 0 0 1px var(--rule);
+  padding:10px 14px;text-decoration:none;
+  color:var(--ink-2);font-size:13.5px;font-family:var(--sans);font-weight:500;
+  display:flex;gap:8px;align-items:baseline}
+.pathnav a:hover{background:var(--accent-soft);color:var(--accent)}
+.pathnav a[aria-current="page"]{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.pathnav .std{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none}
+.pathnav a[aria-current="page"] .std{color:var(--accent)}
+.pagebody{display:flex;flex-direction:column}
+
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px}
+.filters button{font-family:var(--sans);font-size:13px;font-weight:500;
+  background:var(--card);color:var(--ink-2);border:1px solid var(--rule);
+  padding:6px 13px;border-radius:20px;cursor:pointer;line-height:1.3}
+.filters button:hover{border-color:var(--accent);color:var(--accent)}
+.filters button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.rlist{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.r{background:var(--card);padding:17px 20px;display:flex;flex-direction:column;gap:8px}
+.r.hide{display:none}
+.rhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px}
+.r h3{margin:0;font-size:17px}
+.r h3 a{text-decoration:none}
+.r h3 a:hover{text-decoration:underline}
+.pill{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
+  padding:3px 8px;border-radius:3px;white-space:nowrap}
+.pill.ok{color:var(--green);background:var(--green-soft)}
+.pill.deep{color:var(--blue);background:var(--blue-soft)}
+.pill.hard{color:var(--ink-2);background:transparent;box-shadow:inset 0 0 0 1px var(--rule)}
+.pill.warn{color:var(--warm);background:var(--warm-soft)}
+.pill.school{color:var(--accent);background:var(--accent-soft)}
+.rcost{font-size:13.5px;color:var(--ink-3);font-family:var(--sans)}
+.r p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.55;max-width:70ch}
+.r .meta{display:flex;flex-wrap:wrap;gap:5px 18px;font-size:13.5px;color:var(--ink-3);
+  font-family:var(--sans)}
+.r .meta b{font-weight:600;color:var(--ink-2)}
+.r .why{font-size:15px;color:var(--ink);background:var(--paper);border-left:2px solid var(--accent);
+  padding:8px 13px;line-height:1.5;max-width:70ch}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tags i{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);border:1px solid var(--rule);
+  padding:2px 6px;border-radius:2px}
+
+.creds{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.creds div{background:var(--card);padding:16px 20px;display:grid;
+  grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:6px 24px;align-items:start}
+.creds b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.35}
+.creds .who{font-size:13.5px;color:var(--ink-3);font-family:var(--sans);display:block;
+  margin-top:2px}
+.creds .cost{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-top:5px}
+.creds p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.55}
+.creds .cnote{margin-top:7px;font-size:14.5px;color:var(--warm)}
+@media(max-width:620px){.creds div{grid-template-columns:1fr}}
+
+.trainbox{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.trainbox a{background:var(--card);padding:13px 18px;text-decoration:none;color:inherit;
+  display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr) auto;gap:4px 18px;
+  align-items:baseline}
+.trainbox a:hover{background:var(--accent-soft)}
+.trainbox b{font-family:var(--sans);font-weight:600;font-size:15px}
+.trainbox span{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+@media(max-width:620px){.trainbox a{grid-template-columns:1fr}}
+
+.srcs{display:flex;flex-direction:column;gap:1px;background:var(--card);
+  border:1px solid var(--rule);margin-top:14px}
+.srcs a{background:var(--card);box-shadow:0 0 0 1px var(--rule);padding:14px 18px;
+  text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:5px}
+.srcs a:hover{background:var(--accent-soft)}
+.srcs .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.srcs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.srcs .kind{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3)}
+.srcs p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.5;max-width:70ch}
+.srchead{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-top:20px}
+.srchead h4{margin:0;font-family:var(--sans);font-weight:700;font-size:14px;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
+.srchead span{font-size:13.5px;color:var(--ink-3)}
+
+.pathlayout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px;
+  align-items:start}
+.pside{position:sticky;top:74px;font-family:var(--sans)}
+.pside .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 9px;padding-left:2px}
+.pside ol{list-style:none;margin:0 0 16px;padding:0;
+  border:1px solid var(--rule);background:var(--card)}
+.pside li{border-bottom:1px solid var(--rule-soft)}
+.pside li:last-child{border-bottom:0}
+.pside a{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;
+  padding:11px 13px;text-decoration:none;color:inherit;align-items:start}
+.pside a:hover{background:var(--accent-soft)}
+.pside .n{font-family:var(--mono);font-size:11px;color:var(--ink-3);
+  padding-top:2px;min-width:9px}
+.pside b{font-weight:600;font-size:14.5px;line-height:1.25;color:var(--ink);
+  display:block}
+.pside .pl{display:block;font-family:var(--serif);font-size:13px;color:var(--ink-2);
+  line-height:1.4;margin-top:2px}
+.pside .ct{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);
+  margin-top:4px}
+.pside a.on{background:var(--accent-soft)}
+.pside a.on .n,.pside a.on b{color:var(--accent)}
+.pside a.on b{font-weight:700}
+.pside .up{font-size:13px;color:var(--ink-2);text-decoration:none;
+  display:inline-block;padding:2px}
+.pside .up:hover{color:var(--accent)}
+.topic{scroll-margin-top:78px}
+@media(max-width:900px){
+  .pathlayout{grid-template-columns:1fr;gap:26px}
+  .pside{position:static}
+  .pside ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:1px;background:var(--rule)}
+  .pside li{border-bottom:0;background:var(--card)}
+}
+@media print{.pside{display:none}.pathlayout{display:block}}
+
+.firstmove{border:1px solid var(--rule);border-left:4px solid var(--brand);
+  background:var(--card);padding:20px 24px 22px;margin:0 0 34px}
+.firstmove h2{font-family:var(--sans);font-weight:700;font-size:19px;margin:0 0 4px;
+  color:var(--ink);letter-spacing:-.01em;max-width:none;text-wrap:pretty}
+.firstmove>p{margin:0 0 14px;color:var(--ink-2);font-size:15.5px;max-width:64ch}
+.firstmove ol{list-style:none;counter-reset:fm;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:11px}
+.firstmove li{counter-increment:fm;position:relative;padding-left:34px;
+  font-size:15.5px;line-height:1.55;max-width:66ch}
+.firstmove li::before{content:counter(fm);position:absolute;left:0;top:1px;
+  width:22px;height:22px;display:grid;place-items:center;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);
+  font-family:var(--sans);font-weight:700;font-size:12px}
+.firstmove .ask{margin:16px 0 0;font-size:14.5px;color:var(--ink-3);
+  padding-top:13px;border-top:1px solid var(--rule-soft)}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('bhr-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+</head>
+<body>
+
+<header class="sitebar">
+  <div class="in">
+    <a class="brand" href="../index.html">
+      <img class="mark" src="../assets/logo-96.png" alt="" width="34" height="29">
+      <span>Engineering&nbsp;Technology</span>
+    </a>
+      <div class="srch">
+        <span class="sbox">
+          <input type="search" id="q" placeholder="Search" autocomplete="off"
+                 aria-label="Search the site" aria-expanded="false" aria-controls="sres">
+          <kbd>/</kbd>
+        </span>
+        <div class="sres" id="sres" role="listbox" hidden></div>
+      </div>
+      <button class="themebtn" id="theme" type="button"
+              title="Switch between light and dark" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span><span class="lbl">Theme</span>
+      </button>
+  </div>
+</header>
+
+<div class="shell">
+<div class="rail">
+  <div class="railin">
+  <nav aria-label="Site"><ul>
+    <li><a href="../index.html" class="sec">Home</a>
+    </li>
+    <li><a href="../start/welcome.html" class="sec">Start here</a>
+    </li>
+    <li><a href="../logbook/index.html" class="sec">Logbook</a>
+    </li>
+    <li><a href="../pathways/index.html" class="sec">The seven pathways</a>
+      <ul class="kids">
+        <li><a href="../pathways/index.html" class="here">Which one is for you?</a>
+        </li>
+        <li><a href="../pathways/industrial.html">Industrial Design</a>
+        </li>
+        <li><a href="../pathways/architecture.html">Architecture &amp; Civil</a>
+        </li>
+        <li><a href="../pathways/mechanical.html">Mechanical</a>
+        </li>
+        <li><a href="../pathways/electrical.html">Electrical</a>
+        </li>
+        <li><a href="../pathways/software.html">Software</a>
+        </li>
+        <li><a href="../pathways/automation.html">Automation &amp; Robotics</a>
+        </li>
+        <li><a href="../pathways/project.html">Project Management</a>
+        </li>
+      </ul>
+    </li>
+    <li><a href="../shop/index.html" class="sec">Shop safety</a>
+    </li>
+    <li><a href="../resources/index.html" class="sec">Training and credentials</a>
+    </li>
+  </ul></nav>
+  </div>
+</div>
+<div class="main">
+<div class="wrap">
+
+<header class="hero">
+  <p class="kicker">BHR Engineering &middot; Elective Engineering Pathway</p>
+  <h1>Pick your pathway</h1>
+  <p>Once you know your way around the shop, you get to choose a direction and take it further than the regular class has time for. Seven to choose from. This is how you decide.</p>
+</header>
+
+<section>
+  <h2>What a pathway actually is</h2>
+  <p>A pathway isn't another class. It's a place to work on something <strong>you</strong> chose, for a term, with the tools and reading already gathered for you.</p>
+  <p>You still have your regular engineering class — that's where you're graded and where the whole group moves together. The pathway is where you take one thing further. You pick the project, you set the pace, and a teacher checks in rather than assigns.</p>
+  <p>Each pathway has five sections: <strong>Explore the Field</strong>, <strong>Learn the Concepts</strong>, <strong>Build Your Skills</strong>, <strong>Find a Project</strong>, and <strong>Get the Files</strong>. Same five in all seven, so once you know your way around one, you know your way around all of them.</p>
+</section>
+
+<section>
+  <h2>Three questions worth asking yourself</h2>
+  <div class="ask">
+    <div>
+      <p class="q">What do you want to be holding at the end?</p>
+      <p>A physical object you built? A machine that moves on its own? A drawing set someone could build from? Working code? Start from the finished thing and work backward.</p>
+    </div>
+    <div>
+      <p class="q">What part do you actually enjoy?</p>
+      <p>Some people like the figuring-out. Some like the making. Some like it when something finally works. All three are engineering — they just point at different pathways.</p>
+    </div>
+    <div>
+      <p class="q">What would you want to try before you have to commit?</p>
+      <p>You're not signing up for a career. Picking a pathway you end up not loving still teaches you something worth knowing about yourself.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Who helps you with what</h2>
+  <div class="teachers">
+    <div class="teach">
+      <h3>Mr. Frank</h3>
+      <p>Helps you <strong>make it real</strong> — how it looks, how it's drawn, how it gets built.</p>
+      <ul>
+        <li>Designing something in CAD that actually looks good</li>
+        <li>Getting a part ready to 3D print or laser cut</li>
+        <li>Making a structure that holds up</li>
+        <li>Drawings someone else could build from</li>
+        <li>Fixing a prototype that didn't come out right</li>
+      </ul>
+    </div>
+    <div class="teach">
+      <h3>Mr. Dryer</h3>
+      <p>Helps you <strong>make it work</strong> — circuits, code, and proving it performs.</p>
+      <ul>
+        <li>Designing or troubleshooting a circuit</li>
+        <li>Writing and debugging code for a microcontroller or robot</li>
+        <li>Figuring out why a system isn't behaving</li>
+        <li>Getting sensors and motors working together</li>
+        <li>Using data or simulation to show it works</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>The seven pathways</h2>
+  <div class="paths">
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Industrial Design</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Mr. Frank</dd></div>
+        <div class="side-item"><dt>Main tool</dt><dd>Fusion 360</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>Autodesk Certified User — Fusion 360</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Designing objects people actually pick up and use.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>How something feels in the hand. Why one shape works and another doesn't. Designing so a thing can actually be manufactured — which is a different problem from designing so it looks good, and you need both.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>Desk organizer</span><span>A kid's toy</span><span>Product redesign</span><span>Rendered concept</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Product design, manufacturing engineering, technical drafting. This is the pathway if you've ever picked something up and thought you could have designed it better.</p></div>
+      </div>
+    </article>
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Architecture &amp; Civil</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Mr. Frank</dd></div>
+        <div class="side-item"><dt>Main tool</dt><dd>Revit</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>Autodesk Certified User — Revit</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Buildings, bridges, and the ground they sit on.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>Structures and whether they stand up. Modeling a whole building rather than one part. Site work — drainage, grading, parking, accessibility. Learning to survey with a total station.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>A structure that shouldn't work but does</span><span>Revitalizing a real local space</span><span>Full drawing set</span><span>Tested scale model</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Architecture, civil engineering, construction management. Pick this if you look at buildings and wonder how they hold up — or at a run-down block and think about what it could be.</p></div>
+      </div>
+    </article>
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Mechanical Engineering</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Mr. Frank, with Mr. Dryer on the analysis</dd></div>
+        <div class="side-item"><dt>Main tools</dt><dd>Inventor, Fusion 360</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>ACU Inventor, then ACP Fusion 360</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Forces, motion, and whether the part survives.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>Working out the forces on something before you build it, then testing whether you were right. Simulating where a part will break, printing it, and breaking it — then explaining the difference between what you predicted and what happened.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>A bracket tested to failure</span><span>A gear or pulley system</span><span>A model that resizes itself</span><span>Reverse-engineered mechanism</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Mechanical engineering, product development, manufacturing. Pick this if you want to know <em>why</em> something held or broke, not just that it did.</p></div>
+      </div>
+    </article>
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Electrical Engineering</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Mr. Dryer</dd></div>
+        <div class="side-item"><dt>Main tools</dt><dd>Multimeter, oscilloscope, breadboard</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>Multimeter and oscilloscope proficiency</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Making electricity do what you want.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>Building circuits on a breadboard and measuring what they're actually doing rather than what you hoped. Reading a schematic and making it real. Learning to see a signal on a scope, which is the closest thing to a superpower in this shop.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>A circuit that reacts to its surroundings</span><span>Sensor-driven system</span><span>Solar or wind setup</span><span>Something broken, fixed</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Electrical engineering, robotics, systems integration. Pick this if you want to understand what's happening inside the things everyone else treats as a black box.</p></div>
+      </div>
+    </article>
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Software Engineering</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Mr. Dryer</dd></div>
+        <div class="side-item"><dt>Main tools</dt><dd>Python, Arduino</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>Python and Arduino proficiency</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Code that makes physical things behave.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>Writing code that runs on hardware, not just on a screen. Working out the logic on paper before you type — flowcharts, truth tables — because debugging a plan is faster than debugging a program. Then finding out why it still doesn't work.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>A robot that decides for itself</span><span>Sensor logging system</span><span>Automated control loop</span><span>Something that reacts in real time</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Software engineering, computer engineering, robotics. Pick this if you'd rather the machine be clever than pretty.</p></div>
+      </div>
+    </article>
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Automation &amp; Robotics</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Both — this one needs them</dd></div>
+        <div class="side-item"><dt>Main tools</dt><dd>PLCs, robot controllers, Festo LX</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>Festo LX, Universal Robots Academy</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Machines that run without anyone standing there.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>This is where the other pathways meet. A working robot needs a frame someone built, motors someone wired, code someone wrote, and sensors that tell it what's happening. You'd be the one making those four things agree.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>A robot arm with a custom gripper</span><span>Automated feed system</span><span>A machine tending another machine</span><span>Full production cell</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Robotics, automation engineering, advanced manufacturing. Pick this if you want the most demanding one — it uses everything the other six teach.</p></div>
+      </div>
+    </article>
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Project Management</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Either — it spans both</dd></div>
+        <div class="side-item"><dt>Main tools</dt><dd>Gantt charts, work breakdowns, decision matrices</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>Scheduling and planning proficiency</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Getting a real project finished on time, with a budget.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>Breaking a big project into pieces small enough to actually schedule. Working out which task, if it slips, pushes everything else. Deciding between options with something better than a hunch. Making the case for an idea to people who control the money.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>A pitch to real stakeholders</span><span>Business plan for a new product</span><span>Full project schedule</span><span>Budgeted parts list</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Engineering management, construction management, systems integration. Pick this if you're the one who ends up organizing the group project anyway.</p></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section>
+  <h2>Once you've picked</h2>
+  <ol class="steps">
+    <li><h3>Start in Explore the Field</h3>
+      <p>Read enough to know what people in this field actually do all day. You're checking whether you still want it once you know more.</p></li>
+    <li><h3>Pick something to build</h3>
+      <p>Go to Find a Project and take one, or bring your own idea and talk it through with your teacher. Your own idea is usually better, because you'll care more when it stops working.</p></li>
+    <li><h3>Learn what that project needs</h3>
+      <p>Not everything — just what this build requires. Learn the Concepts for the theory, Build Your Skills for the tools. You'll come back for more as you hit things you can't do yet.</p></li>
+    <li><h3>Keep your logbook as you go</h3>
+      <p>Every day, in the moment — not from memory at the end of the week. It's how you show what you did and how you get credit for the parts nobody saw.</p></li>
+    <li><h3>Show your work</h3>
+      <p>At the end of the term you explain what you set out to do, what happened, and what you'd do differently. Things going wrong isn't a problem here. Not being able to explain why is.</p></li>
+  </ol>
+</section>
+
+<section>
+  <div class="note">
+    <p class="ntag">Before you start</p>
+    <p>You need your <strong>OSHA 10</strong> safety credential before doing shop work in any pathway. It's the same requirement across all seven, and it isn't a formality — it's the reason you're allowed near the equipment.</p>
+  </div>
+</section>
+
+<footer>
+  BHR Engineering Technology · Blue Hills Regional. Not sure which one? Talk to Mr. Frank or Mr. Dryer — describe the thing you'd want to build and they'll tell you which pathway gets you there fastest.
+</footer>
+
+
+<div class="pathnav">
+  <a href="industrial.html"><span class="std">S8</span>Industrial Design</a>
+  <a href="architecture.html"><span class="std">S10</span>Architecture &amp; Civil</a>
+  <a href="mechanical.html"><span class="std">S7</span>Mechanical</a>
+  <a href="electrical.html"><span class="std">S5</span>Electrical</a>
+  <a href="software.html"><span class="std">S6</span>Software</a>
+  <a href="automation.html"><span class="std">S9</span>Automation &amp; Robotics</a>
+  <a href="project.html"><span class="std">S4</span>Project Management</a>
+</div>
+
+<section>
+  <div class="topic">
+    <div class="th"><span class="tn">&mdash;</span><div><h3>The seven pathways</h3>
+      <p class="tq">Each one is the home of one state technical standard.</p></div></div>
+    <p class="blurb">Standards 4 through 10 are the seven technical DESE standards, and they
+      map one to one onto the seven pathways. Pick by what you want to spend a term doing,
+      not by which sounds most impressive.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Pathway</th><th>Standard</th><th>Ask</th><th>You spend the term on</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Industrial Design</td><td class="s">8</td><td>Mr. Frank</td><td>Form, ergonomics, and designing for the machine that will make it</td></tr>
+        <tr><td class="k">Architecture &amp; Civil</td><td class="s">10</td><td>Mr. Frank</td><td>Structures, sites, drainage, and construction documents</td></tr>
+        <tr><td class="k">Mechanical</td><td class="s">7</td><td>Mr. Frank</td><td>Forces, motion, materials, and testing to failure</td></tr>
+        <tr><td class="k">Electrical</td><td class="s">5</td><td>Mr. Dryer</td><td>Circuits, power, and instrument measurement</td></tr>
+        <tr><td class="k">Software</td><td class="s">6</td><td>Mr. Dryer</td><td>Logic, code, and controlling physical hardware</td></tr>
+        <tr><td class="k">Automation &amp; Robotics</td><td class="s">9</td><td>Both</td><td>Mechatronics &mdash; all three of the above at once</td></tr>
+        <tr><td class="k">Project Management</td><td class="s">4</td><td>Both</td><td>Scope, schedule, resources, and getting it finished</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="topic">
+    <div class="th"><span class="tn">&mdash;</span><div><h3>Every hub has the same five topics</h3>
+      <p class="tq">If you cannot answer the sorting question, the resource belongs somewhere else.</p></div></div>
+    <div class="tw"><table>
+      <thead><tr><th>Topic</th><th>Sorting question</th><th>What belongs there</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Explore the Field</td><td>Would this help someone decide whether to pick this pathway?</td><td>Careers, roles, what practitioners actually do</td></tr>
+        <tr><td class="k">Learn the Concepts</td><td>Is this something you study to understand how the work works?</td><td>Texts, theory, the science behind the decisions</td></tr>
+        <tr><td class="k">Build Your Skills</td><td>Is this a procedure you practice until you can do it?</td><td>Software walkthroughs, equipment training, technique</td></tr>
+        <tr><td class="k">Find a Project</td><td>Is this something you could go build?</td><td>Design briefs, challenges, project seeds</td></tr>
+        <tr><td class="k">Get the Files</td><td>Would you open this while working, rather than read start to finish?</td><td>Templates, forms, rubrics, safety rules</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="topic">
+    <div class="th"><span class="tn">&mdash;</span><div><h3>True in every pathway</h3>
+      <p class="tq">You do not need to read this seven times.</p></div></div>
+    <dl class="defs">
+      <dt>OSHA 10 &mdash; Construction</dt>
+      <dd>The base credential for every pathway. Nothing in a hub happens without it on file.</dd>
+      <dt>The logbook</dt>
+      <dd>One set of rules, program-wide, in <em>Your Engineering Logbook</em>. Older hub guides
+        carried four different notebook rulebooks; those are retired.</dd>
+      <dt>Standard 11 &mdash; integrated research</dt>
+      <dd>A business plan for a design in an emerging field: the technical design, evidence of
+        market potential, and an implementation strategy. This is where entrepreneurship
+        (Standard 14) gets covered too.</dd>
+      <dt>Standard 12 &mdash; advanced elective area</dt>
+      <dd>A professional technical report on a system you reverse-engineered: how the components
+        interact, rebuilt digitally, and validated with simulation or testing.</dd>
+      <dt>Safety, always</dt>
+      <dd>Eye protection in the Makerspace. Never a tool you have not been trained and authorized on.
+        Never alone with power tools. Fifteen minutes of flowing water for anything in the eyes,
+        before treatment. Report every injury. Clean your area, including the floor.</dd>
+      <dt>How it ends</dt>
+      <dd>A portfolio and a defense &mdash; you present the work and justify the decisions, using
+        your logbook as the evidence.</dd>
+    </dl>
+  </div>
+</section>
+
+</div>
+</div>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology &middot; Room E-126</span>
+    <span>Mr. Frank &middot; Mr. Dryer</span>
+    <span class="build">Build 04 Sep 2026, 16:23</span>
+  </div>
+</footer>
+
+
+<script src="../assets/search-index.js?v=003b2e2b" defer></script>
+<script defer>
+(function(){
+  var REL = '../';
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var box = document.getElementById('q'), out = document.getElementById('sres');
+    if (!box || !window.BHR_INDEX) return;
+    var IDX = window.BHR_INDEX, cur = -1, rows = [];
+
+    var KIND = {video:'Video',course:'Course',site:'Site',tool:'Tool',read:'Reading',
+      podcast:'Podcast',book:'Book',data:'Data',comp:'Competition',doc:'Doc',
+      software:'Software',page:'Page',rule:'Rule',check:'Safety check',
+      platform:'Training',sds:'Safety data',pathway:'Pathway',talk:'Talk',
+      playlist:'Playlist'};
+
+    function esc(s){ return s.replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    function hi(s, terms){
+      s = esc(s);
+      terms.forEach(function(t){
+        if (t.length < 2) return;
+        s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'ig'),
+                      '<mark>$1</mark>');
+      });
+      return s;
+    }
+
+    // Score by where the match lands: a title hit beats a note hit, and a hit at
+    // the start of the title beats one in the middle. Every term must appear
+    // somewhere, so multi-word queries narrow rather than widen.
+    function score(r, terms){
+      var t = r.t.toLowerCase(), n = (r.n + ' ' + r.x).toLowerCase(),
+          w = r.w.toLowerCase(), s = 0;
+      for (var i = 0; i < terms.length; i++){
+        var q = terms[i], hit = 0;
+        if (t.indexOf(q) === 0) hit = 100;
+        else if (t.indexOf(' ' + q) > -1) hit = 70;
+        else if (t.indexOf(q) > -1) hit = 50;
+        else if (w.indexOf(q) > -1) hit = 30;
+        else if (n.indexOf(q) > -1) hit = 20;
+        if (!hit) return 0;
+        s += hit;
+      }
+      if (r.k === 'page' || r.k === 'pathway') s += 12;   // structure floats up
+      return s;
+    }
+
+    function run(){
+      var qv = box.value.trim().toLowerCase();
+      if (qv.length < 2){ close(); return; }
+      var terms = qv.split(/\s+/);
+      rows = IDX.map(function(r){ return {r:r, s:score(r, terms)}; })
+                .filter(function(x){ return x.s > 0; })
+                .sort(function(a,b){ return b.s - a.s || a.r.t.length - b.r.t.length; })
+                .slice(0, 30);
+      draw(terms);
+    }
+
+    function draw(terms){
+      if (!rows.length){
+        out.innerHTML = '<p class="none">Nothing matches &ldquo;' +
+          esc(box.value.trim()) + '&rdquo;.</p>';
+      } else {
+        var h = '<div class="hd">' + rows.length +
+                (rows.length === 30 ? '+ matches' : ' match' + (rows.length>1?'es':'')) +
+                '</div>';
+        rows.forEach(function(x, i){
+          var r = x.r,
+              ext = /^https?:/.test(r.u),
+              href = ext ? r.u : REL + r.u;
+          h += '<a href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') +
+               ' data-i="' + i + '" role="option">' +
+               '<span class="ti">' + hi(r.t, terms) +
+                 (ext ? ' <span class="ext">&#8599;</span>' : '') + '</span>' +
+               '<span class="me"><span class="kd">' + (KIND[r.k] || r.k) + '</span>' +
+               '<span class="wh">' + hi(r.w, terms) + '</span></span>' +
+               (r.n ? '<span class="nt">' + hi(r.n, terms) + '</span>' : '') +
+               '</a>';
+        });
+        out.innerHTML = h;
+      }
+      out.hidden = false; box.setAttribute('aria-expanded','true'); cur = -1;
+    }
+
+    function close(){ out.hidden = true; box.setAttribute('aria-expanded','false'); cur = -1; }
+
+    function move(d){
+      var links = out.querySelectorAll('a');
+      if (!links.length) return;
+      if (cur > -1) links[cur].classList.remove('on');
+      cur = (cur + d + links.length) % links.length;
+      links[cur].classList.add('on');
+      links[cur].scrollIntoView({block:'nearest'});
+    }
+
+    box.addEventListener('input', run);
+    box.addEventListener('focus', function(){ if (box.value.trim().length > 1) run(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter'){
+        var links = out.querySelectorAll('a');
+        if (cur > -1 && links[cur]){ e.preventDefault(); links[cur].click(); }
+      }
+      else if (e.key === 'Escape'){ close(); box.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.srch')) close();
+    });
+    // "/" from anywhere jumps to the box, the way every developer tool does it
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); box.focus(); box.select();
+      }
+    });
+  });
+})();
+</script>
+<script defer>
+// Track which in-page section you are actually looking at and mark it in the
+// rail. Only runs where the rail has anchor links.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var links = [].slice.call(document.querySelectorAll('.rail .anch a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {}, pos = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        pos[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null;
+      });
+      var best = null, near = Infinity;
+      Object.keys(pos).forEach(function(id){
+        if (pos[id] === null) return;
+        var d = Math.abs(pos[id] - 90);
+        if (d < near){ near = d; best = id; }
+      });
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if (best && map[best]) map[best].classList.add('on');
+    }, {rootMargin:'-70px 0px -55% 0px', threshold:[0,1]});
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) io.observe(el);
+    });
+  });
+})();
+</script>
+<script defer>
+// Three states, cycled by one button: follow the system, force light, force dark.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var btn = document.getElementById('theme'), root = document.documentElement;
+    if (!btn) return;
+    function get(){ try { return localStorage.getItem('bhr-theme') || 'system'; }
+                    catch(e){ return 'system'; } }
+    function label(){
+      var m = get();
+      btn.querySelector('.lbl').textContent =
+        m === 'system' ? 'Theme' : (m === 'light' ? 'Light' : 'Dark');
+      btn.title = m === 'system'
+        ? 'Following your computer. Click for light.'
+        : (m === 'light' ? 'Light. Click for dark.'
+                         : 'Dark. Click to follow your computer.');
+    }
+    function set(m){
+      try { m === 'system' ? localStorage.removeItem('bhr-theme')
+                           : localStorage.setItem('bhr-theme', m); } catch(e){}
+      if (m === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', m);
+      label();
+    }
+    label();
+    btn.addEventListener('click', function(){
+      var m = get();
+      set(m === 'system' ? 'light' : (m === 'light' ? 'dark' : 'system'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

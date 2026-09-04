@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Welcome to the Shop &middot; BHR Engineering</title>
+<meta name="description" content="Who to ask for what, what to wear, what you can earn, and the safety essentials for your first week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="../assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/site.css?v=c3afc4c9">
+<style>
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.two article{background:var(--card);padding:18px 20px;box-shadow:0 0 0 1px var(--rule);
+  display:flex;flex-direction:column;gap:8px}
+.two .who{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3)}
+.two b{font-family:var(--sans);font-weight:600;font-size:16px;line-height:1.35}
+.two ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;
+  font-size:15px;color:var(--ink-2)}
+.two li{line-height:1.5}
+.pdf{display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  font-family:var(--sans);font-weight:600;font-size:15px;color:var(--accent);
+  background:var(--accent-soft);border:1px solid var(--rule);padding:11px 17px;
+  align-self:flex-start;margin-top:4px}
+.pdf:hover{background:var(--card)}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('bhr-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+</head>
+<body>
+
+<header class="sitebar">
+  <div class="in">
+    <a class="brand" href="../index.html">
+      <img class="mark" src="../assets/logo-96.png" alt="" width="34" height="29">
+      <span>Engineering&nbsp;Technology</span>
+    </a>
+      <div class="srch">
+        <span class="sbox">
+          <input type="search" id="q" placeholder="Search" autocomplete="off"
+                 aria-label="Search the site" aria-expanded="false" aria-controls="sres">
+          <kbd>/</kbd>
+        </span>
+        <div class="sres" id="sres" role="listbox" hidden></div>
+      </div>
+      <button class="themebtn" id="theme" type="button"
+              title="Switch between light and dark" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span><span class="lbl">Theme</span>
+      </button>
+  </div>
+</header>
+
+<div class="shell">
+<div class="rail">
+  <div class="railin">
+  <nav aria-label="Site"><ul>
+    <li><a href="../index.html" class="sec">Home</a>
+    </li>
+    <li><a href="../start/welcome.html" class="sec">Start here</a>
+      <ul class="kids">
+        <li><a href="../start/welcome.html" class="here">Welcome to the shop</a>
+        </li>
+        <li><a href="../start/how-class-works.html">How this class works</a>
+        </li>
+      </ul>
+    </li>
+    <li><a href="../logbook/index.html" class="sec">Logbook</a>
+    </li>
+    <li><a href="../pathways/index.html" class="sec">The seven pathways</a>
+    </li>
+    <li><a href="../shop/index.html" class="sec">Shop safety</a>
+    </li>
+    <li><a href="../resources/index.html" class="sec">Training and credentials</a>
+    </li>
+  </ul></nav>
+  </div>
+</div>
+<div class="main">
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Engineering Technology &middot; Welcome</p>
+    <h1>Welcome to the shop</h1>
+    <p>Everything you need for your first week: who to ask for what, what to wear,
+      how the shop runs, and how you are graded.</p>
+  </header>
+
+  <section>
+    <h2>What this program is</h2>
+    <p>You are joining a program that treats you like an engineer rather than a student
+      who happens to be in a shop. You will design things, build them, test them, and
+      explain why they worked or did not. Some of what you make will fail. That is part
+      of it &mdash; what matters is that you can say why.</p>
+  </section>
+
+  <section>
+    <h2>Who to ask for what</h2>
+    <p class="sub">Both of us teach across all four years. Go to whoever fits the problem in
+      front of you &mdash; you will not be sent away for asking the wrong one.</p>
+    <div class="two">
+      <article>
+        <span class="who">Mr. Frank &middot; Grades 11 &amp; 12</span>
+        <b>Helps you make it real</b>
+        <ul>
+          <li>Designing in CAD so it works and looks right</li>
+          <li>Getting a part ready to 3D print or laser cut</li>
+          <li>Making a structure that holds up</li>
+          <li>Drawings someone else could build from</li>
+          <li>Fixing a prototype that came out wrong</li>
+        </ul>
+      </article>
+      <article>
+        <span class="who">Mr. Dryer &middot; Grades 9 &amp; 10</span>
+        <b>Helps you make it work</b>
+        <ul>
+          <li>Designing or troubleshooting a circuit</li>
+          <li>Writing and debugging code for a board or robot</li>
+          <li>Working out why a system misbehaves</li>
+          <li>Getting sensors and motors working together</li>
+          <li>Showing with data that it does what you claim</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>What you can earn here</h2>
+    <dl class="defs">
+      <dt>OSHA 10 &mdash; Construction</dt>
+      <dd>In Grade 10. The credential that lets you work on the equipment, and it is
+        recognized well outside this building.</dd>
+      <dt>Autodesk Certified User</dt>
+      <dd>In Inventor, Fusion 360 and Revit Architecture. Which ones you go for depends on
+        the work you are doing and when you are ready.</dd>
+      <dt>Cooperative education</dt>
+      <dd>Working in a real engineering setting for part of your schedule. Available to
+        juniors from Term 3 and seniors from Term 1.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>What to wear</h2>
+    <p class="sub">You wear a uniform during your shop week. It is not about looking smart
+      &mdash; it is about being dressed for a room with machines in it.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Item</th><th>What is required</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Shop attire</td><td>Anything carrying the Engineering Technology logo, bought through the school store &mdash; T-shirts long or short sleeve, hoodies, crew necks, quarter-zips, sweaters. Any of it counts.</td></tr>
+        <tr><td class="k">Footwear</td><td>Shoes, sneakers or work boots. <strong>No open-toed shoes, sandals or Crocs</strong> in the Makerspace.</td></tr>
+        <tr><td class="k">Eye protection</td><td>Required in the Makerspace. Situational in the main shop &mdash; if you are unsure, put them on.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note"><strong>Ordering.</strong> Uniforms are ordered at
+      <a href="https://store.bluehills.org/">store.bluehills.org</a> during the window posted
+      on the website &mdash; that is when pricing is best and delivery to the school is free.
+      There is no limit on how many you buy; most students get at least two. Refer to the
+      Blue Hills Parent/Student Handbook for anything else about attire.</p>
+  </section>
+
+  <section>
+    <h2>Safety, in short</h2>
+    <p class="sub">The full rules are posted in the shop and you will be trained on them.
+      These are the ones that matter before you touch anything.</p>
+    <ul class="ticks">
+      <li>Report every injury immediately, however small. If a chemical gets in your eyes,
+        wash for <strong>15 minutes</strong> before seeking treatment.</li>
+      <li>Never use a tool you have not been trained and authorized on.</li>
+      <li>Never work alone with power tools &mdash; two people, both visible to each other.</li>
+      <li>Machines run only with all guards and shields in place. Never walk away from a
+        running tool.</li>
+      <li>Clean your area every time you leave it, including the floor.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Next</h2>
+    <p class="sub">Two things worth reading in your first week.</p>
+    <div class="grid">
+      <article>
+        <b><a href="how-class-works.html">How this class works</a></b>
+        <p>The classroom rules, and exactly how your grade is put together &mdash; including
+          why half of it is about how you work rather than what you make.</p>
+      </article>
+      <article>
+        <b><a href="../logbook/index.html">Your engineering logbook</a></b>
+        <p>You fill one in every shop day. Read this before your first one, not after.</p>
+      </article>
+    </div>
+  </section>
+
+</div>
+
+</div>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology &middot; Room E-126</span>
+    <span>Mr. Frank &middot; Mr. Dryer</span>
+    <span class="build">Build 04 Sep 2026, 16:23</span>
+  </div>
+</footer>
+
+
+<script src="../assets/search-index.js?v=003b2e2b" defer></script>
+<script defer>
+(function(){
+  var REL = '../';
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var box = document.getElementById('q'), out = document.getElementById('sres');
+    if (!box || !window.BHR_INDEX) return;
+    var IDX = window.BHR_INDEX, cur = -1, rows = [];
+
+    var KIND = {video:'Video',course:'Course',site:'Site',tool:'Tool',read:'Reading',
+      podcast:'Podcast',book:'Book',data:'Data',comp:'Competition',doc:'Doc',
+      software:'Software',page:'Page',rule:'Rule',check:'Safety check',
+      platform:'Training',sds:'Safety data',pathway:'Pathway',talk:'Talk',
+      playlist:'Playlist'};
+
+    function esc(s){ return s.replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    function hi(s, terms){
+      s = esc(s);
+      terms.forEach(function(t){
+        if (t.length < 2) return;
+        s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'ig'),
+                      '<mark>$1</mark>');
+      });
+      return s;
+    }
+
+    // Score by where the match lands: a title hit beats a note hit, and a hit at
+    // the start of the title beats one in the middle. Every term must appear
+    // somewhere, so multi-word queries narrow rather than widen.
+    function score(r, terms){
+      var t = r.t.toLowerCase(), n = (r.n + ' ' + r.x).toLowerCase(),
+          w = r.w.toLowerCase(), s = 0;
+      for (var i = 0; i < terms.length; i++){
+        var q = terms[i], hit = 0;
+        if (t.indexOf(q) === 0) hit = 100;
+        else if (t.indexOf(' ' + q) > -1) hit = 70;
+        else if (t.indexOf(q) > -1) hit = 50;
+        else if (w.indexOf(q) > -1) hit = 30;
+        else if (n.indexOf(q) > -1) hit = 20;
+        if (!hit) return 0;
+        s += hit;
+      }
+      if (r.k === 'page' || r.k === 'pathway') s += 12;   // structure floats up
+      return s;
+    }
+
+    function run(){
+      var qv = box.value.trim().toLowerCase();
+      if (qv.length < 2){ close(); return; }
+      var terms = qv.split(/\s+/);
+      rows = IDX.map(function(r){ return {r:r, s:score(r, terms)}; })
+                .filter(function(x){ return x.s > 0; })
+                .sort(function(a,b){ return b.s - a.s || a.r.t.length - b.r.t.length; })
+                .slice(0, 30);
+      draw(terms);
+    }
+
+    function draw(terms){
+      if (!rows.length){
+        out.innerHTML = '<p class="none">Nothing matches &ldquo;' +
+          esc(box.value.trim()) + '&rdquo;.</p>';
+      } else {
+        var h = '<div class="hd">' + rows.length +
+                (rows.length === 30 ? '+ matches' : ' match' + (rows.length>1?'es':'')) +
+                '</div>';
+        rows.forEach(function(x, i){
+          var r = x.r,
+              ext = /^https?:/.test(r.u),
+              href = ext ? r.u : REL + r.u;
+          h += '<a href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') +
+               ' data-i="' + i + '" role="option">' +
+               '<span class="ti">' + hi(r.t, terms) +
+                 (ext ? ' <span class="ext">&#8599;</span>' : '') + '</span>' +
+               '<span class="me"><span class="kd">' + (KIND[r.k] || r.k) + '</span>' +
+               '<span class="wh">' + hi(r.w, terms) + '</span></span>' +
+               (r.n ? '<span class="nt">' + hi(r.n, terms) + '</span>' : '') +
+               '</a>';
+        });
+        out.innerHTML = h;
+      }
+      out.hidden = false; box.setAttribute('aria-expanded','true'); cur = -1;
+    }
+
+    function close(){ out.hidden = true; box.setAttribute('aria-expanded','false'); cur = -1; }
+
+    function move(d){
+      var links = out.querySelectorAll('a');
+      if (!links.length) return;
+      if (cur > -1) links[cur].classList.remove('on');
+      cur = (cur + d + links.length) % links.length;
+      links[cur].classList.add('on');
+      links[cur].scrollIntoView({block:'nearest'});
+    }
+
+    box.addEventListener('input', run);
+    box.addEventListener('focus', function(){ if (box.value.trim().length > 1) run(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter'){
+        var links = out.querySelectorAll('a');
+        if (cur > -1 && links[cur]){ e.preventDefault(); links[cur].click(); }
+      }
+      else if (e.key === 'Escape'){ close(); box.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.srch')) close();
+    });
+    // "/" from anywhere jumps to the box, the way every developer tool does it
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); box.focus(); box.select();
+      }
+    });
+  });
+})();
+</script>
+<script defer>
+// Track which in-page section you are actually looking at and mark it in the
+// rail. Only runs where the rail has anchor links.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var links = [].slice.call(document.querySelectorAll('.rail .anch a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {}, pos = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        pos[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null;
+      });
+      var best = null, near = Infinity;
+      Object.keys(pos).forEach(function(id){
+        if (pos[id] === null) return;
+        var d = Math.abs(pos[id] - 90);
+        if (d < near){ near = d; best = id; }
+      });
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if (best && map[best]) map[best].classList.add('on');
+    }, {rootMargin:'-70px 0px -55% 0px', threshold:[0,1]});
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) io.observe(el);
+    });
+  });
+})();
+</script>
+<script defer>
+// Three states, cycled by one button: follow the system, force light, force dark.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var btn = document.getElementById('theme'), root = document.documentElement;
+    if (!btn) return;
+    function get(){ try { return localStorage.getItem('bhr-theme') || 'system'; }
+                    catch(e){ return 'system'; } }
+    function label(){
+      var m = get();
+      btn.querySelector('.lbl').textContent =
+        m === 'system' ? 'Theme' : (m === 'light' ? 'Light' : 'Dark');
+      btn.title = m === 'system'
+        ? 'Following your computer. Click for light.'
+        : (m === 'light' ? 'Light. Click for dark.'
+                         : 'Dark. Click to follow your computer.');
+    }
+    function set(m){
+      try { m === 'system' ? localStorage.removeItem('bhr-theme')
+                           : localStorage.setItem('bhr-theme', m); } catch(e){}
+      if (m === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', m);
+      label();
+    }
+    label();
+    btn.addEventListener('click', function(){
+      var m = get();
+      set(m === 'system' ? 'light' : (m === 'light' ? 'dark' : 'system'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How This Class Works &middot; BHR Engineering</title>
+<meta name="description" content="Classroom rules, uniform expectations, and exactly how the grade is calculated.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="../assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/site.css?v=c3afc4c9">
+<style>
+.wrap{max-width:940px;margin:0 auto;padding:36px 24px 100px;
+  display:flex;flex-direction:column;gap:46px}
+.hero{display:flex;flex-direction:column;gap:14px;padding-bottom:28px;
+  border-bottom:2px solid var(--ink)}
+.kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--accent);margin:0}
+h1{font-family:var(--sans);font-weight:var(--w-heavy);
+  font-size:clamp(32px,6vw,50px);line-height:1.02;letter-spacing:-.03em;margin:0;
+  text-wrap:balance;max-width:15ch}
+.hero p{margin:0;font-size:19px;color:var(--ink-2);max-width:56ch}
+section{display:flex;flex-direction:column}
+h2{font-family:var(--sans);font-weight:700;font-size:26px;letter-spacing:-.015em;
+  margin:0 0 8px;text-wrap:balance}
+.sub{margin:0 0 18px;color:var(--ink-2);max-width:64ch;font-size:17px}
+h3{font-family:var(--sans);font-weight:600;font-size:17.5px;margin:0 0 6px}
+p{margin:0 0 13px;max-width:66ch}
+.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.quick div{background:var(--card);padding:18px 20px}
+.quick dt{font-family:var(--mono);font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 5px}
+.quick dd{margin:0;font-family:var(--sans);font-weight:600;font-size:16px;
+  line-height:1.35}
+.quick dd span{display:block;font-family:var(--serif),serif;font-weight:400;font-size:14.5px;
+  color:var(--ink-2);margin-top:3px;line-height:1.45}
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--card);
+  box-shadow:var(--shadow);margin:0 0 16px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:15.5px}
+th{font-family:var(--sans);font-weight:600;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);text-align:left;padding:11px 14px;
+  border-bottom:1.5px solid var(--rule);white-space:nowrap}
+td{padding:12px 14px;border-bottom:1px solid var(--rule-soft);vertical-align:top;
+  line-height:1.5}
+tr:last-child td{border-bottom:0}
+td.w{font-family:var(--sans);font-weight:700;font-size:19px;color:var(--accent);
+  font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+td.k{font-family:var(--sans);font-weight:600;font-size:15.5px;white-space:nowrap}
+ol.rules{list-style:none;counter-reset:r;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+ol.rules li{background:var(--card);counter-increment:r;padding:15px 20px 15px 56px;
+  position:relative;font-size:16px;line-height:1.55}
+ol.rules li::before{content:counter(r);position:absolute;left:20px;top:15px;
+  font-family:var(--sans);font-weight:700;font-size:14px;color:var(--accent);
+  width:24px;height:24px;display:grid;place-items:center;
+  background:var(--accent-soft);border-radius:3px}
+ol.rules strong{font-weight:600}
+.bonus{background:var(--card);border:1px solid var(--rule);border-top:0;
+  padding:15px 20px;font-family:var(--sans);font-weight:600;font-size:16px;
+  color:var(--accent)}
+.years{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.year{background:var(--card);padding:18px 20px;display:grid;
+  grid-template-columns:96px 1fr;gap:18px}
+@media(max-width:600px){.year{grid-template-columns:1fr;gap:5px}}
+.year .yn{font-family:var(--sans);font-weight:700;font-size:15px;color:var(--accent)}
+.year p{margin:0;font-size:15.5px;color:var(--ink-2);max-width:60ch}
+.note{background:var(--card);border-left:4px solid var(--warm);padding:18px 20px;
+  box-shadow:var(--shadow)}
+.note.acc{border-left-color:var(--accent)}
+.ntag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--warm);margin:0 0 7px}
+.note.acc .ntag{color:var(--accent)}
+.note p:last-child{margin-bottom:0}
+.official{border:1.5px solid var(--rule);background:var(--card)}
+.official-head{padding:16px 22px;border-bottom:1px solid var(--rule);
+  background:var(--rule-soft)}
+.official-head p{margin:0;font-size:14.5px;color:var(--ink-2);max-width:64ch}
+.official-head strong{font-family:var(--sans);font-weight:700;font-size:15px;
+  color:var(--ink);display:block;margin-bottom:4px}
+.official-body{padding:22px}
+.official-body h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--accent);margin:22px 0 7px}
+.official-body h3:first-child{margin-top:0}
+.official-body p{font-size:15.5px;color:var(--ink-2);max-width:68ch}
+footer{border-top:1px solid var(--rule);padding-top:18px;font-size:14px;color:var(--ink-3);
+  max-width:70ch}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('bhr-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+</head>
+<body>
+
+<header class="sitebar">
+  <div class="in">
+    <a class="brand" href="../index.html">
+      <img class="mark" src="../assets/logo-96.png" alt="" width="34" height="29">
+      <span>Engineering&nbsp;Technology</span>
+    </a>
+      <div class="srch">
+        <span class="sbox">
+          <input type="search" id="q" placeholder="Search" autocomplete="off"
+                 aria-label="Search the site" aria-expanded="false" aria-controls="sres">
+          <kbd>/</kbd>
+        </span>
+        <div class="sres" id="sres" role="listbox" hidden></div>
+      </div>
+      <button class="themebtn" id="theme" type="button"
+              title="Switch between light and dark" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span><span class="lbl">Theme</span>
+      </button>
+  </div>
+</header>
+
+<div class="shell">
+<div class="rail">
+  <div class="railin">
+  <nav aria-label="Site"><ul>
+    <li><a href="../index.html" class="sec">Home</a>
+    </li>
+    <li><a href="../start/welcome.html" class="sec">Start here</a>
+      <ul class="kids">
+        <li><a href="../start/welcome.html">Welcome to the shop</a>
+        </li>
+        <li><a href="../start/how-class-works.html" class="here">How this class works</a>
+        </li>
+      </ul>
+    </li>
+    <li><a href="../logbook/index.html" class="sec">Logbook</a>
+    </li>
+    <li><a href="../pathways/index.html" class="sec">The seven pathways</a>
+    </li>
+    <li><a href="../shop/index.html" class="sec">Shop safety</a>
+    </li>
+    <li><a href="../resources/index.html" class="sec">Training and credentials</a>
+    </li>
+  </ul></nav>
+  </div>
+</div>
+<div class="main">
+<div class="wrap">
+
+<header class="hero">
+  <p class="kicker">BHR Engineering Technology &middot; Room E-126</p>
+  <h1>How this class works</h1>
+  <p>What you need, how you're graded, and what's expected of you in the shop.</p>
+</header>
+
+<section>
+  <h2>The basics</h2>
+  <dl class="quick">
+    <div><dt>Room</dt><dd>E-126</dd></div>
+    <div><dt>Uniform</dt><dd>Anything with the shop logo<span>T-shirts, long sleeves, hoodies, sweaters — any shop attire bought through the school store</span></dd></div>
+    <div><dt>Footwear</dt><dd>Closed-toe only<span>Shoes, sneakers or work boots. No sandals, no Crocs.</span></dd></div>
+    <div><dt>Eye protection</dt><dd>In the Makerspace<span>Required whenever you're in the Makerspace. Situational in the main shop — if you're unsure, put them on.</span></dd></div>
+  </dl>
+  <p style="margin-top:16px">Uniforms are ordered through <a href="https://store.bluehills.org/">store.bluehills.org</a> during the ordering window, when pricing is best and delivery to school is free. Most students buy at least two. Any of it counts as uniform as long as it carries the shop logo and came from the store.</p>
+</section>
+
+<section>
+  <h2>How you're graded</h2>
+  <p class="sub">Four categories. Notice what they add up to.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Category</th><th>What it measures</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Project Grade</td><td>Each project has its own rubric — productivity, creativity, accuracy, and hitting your timing</td><td class="w">35%</td></tr>
+      <tr><td class="k">Weekly Grade</td><td>How you work: safety, initiative, preparation, attitude, work ethic, productivity</td><td class="w">30%</td></tr>
+      <tr><td class="k">Classwork</td><td>Day-to-day assignments — pacing, staying on task, following directions</td><td class="w">15%</td></tr>
+      <tr><td class="k">Employability</td><td>Professionalism in the shop, week to week and term to term</td><td class="w">20%</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note acc">
+    <p class="ntag">The thing most people miss</p>
+    <p><strong>Half your grade — 50% — is how you work, not what you make.</strong> Weekly Grade and Employability together outweigh your projects. You can build something impressive and still not do well here, and you can have a project go badly wrong and still have a strong term. That's deliberate: it's how you'd be judged in an actual shop.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The weekly grade</h2>
+  <p class="sub">Six things, in two groups, assessed every week. This is what excellent looks like in each.</p>
+
+  <h3 style="margin-bottom:10px">Behavior</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Criteria</th><th>What excellent looks like</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Safety</td><td>Follows every safety rule, keeps a clean work area, puts materials back where they belong when a task is done.</td></tr>
+      <tr><td class="k">Initiative</td><td>Stays on task. Asks for more work when finished. Helps classmates. Comes for help when needed. Uses downtime between jobs instead of waiting.</td></tr>
+      <tr><td class="k">Preparation</td><td>On time, agenda out, something to write with, dressed to shop standards and ready for work, awake and alert.</td></tr>
+      <tr><td class="k">Attitude</td><td>Positive. Interacts appropriately with others. Appropriate language. Keeps self-control at all times.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin-bottom:10px">Performance</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Criteria</th><th>What excellent looks like</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Work Ethic</td><td>Work reflects your best effort. Cooperative. Shows peer leadership. Stays on task, self-starter, proper language — and is <strong>never publicly critical of someone else's work</strong>.</td></tr>
+      <tr><td class="k">Productivity</td><td>Work of the highest quality. Actively looks for and suggests solutions. Routinely uses time well and contributes useful ideas in group discussion.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin-bottom:10px">What each level is worth</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Level</th><th>Grade equivalent</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Excellent</td><td class="w">100</td></tr>
+      <tr><td class="k">Good</td><td class="w">92</td></tr>
+      <tr><td class="k">Fair</td><td class="w">78</td></tr>
+      <tr><td class="k">Unsatisfactory</td><td class="w">52</td></tr>
+      <tr><td class="k">Poor</td><td class="w">28</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">
+    <p class="ntag">Worth noticing</p>
+    <p>Good to Fair costs you <strong>14 points</strong>. Fair to Unsatisfactory costs another <strong>26</strong>. The scale isn't evenly spaced — the bottom drops away fast. "Fair" is not a comfortable place to sit.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Classroom rules and privileges</h2>
+  <p class="sub">In order for us to live well with each other, we need some boundaries. Rules are not to restrict us; rules are given to us to fully enjoy the privileges of education, each other, and the equipment we have been given.</p>
+  <ol class="rules">
+    <li>Cell phones during break and lunch only. Headphones are allowed <strong>occasionally</strong> while working on individual projects.</li>
+    <li>Appropriate uniform, attire, and PPE are required and are part of your weekly grade. Maintain a professional workspace and use professional language and behavior.</li>
+    <li>No eating or drinking in shop common areas.</li>
+    <li><strong>Respect</strong> your teacher and classmates — which includes their property, their space, and their creativity.</li>
+    <li>The Engineering Lab and its equipment are used with permission. No writing, drawing or cutting on tables. Do not intentionally misuse equipment or property.</li>
+    <li>Return things to their proper places after use. Clean up after <strong>yourself and others</strong>. Follow the end-of-day cleanup routine. This is all of our workspace, so keep it clean.</li>
+    <li><strong>Stay in your assigned area.</strong> Do not leave the shop without verbal permission or an e-hall pass.</li>
+    <li>Computers are for educational purposes. When your work is done, ask a teacher for more, help a classmate, or help the department.</li>
+    <li><strong>Time.</strong> Be on time for class and for deadlines. Break and end-of-day preparation don't start until the instructor grants them.</li>
+    <li>Communication is key. If you have questions or concerns, it is <strong>your</strong> responsibility to ask before the assignment is due, so what you hand in is grade-level work.</li>
+    <li>Always work to your potential. Prepare to be challenged.</li>
+  </ol>
+  <div class="bonus">Bonus rule: use common sense.</div>
+  <p style="margin-top:16px"><em>Some of these are privileges, and privileges are not guaranteed. Follow the rules and we keep them — here and in the shop.</em></p>
+</section>
+
+<section>
+  <h2>Certifications and co-op</h2>
+  <p>The certifications you can earn here are <strong>Autodesk</strong> — Certified User in Inventor, Fusion 360 and Revit Architecture — on top of your <strong>OSHA 10</strong> in Grade 10. Which ones you go for depends on the work you're doing and when you're ready.</p>
+  <p><strong>Cooperative education</strong> is available to juniors from Term 3 and to seniors from Term 1 — working in a real engineering setting for part of your schedule.</p>
+</section>
+
+<section>
+  <h2>Getting help</h2>
+  <p><strong>Mr. Frank</strong> helps you make it real — designing it, drawing it, and building it. Come to him for CAD, 3D printing and laser cutting, structures, drawings, and prototypes that didn't come out right.</p>
+  <p><strong>Mr. Dryer</strong> helps you make it work — circuits, code, and proving it performs. Come to him for wiring, debugging, sensors and motors, and showing with data that your thing does what you claim.</p>
+</section>
+
+<section>
+  <div class="official">
+    <div class="official-head">
+      <p><strong>The official course descriptions</strong>
+      These are the descriptions from the Engineering Technology Program Scope and Sequence, the school's current program of study. Formal wording, kept here for reference — the rest of this page is the day-to-day.</p>
+    </div>
+    <div class="official-body">
+      <h3>Program Overview</h3>
+      <p>The Chapter 74 Engineering Technology Career Technical Education (CTE) Program prepares students with the academic, technical, and employability skills required for entry-level employment and postsecondary education in the engineering field. Aligned with the Massachusetts Chapter 74 Engineering Technology Frameworks, the program emphasizes safety, professionalism, the engineering design process, technical competence, and industry-relevant problem solving.</p>
+      <p>Students develop foundational knowledge in engineering design, computer-aided design (CAD), fabrication and prototyping, electrical and digital systems, mechanical principles, automation and robotics, and civil/architectural design. Instruction integrates classroom learning with hands-on laboratory practice in a modern engineering shop through a dual-specialization instructional model: Engineering Design &amp; Fabrication (EDF), emphasizing the transformation of ideas into tangible forms, and Engineering Systems &amp; Emerging Concepts (ESEC), emphasizing the intelligence, functionality, and control that drive modern engineered systems.</p>
+      <p>Assessment is competency-based and includes skill demonstrations, practical exams, written assessments, design projects, engineering journals, and portfolio development. By program completion, students are prepared for industry-recognized credentials, cooperative education experiences, and continued education in engineering, engineering technology, or related technical fields.</p>
+
+      <h3>Engineering Technology I — Grade 9</h3>
+      <p>Students in grade nine are introduced to foundational concepts and skills related to engineering technology. Instruction focuses on the Engineering Design Process (EDP), computer-aided design (CAD) and parametric modeling, technical measurement, basic electrical circuits and digital logic, technical graphics and documentation, workplace safety, and professional behaviors within an engineering environment. Learning experiences include classroom-based instruction and laboratory activities designed to introduce shop tools, fabrication equipment, 3D printing, and the maintenance of a professional engineering journal.</p>
+
+      <h3>Engineering Technology II — Grade 10</h3>
+      <p>Engineering Technology II builds on foundational knowledge and skills acquired in the introductory year, emphasizing technical mastery, professional documentation, and safety certification. Students deepen their understanding of electrical and analog systems, mechanical principles and simulation, quality assurance, and civil/architectural foundations (BIM/Revit) while practicing professional drafting skills, including Geometric Dimensioning &amp; Tolerancing (GD&amp;T). The course integrates OSHA 10 safety training — a mandatory credential at this grade level — professional ethics, and empirical analysis to prepare students for the specialized work of the junior year.</p>
+
+      <h3>Engineering Technology III — Grade 11</h3>
+      <p>Engineering Technology III is an advanced course designed for 11th-grade students to refine and apply their design, fabrication, and systems skills in industry-relevant applications. Building on prior coursework, students expand their expertise in advanced manufacturing and Design for Manufacturing (DFM) theory, control systems and mechatronics, algorithmic programming, and digital logic design. Emphasis is placed on professional project management using tools such as Gantt charts, with hands-on practice in modern technologies including CNC machining, 3D printing, programmable logic devices, and robotics. The year culminates in a 15-day Junior Capstone in architectural engineering requiring conceptual design, structural analysis, and evaluation of original concepts. Students prepare for Autodesk Certified User (ACU) examinations. Grade 11 Engineering Technology students are eligible for Cooperative Education beginning Term 3.</p>
+
+      <h3>Engineering Technology IV / Co-op — Grade 12</h3>
+      <p>Engineering Technology IV is the capstone course for 12th-grade students, designed to prepare them for professional engineering practice and postsecondary study. Students refine advanced skills in robotics and automation, computer-integrated manufacturing (CIM), quality assurance, and systems testing while upholding the highest standards of safety and professionalism. The course emphasizes leadership, employability, entrepreneurship, and continued preparation for Autodesk Certified User (ACU) examinations. The year culminates in a 35-day, self-directed Senior Capstone requiring research, design, prototyping, testing, and a formal defense, supported by a comprehensive portfolio. Grade 12 Engineering Technology students are eligible for Cooperative Education beginning Term 1.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  BHR Engineering Technology · Blue Hills Regional. For anything about uniform rules beyond what's here, see the Blue Hills Parent/Student Handbook.
+</footer>
+
+</div>
+</div>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology &middot; Room E-126</span>
+    <span>Mr. Frank &middot; Mr. Dryer</span>
+    <span class="build">Build 04 Sep 2026, 16:23</span>
+  </div>
+</footer>
+
+
+<script src="../assets/search-index.js?v=003b2e2b" defer></script>
+<script defer>
+(function(){
+  var REL = '../';
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var box = document.getElementById('q'), out = document.getElementById('sres');
+    if (!box || !window.BHR_INDEX) return;
+    var IDX = window.BHR_INDEX, cur = -1, rows = [];
+
+    var KIND = {video:'Video',course:'Course',site:'Site',tool:'Tool',read:'Reading',
+      podcast:'Podcast',book:'Book',data:'Data',comp:'Competition',doc:'Doc',
+      software:'Software',page:'Page',rule:'Rule',check:'Safety check',
+      platform:'Training',sds:'Safety data',pathway:'Pathway',talk:'Talk',
+      playlist:'Playlist'};
+
+    function esc(s){ return s.replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    function hi(s, terms){
+      s = esc(s);
+      terms.forEach(function(t){
+        if (t.length < 2) return;
+        s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'ig'),
+                      '<mark>$1</mark>');
+      });
+      return s;
+    }
+
+    // Score by where the match lands: a title hit beats a note hit, and a hit at
+    // the start of the title beats one in the middle. Every term must appear
+    // somewhere, so multi-word queries narrow rather than widen.
+    function score(r, terms){
+      var t = r.t.toLowerCase(), n = (r.n + ' ' + r.x).toLowerCase(),
+          w = r.w.toLowerCase(), s = 0;
+      for (var i = 0; i < terms.length; i++){
+        var q = terms[i], hit = 0;
+        if (t.indexOf(q) === 0) hit = 100;
+        else if (t.indexOf(' ' + q) > -1) hit = 70;
+        else if (t.indexOf(q) > -1) hit = 50;
+        else if (w.indexOf(q) > -1) hit = 30;
+        else if (n.indexOf(q) > -1) hit = 20;
+        if (!hit) return 0;
+        s += hit;
+      }
+      if (r.k === 'page' || r.k === 'pathway') s += 12;   // structure floats up
+      return s;
+    }
+
+    function run(){
+      var qv = box.value.trim().toLowerCase();
+      if (qv.length < 2){ close(); return; }
+      var terms = qv.split(/\s+/);
+      rows = IDX.map(function(r){ return {r:r, s:score(r, terms)}; })
+                .filter(function(x){ return x.s > 0; })
+                .sort(function(a,b){ return b.s - a.s || a.r.t.length - b.r.t.length; })
+                .slice(0, 30);
+      draw(terms);
+    }
+
+    function draw(terms){
+      if (!rows.length){
+        out.innerHTML = '<p class="none">Nothing matches &ldquo;' +
+          esc(box.value.trim()) + '&rdquo;.</p>';
+      } else {
+        var h = '<div class="hd">' + rows.length +
+                (rows.length === 30 ? '+ matches' : ' match' + (rows.length>1?'es':'')) +
+                '</div>';
+        rows.forEach(function(x, i){
+          var r = x.r,
+              ext = /^https?:/.test(r.u),
+              href = ext ? r.u : REL + r.u;
+          h += '<a href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') +
+               ' data-i="' + i + '" role="option">' +
+               '<span class="ti">' + hi(r.t, terms) +
+                 (ext ? ' <span class="ext">&#8599;</span>' : '') + '</span>' +
+               '<span class="me"><span class="kd">' + (KIND[r.k] || r.k) + '</span>' +
+               '<span class="wh">' + hi(r.w, terms) + '</span></span>' +
+               (r.n ? '<span class="nt">' + hi(r.n, terms) + '</span>' : '') +
+               '</a>';
+        });
+        out.innerHTML = h;
+      }
+      out.hidden = false; box.setAttribute('aria-expanded','true'); cur = -1;
+    }
+
+    function close(){ out.hidden = true; box.setAttribute('aria-expanded','false'); cur = -1; }
+
+    function move(d){
+      var links = out.querySelectorAll('a');
+      if (!links.length) return;
+      if (cur > -1) links[cur].classList.remove('on');
+      cur = (cur + d + links.length) % links.length;
+      links[cur].classList.add('on');
+      links[cur].scrollIntoView({block:'nearest'});
+    }
+
+    box.addEventListener('input', run);
+    box.addEventListener('focus', function(){ if (box.value.trim().length > 1) run(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter'){
+        var links = out.querySelectorAll('a');
+        if (cur > -1 && links[cur]){ e.preventDefault(); links[cur].click(); }
+      }
+      else if (e.key === 'Escape'){ close(); box.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.srch')) close();
+    });
+    // "/" from anywhere jumps to the box, the way every developer tool does it
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); box.focus(); box.select();
+      }
+    });
+  });
+})();
+</script>
+<script defer>
+// Track which in-page section you are actually looking at and mark it in the
+// rail. Only runs where the rail has anchor links.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var links = [].slice.call(document.querySelectorAll('.rail .anch a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {}, pos = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        pos[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null;
+      });
+      var best = null, near = Infinity;
+      Object.keys(pos).forEach(function(id){
+        if (pos[id] === null) return;
+        var d = Math.abs(pos[id] - 90);
+        if (d < near){ near = d; best = id; }
+      });
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if (best && map[best]) map[best].classList.add('on');
+    }, {rootMargin:'-70px 0px -55% 0px', threshold:[0,1]});
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) io.observe(el);
+    });
+  });
+})();
+</script>
+<script defer>
+// Three states, cycled by one button: follow the system, force light, force dark.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var btn = document.getElementById('theme'), root = document.documentElement;
+    if (!btn) return;
+    function get(){ try { return localStorage.getItem('bhr-theme') || 'system'; }
+                    catch(e){ return 'system'; } }
+    function label(){
+      var m = get();
+      btn.querySelector('.lbl').textContent =
+        m === 'system' ? 'Theme' : (m === 'light' ? 'Light' : 'Dark');
+      btn.title = m === 'system'
+        ? 'Following your computer. Click for light.'
+        : (m === 'light' ? 'Light. Click for dark.'
+                         : 'Dark. Click to follow your computer.');
+    }
+    function set(m){
+      try { m === 'system' ? localStorage.removeItem('bhr-theme')
+                           : localStorage.setItem('bhr-theme', m); } catch(e){}
+      if (m === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', m);
+      label();
+    }
+    label();
+    btn.addEventListener('click', function(){
+      var m = get();
+      set(m === 'system' ? 'light' : (m === 'light' ? 'dark' : 'system'));
+    });
+  });
+})();
+</script>
+</body>
+</html>
