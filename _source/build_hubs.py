@@ -467,7 +467,9 @@ def render_pathway(p):
     o.append('<section class="view" id="v-%s">' % p['key'])
     o.append('<div class="ph">')
     o.append('<p class="eyebrow">Standard %s &middot; %s</p>' % (p['std'], p['lead']))
-    o.append('<h2>%s</h2>' % p['title'])
+    # h1, not h2: this is the page's own title. Eleven pages had no h1 at
+    # all, which leaves a screen reader with no heading to land on.
+    o.append('<h1>%s</h1>' % p['title'])
     o.append('<p class="tag">%s</p>' % p['tag'])
     o.append('<p class="intro">%s</p>' % p['intro'])
     if p.get('isnew'):

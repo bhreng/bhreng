@@ -10,6 +10,7 @@ needing to know about grades.
 import grade_data as GD
 import grade_work as GW
 import build_hubs as B
+import brief_text as BT
 
 PATH_NAMES = {p['key']: p['nav'] for p in B.P}
 
@@ -41,7 +42,7 @@ CSS = '''
     rgba(0,0,0,0) 78%)}
 .ghero .gnum{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
   text-transform:uppercase;color:rgba(255,255,255,.82);margin:0 0 4px}
-.ghero .gname{font-family:var(--sans);font-weight:var(--w-heavy);
+.ghero h1.gname{font-family:var(--sans);font-weight:var(--w-heavy);
   font-size:clamp(26px,4.4vw,40px);line-height:1.02;color:#fff;margin:0;
   letter-spacing:-.02em;text-shadow:0 1px 14px rgba(0,0,0,.3)}
 .ghero .gwho{font-family:var(--sans);font-size:13.5px;font-weight:600;
@@ -94,7 +95,8 @@ CSS = '''
 .asg .gives{margin:13px 0 0;padding:13px 16px;background:var(--g-soft);
   border-radius:5px}
 .asg .gives .gl{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--g-ink);font-weight:700;margin:0 0 7px}
+  text-transform:uppercase;color:var(--g-ink);font-weight:700;margin:0 0 7px;
+  max-width:none}
 .asg .gives ul{margin:0;padding-left:18px}
 .asg .gives li{font-size:14.5px;line-height:1.5;color:var(--ink);margin:0 0 5px}
 .asg .gives li:last-child{margin:0}
@@ -105,6 +107,47 @@ CSS = '''
 .asg .meta a{color:var(--g-ink);font-weight:600}
 .asg .anote{margin:12px 0 0;padding:10px 14px;border-left:3px solid var(--blue);
   background:var(--blue-soft);font-size:14px;line-height:1.5;color:var(--ink)}
+
+/* the full brief */
+.brief{margin:14px 0 0;border-top:1px solid var(--rule-soft);padding-top:12px}
+.brief>summary{cursor:pointer;list-style:none;font-family:var(--mono);
+  font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--g-ink);font-weight:700;padding:3px 0;user-select:none}
+.brief>summary::-webkit-details-marker{display:none}
+/* a CSS caret rather than a glyph: the mono face has no triangle and renders
+   a tofu box in its place */
+.brief>summary::after{content:"";display:inline-block;margin:0 0 2px 8px;
+  width:5px;height:5px;border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;transform:rotate(-135deg)}
+.brief:not([open])>summary::after{transform:rotate(45deg);margin-bottom:0}
+.brief>summary:hover{text-decoration:underline}
+.brief .sm-c{display:none}
+.brief:not([open]) .sm-c{display:inline}
+.brief:not([open]) .sm-o{display:none}
+.bt{padding-top:6px}
+.bt p{margin:0 0 11px;font-size:15.5px;line-height:1.62;color:var(--ink)}
+.bt ul{margin:0 0 12px;padding-left:20px}
+.bt li{margin:0 0 7px;font-size:15px;line-height:1.55;color:var(--ink-2)}
+.bt li strong,.bt p strong{color:var(--ink);font-weight:600}
+.bt code{font-size:.86em}
+.bt .tw{margin:0 0 13px}
+.bt table{font-size:14.5px;min-width:0}
+
+/* the meaningful attachments and references */
+.alinks{margin:14px 0 0;border:1px solid var(--rule);border-radius:6px;
+  overflow:hidden}
+.alinks .gl{margin:0;max-width:none;padding:9px 15px;background:var(--g-soft);
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--g-ink);font-weight:700}
+.alinks a{display:block;padding:12px 15px;text-decoration:none;
+  border-top:1px solid var(--rule-soft)}
+.alinks a:hover{background:var(--g-soft)}
+.alinks b{display:block;font-family:var(--sans);font-size:15.5px;
+  color:var(--g-ink)}
+.alinks span{display:block;margin-top:3px;font-size:14px;line-height:1.5;
+  color:var(--ink-2);max-width:62ch}
+.alinks em{display:block;margin-top:4px;font-family:var(--mono);font-size:10.5px;
+  font-style:normal;color:var(--ink-3)}
 
 /* the unit map, used on every grade */
 .units{border:1px solid var(--rule);background:var(--card);border-radius:6px;
@@ -121,6 +164,22 @@ CSS = '''
   background:var(--card)}
 .gempty p{margin:0 0 9px;font-size:15px;line-height:1.6;color:var(--ink-2)}
 .gempty p:last-child{margin:0}
+
+/* On paper: a collapsed brief must still print, the control that collapses it
+   must not, and the blocks that are read as a unit should not be split across
+   a page break. */
+@media print{
+  .brief>summary{display:none}
+  .brief{border-top:0;padding-top:0}
+  .brief[open]>.bt,.brief:not([open])>.bt{display:block}
+  .asg{break-inside:auto;page-break-inside:auto}
+  .asg .gives,.asg .alinks,.asg .anote,.units .u{break-inside:avoid;
+    page-break-inside:avoid}
+  .asg .ah,.termhd{break-after:avoid;page-break-after:avoid}
+  .ghero img{height:96px}
+  .alinks a::after{content:" (" attr(href) ")";font-family:var(--mono);
+    font-size:10px;color:#555;word-break:break-all}
+}
 
 @media(max-width:640px){
   .ghero img{height:124px}
@@ -143,14 +202,14 @@ def hero(g, depth):
         '  <img src="%sassets/%s" alt="" loading="lazy">\n'
         '  <div class="scrim">\n'
         '    <p class="gnum">Grade %d &middot; %s</p>\n'
-        '    <p class="gname">%s</p>\n'
+        '    <h1 class="gname">%s</h1>\n'
         '    <p class="gwho">Delivered by %s</p>\n'
         '  </div>\n'
         '</div>' % (r, g['banner'], g['num'], g['course'], g['course'],
                     g['teacher']))
 
 
-def assignment(a, depth):
+def assignment(a, depth, full=''):
     r = '../' * depth
     out = ['<article class="asg">',
            '  <div class="ah">',
@@ -170,6 +229,24 @@ def assignment(a, depth):
         for gv in a['gives']:
             out.append('    <li>%s</li>' % gv)
         out.append('  </ul></div>')
+    if full:
+        # The brief as Classroom actually words it. Open by default -- a
+        # student who came here for the instructions should not have to find
+        # and click a control to reach them. The <details> is for scrolling
+        # past a brief you have already read, not for hiding it.
+        out.append('  <details class="brief" open>')
+        out.append('    <summary><span class="sm-o">Hide</span>'
+                   '<span class="sm-c">Read</span> the full brief</summary>')
+        out.append('    <div class="bt">%s</div>' % full)
+        out.append('  </details>')
+    if a.get('links'):
+        out.append('  <div class="alinks"><p class="gl">Files and links</p>')
+        for label, url, what in a['links']:
+            host = url.split('//')[-1].split('/')[0].replace('www.', '')
+            out.append('    <a href="%s" target="_blank" rel="noopener">'
+                       '<b>%s</b><span>%s</span><em>%s</em></a>'
+                       % (url, label, what, host))
+        out.append('  </div>')
     if a['note']:
         out.append('  <p class="anote">%s</p>' % a['note'])
     meta = []
@@ -206,12 +283,28 @@ def page(key, depth=1):
            '</section>']
 
     work = GW.WORK.get(key)
+    briefs = BT.briefs(key)
     if work:
         out.append('<section>')
         out.append('  <h2>The units this year</h2>')
         out.append('  <p class="sub">The frame the assignments hang on.</p>')
         out.append(unit_list(g))
         out.append('</section>')
+        n_full = sum(1 for a in work if a['title'] in briefs)
+        if n_full:
+            out.append(
+                '<div class="note acc"><p><strong>%d of these carry the full '
+                'brief</strong> &mdash; the instructions exactly as Classroom '
+                'words them, not a summary. Where a brief is missing it is '
+                'because Classroom has none either, and the entry says so.'
+                '</p></div>' % n_full)
+        else:
+            out.append(
+                '<div class="note"><p><strong>These are the assignments and '
+                'their shape, not yet their full instructions.</strong> The '
+                'briefs live inside each Classroom post and are being moved '
+                'here the same way Grade 11&rsquo;s were. Until then, open the '
+                'assignment in Classroom for the wording.</p></div>')
         for tkey, tlabel in GW.TERMS:
             items = [a for a in work if a['t'] == tkey]
             if not items:
@@ -222,7 +315,7 @@ def page(key, depth=1):
                        '<span class="tc">%d %s</span></div>'
                        % (tlabel, n, 'entry' if n == 1 else 'entries'))
             for a in items:
-                out.append(assignment(a, depth))
+                out.append(assignment(a, depth, full=briefs.get(a['title'], '')))
             out.append('</section>')
         out.append(
             '<section><div class="note acc"><p><strong>This is the reference '

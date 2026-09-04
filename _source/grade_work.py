@@ -27,6 +27,26 @@ Fields:
   tool  software and hardware it runs on
   path  pathway page key this belongs to, or ''
   note  a line worth knowing that is not in the brief itself
+  links (optional) [(label, url, what it is)] -- the meaningful attachments and
+        references for this assignment
+
+The full instruction text is NOT stored here. It lives in the harvest files and
+is parsed by brief_text.py at build time, so there is exactly one copy of every
+brief and re-harvesting updates the site automatically.
+
+ADDING A LINK TO AN ASSIGNMENT
+------------------------------
+Add a links=[...] entry to that assignment. Each item is
+(label, url, what it is):
+
+    links=[('VEX V5 STEM Labs', 'https://education.vex.com/stemlabs/v5',
+            'The Play / Apply / Rethink / Know activities the brief sends '
+            'you to.')],
+
+A Drive file works the same way. Set the file to "anyone with the link --
+viewer" first; a link nobody can open is worse than no link. For a template
+each student should get their own copy of, replace everything from /edit
+onward in the URL with /copy.
 """
 
 # --------------------------------------------------------------- grade eleven
@@ -149,7 +169,12 @@ G11 = [
                'published here.'],
          gives=['The completed student logbook',
                 'The Arduino reflection assignment'],
-         tool='Arduino Education Starter kit', path='electrical', note=''),
+         tool='Arduino Education Starter kit',
+         links=[
+             ('Arduino under-18 signup', 'https://app.arduino.cc/minors',
+              'The signup route for students under eighteen. Not the generic '
+              'Arduino signup &mdash; use this one.')],
+         path='electrical', note=''),
 
     dict(t=2, w='Wk 3', title='VEX V5 Clawbot Project', kind='project',
          hook='Build the Clawbot, program it, then document the whole thing '
@@ -168,7 +193,12 @@ G11 = [
                 'code, annotated to explain what each block and variable is for',
                 '<b>Modification justification</b> &mdash; what you changed, '
                 'tied to a specific weakness you saw during testing'],
-         tool='VEX V5, VEXcode, Google Slides', path='automation', note=''),
+         tool='VEX V5, VEXcode, Google Slides',
+         links=[
+             ('VEX V5 STEM Labs', 'https://education.vex.com/stemlabs/v5',
+              'The Play / Apply / Rethink / Know activities the brief sends '
+              'you to. Free and open, no account needed.')],
+         path='automation', note=''),
 
     dict(t=2, w='Wk 3', title='Intro to CorelDraw', kind='skills',
          hook='A day of teaching yourself CorelDraw, with something to show '
@@ -280,7 +310,11 @@ G11 = [
                 'file and the deadlines; <b>Infrastructure Lead</b> prints the '
                 'road and park tiles everyone connects to; <b>Zoning Leads</b> '
                 'for residential, commercial and industrial'],
-         tool='Autodesk Forma, Fusion 360, 3D printing', path='project',
+         tool='Autodesk Forma, Fusion 360, 3D printing',
+         links=[
+             ('Autodesk Forma', 'https://www.autodesk.com/products/forma',
+              'The site and environmental analysis tool Phase 1 runs on.')],
+         path='project',
          note='This is the closest thing in the course to how a real firm '
               'works &mdash; one shared master file, an agreed interface '
               'standard, and named responsibility.'),
@@ -298,7 +332,12 @@ G11 = [
                 'the lesson-complete check, or your quiz result',
                 '<b>Technical reflection</b> &mdash; the tool you used and how '
                 'it applies to a real building project'],
-         tool='Revit, Autodesk Learning Portal', path='architecture', note=''),
+         tool='Revit, Autodesk Learning Portal',
+         links=[
+             ('Autodesk Learning Portal', 'https://www.autodesk.com/learning',
+              'Where the Revit certification-prep course lives. Free with '
+              'your Autodesk education account.')],
+         path='architecture', note=''),
 
     dict(t=4, w='Wk 1', title='Famous Architect Presentation', kind='project',
          hook='A three to five minute presentation on one architect.',
@@ -349,7 +388,12 @@ G11 = [
                 'deck',
                 'Submitted as one launch package: a working prototype, a '
                 'one-page business summary, and the slide deck'],
-         tool='Google Gemini, HTML/JavaScript or Python', path='software',
+         tool='Google Gemini, HTML/JavaScript or Python',
+         links=[
+             ('Google Gemini', 'https://gemini.google.com/',
+              'Where the code, the business plan and the pitch '
+              'material get generated.')],
+         path='software',
          note='The prototype only has to work at a basic level. The grade is '
               'in the thinking and the pitch, not the syntax.'),
 
@@ -516,6 +560,10 @@ G12 = [
          hook='A colony designed for somewhere the environment is trying to '
               'kill you.',
          body=[], gives=[], tool='Fusion 360, Autodesk Forma',
+         links=[
+             ('Google Gemini', 'https://gemini.google.com/',
+              'Where the code, the business plan and the pitch material get '
+              'generated.')],
          path='architecture', note=''),
 
     dict(t=2, w='Wk 5', title='Bunker House Design', kind='project',

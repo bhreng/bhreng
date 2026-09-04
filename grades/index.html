@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
 <link rel="icon" href="../assets/icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
-<link rel="stylesheet" href="../assets/site.css?v=49efa886">
+<link rel="stylesheet" href="../assets/site.css?v=18858507">
 <style>
 /* --- grade pages -------------------------------------------------------- */
 /* Three variables per grade, set inline on the page:
@@ -39,7 +39,7 @@
     rgba(0,0,0,0) 78%)}
 .ghero .gnum{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
   text-transform:uppercase;color:rgba(255,255,255,.82);margin:0 0 4px}
-.ghero .gname{font-family:var(--sans);font-weight:var(--w-heavy);
+.ghero h1.gname{font-family:var(--sans);font-weight:var(--w-heavy);
   font-size:clamp(26px,4.4vw,40px);line-height:1.02;color:#fff;margin:0;
   letter-spacing:-.02em;text-shadow:0 1px 14px rgba(0,0,0,.3)}
 .ghero .gwho{font-family:var(--sans);font-size:13.5px;font-weight:600;
@@ -92,7 +92,8 @@
 .asg .gives{margin:13px 0 0;padding:13px 16px;background:var(--g-soft);
   border-radius:5px}
 .asg .gives .gl{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--g-ink);font-weight:700;margin:0 0 7px}
+  text-transform:uppercase;color:var(--g-ink);font-weight:700;margin:0 0 7px;
+  max-width:none}
 .asg .gives ul{margin:0;padding-left:18px}
 .asg .gives li{font-size:14.5px;line-height:1.5;color:var(--ink);margin:0 0 5px}
 .asg .gives li:last-child{margin:0}
@@ -103,6 +104,47 @@
 .asg .meta a{color:var(--g-ink);font-weight:600}
 .asg .anote{margin:12px 0 0;padding:10px 14px;border-left:3px solid var(--blue);
   background:var(--blue-soft);font-size:14px;line-height:1.5;color:var(--ink)}
+
+/* the full brief */
+.brief{margin:14px 0 0;border-top:1px solid var(--rule-soft);padding-top:12px}
+.brief>summary{cursor:pointer;list-style:none;font-family:var(--mono);
+  font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--g-ink);font-weight:700;padding:3px 0;user-select:none}
+.brief>summary::-webkit-details-marker{display:none}
+/* a CSS caret rather than a glyph: the mono face has no triangle and renders
+   a tofu box in its place */
+.brief>summary::after{content:"";display:inline-block;margin:0 0 2px 8px;
+  width:5px;height:5px;border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;transform:rotate(-135deg)}
+.brief:not([open])>summary::after{transform:rotate(45deg);margin-bottom:0}
+.brief>summary:hover{text-decoration:underline}
+.brief .sm-c{display:none}
+.brief:not([open]) .sm-c{display:inline}
+.brief:not([open]) .sm-o{display:none}
+.bt{padding-top:6px}
+.bt p{margin:0 0 11px;font-size:15.5px;line-height:1.62;color:var(--ink)}
+.bt ul{margin:0 0 12px;padding-left:20px}
+.bt li{margin:0 0 7px;font-size:15px;line-height:1.55;color:var(--ink-2)}
+.bt li strong,.bt p strong{color:var(--ink);font-weight:600}
+.bt code{font-size:.86em}
+.bt .tw{margin:0 0 13px}
+.bt table{font-size:14.5px;min-width:0}
+
+/* the meaningful attachments and references */
+.alinks{margin:14px 0 0;border:1px solid var(--rule);border-radius:6px;
+  overflow:hidden}
+.alinks .gl{margin:0;max-width:none;padding:9px 15px;background:var(--g-soft);
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--g-ink);font-weight:700}
+.alinks a{display:block;padding:12px 15px;text-decoration:none;
+  border-top:1px solid var(--rule-soft)}
+.alinks a:hover{background:var(--g-soft)}
+.alinks b{display:block;font-family:var(--sans);font-size:15.5px;
+  color:var(--g-ink)}
+.alinks span{display:block;margin-top:3px;font-size:14px;line-height:1.5;
+  color:var(--ink-2);max-width:62ch}
+.alinks em{display:block;margin-top:4px;font-family:var(--mono);font-size:10.5px;
+  font-style:normal;color:var(--ink-3)}
 
 /* the unit map, used on every grade */
 .units{border:1px solid var(--rule);background:var(--card);border-radius:6px;
@@ -119,6 +161,22 @@
   background:var(--card)}
 .gempty p{margin:0 0 9px;font-size:15px;line-height:1.6;color:var(--ink-2)}
 .gempty p:last-child{margin:0}
+
+/* On paper: a collapsed brief must still print, the control that collapses it
+   must not, and the blocks that are read as a unit should not be split across
+   a page break. */
+@media print{
+  .brief>summary{display:none}
+  .brief{border-top:0;padding-top:0}
+  .brief[open]>.bt,.brief:not([open])>.bt{display:block}
+  .asg{break-inside:auto;page-break-inside:auto}
+  .asg .gives,.asg .alinks,.asg .anote,.units .u{break-inside:avoid;
+    page-break-inside:avoid}
+  .asg .ah,.termhd{break-after:avoid;page-break-after:avoid}
+  .ghero img{height:96px}
+  .alinks a::after{content:" (" attr(href) ")";font-family:var(--mono);
+    font-size:10px;color:#555;word-break:break-all}
+}
 
 @media(max-width:640px){
   .ghero img{height:124px}
@@ -138,6 +196,8 @@ catch(e){}})();
 </script>
 </head>
 <body>
+
+<a class="skip" href="#main">Skip to the page content</a>
 
 <header class="sitebar">
   <div class="in">
@@ -209,7 +269,7 @@ catch(e){}})();
   </ul></nav>
   </div>
 </div>
-<div class="main">
+<div class="main" id="main" tabindex="-1">
 <div class="wrap gi">
 <section class="hero">
   <p class="eyebrow">Blue Hills Regional Technical School</p>
@@ -234,12 +294,12 @@ catch(e){}})();
     <span>Blue Hills Regional Technical School</span>
     <span>Engineering Technology &middot; Room E-126</span>
     <span>Mr. Frank &middot; Mr. Dryer</span>
-    <span class="build">Build 04 Sep 2026, 3:44 pm</span>
+    <span class="build">Build 04 Sep 2026, 4:37 pm</span>
   </div>
 </footer>
 
 
-<script src="../assets/search-index.js?v=7ae2691c" defer></script>
+<script src="../assets/search-index.js?v=10f175bd" defer></script>
 <script defer>
 (function(){
   var REL = '../';

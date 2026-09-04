@@ -21,6 +21,7 @@ import grade_data as GD
 import grade_work as GW
 import staff_data as STF
 import extras_data as ED
+import brief_text as BT
 
 TOPIC_NAMES = {
     'field': 'Explore the Field',
@@ -106,12 +107,14 @@ def build():
         for i, (ut, _ud) in enumerate(g['units'], 1):
             add(ut, 'grades/%s.html' % g['key'],
                 'Grade %d unit %d' % (g['num'], i), 'unit', '', g['course'])
+        gb = BT.briefs(g['key'])
         for a in GW.WORK.get(g['key'], []):
             term = ('Term %s' % a['t']) if isinstance(a['t'], int) else \
                    ('End of year' if a['t'] == 'eoy' else 'All year')
             add(a['title'], 'grades/%s.html#term-%s' % (g['key'], a['t']),
                 'Grade %d \u00b7 %s' % (g['num'], term),
-                'assignment', a['hook'], a['tool'])
+                'assignment', a['hook'],
+                ('Full brief \u00b7 ' if a['title'] in gb else '') + a['tool'])
 
     # --- the two instructors ---------------------------------------------
     for st in STF.STAFF:

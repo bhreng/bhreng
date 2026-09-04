@@ -501,3 +501,22 @@ ul.ticks li::before{content:"";position:absolute;left:19px;top:20px;width:7px;he
     text-transform:uppercase;color:var(--ink-3);margin-bottom:2px}
   .main .tw td:empty{display:none}
 }
+
+/* --- skip link ----------------------------------------------------------
+   The rail lists the whole site, which is ~30 tab stops before the content
+   on every page. Off-screen until focused, then it lands on the page body.
+   ------------------------------------------------------------------------ */
+.skip{position:absolute;left:-9999px;top:0;z-index:100;
+  font-family:var(--sans);font-size:14px;font-weight:600;
+  background:var(--accent);color:#fff;padding:11px 18px;
+  border-radius:0 0 5px 0;text-decoration:none}
+.skip:focus{left:0}
+.main:focus{outline:none}
+@media print{.skip{display:none}}
+
+/* A collapsed <details> anywhere on the site still prints its content: paper
+   has no way to expand one. */
+@media print{
+  details:not([open])>*:not(summary){display:revert}
+  details>summary{display:none}
+}
