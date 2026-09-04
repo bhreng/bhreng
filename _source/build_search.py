@@ -19,6 +19,8 @@ import safety_data as SD
 import equipment_data as EQ
 import grade_data as GD
 import grade_work as GW
+import staff_data as STF
+import extras_data as ED
 
 TOPIC_NAMES = {
     'field': 'Explore the Field',
@@ -34,7 +36,8 @@ KIND_LABEL = {
     'comp': 'Competition', 'software': 'Software', 'page': 'Page',
     'rule': 'Rule', 'check': 'Safety check', 'platform': 'Training',
     'sds': 'Safety data', 'pathway': 'Pathway',
-    'unit': 'Unit', 'assignment': 'Assignment',
+    'unit': 'Unit', 'assignment': 'Assignment', 'donow': 'Do Now',
+    'link': 'Link', 'ask': 'Ask about',
 }
 
 
@@ -88,6 +91,10 @@ def build():
          'Every platform and credential the shop uses or recommends.'),
         ('Find your year', 'grades/index.html', 'Your year',
          'The four grade homes: who delivers each year and what it holds.'),
+        ('Do Nows and bonus work', 'extras/do-nows.html', 'More',
+         'Short skill tasks and the assignments outside the project spine.'),
+        ('Links', 'extras/links.html', 'More',
+         'Reference, channels, model libraries and career data.'),
     ]:
         add(title, url, where, 'page', note)
 
@@ -95,7 +102,7 @@ def build():
     for g in GD.GRADES:
         add('Grade %d \u2014 %s' % (g['num'], g['course']),
             'grades/%s.html' % g['key'], 'Your year', 'page',
-            g['hook'], g['teacher'])
+            g['lede'], g['teacher'])
         for i, (ut, _ud) in enumerate(g['units'], 1):
             add(ut, 'grades/%s.html' % g['key'],
                 'Grade %d unit %d' % (g['num'], i), 'unit', '', g['course'])
@@ -105,6 +112,26 @@ def build():
             add(a['title'], 'grades/%s.html#term-%s' % (g['key'], a['t']),
                 'Grade %d \u00b7 %s' % (g['num'], term),
                 'assignment', a['hook'], a['tool'])
+
+    # --- the two instructors ---------------------------------------------
+    for st in STF.STAFF:
+        add(st['name'], 'staff/%s.html' % st['key'], 'Your instructors',
+            'page', st['blurb'],
+            '%s \u00b7 Grades %s' % (st['axis'],
+                                      ' and '.join(str(g) for g in st['grades'])))
+        for c in st['covers']:
+            add(c, 'staff/%s.html' % st['key'], st['name'], 'ask', '', st['axis'])
+
+    # --- Do Nows, bonus work, and the links shelf ------------------------
+    for grp in ED.GROUPS:
+        for title, tool, desc, grade, _p in grp['items']:
+            add(title, 'extras/do-nows.html#%s' % grp['key'],
+                'Grade %s \u00b7 %s' % (grade, grp['title']), 'donow',
+                desc, tool)
+    for grp in ED.LINKS:
+        for title, url, desc in grp['items']:
+            add(title, 'extras/links.html', grp['title'], 'link', desc,
+                url.split('//')[-1].split('/')[0].replace('www.', ''))
 
     # --- the seven pathways ----------------------------------------------
     for p in B.P:

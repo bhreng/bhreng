@@ -21,8 +21,14 @@ the whole site works off disk — every link is relative and every page ends in
 
 ## Layout
 
-    index.html                 home — four doors
+    index.html                 home — the doors
     404.html                   served for any address that does not exist
+    grades/index.html          the four grade homes
+    grades/<9|10|11|12>.html   units, and assignments by term
+    staff/frank.html           Mr. Frank — EDF, grades 11 and 12
+    staff/dryer.html           Mr. Dryer — ESEC, grades 9 and 10
+    extras/do-nows.html        Do Nows and bonus work, grouped by skill
+    extras/links.html          reference, channels, model libraries, careers
     assets/site.css            palette, base type, site chrome, shared components
     start/welcome.html         welcome packet
     start/how-class-works.html rules, uniform, grading

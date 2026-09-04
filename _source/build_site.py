@@ -28,6 +28,8 @@ import site_nav as SNAV        # noqa: E402  (the site-wide rail)
 import theme_ui as THEME       # noqa: E402  (light / dark switch)
 import build_grades as GR      # noqa: E402  (the four grade homes)
 import grade_data as GD        # noqa: E402
+import build_extras as EX      # noqa: E402  (instructors, Do Nows, links)
+import quick_bar as QBAR       # noqa: E402  (the grade / instructor strip)
 
 FONTS = {
     'a': dict(name='Space Grotesk + Literata',
@@ -83,6 +85,7 @@ def shell(title, body, depth=0, section='', page_css='', desc='',
           path='', anchors=None):
     r = rel(depth)
     rail = SNAV.render(path, r, anchors)
+    qbar = QBAR.render(path, r)
     css = '\n<style>\n%s\n</style>' % page_css.strip() if page_css.strip() else ''
     return '''<!doctype html>
 <html lang="en">
@@ -111,6 +114,7 @@ def shell(title, body, depth=0, section='', page_css='', desc='',
 %(themebtn)s
   </div>
 </header>
+%(qbar)s
 
 <div class="shell">
 %(rail)s
@@ -131,7 +135,7 @@ def shell(title, body, depth=0, section='', page_css='', desc='',
 %(js)s
 </body>
 </html>
-''' % dict(title=title, desc=desc, r=r, css=css, rail=rail, body=body,
+''' % dict(title=title, desc=desc, r=r, css=css, rail=rail, body=body, qbar=qbar,
                 gf=FONTS[FONT]['google'], srch=SUI.BOX, v=v('site.css'),
                 build=BUILD, themehead=THEME.HEAD, themebtn=THEME.BUTTON,
                 js=SUI.JS % dict(r=r, rel=repr(r), sv=v('search-index.js')) + SNAV.JS + THEME.JS)
@@ -439,6 +443,25 @@ def build_grades():
                          'for.' % g['num']))
 
 
+def build_extras():
+    for k, name in (('frank', 'Mr. Frank'), ('dryer', 'Mr. Dryer')):
+        write('staff/%s.html' % k,
+              shell(name, EX.staff_page(k), depth=1, section='staff',
+                    path='staff/%s.html' % k, page_css=EX.CSS,
+                    desc='%s: what he covers, which grades he delivers, which '
+                         'pathways he leads, and what to bring him.' % name))
+    write('extras/do-nows.html',
+          shell('Do Nows and bonus work', EX.donows(), depth=1,
+                section='extras', path='extras/do-nows.html', page_css=EX.CSS,
+                desc='The short skill tasks and the assignments outside the '
+                     'project spine, grouped by what they build.'))
+    write('extras/links.html',
+          shell('Links', EX.links(), depth=1, section='extras',
+                path='extras/links.html', page_css=EX.CSS,
+                desc='Reference, channels, model libraries and career data '
+                     'worth keeping a tab open for.'))
+
+
 def build_home():
     links = '\n      '.join(
         '<a href="pathways/%s.html">%s</a>' % (p['key'], p['nav']) for p in B.P)
@@ -611,8 +634,14 @@ the whole site works off disk — every link is relative and every page ends in
 
 ## Layout
 
-    index.html                 home — four doors
+    index.html                 home — the doors
     404.html                   served for any address that does not exist
+    grades/index.html          the four grade homes
+    grades/<9|10|11|12>.html   units, and assignments by term
+    staff/frank.html           Mr. Frank — EDF, grades 11 and 12
+    staff/dryer.html           Mr. Dryer — ESEC, grades 9 and 10
+    extras/do-nows.html        Do Nows and bonus work, grouped by skill
+    extras/links.html          reference, channels, model libraries, careers
     assets/site.css            palette, base type, site chrome, shared components
     start/welcome.html         welcome packet
     start/how-class-works.html rules, uniform, grading
@@ -1098,14 +1127,17 @@ if __name__ == '__main__':
     # the search styles live in search_ui.py; the stylesheet only reserves a slot
     c = re.sub(r'/\* @@SEARCH@@ \*/.*?(?=/\* --- site chrome)',
                '/* @@SEARCH@@ */\n' + SUI.CSS.strip() + '\n'
-               + SNAV.CSS.strip() + '\n' + THEME.CSS.strip() + '\n\n', c, flags=re.S)
+               + SNAV.CSS.strip() + '\n' + THEME.CSS.strip() + '\n'
+               + QBAR.CSS.strip() + '\n\n', c, flags=re.S)
     # every stamp must actually land; a silent no-op here is how the stylesheet
     # and the modules drift apart without anyone noticing
     for token in ('--serif:', '--sans:', '--mono:', '--w-heavy:', '--barh:'):
         if token not in c:
             raise SystemExit('build: %s missing from site.css' % token)
-    if '.srch{' not in c or '.railin{' not in c or '.themebtn{' not in c:
-        raise SystemExit('build: search or rail CSS did not get stamped in')
+    if '.srch{' not in c or '.railin{' not in c or '.themebtn{' not in c \
+            or '.qbar{' not in c:
+        raise SystemExit('build: search, rail, theme or quick-bar CSS did not '
+                         'get stamped in')
     open(css_path, 'w', encoding='utf-8').write(c)
     print('  fonts: %s' % f['name'])
 
@@ -1113,7 +1145,17 @@ if __name__ == '__main__':
     print('  %-42s %6d  (%d entries)' % ('assets/search-index.js', n, len(rows)))
 
     import hashlib, datetime
-    BUILD = datetime.datetime.now().strftime('%d %b %Y, %H:%M')
+    # Stamped in SCHOOL time, not the build machine's. The builder runs UTC,
+    # four hours ahead of Massachusetts, so a UTC stamp reads as a different
+    # time from the one Windows shows for the same file -- which makes a build
+    # that just landed look hours old.
+    try:
+        from zoneinfo import ZoneInfo
+        _now = datetime.datetime.now(ZoneInfo('America/New_York'))
+        BUILD = _now.strftime('%d %b %Y, %-I:%M %p').replace('AM', 'am') \
+                    .replace('PM', 'pm')
+    except Exception:
+        BUILD = datetime.datetime.now().strftime('%d %b %Y, %H:%M UTC')
     globals()['BUILD'] = BUILD
     for _f in ('site.css', 'search-index.js'):
         _p = os.path.join(OUT, 'assets', _f)
@@ -1122,6 +1164,7 @@ if __name__ == '__main__':
 
     build_home()
     build_grades()
+    build_extras()
     build_404()
     build_welcome()
     build_ported()

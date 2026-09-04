@@ -28,7 +28,6 @@ GRADES = [
         key='9', num=9, course='Engineering I', teacher='Mr. Dryer',
         banner='grade-1.jpg',
         ink='#a03c36', ink_dark='#e59089', soft='#fbeceb', soft_dark='#3a1e1c',
-        hook='One week to find out whether this is your shop.',
         lede='Grade 9 is exploratory. You spend one week in each of nine shops '
              'before you choose the one you will be in for the next three and '
              'a half years. This page is what that week looks like here.',
@@ -54,7 +53,6 @@ GRADES = [
         key='10', num=10, course='Engineering II', teacher='Mr. Dryer',
         banner='grade-2.jpg',
         ink='#8a6410', ink_dark='#dcae4f', soft='#faf0d9', soft_dark='#332a10',
-        hook='The year the shop becomes yours.',
         lede='Grade 10 is where the safety certifications get real and the '
              'documentation standard goes up. You are no longer visiting.',
         exploratory=False,
@@ -78,7 +76,6 @@ GRADES = [
         key='11', num=11, course='Engineering III', teacher='Mr. Frank',
         banner='grade-3.jpg',
         ink='#0b622c', ink_dark='#71bd88', soft='#e9f4ec', soft_dark='#152c1c',
-        hook='Four terms of projects, then a capstone.',
         lede='Grade 11 is the widest year. Projects run all four terms and '
              'cover every pathway in the shop &mdash; speakers, houses, '
              'robots, circuits, architecture &mdash; before the capstone at '
@@ -97,7 +94,6 @@ GRADES = [
         key='12', num=12, course='Engineering IV', teacher='Mr. Frank',
         banner='grade-4.jpg',
         ink='#4a2a70', ink_dark='#b998d0', soft='#f0eaf7', soft_dark='#2b2038',
-        hook='Two terms of sharp briefs, then the Senior Capstone.',
         lede='Grade 12 has a different shape from every year before it. Terms '
              '1 and 2 are a run of short, varied briefs. Terms 3 and 4 are one '
              'thing: the Senior Capstone, which you choose and run yourself.',

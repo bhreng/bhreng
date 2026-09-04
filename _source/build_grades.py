@@ -47,8 +47,6 @@ CSS = '''
 .ghero .gwho{font-family:var(--sans);font-size:13.5px;font-weight:600;
   color:rgba(255,255,255,.88);margin:7px 0 0}
 
-.ghook{font-family:var(--sans);font-weight:600;font-size:20px;line-height:1.35;
-  color:var(--g-ink);margin:22px 0 10px;letter-spacing:-.01em}
 .gradepage .lede,.gi .lede{font-size:18px;line-height:1.62;color:var(--ink-2);
   max-width:64ch;margin:0}
 
@@ -204,7 +202,6 @@ def page(key, depth=1):
     out = ['<div class="wrap gradepage" style="%s">' % style,
            hero(g, depth),
            '<section>',
-           '  <p class="ghook">%s</p>' % g['hook'],
            '  <p class="lede">%s</p>' % g['lede'],
            '</section>']
 
@@ -300,13 +297,13 @@ def index(depth=1):
             '    <a class="gcard" href="%s.html" style="%s">'
             '<img src="%sassets/%s" alt="" loading="lazy">'
             '<div class="cb"><p class="cn">Grade %d</p>'
-            '<p class="ct">%s</p><p class="cs">%s</p>'
+            '<p class="ct">%s</p>'
             '<p class="cw">%s &middot; %s</p></div></a>'
             % (g['key'],
                '--g-lt:%s;--g-dk:%s;--g-slt:%s;--g-sdk:%s'
                % (g['ink'], g['ink_dark'], g['soft'], g['soft_dark']),
                r, g['banner'], g['num'], g['course'],
-               g['hook'], g['teacher'], count))
+               g['teacher'], count))
     out.append('  </div>')
     out.append('</section>')
     out.append(

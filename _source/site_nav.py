@@ -31,6 +31,10 @@ def tree():
             ('grades/11.html', 'Grade 11 \u2014 Engineering III'),
             ('grades/12.html', 'Grade 12 \u2014 Engineering IV'),
         ]),
+        ('staff', 'Your instructors', 'staff/frank.html', [
+            ('staff/frank.html', 'Mr. Frank \u2014 EDF'),
+            ('staff/dryer.html', 'Mr. Dryer \u2014 ESEC'),
+        ]),
         ('logbook', 'Logbook', 'logbook/index.html', []),
         ('pathways', 'The seven pathways', 'pathways/index.html',
          [('pathways/index.html', 'Which one is for you?')] +
@@ -44,6 +48,10 @@ def tree():
             ('shop/themes.html', 'Which theme? (practice)'),
         ] + checks),
         ('resources', 'Training and credentials', 'resources/index.html', []),
+        ('extras', 'More', 'extras/do-nows.html', [
+            ('extras/do-nows.html', 'Do Nows and bonus work'),
+            ('extras/links.html', 'Links'),
+        ]),
     ]
 
 

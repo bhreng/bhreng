@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Welcome to the Shop &middot; BHR Engineering</title>
-<meta name="description" content="Who to ask for what, what to wear, what you can earn, and the safety essentials for your first week.">
+<title>Mr. Frank &middot; BHR Engineering</title>
+<meta name="description" content="Mr. Frank: what he covers, which grades he delivers, which pathways he leads, and what to bring him.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
@@ -12,21 +12,64 @@
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <link rel="stylesheet" href="../assets/site.css?v=8702f720">
 <style>
-.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;
-  background:var(--card);border:1px solid var(--rule)}
-.two article{background:var(--card);padding:18px 20px;box-shadow:0 0 0 1px var(--rule);
-  display:flex;flex-direction:column;gap:8px}
-.two .who{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-3)}
-.two b{font-family:var(--sans);font-weight:600;font-size:16px;line-height:1.35}
-.two ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;
-  font-size:15px;color:var(--ink-2)}
-.two li{line-height:1.5}
-.pdf{display:inline-flex;align-items:center;gap:9px;text-decoration:none;
-  font-family:var(--sans);font-weight:600;font-size:15px;color:var(--accent);
-  background:var(--accent-soft);border:1px solid var(--rule);padding:11px 17px;
-  align-self:flex-start;margin-top:4px}
-.pdf:hover{background:var(--card)}
+/* --- instructor pages --------------------------------------------------- */
+/* same light/dark pair the grade pages use; --w-band stays deep in both */
+.who{--w-ink:var(--w-lt);--w-soft:var(--wsl);--w-band:var(--w-lt);
+  --accent:var(--w-ink);--accent-soft:var(--w-soft)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .who{
+  --w-ink:var(--w-dk);--w-soft:var(--wsd)}}
+:root[data-theme="dark"] .who{--w-ink:var(--w-dk);--w-soft:var(--wsd)}
+.whohd{border:1px solid var(--rule);border-top:5px solid var(--w-band);
+  border-radius:0 0 8px 8px;background:var(--card);padding:22px 26px 24px}
+.whohd .ax{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--w-ink);font-weight:700;margin:0}
+.whohd h1{margin:5px 0 0;font-size:clamp(30px,4.4vw,42px);letter-spacing:-.02em}
+.whohd .rl{margin:4px 0 0;font-family:var(--sans);font-size:14px;
+  color:var(--ink-3);font-weight:600}
+.whohd .bl{margin:14px 0 0;font-size:17.5px;line-height:1.55;color:var(--ink-2);
+  max-width:56ch}
+.whohd .gr{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.whohd .gr a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+  font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--ink-2);
+  border:1px solid var(--rule);border-radius:999px;padding:7px 13px;line-height:1}
+.whohd .gr a:hover{border-color:var(--g);color:var(--g)}
+.whohd .gr .dot{width:8px;height:8px;border-radius:50%;background:var(--g)}
+
+.asklist{display:grid;gap:10px}
+.askrow{border:1px solid var(--rule);border-left:4px solid var(--w-ink);
+  border-radius:0 6px 6px 0;background:var(--card);padding:15px 18px}
+.askrow b{display:block;font-family:var(--sans);font-size:16.5px;
+  letter-spacing:-.01em;color:var(--ink)}
+.askrow span{display:block;margin-top:5px;font-size:14.5px;line-height:1.5;
+  color:var(--ink-2)}
+
+/* --- shelves ------------------------------------------------------------ */
+.shelf{border:1px solid var(--rule);border-radius:7px;background:var(--card);
+  overflow:hidden}
+.shelf .row{display:flex;gap:16px;padding:15px 19px;
+  border-bottom:1px solid var(--rule-soft);align-items:flex-start}
+.shelf .row:last-child{border-bottom:0}
+.shelf .row:hover{background:var(--accent-soft)}
+.shelf .bd{min-width:0;flex:1}
+.shelf .ti{font-family:var(--sans);font-weight:700;font-size:16.5px;
+  letter-spacing:-.01em;margin:0;color:var(--ink)}
+.shelf a.ti{text-decoration:none;color:var(--accent)}
+.shelf a.ti:hover{text-decoration:underline}
+.shelf .ds{margin:5px 0 0;font-size:14.5px;line-height:1.55;color:var(--ink-2)}
+.shelf .tg{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0 0;
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3)}
+.shelf .tg a{color:var(--accent);text-decoration:none;font-weight:700}
+.shelf .gbadge{flex:none;font-family:var(--mono);font-size:10px;font-weight:700;
+  letter-spacing:.06em;border:1px solid var(--rule);border-radius:3px;
+  padding:3px 7px;color:var(--ink-3);white-space:nowrap;margin-top:2px}
+.shelf .host{font-family:var(--mono);font-size:11px;color:var(--ink-3);
+  margin:5px 0 0;word-break:break-all}
+
+@media(max-width:640px){
+  .whohd{padding:18px 17px 20px}
+  .shelf .row{padding:14px 16px;gap:11px}
+}
 </style>
 <script>
 (function(){try{var t=localStorage.getItem('bhr-theme');
@@ -63,7 +106,7 @@ catch(e){}})();
   <a href="../grades/11.html" style="--ql:#0b622c;--qd:#71bd88;--qsl:#e9f4ec;--qsd:#152c1c"><span class="dot"></span>Grade 11</a>
   <a href="../grades/12.html" style="--ql:#4a2a70;--qd:#b998d0;--qsl:#f0eaf7;--qsd:#2b2038"><span class="dot"></span>Grade 12</a>
   <span class="sep"></span>
-  <a class="who" href="../staff/frank.html">Mr. Frank</a>
+  <a class="who" href="../staff/frank.html" aria-current="page">Mr. Frank</a>
   <a class="who" href="../staff/dryer.html">Mr. Dryer</a>
 </div></nav>
 
@@ -76,16 +119,16 @@ catch(e){}})();
     <li><a href="../index.html" class="sec">Home</a>
     </li>
     <li><a href="../start/welcome.html" class="sec">Start here</a>
-      <ul class="kids">
-        <li><a href="../start/welcome.html" class="here">Welcome to the shop</a>
-        </li>
-        <li><a href="../start/how-class-works.html">How this class works</a>
-        </li>
-      </ul>
     </li>
     <li><a href="../grades/index.html" class="sec">Your year</a>
     </li>
     <li><a href="../staff/frank.html" class="sec">Your instructors</a>
+      <ul class="kids">
+        <li><a href="../staff/frank.html" class="here">Mr. Frank — EDF</a>
+        </li>
+        <li><a href="../staff/dryer.html">Mr. Dryer — ESEC</a>
+        </li>
+      </ul>
     </li>
     <li><a href="../logbook/index.html" class="sec">Logbook</a>
     </li>
@@ -101,121 +144,40 @@ catch(e){}})();
   </div>
 </div>
 <div class="main">
-
-<div class="wrap">
-
-  <header class="hero">
-    <p class="kicker">Engineering Technology &middot; Welcome</p>
-    <h1>Welcome to the shop</h1>
-    <p>Everything you need for your first week: who to ask for what, what to wear,
-      how the shop runs, and how you are graded.</p>
-  </header>
-
-  <section>
-    <h2>What this program is</h2>
-    <p>You are joining a program that treats you like an engineer rather than a student
-      who happens to be in a shop. You will design things, build them, test them, and
-      explain why they worked or did not. Some of what you make will fail. That is part
-      of it &mdash; what matters is that you can say why.</p>
-  </section>
-
-  <section>
-    <h2>Who to ask for what</h2>
-    <p class="sub">Both of us teach across all four years. Go to whoever fits the problem in
-      front of you &mdash; you will not be sent away for asking the wrong one.</p>
-    <div class="two">
-      <article>
-        <span class="who">Mr. Frank &middot; Grades 11 &amp; 12</span>
-        <b>Helps you make it real</b>
-        <ul>
-          <li>Designing in CAD so it works and looks right</li>
-          <li>Getting a part ready to 3D print or laser cut</li>
-          <li>Making a structure that holds up</li>
-          <li>Drawings someone else could build from</li>
-          <li>Fixing a prototype that came out wrong</li>
-        </ul>
-      </article>
-      <article>
-        <span class="who">Mr. Dryer &middot; Grades 9 &amp; 10</span>
-        <b>Helps you make it work</b>
-        <ul>
-          <li>Designing or troubleshooting a circuit</li>
-          <li>Writing and debugging code for a board or robot</li>
-          <li>Working out why a system misbehaves</li>
-          <li>Getting sensors and motors working together</li>
-          <li>Showing with data that it does what you claim</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <section>
-    <h2>What you can earn here</h2>
-    <dl class="defs">
-      <dt>OSHA 10 &mdash; Construction</dt>
-      <dd>In Grade 10. The credential that lets you work on the equipment, and it is
-        recognized well outside this building.</dd>
-      <dt>Autodesk Certified User</dt>
-      <dd>In Inventor, Fusion 360 and Revit Architecture. Which ones you go for depends on
-        the work you are doing and when you are ready.</dd>
-      <dt>Cooperative education</dt>
-      <dd>Working in a real engineering setting for part of your schedule. Available to
-        juniors from Term 3 and seniors from Term 1.</dd>
-    </dl>
-  </section>
-
-  <section>
-    <h2>What to wear</h2>
-    <p class="sub">You wear a uniform during your shop week. It is not about looking smart
-      &mdash; it is about being dressed for a room with machines in it.</p>
-    <div class="tw"><table>
-      <thead><tr><th>Item</th><th>What is required</th></tr></thead>
-      <tbody>
-        <tr><td class="k" data-label="Item">Shop attire</td><td data-label="What is required">Anything carrying the Engineering Technology logo, bought through the school store &mdash; T-shirts long or short sleeve, hoodies, crew necks, quarter-zips, sweaters. Any of it counts.</td></tr>
-        <tr><td class="k" data-label="Item">Footwear</td><td data-label="What is required">Shoes, sneakers or work boots. <strong>No open-toed shoes, sandals or Crocs</strong> in the Makerspace.</td></tr>
-        <tr><td class="k" data-label="Item">Eye protection</td><td data-label="What is required">Required in the Makerspace. Situational in the main shop &mdash; if you are unsure, put them on.</td></tr>
-      </tbody>
-    </table></div>
-    <p class="note"><strong>Ordering.</strong> Uniforms are ordered at
-      <a href="https://store.bluehills.org/">store.bluehills.org</a> during the window posted
-      on the website &mdash; that is when pricing is best and delivery to the school is free.
-      There is no limit on how many you buy; most students get at least two. Refer to the
-      Blue Hills Parent/Student Handbook for anything else about attire.</p>
-  </section>
-
-  <section>
-    <h2>Safety, in short</h2>
-    <p class="sub">The full rules are posted in the shop and you will be trained on them.
-      These are the ones that matter before you touch anything.</p>
-    <ul class="ticks">
-      <li>Report every injury immediately, however small. If a chemical gets in your eyes,
-        wash for <strong>15 minutes</strong> before seeking treatment.</li>
-      <li>Never use a tool you have not been trained and authorized on.</li>
-      <li>Never work alone with power tools &mdash; two people, both visible to each other.</li>
-      <li>Machines run only with all guards and shields in place. Never walk away from a
-        running tool.</li>
-      <li>Clean your area every time you leave it, including the floor.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Next</h2>
-    <p class="sub">Two things worth reading in your first week.</p>
-    <div class="grid">
-      <article>
-        <b><a href="how-class-works.html">How this class works</a></b>
-        <p>The classroom rules, and exactly how your grade is put together &mdash; including
-          why half of it is about how you work rather than what you make.</p>
-      </article>
-      <article>
-        <b><a href="../logbook/index.html">Your engineering logbook</a></b>
-        <p>You fill one in every shop day. Read this before your first one, not after.</p>
-      </article>
-    </div>
-  </section>
-
+<div class="wrap who" style="--w-lt:#6b4785;--w-dk:#b191c6;--wsl:#f1ebf7;--wsd:#2b2536">
+<div class="whohd">
+  <p class="ax">EDF &middot; Engineering Design &amp; Fabrication</p>
+  <h1>Mr. Frank</h1>
+  <p class="rl">Lead Teacher &middot; Engineering Technology &middot; Room E-126</p>
+  <p class="bl">Turning an idea into a thing that exists, and making it hold up.</p>
+  <div class="gr">
+    <a href="../grades/11.html" style="--g:#0b622c"><span class="dot"></span>Grade 11 &mdash; Engineering III</a>
+    <a href="../grades/12.html" style="--g:#4a2a70"><span class="dot"></span>Grade 12 &mdash; Engineering IV</a>
+  </div>
 </div>
-
+<section><h2>What he covers</h2><p class="sub">Both instructors are in the shop with all four years. This is the half of the work that is his.</p><ul class="ticks">
+  <li>Designing in CAD so it works and looks right</li>
+  <li>Getting a part ready to print or cut</li>
+  <li>Structures that carry load</li>
+  <li>Drawings someone else could build from</li>
+  <li>Fixing a prototype that came out wrong</li>
+</ul></section>
+<section><h2>Pathways he leads</h2><p class="sub">Where a project in this area goes first.</p><div class="shelf">
+  <div class="row"><div class="bd"><a class="ti" href="../pathways/industrial.html">Industrial Design</a><p class="ds">How a thing looks, feels in the hand, and can actually be made.</p><div class="tg"><span>Standard S8</span></div></div></div>
+  <div class="row"><div class="bd"><a class="ti" href="../pathways/architecture.html">Architecture &amp; Civil</a><p class="ds">Buildings, sites, and the loads that hold them up.</p><div class="tg"><span>Standard S10</span></div></div></div>
+  <div class="row"><div class="bd"><a class="ti" href="../pathways/mechanical.html">Mechanical</a><p class="ds">Forces, motion, materials, and whether the part survives.</p><div class="tg"><span>Standard S7</span></div></div></div>
+  <div class="row"><div class="bd"><a class="ti" href="../pathways/automation.html">Automation &amp; Robotics</a><p class="ds">Where the mechanical, the electrical and the code have to work as one system.</p><div class="tg"><span>Standard S9</span><span>Shared with the other instructor</span></div></div></div>
+  <div class="row"><div class="bd"><a class="ti" href="../pathways/project.html">Project Management</a><p class="ds">Making a project finish on time, with the parts you actually ordered.</p><div class="tg"><span>Standard S4</span><span>Shared with the other instructor</span></div></div></div>
+</div></section>
+<section><h2>Good questions to bring him</h2><p class="sub">And what to have with you when you do. Bringing the thing beats describing the thing.</p><div class="asklist">
+  <div class="askrow"><b>&ldquo;My model will not do the thing I want&rdquo;</b><span>Bring the file, not a description of the file.</span></div>
+  <div class="askrow"><b>&ldquo;This came off the printer wrong&rdquo;</b><span>Bring the print and the settings you used.</span></div>
+  <div class="askrow"><b>&ldquo;Will this actually hold?&rdquo;</b><span>Bring the load you think it has to take, even if you guessed it.</span></div>
+  <div class="askrow"><b>&ldquo;I need a drawing someone can build from&rdquo;</b><span>Bring the model and who is going to build it.</span></div>
+</div></section>
+<section><div class="note acc"><p>Certiport proctor for the shop, so the certification exams run through him.</p></div></section>
+<section><div class="note"><p><strong>Not sure which of them?</strong> Describe the thing you want to build and either one will point you at the right pathway. If the problem is code, circuits or why a system misbehaves, start with <a href="../staff/dryer.html">Mr. Dryer</a>. The <a href="../pathways/index.html">pathways page</a> lists who leads each area.</p></div></section>
+</div>
 </div>
 </div>
 
