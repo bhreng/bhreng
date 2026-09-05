@@ -73,6 +73,9 @@ ul.ticks li,ul.files li{background:var(--card);padding:11px 18px 11px 40px;posit
   font-size:15.5px;line-height:1.5}
 ul.ticks li::before{content:"";position:absolute;left:19px;top:20px;width:7px;height:7px;
   border-radius:50%;background:var(--accent)}
+ul.files li a{text-decoration:none;color:var(--accent)}
+ul.files li a:hover{text-decoration:underline}
+ul.files .ext{font-family:var(--mono);font-size:9px;letter-spacing:.09em;margin-left:7px;padding:1px 5px;border:1px solid var(--rule);border-radius:2px;color:var(--ink-3)}
 ul.files li::before{content:"";position:absolute;left:18px;top:17px;width:9px;height:11px;
   border:1.4px solid var(--accent);border-radius:1px}
 .briefs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;
@@ -81,6 +84,18 @@ ul.files li::before{content:"";position:absolute;left:18px;top:17px;width:9px;he
   gap:6px;box-shadow:0 0 0 1px var(--rule)}
 .briefs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
 .briefs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+/* briefs the shop has really run -- same grid, but tagged with the class it
+   ran in, so a student can see it is a real assignment rather than a seed */
+.runsh{margin:26px 0 6px;font-family:var(--sans);font-weight:700;font-size:17px;
+  letter-spacing:-.01em;color:var(--ink)}
+.runs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.runs article{background:var(--card);padding:16px 19px;display:flex;
+  flex-direction:column;gap:6px;box-shadow:0 0 0 1px var(--rule)}
+.runs .ry{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);font-weight:700}
+.runs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.runs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
 .note{margin:16px 0 0;font-size:14.5px;color:var(--ink-2);background:var(--card);
   border:1px solid var(--rule);border-left:3px solid var(--ink-3);padding:12px 16px;
   max-width:70ch;line-height:1.5}
@@ -334,6 +349,8 @@ catch(e){}})();
     </li>
     <li><a href="../resources/index.html" class="sec">Training and credentials</a>
     </li>
+    <li><a href="../families/index.html" class="sec">For families</a>
+    </li>
     <li><a href="../extras/do-nows.html" class="sec">More</a>
     </li>
   </ul></nav>
@@ -457,15 +474,18 @@ the <a href="../resources/index.html">Training &amp; Credentials</a> page.</p></
 </div>
 <div class="topic" id="t5"><div class="th"><span class="tn">5</span><div><h3>Get the Files</h3><p class="tq">Would you open this while working, rather than read start to finish?</p></div></div>
 <ul class="files">
-<li>Logbook template.</li>
-<li>Weekly planner — milestones, dates, resources.</li>
-<li>Work breakdown structure template.</li>
-<li>Gantt chart template.</li>
-<li>Bill of Materials worksheet with lead time and unit cost.</li>
-<li>Decision matrix template.</li>
-<li>Independent Focus term-end reflection.</li>
+<li><a href="../files/BHR27-Daily-Logbook.docx" download><b>Daily Logbook</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Weekly-Planner.docx" download><b>Weekly Planner</b></a><span class="ext">DOCX</span> &mdash; milestones, dates, resources</li>
+<li><a href="../files/BHR27-Project-Gantt-Chart.xlsx" download><b>Project Gantt Chart</b></a><span class="ext">XLSX</span> &mdash; the WBS column is the work breakdown structure; the calendar is the schedule</li>
+<li><a href="../files/BHR27-Part-List.xlsx" download><b>Part List</b></a><span class="ext">XLSX</span> &mdash; with made-or-bought, so lead time is visible</li>
+<li><a href="../files/BHR27-Order-Request-Form.xlsx" download><b>Order Request Form</b></a><span class="ext">XLSX</span> &mdash; unit cost, total, and the reason that gets it approved</li>
+<li><a href="../files/BHR27-Decision-Matrix.xlsx" download><b>Decision Matrix</b></a><span class="ext">XLSX</span></li>
+<li><a href="../files/BHR27-Instructor-Meeting-Notes.docx" download><b>Instructor Meeting Notes</b></a><span class="ext">DOCX</span> &mdash; action items with names and dates</li>
+<li><a href="../files/BHR27-Independent-Focus-Proposal.docx" download><b>Independent Focus Proposal</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Reflection.docx" download><b>Independent Focus Reflection</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Record.pdf" download><b>Independent Focus Record</b></a><span class="ext">PDF</span> &mdash; one row per term, kept in the binder</li>
 </ul>
-<p class="note">Logbook rules are the same in every pathway &mdash; see <em>Your Engineering Logbook</em>. Anything you read in an older hub guide about notebook rules is superseded by it.</p>
+<p class="note">Logbook rules are the same in every pathway &mdash; see <em>Your Engineering Logbook</em>. Anything you read in an older hub guide about logbook rules is superseded by it.</p>
 </div>
 
 <div class="srchead"><h4>Go and look</h4><span>5 checked links &mdash; every one opens, free.</span></div>
@@ -485,12 +505,12 @@ the <a href="../resources/index.html">Training &amp; Credentials</a> page.</p></
     <span>Blue Hills Regional Technical School</span>
     <span>Engineering Technology &middot; Room E-126</span>
     <span>Mr. Frank &middot; Mr. Dryer</span>
-    <span class="build">Build 05 Sep 2026, 2:14 pm</span>
+    <span class="build">Build 05 Sep 2026, 4:08 pm</span>
   </div>
 </footer>
 
 
-<script src="../assets/search-index.js?v=28a0af90" defer></script>
+<script src="../assets/search-index.js?v=588b2a68" defer></script>
 <script defer>
 (function(){
   var REL = '../';

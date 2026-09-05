@@ -149,6 +149,9 @@ ul.ticks li,ul.files li{background:var(--card);padding:11px 18px 11px 40px;posit
   font-size:15.5px;line-height:1.5}
 ul.ticks li::before{content:"";position:absolute;left:19px;top:20px;width:7px;height:7px;
   border-radius:50%;background:var(--accent)}
+ul.files li a{text-decoration:none;color:var(--accent)}
+ul.files li a:hover{text-decoration:underline}
+ul.files .ext{font-family:var(--mono);font-size:9px;letter-spacing:.09em;margin-left:7px;padding:1px 5px;border:1px solid var(--rule);border-radius:2px;color:var(--ink-3)}
 ul.files li::before{content:"";position:absolute;left:18px;top:17px;width:9px;height:11px;
   border:1.4px solid var(--accent);border-radius:1px}
 .briefs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;
@@ -157,6 +160,18 @@ ul.files li::before{content:"";position:absolute;left:18px;top:17px;width:9px;he
   gap:6px;box-shadow:0 0 0 1px var(--rule)}
 .briefs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
 .briefs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+/* briefs the shop has really run -- same grid, but tagged with the class it
+   ran in, so a student can see it is a real assignment rather than a seed */
+.runsh{margin:26px 0 6px;font-family:var(--sans);font-weight:700;font-size:17px;
+  letter-spacing:-.01em;color:var(--ink)}
+.runs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.runs article{background:var(--card);padding:16px 19px;display:flex;
+  flex-direction:column;gap:6px;box-shadow:0 0 0 1px var(--rule)}
+.runs .ry{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);font-weight:700}
+.runs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.runs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
 .note{margin:16px 0 0;font-size:14.5px;color:var(--ink-2);background:var(--card);
   border:1px solid var(--rule);border-left:3px solid var(--ink-3);padding:12px 16px;
   max-width:70ch;line-height:1.5}
@@ -401,6 +416,8 @@ catch(e){}})();
     <li><a href="../shop/index.html" class="sec">Shop safety</a>
     </li>
     <li><a href="../resources/index.html" class="sec">Training and credentials</a>
+    </li>
+    <li><a href="../families/index.html" class="sec">For families</a>
     </li>
     <li><a href="../extras/do-nows.html" class="sec">More</a>
     </li>
@@ -750,10 +767,12 @@ catch(e){}})();
       <p class="tq">You do not need to read this seven times.</p></div></div>
     <dl class="defs">
       <dt>OSHA 10 &mdash; Construction</dt>
-      <dd>The base credential for every pathway. Nothing in a hub happens without it on file.</dd>
+      <dd>Earned in Grade 10, by every student in the school. It is the credential
+        behind machine authorisation, not a gate on your focus &mdash; Grade 9 and 10
+        students have a focus too, and work within whatever they are authorised on.</dd>
       <dt>The logbook</dt>
       <dd>One set of rules, program-wide, in <em>Your Engineering Logbook</em>. Older hub guides
-        carried four different notebook rulebooks; those are retired.</dd>
+        carried four different logbook rulebooks; those are retired.</dd>
       <dt>Standard 11 &mdash; integrated research</dt>
       <dd>A business plan for a design in an emerging field: the technical design, evidence of
         market potential, and an implementation strategy. This is where entrepreneurship
@@ -800,12 +819,12 @@ catch(e){}})();
     <span>Blue Hills Regional Technical School</span>
     <span>Engineering Technology &middot; Room E-126</span>
     <span>Mr. Frank &middot; Mr. Dryer</span>
-    <span class="build">Build 05 Sep 2026, 2:14 pm</span>
+    <span class="build">Build 05 Sep 2026, 4:08 pm</span>
   </div>
 </footer>
 
 
-<script src="../assets/search-index.js?v=28a0af90" defer></script>
+<script src="../assets/search-index.js?v=588b2a68" defer></script>
 <script defer>
 (function(){
   var REL = '../';

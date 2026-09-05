@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Documents &middot; BHR Engineering</title>
+<meta name="description" content="Every template the shop uses, grouped by when you reach for it, plus the print files for the walls.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="../assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/site.css?v=22273e7d">
+<style>
+.docs .lede{font-size:17.5px;line-height:1.55;color:var(--ink-2);max-width:62ch;margin:0 0 18px}
+.docs .guide{display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  border:1px solid var(--rule);border-left:5px solid var(--accent);
+  border-radius:0 8px 8px 0;background:var(--accent-soft);padding:18px 22px;margin:0 0 26px}
+.docs .guide b{font-family:var(--sans);font-size:17px;color:var(--ink);display:block}
+.docs .guide span{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.docs .guide a{margin-left:auto;flex:none;font-family:var(--mono);font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;font-weight:700;text-decoration:none;
+  color:#fff;background:var(--accent);border-radius:5px;padding:10px 16px}
+.docs .guide a:hover{background:var(--ink)}
+.docs h2{margin:26px 0 4px}
+.docs .when{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+.docs .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+.docs .card{border:1px solid var(--rule);border-radius:7px;background:var(--card);
+  padding:14px 16px 13px;display:flex;flex-direction:column;gap:6px;text-decoration:none;
+  color:inherit;transition:border-color .12s}
+.docs .card:hover{border-color:var(--accent)}
+.docs .card .t{font-family:var(--sans);font-weight:700;font-size:15.5px;color:var(--accent);
+  display:flex;align-items:baseline;gap:8px}
+.docs .card .ext{font-family:var(--mono);font-size:9px;letter-spacing:.09em;padding:1px 5px;
+  border:1px solid var(--rule);border-radius:2px;color:var(--ink-3);flex:none}
+.docs .card .d{font-size:14px;line-height:1.5;color:var(--ink-2)}
+.docs .posters{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:9px}
+.docs .posters a{display:block;border:1px solid var(--rule);border-radius:6px;padding:10px 13px;
+  text-decoration:none;color:var(--ink);font-size:14px;background:var(--card)}
+.docs .posters a:hover{border-color:var(--accent);color:var(--accent)}
+.docs .note{margin-top:22px}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('bhr-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to the page content</a>
+
+<header class="sitebar">
+  <div class="in">
+    <a class="brand" href="../index.html">
+      <img class="mark" src="../assets/logo-96.png" alt="" width="34" height="29">
+      <span>Engineering&nbsp;Technology</span>
+    </a>
+<nav class="qnav" aria-label="Quick links">
+  <span class="lbl">Go to</span>
+  <a href="../grades/9.html" style="--ql:#a03c36;--qd:#e59089;--qsl:#fbeceb;--qsd:#3a1e1c"><span class="dot"></span><span class="lg">Grade 9</span><span class="sm">Gr 9</span></a>
+  <a href="../grades/10.html" style="--ql:#8a6410;--qd:#dcae4f;--qsl:#faf0d9;--qsd:#332a10"><span class="dot"></span><span class="lg">Grade 10</span><span class="sm">Gr 10</span></a>
+  <a href="../grades/11.html" style="--ql:#0b622c;--qd:#71bd88;--qsl:#e9f4ec;--qsd:#152c1c"><span class="dot"></span><span class="lg">Grade 11</span><span class="sm">Gr 11</span></a>
+  <a href="../grades/12.html" style="--ql:#4a2a70;--qd:#b998d0;--qsl:#f0eaf7;--qsd:#2b2038"><span class="dot"></span><span class="lg">Grade 12</span><span class="sm">Gr 12</span></a>
+  <span class="sep"></span>
+  <a class="who" href="../staff/frank.html"><span class="lg">Mr. Frank</span><span class="sm">Frank</span></a>
+  <a class="who" href="../staff/dryer.html"><span class="lg">Mr. Dryer</span><span class="sm">Dryer</span></a>
+</nav>
+      <div class="srch">
+        <span class="sbox">
+          <input type="search" id="q" placeholder="Search" autocomplete="off"
+                 aria-label="Search the site" aria-expanded="false" aria-controls="sres">
+          <kbd>/</kbd>
+        </span>
+        <div class="sres" id="sres" role="listbox" hidden></div>
+      </div>
+      <button class="themebtn" id="theme" type="button"
+              title="Switch between light and dark" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span><span class="lbl">Theme</span>
+      </button>
+  </div>
+</header>
+
+<div class="shell">
+<div class="rail">
+  <input type="checkbox" id="railtog" class="railtog" aria-label="Show site navigation">
+  <label for="railtog" class="railbtn"><span class="bars"></span>Browse the site<span class="chev">&#9660;</span></label>
+  <div class="railin">
+  <nav aria-label="Site"><ul>
+    <li><a href="../index.html" class="sec">Home</a>
+    </li>
+    <li><a href="../start/welcome.html" class="sec">Start here</a>
+    </li>
+    <li><a href="../grades/index.html" class="sec">Your year</a>
+    </li>
+    <li><a href="../staff/frank.html" class="sec">Your instructors</a>
+    </li>
+    <li><a href="../logbook/index.html" class="sec">Logbook</a>
+      <ul class="kids">
+        <li><a href="../logbook/index.html">Your engineering logbook</a>
+        </li>
+        <li><a href="../logbook/documents.html" class="here">All documents</a>
+        </li>
+      </ul>
+    </li>
+    <li><a href="../pathways/index.html" class="sec">The seven pathways</a>
+    </li>
+    <li><a href="../shop/index.html" class="sec">Shop safety</a>
+    </li>
+    <li><a href="../resources/index.html" class="sec">Training and credentials</a>
+    </li>
+    <li><a href="../families/index.html" class="sec">For families</a>
+    </li>
+    <li><a href="../extras/do-nows.html" class="sec">More</a>
+    </li>
+  </ul></nav>
+  </div>
+</div>
+<div class="main" id="main" tabindex="-1">
+<div class="wrap docs">
+<h1>Documents</h1>
+<p class="lede">Every template the shop uses, grouped by when you reach for it. Download, fill in, hand in. If you are not sure which one, the guide at the top says.</p>
+<div class="guide"><div><b>Which document, and when</b><span>One page. The whole set and the moment each one is for. Read this once.</span></div><a href="../files/BHR27-Which-Document-When.pdf" download>Download PDF</a></div>
+<h2>Every shop day</h2><p class="when">The two you never skip</p><div class="grid">
+<a class="card" href="../files/BHR27-Daily-Logbook.docx" download><span class="t">Daily Logbook<span class="ext">DOCX</span></span><span class="d">The running record of every shop day. Print it or keep it in Drive.</span></a>
+</div>
+<h2>Monday and Friday of a shop week</h2><p class="when">Plan it, then say what happened</p><div class="grid">
+<a class="card" href="../files/BHR27-Weekly-Planner.docx" download><span class="t">Weekly Planner<span class="ext">DOCX</span></span><span class="d">What you intend to get done this shop week, before the week starts.</span></a>
+<a class="card" href="../files/BHR27-Weekly-Reflection.docx" download><span class="t">Weekly Reflection<span class="ext">DOCX</span></span><span class="d">The Friday counterpart to the planner: what actually happened.</span></a>
+</div>
+<h2>When a project starts</h2><p class="when">Fix what &ldquo;finished&rdquo; means before you touch anything</p><div class="grid">
+<a class="card" href="../files/BHR27-Design-Brief-and-Initial-Planner.docx" download><span class="t">Design Brief and Initial Planner<span class="ext">DOCX</span></span><span class="d">The document that fixes what &ldquo;finished&rdquo; means, before you start.</span></a>
+<a class="card" href="../files/BHR27-Decision-Matrix.xlsx" download><span class="t">Decision Matrix<span class="ext">XLSX</span></span><span class="d">A spreadsheet. Weighted criteria against your concepts; the totals decide.</span></a>
+<a class="card" href="../files/BHR27-Project-Gantt-Chart.xlsx" download><span class="t">Project Gantt Chart<span class="ext">XLSX</span></span><span class="d">A spreadsheet. Tasks on a calendar, to find where two of them collide.</span></a>
+<a class="card" href="../files/BHR27-Part-List.xlsx" download><span class="t">Part List<span class="ext">XLSX</span></span><span class="d">A spreadsheet. Every part including the fasteners, made or bought.</span></a>
+<a class="card" href="../files/BHR27-Order-Request-Form.xlsx" download><span class="t">Order Request Form<span class="ext">XLSX</span></span><span class="d">A spreadsheet. The &ldquo;why you need it&rdquo; column is the one that gets it approved.</span></a>
+</div>
+<h2>While you build and test</h2><p class="when">The evidence</p><div class="grid">
+<a class="card" href="../files/BHR27-Test-Log.xlsx" download><span class="t">Test and Measurement Log<span class="ext">XLSX</span></span><span class="d">A spreadsheet. Predicted, measured, and the difference &mdash; one row per reading.</span></a>
+<a class="card" href="../files/BHR27-IO-Map-and-Commissioning.xlsx" download><span class="t">I/O Map and Commissioning Checklist<span class="ext">XLSX</span></span><span class="d">A spreadsheet. Every input and output on the system, and the checklist you commission it against.</span></a>
+<a class="card" href="../files/BHR27-Research-Log.xlsx" download><span class="t">Research Log<span class="ext">XLSX</span></span><span class="d">A spreadsheet. One new source a day is the target.</span></a>
+<a class="card" href="../files/BHR27-Mid-Project-Design-Review.docx" download><span class="t">Mid-Project Design Review<span class="ext">DOCX</span></span><span class="d">Partway through: where you are, and the one thing most likely to fail.</span></a>
+<a class="card" href="../files/BHR27-Instructor-Meeting-Notes.docx" download><span class="t">Instructor Meeting Notes<span class="ext">DOCX</span></span><span class="d">After a one-on-one. Action items with names and dates on them.</span></a>
+</div>
+<h2>When something ends</h2><p class="when">Short, and where the grade comes from</p><div class="grid">
+<a class="card" href="../files/BHR27-Project-Reflection.docx" download><span class="t">Project Reflection<span class="ext">DOCX</span></span><span class="d">At the end of a project. What worked, what you would change.</span></a>
+<a class="card" href="../files/BHR27-Do-Now-Reflection.docx" download><span class="t">Do Now Reflection<span class="ext">DOCX</span></span><span class="d">The short write-up after a Do Now session.</span></a>
+</div>
+<h2>Your Independent Focus</h2><p class="when">A proposal, a reflection, and one page for two years</p><div class="grid">
+<a class="card" href="../files/BHR27-Independent-Focus-Proposal.docx" download><span class="t">Independent Focus Proposal<span class="ext">DOCX</span></span><span class="d">First day of the term. The idea, the work, the five weeks, and a review box for your instructor.</span></a>
+<a class="card" href="../files/BHR27-Independent-Focus-Reflection.docx" download><span class="t">Independent Focus Reflection<span class="ext">DOCX</span></span><span class="d">Last day of the term. What got done, what changed, and where next term starts.</span></a>
+<a class="card" href="../files/BHR27-Independent-Focus-Record.pdf" download><span class="t">Independent Focus Record<span class="ext">PDF</span></span><span class="d">One page, one row per term, kept in your binder. The shape of what you chose across two years.</span></a>
+</div>
+<h2>How you are graded</h2><p class="when">The rubrics Classroom uses, in plain sight</p><div class="grid">
+<a class="card" href="../files/BHR27-Project-Rubric.pdf" download><span class="t">Project Rubric<span class="ext">PDF</span></span><span class="d">The five criteria every project is graded on, with what each level means. The same rubric Classroom uses.</span></a>
+<a class="card" href="../files/BHR27-Weekly-Grade-Rubric.pdf" download><span class="t">Weekly Grade Rubric<span class="ext">PDF</span></span><span class="d">The six things assessed every shop week, level by level.</span></a>
+</div>
+<h2>For the walls</h2><p class="when">Print files, letter and tabloid</p><div class="posters">
+<a href="../posters/primary-rules.pdf" download>Primary shop rules</a>
+<a href="../posters/shop-rules.pdf" download>Shop rules</a>
+<a href="../posters/emergency.pdf" download>Emergency</a>
+<a href="../posters/ppe-dress-right.pdf" download>PPE: dress right</a>
+<a href="../posters/trained-and-authorized.pdf" download>Trained and authorised</a>
+<a href="../posters/clean-up.pdf" download>Clean-up</a>
+<a href="../posters/engineers-logbook.pdf" download>The engineer&rsquo;s logbook</a>
+<a href="../posters/grading.pdf" download>How you are graded</a>
+<a href="../posters/weekly-grade.pdf" download>The weekly grade</a>
+<a href="../posters/project-rubric.pdf" download>Project rubric</a>
+<a href="../posters/seven-pathways.pdf" download>The seven pathways</a>
+<a href="../posters/roles-of-an-engineer.pdf" download>Roles of an engineer</a>
+<a href="../posters/edf-and-esec.pdf" download>EDF and ESEC</a>
+<a href="../posters/3d-printer-levels.pdf" download>3D printer levels</a>
+<a href="../posters/resin-j55.pdf" download>Resin: the J55</a>
+<a href="../posters/laser.pdf" download>The laser</a>
+<a href="../posters/cobots.pdf" download>Cobots</a>
+<a href="../posters/soldering-hot-glue.pdf" download>Soldering and hot glue</a>
+</div>
+<div class="note"><p><strong>Is this the current one?</strong> Every document in this year&rsquo;s set is tagged <b>BHR27</b> &mdash; in the file name and printed in the footer. Search your Drive for BHR27 and you get only the current forms. A file without it is an older version.</p></div>
+<div class="note"><p><strong>Google Docs.</strong> These are Word and Excel files so they download anywhere. Upload one to Drive and it converts to a Doc or a Sheet; the logbook is worth keeping as a Doc so the status-code dropdowns can be added once and inherited by every copy.</p></div>
+</div>
+</div>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology &middot; Room E-126</span>
+    <span>Mr. Frank &middot; Mr. Dryer</span>
+    <span class="build">Build 05 Sep 2026, 4:08 pm</span>
+  </div>
+</footer>
+
+
+<script src="../assets/search-index.js?v=588b2a68" defer></script>
+<script defer>
+(function(){
+  var REL = '../';
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var box = document.getElementById('q'), out = document.getElementById('sres');
+    if (!box || !window.BHR_INDEX) return;
+    var IDX = window.BHR_INDEX, cur = -1, rows = [];
+
+    var KIND = {video:'Video',course:'Course',site:'Site',tool:'Tool',read:'Reading',
+      podcast:'Podcast',book:'Book',data:'Data',comp:'Competition',doc:'Doc',
+      software:'Software',page:'Page',rule:'Rule',check:'Safety check',
+      platform:'Training',sds:'Safety data',pathway:'Pathway',talk:'Talk',
+      playlist:'Playlist'};
+
+    function esc(s){ return s.replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    function hi(s, terms){
+      s = esc(s);
+      terms.forEach(function(t){
+        if (t.length < 2) return;
+        s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'ig'),
+                      '<mark>$1</mark>');
+      });
+      return s;
+    }
+
+    // Score by where the match lands: a title hit beats a note hit, and a hit at
+    // the start of the title beats one in the middle. Every term must appear
+    // somewhere, so multi-word queries narrow rather than widen.
+    function score(r, terms){
+      var t = r.t.toLowerCase(), n = (r.n + ' ' + r.x).toLowerCase(),
+          w = r.w.toLowerCase(), s = 0;
+      for (var i = 0; i < terms.length; i++){
+        var q = terms[i], hit = 0;
+        if (t.indexOf(q) === 0) hit = 100;
+        else if (t.indexOf(' ' + q) > -1) hit = 70;
+        else if (t.indexOf(q) > -1) hit = 50;
+        else if (w.indexOf(q) > -1) hit = 30;
+        else if (n.indexOf(q) > -1) hit = 20;
+        if (!hit) return 0;
+        s += hit;
+      }
+      if (r.k === 'page' || r.k === 'pathway') s += 12;   // structure floats up
+      return s;
+    }
+
+    function run(){
+      var qv = box.value.trim().toLowerCase();
+      if (qv.length < 2){ close(); return; }
+      var terms = qv.split(/\s+/);
+      rows = IDX.map(function(r){ return {r:r, s:score(r, terms)}; })
+                .filter(function(x){ return x.s > 0; })
+                .sort(function(a,b){ return b.s - a.s || a.r.t.length - b.r.t.length; })
+                .slice(0, 30);
+      draw(terms);
+    }
+
+    function draw(terms){
+      if (!rows.length){
+        out.innerHTML = '<p class="none">Nothing matches &ldquo;' +
+          esc(box.value.trim()) + '&rdquo;.</p>';
+      } else {
+        var h = '<div class="hd">' + rows.length +
+                (rows.length === 30 ? '+ matches' : ' match' + (rows.length>1?'es':'')) +
+                '</div>';
+        rows.forEach(function(x, i){
+          var r = x.r,
+              ext = /^https?:/.test(r.u),
+              href = ext ? r.u : REL + r.u;
+          h += '<a href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') +
+               ' data-i="' + i + '" role="option">' +
+               '<span class="ti">' + hi(r.t, terms) +
+                 (ext ? ' <span class="ext">&#8599;</span>' : '') + '</span>' +
+               '<span class="me"><span class="kd">' + (KIND[r.k] || r.k) + '</span>' +
+               '<span class="wh">' + hi(r.w, terms) + '</span></span>' +
+               (r.n ? '<span class="nt">' + hi(r.n, terms) + '</span>' : '') +
+               '</a>';
+        });
+        out.innerHTML = h;
+      }
+      out.hidden = false; box.setAttribute('aria-expanded','true'); cur = -1;
+    }
+
+    function close(){ out.hidden = true; box.setAttribute('aria-expanded','false'); cur = -1; }
+
+    function move(d){
+      var links = out.querySelectorAll('a');
+      if (!links.length) return;
+      if (cur > -1) links[cur].classList.remove('on');
+      cur = (cur + d + links.length) % links.length;
+      links[cur].classList.add('on');
+      links[cur].scrollIntoView({block:'nearest'});
+    }
+
+    box.addEventListener('input', run);
+    box.addEventListener('focus', function(){ if (box.value.trim().length > 1) run(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter'){
+        var links = out.querySelectorAll('a');
+        if (cur > -1 && links[cur]){ e.preventDefault(); links[cur].click(); }
+      }
+      else if (e.key === 'Escape'){ close(); box.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.srch')) close();
+    });
+    // "/" from anywhere jumps to the box, the way every developer tool does it
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); box.focus(); box.select();
+      }
+    });
+  });
+})();
+</script>
+<script defer>
+// Track which in-page section you are actually looking at and mark it in the
+// rail. Only runs where the rail has anchor links.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var links = [].slice.call(document.querySelectorAll('.rail .anch a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {}, pos = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        pos[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null;
+      });
+      var best = null, near = Infinity;
+      Object.keys(pos).forEach(function(id){
+        if (pos[id] === null) return;
+        var d = Math.abs(pos[id] - 90);
+        if (d < near){ near = d; best = id; }
+      });
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if (best && map[best]) map[best].classList.add('on');
+    }, {rootMargin:'-70px 0px -55% 0px', threshold:[0,1]});
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) io.observe(el);
+    });
+  });
+})();
+</script>
+<script defer>
+// Three states, cycled by one button: follow the system, force light, force dark.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var btn = document.getElementById('theme'), root = document.documentElement;
+    if (!btn) return;
+    function get(){ try { return localStorage.getItem('bhr-theme') || 'system'; }
+                    catch(e){ return 'system'; } }
+    function label(){
+      var m = get();
+      btn.querySelector('.lbl').textContent =
+        m === 'system' ? 'Theme' : (m === 'light' ? 'Light' : 'Dark');
+      btn.title = m === 'system'
+        ? 'Following your computer. Click for light.'
+        : (m === 'light' ? 'Light. Click for dark.'
+                         : 'Dark. Click to follow your computer.');
+    }
+    function set(m){
+      try { m === 'system' ? localStorage.removeItem('bhr-theme')
+                           : localStorage.setItem('bhr-theme', m); } catch(e){}
+      if (m === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', m);
+      label();
+    }
+    label();
+    btn.addEventListener('click', function(){
+      var m = get();
+      set(m === 'system' ? 'light' : (m === 'light' ? 'dark' : 'system'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

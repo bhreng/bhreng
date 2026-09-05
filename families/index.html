@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thinking about Engineering Technology? &middot; BHR Engineering</title>
+<meta name="description" content="For parents, guardians and eighth graders: what the shop is, how it is graded, how safe it is, and how choosing a shop works.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="../assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/site.css?v=22273e7d">
+<style>
+.fam .hero{background:var(--accent);border-radius:9px;padding:30px 32px 32px;
+  margin:0 0 22px}
+.fam .hero .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.72);margin:0 0 8px}
+.fam .hero h1{font-family:var(--sans);font-weight:var(--w-heavy);
+  font-size:clamp(27px,4.6vw,40px);line-height:1.04;letter-spacing:-.022em;
+  color:#fff;margin:0}
+.fam .hero p.t{font-size:17px;line-height:1.5;color:rgba(255,255,255,.9);
+  margin:12px 0 0;max-width:56ch}
+
+.fam .qa{border:1px solid var(--rule);border-radius:8px;background:var(--card);
+  overflow:hidden;margin:0 0 18px}
+.fam .qa details{border-top:1px solid var(--rule-soft)}
+.fam .qa details:first-child{border-top:0}
+.fam .qa summary{cursor:pointer;list-style:none;padding:15px 20px;
+  font-family:var(--sans);font-weight:700;font-size:16.5px;color:var(--ink);
+  display:flex;align-items:center;gap:12px}
+.fam .qa summary::-webkit-details-marker{display:none}
+.fam .qa summary::after{content:"";margin-left:auto;flex:none;width:7px;
+  height:7px;border-right:2px solid var(--accent);
+  border-bottom:2px solid var(--accent);transform:rotate(45deg);
+  transition:transform .14s}
+.fam .qa details[open] summary::after{transform:rotate(-135deg)}
+.fam .qa summary:hover{background:var(--accent-soft)}
+.fam .qa .a{padding:0 20px 17px}
+.fam .qa .a p{margin:0 0 10px;font-size:15.5px;line-height:1.62;
+  color:var(--ink-2)}
+.fam .qa .a p:last-child{margin:0}
+.fam .qa .a b{color:var(--ink)}
+
+.fam .ask{border:1px solid var(--rule);border-left:4px solid var(--accent);
+  border-radius:0 8px 8px 0;background:var(--accent-soft);padding:20px 24px;
+  margin:0 0 18px}
+.fam .ask h3{margin:0 0 4px;font-size:18px}
+.fam .ask ul{margin:12px 0 0;padding-left:20px}
+.fam .ask li{margin:0 0 9px;font-size:15.5px;line-height:1.55;color:var(--ink)}
+.fam .ask li:last-child{margin:0}
+.fam .ask .why{font-size:14px;color:var(--ink-2);display:block;margin-top:3px}
+
+.fam .dl{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  border:1px solid var(--rule);border-radius:8px;background:var(--card);
+  padding:18px 22px;margin:0 0 18px}
+.fam .dl b{font-family:var(--sans);font-size:16.5px;color:var(--ink)}
+.fam .dl span{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.fam .dl a{margin-left:auto;flex:none;font-family:var(--mono);font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+  text-decoration:none;color:#fff;background:var(--accent);
+  border-radius:5px;padding:10px 16px}
+.fam .dl a:hover{background:var(--ink)}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('bhr-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to the page content</a>
+
+<header class="sitebar">
+  <div class="in">
+    <a class="brand" href="../index.html">
+      <img class="mark" src="../assets/logo-96.png" alt="" width="34" height="29">
+      <span>Engineering&nbsp;Technology</span>
+    </a>
+<nav class="qnav" aria-label="Quick links">
+  <span class="lbl">Go to</span>
+  <a href="../grades/9.html" style="--ql:#a03c36;--qd:#e59089;--qsl:#fbeceb;--qsd:#3a1e1c"><span class="dot"></span><span class="lg">Grade 9</span><span class="sm">Gr 9</span></a>
+  <a href="../grades/10.html" style="--ql:#8a6410;--qd:#dcae4f;--qsl:#faf0d9;--qsd:#332a10"><span class="dot"></span><span class="lg">Grade 10</span><span class="sm">Gr 10</span></a>
+  <a href="../grades/11.html" style="--ql:#0b622c;--qd:#71bd88;--qsl:#e9f4ec;--qsd:#152c1c"><span class="dot"></span><span class="lg">Grade 11</span><span class="sm">Gr 11</span></a>
+  <a href="../grades/12.html" style="--ql:#4a2a70;--qd:#b998d0;--qsl:#f0eaf7;--qsd:#2b2038"><span class="dot"></span><span class="lg">Grade 12</span><span class="sm">Gr 12</span></a>
+  <span class="sep"></span>
+  <a class="who" href="../staff/frank.html"><span class="lg">Mr. Frank</span><span class="sm">Frank</span></a>
+  <a class="who" href="../staff/dryer.html"><span class="lg">Mr. Dryer</span><span class="sm">Dryer</span></a>
+</nav>
+      <div class="srch">
+        <span class="sbox">
+          <input type="search" id="q" placeholder="Search" autocomplete="off"
+                 aria-label="Search the site" aria-expanded="false" aria-controls="sres">
+          <kbd>/</kbd>
+        </span>
+        <div class="sres" id="sres" role="listbox" hidden></div>
+      </div>
+      <button class="themebtn" id="theme" type="button"
+              title="Switch between light and dark" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span><span class="lbl">Theme</span>
+      </button>
+  </div>
+</header>
+
+<div class="shell">
+<div class="rail">
+  <input type="checkbox" id="railtog" class="railtog" aria-label="Show site navigation">
+  <label for="railtog" class="railbtn"><span class="bars"></span>Browse the site<span class="chev">&#9660;</span></label>
+  <div class="railin">
+  <nav aria-label="Site"><ul>
+    <li><a href="../index.html" class="sec">Home</a>
+    </li>
+    <li><a href="../start/welcome.html" class="sec">Start here</a>
+    </li>
+    <li><a href="../grades/index.html" class="sec">Your year</a>
+    </li>
+    <li><a href="../staff/frank.html" class="sec">Your instructors</a>
+    </li>
+    <li><a href="../logbook/index.html" class="sec">Logbook</a>
+    </li>
+    <li><a href="../pathways/index.html" class="sec">The seven pathways</a>
+    </li>
+    <li><a href="../shop/index.html" class="sec">Shop safety</a>
+    </li>
+    <li><a href="../resources/index.html" class="sec">Training and credentials</a>
+    </li>
+    <li><a href="../families/index.html" class="here">For families</a>
+    </li>
+    <li><a href="../extras/do-nows.html" class="sec">More</a>
+    </li>
+  </ul></nav>
+  </div>
+</div>
+<div class="main" id="main" tabindex="-1">
+<div class="wrap fam">
+<div class="hero">
+  <p class="eyebrow">For parents, guardians and eighth graders</p>
+  <h1>Thinking about Engineering Technology?</h1>
+  <p class="t">What the shop is, what your child would actually do in it, and the questions worth asking before you decide.</p>
+</div>
+<div class="dl"><div><b>Take the handout</b><br><span>Three pages covering all of this, printable, for the fridge or the guidance meeting.</span></div><a href="../files/BHR27-Welcome-Families.pdf" download>Download PDF</a></div>
+<section><h2>The questions we get asked most</h2>
+<div class="qa">
+  <details open><summary>Is this a college track or a career track?</summary><div class="a"><p>Both, and we do not make students pick early. Most students who leave this shop go on to college, and they go with four years of CAD, documentation and project work already behind them. Others decide on a more direct route into the field.</p><p>The program is built so that both stay open. We would rather a student arrive at that decision having tried several kinds of engineering than having been told which one to want.</p></div></details>
+  <details><summary>What would my child actually be doing?</summary><div class="a"><p>Designing something in professional CAD software, then making it &mdash; printed, cut, machined or wired &mdash; and then measuring it against what it was meant to do.</p><p>That last step is what makes it engineering rather than art class. <b>Every project ends with data</b>, and the data is what points to the next change. Analyse, adjust, improve, measure again. Getting comfortable with that loop is the skill we are actually teaching.</p></div></details>
+  <details><summary>How is it graded?</summary><div class="a"><p>Four categories: the project itself (35%), a weekly grade for how they work (30%), classwork (15%), and employability (20%).</p><p><b>Half the grade is how they work, not what they make.</b> Safety, initiative, preparation, attitude, teamwork and professionalism together outweigh the projects. A student can build something impressive and still not do well here, and can have a project come out nothing like they planned and still have a strong term. That is deliberate &mdash; it is how they would be judged in a real shop. Both rubrics are on the Documents page, level by level.</p></div></details>
+  <details><summary>Is it safe?</summary><div class="a"><p>This is a room with a laser cutter, a CNC machine, power tools, heated printers and a collaborative robot in it, so the honest answer is that it is safe <em>because</em> the rules are strict.</p><p>Nothing gets switched on by a student who has not been trained and authorised on that specific machine. Eye protection is required in the Makerspace. Closed-toe shoes always. Nobody uses power tools alone. Every injury is reported, however small. And every Grade 10 student earns an <b>OSHA 10 card</b>, whichever shop they are in.</p></div></details>
+  <details><summary>How does choosing a shop work?</summary><div class="a"><p>Grade 9 students get more than a glance. Two mini exploratory days, one in each of the first two terms, show them all eighteen shops in the school. From each of those days they pick four or five to spend a full week in &mdash; nine week-long visits in all. Then they choose, and join their shop for Terms 3 and 4.</p><p>If your child spends their week with us they are not sitting at the back watching. They are in the room with upperclassmen, working.</p></div></details>
+  <details><summary>What does a week look like?</summary><div class="a"><p>One week in the shop &mdash; all five days, all day &mdash; then one week in academics with no shop at all. A term works out at about twenty-five full shop days.</p><p>The week away is why we are strict about the logbook. Whatever a student is halfway through goes cold for a week, and their notes are the difference between a fast restart and losing a morning.</p></div></details>
+  <details><summary>Does my child need to be &ldquo;good at math&rdquo; already?</summary><div class="a"><p>No. They need to be curious about why a result came out the way it did, which is a different quality and is not always found in the same students.</p><p>The maths and science that this work needs get taught alongside the projects that need them, at the point where the student can see what they are for.</p></div></details>
+  <details><summary>What does it cost us?</summary><div class="a"><p>Students wear shop attire carrying the Engineering Technology logo, ordered through the school store during the ordering window. Most buy a couple of items. Closed-toe shoes they will already own.</p><p>Everything else &mdash; software, materials, machine time, the certifications &mdash; is provided by the program.</p></div></details>
+</div></section>
+<section><h2>If you are visiting the shop</h2>
+<div class="ask"><h3>Four questions worth asking</h3><p>Ask us, and ask the students &mdash; they are the better source.</p><ul>
+  <li>&ldquo;What is a student in here actually doing at 9am on a Tuesday?&rdquo;<span class="why">The answer to this tells you more than any brochure.</span></li>
+  <li>&ldquo;What happens when a design does not perform the way a student expected?&rdquo;<span class="why">How a shop answers this is how it treats your child on a hard day.</span></li>
+  <li>&ldquo;What do the students who are not sure what they want get out of this?&rdquo;<span class="why">Most eighth graders are in exactly that position.</span></li>
+  <li>&ldquo;Can I see something a student built, and the notes behind it?&rdquo;<span class="why">The logbook is more revealing than the object.</span></li>
+</ul></div>
+<p>The most useful two minutes you can spend is asking a student in the room what they are building and why they chose it. They will tell you more than we can.</p>
+</section>
+<section><h2>Where to look next</h2><div class="quicklinks"><a href="../start/engineering.html">What engineering actually is</a><a href="../pathways/index.html">The seven pathways</a><a href="../grades/index.html">What each year holds</a><a href="../start/how-class-works.html">How the class works</a><a href="../shop/index.html">Shop safety</a><a href="../staff/frank.html">Who teaches it</a><a href="../logbook/documents.html">The documents students use</a></div></section>
+</div>
+</div>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology &middot; Room E-126</span>
+    <span>Mr. Frank &middot; Mr. Dryer</span>
+    <span class="build">Build 05 Sep 2026, 4:08 pm</span>
+  </div>
+</footer>
+
+
+<script src="../assets/search-index.js?v=588b2a68" defer></script>
+<script defer>
+(function(){
+  var REL = '../';
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var box = document.getElementById('q'), out = document.getElementById('sres');
+    if (!box || !window.BHR_INDEX) return;
+    var IDX = window.BHR_INDEX, cur = -1, rows = [];
+
+    var KIND = {video:'Video',course:'Course',site:'Site',tool:'Tool',read:'Reading',
+      podcast:'Podcast',book:'Book',data:'Data',comp:'Competition',doc:'Doc',
+      software:'Software',page:'Page',rule:'Rule',check:'Safety check',
+      platform:'Training',sds:'Safety data',pathway:'Pathway',talk:'Talk',
+      playlist:'Playlist'};
+
+    function esc(s){ return s.replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    function hi(s, terms){
+      s = esc(s);
+      terms.forEach(function(t){
+        if (t.length < 2) return;
+        s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'ig'),
+                      '<mark>$1</mark>');
+      });
+      return s;
+    }
+
+    // Score by where the match lands: a title hit beats a note hit, and a hit at
+    // the start of the title beats one in the middle. Every term must appear
+    // somewhere, so multi-word queries narrow rather than widen.
+    function score(r, terms){
+      var t = r.t.toLowerCase(), n = (r.n + ' ' + r.x).toLowerCase(),
+          w = r.w.toLowerCase(), s = 0;
+      for (var i = 0; i < terms.length; i++){
+        var q = terms[i], hit = 0;
+        if (t.indexOf(q) === 0) hit = 100;
+        else if (t.indexOf(' ' + q) > -1) hit = 70;
+        else if (t.indexOf(q) > -1) hit = 50;
+        else if (w.indexOf(q) > -1) hit = 30;
+        else if (n.indexOf(q) > -1) hit = 20;
+        if (!hit) return 0;
+        s += hit;
+      }
+      if (r.k === 'page' || r.k === 'pathway') s += 12;   // structure floats up
+      return s;
+    }
+
+    function run(){
+      var qv = box.value.trim().toLowerCase();
+      if (qv.length < 2){ close(); return; }
+      var terms = qv.split(/\s+/);
+      rows = IDX.map(function(r){ return {r:r, s:score(r, terms)}; })
+                .filter(function(x){ return x.s > 0; })
+                .sort(function(a,b){ return b.s - a.s || a.r.t.length - b.r.t.length; })
+                .slice(0, 30);
+      draw(terms);
+    }
+
+    function draw(terms){
+      if (!rows.length){
+        out.innerHTML = '<p class="none">Nothing matches &ldquo;' +
+          esc(box.value.trim()) + '&rdquo;.</p>';
+      } else {
+        var h = '<div class="hd">' + rows.length +
+                (rows.length === 30 ? '+ matches' : ' match' + (rows.length>1?'es':'')) +
+                '</div>';
+        rows.forEach(function(x, i){
+          var r = x.r,
+              ext = /^https?:/.test(r.u),
+              href = ext ? r.u : REL + r.u;
+          h += '<a href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') +
+               ' data-i="' + i + '" role="option">' +
+               '<span class="ti">' + hi(r.t, terms) +
+                 (ext ? ' <span class="ext">&#8599;</span>' : '') + '</span>' +
+               '<span class="me"><span class="kd">' + (KIND[r.k] || r.k) + '</span>' +
+               '<span class="wh">' + hi(r.w, terms) + '</span></span>' +
+               (r.n ? '<span class="nt">' + hi(r.n, terms) + '</span>' : '') +
+               '</a>';
+        });
+        out.innerHTML = h;
+      }
+      out.hidden = false; box.setAttribute('aria-expanded','true'); cur = -1;
+    }
+
+    function close(){ out.hidden = true; box.setAttribute('aria-expanded','false'); cur = -1; }
+
+    function move(d){
+      var links = out.querySelectorAll('a');
+      if (!links.length) return;
+      if (cur > -1) links[cur].classList.remove('on');
+      cur = (cur + d + links.length) % links.length;
+      links[cur].classList.add('on');
+      links[cur].scrollIntoView({block:'nearest'});
+    }
+
+    box.addEventListener('input', run);
+    box.addEventListener('focus', function(){ if (box.value.trim().length > 1) run(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter'){
+        var links = out.querySelectorAll('a');
+        if (cur > -1 && links[cur]){ e.preventDefault(); links[cur].click(); }
+      }
+      else if (e.key === 'Escape'){ close(); box.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.srch')) close();
+    });
+    // "/" from anywhere jumps to the box, the way every developer tool does it
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); box.focus(); box.select();
+      }
+    });
+  });
+})();
+</script>
+<script defer>
+// Track which in-page section you are actually looking at and mark it in the
+// rail. Only runs where the rail has anchor links.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var links = [].slice.call(document.querySelectorAll('.rail .anch a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {}, pos = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        pos[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null;
+      });
+      var best = null, near = Infinity;
+      Object.keys(pos).forEach(function(id){
+        if (pos[id] === null) return;
+        var d = Math.abs(pos[id] - 90);
+        if (d < near){ near = d; best = id; }
+      });
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if (best && map[best]) map[best].classList.add('on');
+    }, {rootMargin:'-70px 0px -55% 0px', threshold:[0,1]});
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) io.observe(el);
+    });
+  });
+})();
+</script>
+<script defer>
+// Three states, cycled by one button: follow the system, force light, force dark.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var btn = document.getElementById('theme'), root = document.documentElement;
+    if (!btn) return;
+    function get(){ try { return localStorage.getItem('bhr-theme') || 'system'; }
+                    catch(e){ return 'system'; } }
+    function label(){
+      var m = get();
+      btn.querySelector('.lbl').textContent =
+        m === 'system' ? 'Theme' : (m === 'light' ? 'Light' : 'Dark');
+      btn.title = m === 'system'
+        ? 'Following your computer. Click for light.'
+        : (m === 'light' ? 'Light. Click for dark.'
+                         : 'Dark. Click to follow your computer.');
+    }
+    function set(m){
+      try { m === 'system' ? localStorage.removeItem('bhr-theme')
+                           : localStorage.setItem('bhr-theme', m); } catch(e){}
+      if (m === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', m);
+      label();
+    }
+    label();
+    btn.addEventListener('click', function(){
+      var m = get();
+      set(m === 'system' ? 'light' : (m === 'light' ? 'dark' : 'system'));
+    });
+  });
+})();
+</script>
+</body>
+</html>
