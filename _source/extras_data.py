@@ -109,8 +109,8 @@ GROUPS = [
              'toy.',
              '12', 'mechanical'),
             ('Moon Base 2.0', '',
-             'A second run at the moon base brief, knowing what went wrong the '
-             'first time. "Try again" is a real engineering exercise.',
+             'A second run at the moon base brief, carrying everything the '
+             'first run taught you. "Try again" is a real engineering exercise.',
              '12', 'architecture'),
             ('LTT screwdriver research and analysis', '',
              'Pull apart the design decisions in one deliberately '

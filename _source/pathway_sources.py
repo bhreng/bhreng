@@ -385,7 +385,7 @@ add('automation', 'files', 'Deepnest',
 # Dropped from the Robotics & Automation notebook, and why.
 #
 #   FluidSIM                        paid product; only a 30-day trial is free
-#   The Robotics Primer (MIT Press) commercial book, ~$30. The free PDFs
+#   The Robotics Primer (MIT Press) commercial book. The free PDFs
 #                                   circulating are unauthorised copies
 #   IBM TJBot                       IBM has discontinued support; the Watson
 #                                   services it depends on have changed

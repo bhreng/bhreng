@@ -7,6 +7,7 @@ you fill in on a Monday.
 """
 
 import os
+import generation as G
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
 from reportlab.lib.colors import HexColor, white
@@ -44,13 +45,13 @@ ITAL = SANS + '-Oblique' if SANS == 'DejaVu' else 'Helvetica-Oblique'
 
 
 def S(name, **kw):
-    base = dict(name=name, fontName=SANS, fontSize=8.6, leading=11.6,
+    base = dict(name=name, fontName=SANS, fontSize=7.8, leading=10.1,
                 textColor=INK, alignment=TA_LEFT, spaceAfter=0)
     base.update(kw)
     return ParagraphStyle(**base)
 
 
-st_intro = S('intro', fontSize=9.6, leading=14, textColor=INK2, spaceAfter=11)
+st_intro = S('intro', fontSize=9.2, leading=12.8, textColor=INK2, spaceAfter=8)
 st_h2    = S('h2', fontName=BOLD, fontSize=11.5, textColor=ACCENT, leading=14,
              spaceBefore=13, spaceAfter=5)
 st_cell  = S('cell')
@@ -84,7 +85,7 @@ def header_footer(c, doc):
     c.setFillColor(INK3)
     c.setFont(SANS, 7.5)
     c.drawString(MARGIN, MARGIN - 16,
-                 'BHR Engineering Technology  ·  hand-in reference')
+                 'BHR Engineering Technology  ·  hand-in reference  ·  ' + G.STAMP)
     c.drawRightString(PAGE_W - MARGIN, MARGIN - 16, 'Page %d' % doc.page)
     c.restoreState()
 
@@ -100,8 +101,8 @@ ROWS = [
      'What actually happened against Monday’s plan, what you would '
      'improve, and a sketch of the improvement.'),
     ('Project Reflection', 'End of a project',
-     'Whether the result is a fair reflection of what you can do, what went '
-     'wrong, and what you would change.'),
+     'Whether the result is a fair reflection of what you can do, what the '
+     'results told you to change, and what you would do differently.'),
     ('Do Now! Reflection', 'After a Do Now',
      'One skill: what it taught you, the steps you followed, where it goes '
      'next, and whether you could repeat it alone.'),
@@ -126,6 +127,22 @@ ROWS = [
     ('Project Gantt Chart', 'Projects with a schedule',
      'A spreadsheet. Break the work into tasks, then put them on a calendar '
      'to find out where two of them collide.'),
+    ('Decision Matrix', 'Choosing between concepts',
+     'A spreadsheet. Weighted criteria down the side, concepts across the '
+     'top; the totals decide.'),
+    ('Test and Measurement Log', 'Whenever you measure something',
+     'A spreadsheet. Predicted, measured, and the difference — the last '
+     'column is what tells you what to change.'),
+    ('I/O Map and Commissioning', 'Any automated system',
+     'A spreadsheet. Every input and output, what it is wired to, and the '
+     'checklist you commission it against.'),
+    ('Independent Focus Proposal', 'First day of a term',
+     'The idea, the work, the five weeks, and what done looks like. Handed '
+     'in for review before you start.'),
+    ('Independent Focus Reflection', 'Last day of a term',
+     'What got done, what changed, and where next term starts. Ten minutes.'),
+    ('Independent Focus Record', 'End of every term',
+     'One page kept in your binder: one row per term across two years.'),
 ]
 
 
@@ -158,8 +175,8 @@ def main(path):
               hAlign='LEFT', repeatRows=1)
     t.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('TOPPADDING', (0, 0), (-1, -1), 4.6),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 4.6),
+        ('TOPPADDING', (0, 0), (-1, -1), 2.7),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 2.7),
         ('LEFTPADDING', (0, 0), (-1, -1), 8),
         ('RIGHTPADDING', (0, 0), (-1, -1), 8),
         ('BACKGROUND', (0, 0), (-1, 0), SOFT),
@@ -168,7 +185,7 @@ def main(path):
         ('BOX', (0, 0), (-1, -1), 0.7, RULE),
     ]))
     story.append(t)
-    story.append(Spacer(1, 11))
+    story.append(Spacer(1, 7))
 
     note = Table([[Paragraph(
         'The Daily Logbook replaces both the old Logbook Template and the '
@@ -184,7 +201,7 @@ def main(path):
         ('RIGHTPADDING', (0, 0), (-1, -1), 11),
     ]))
     story.append(note)
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 6))
     story.append(Paragraph(
         'If a document asks you something you cannot answer, that is worth '
         'saying out loud rather than leaving blank. A gap you can explain is '
@@ -196,5 +213,5 @@ def main(path):
 
 if __name__ == '__main__':
     p = main(os.path.join(HERE, 'student-docs',
-                          'BHR-ENG-Which-Document-When.pdf'))
+                          'BHR27-Which-Document-When.pdf'))
     print(p, os.path.getsize(p), 'bytes')

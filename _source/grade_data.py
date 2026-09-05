@@ -34,10 +34,11 @@ GRADES = [
         ink='#a03c36', ink_dark='#e59089', soft='#fbeceb', soft_dark='#3a1e1c',
         lede='Grade 9 in this shop is <b>Terms 3 and 4</b>. Terms 1 and 2 are '
              'exploratory &mdash; two mini exploratory days that between them '
-             'show you all eighteen shops, then a full week in each of the '
-             'nine you choose. You join us for the back half of the year once '
-             'you have picked. It is half a year, so it moves quickly &mdash; '
-             'but from the day you walk in, this is your shop.',
+             'show you all eighteen shops; from each you pick four or five to '
+             'spend a full week in, nine week-long visits in all. You join us '
+             'for the back half of the year once you have chosen. It is half a '
+             'year, so it moves quickly &mdash; but from the day you walk in, '
+             'this is your shop.',
         exploratory=True,
         units=[
             ('Exploratory &amp; Shop Readiness',
@@ -69,7 +70,7 @@ GRADES = [
              'Back in the shop, and signed off on safety before anything is '
              'switched on.'),
             ('Skill Reinforcement: Technical Documentation Mastery',
-             'The notebook and the drawing set, held to a higher standard than '
+             'The logbook and the drawing set, held to a higher standard than '
              'last year.'),
             ('Safety &amp; Certification (OSHA Prep)',
              'Every Grade 10 student earns the OSHA 10 card, whichever shop '

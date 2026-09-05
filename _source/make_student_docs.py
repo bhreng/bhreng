@@ -18,6 +18,7 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
 
 import student_docs as SD
+import generation as G
 
 def _unent(v):
     """The data file is shared with the website builders, which want HTML
@@ -50,7 +51,7 @@ BOX = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
 
 
 def _sheet_head(ws, title, subtitle, ncols):
-    ws['A1'] = 'BHR ENGINEERING TECHNOLOGY'
+    ws['A1'] = 'BHR ENGINEERING TECHNOLOGY   \u00b7   ' + G.STAMP
     ws['A1'].font = Font(name='Calibri', size=8.5, bold=True, color=PURPLE)
     ws['A2'] = title
     ws['A2'].font = Font(name='Calibri', size=16, bold=True, color=INK)
@@ -346,11 +347,173 @@ def part_list(path):
     wb.save(path)
 
 
+# ------------------------------------------------------------ decision matrix
+def decision_matrix(path):
+    """Weighted criteria down the side, concepts across the top. The weight
+    column is the whole point: it forces the argument about what matters
+    BEFORE the argument about which idea wins."""
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = 'Decision Matrix'
+    NC = 4
+    heads = ['Criterion', 'Weight (1\u20135)'] + \
+            ['Concept %s' % c for c in 'ABCD']
+    widths = [30, 12] + [14] * NC
+    _sheet_head(ws, 'Decision Matrix',
+                'Score each concept against each criterion from 1 to 5. The '
+                'weighted totals at the bottom decide; the row you argued '
+                'about longest is the one that mattered.', len(heads))
+    _identity_rows(ws, 5, ['Name', 'Project', 'Date'])
+    hrow = 10
+    _header_row(ws, hrow, heads, widths)
+    seed = ['Meets the design requirements', 'Cost', 'Time to build',
+            'Safety', 'Ease of manufacture', 'Durability', 'Appearance']
+    last = hrow + 12
+    _blank_rows(ws, hrow + 1, last, len(heads))
+    for i, c in enumerate(seed):
+        ws.cell(row=hrow + 1 + i, column=1, value=c)
+    for r in range(hrow + 1, last + 1):
+        ws.cell(row=r, column=2).number_format = '0'
+    wrow = last + 2
+    ws.cell(row=wrow, column=1, value='Weighted total').font = Font(
+        name='Calibri', size=10, bold=True, color=PURPLE)
+    for j in range(NC):
+        col = 3 + j
+        L = get_column_letter(col)
+        c = ws.cell(row=wrow, column=col,
+                    value='=SUMPRODUCT($B$%d:$B$%d,%s%d:%s%d)'
+                    % (hrow + 1, last, L, hrow + 1, L, last))
+        c.font = Font(name='Calibri', size=11, bold=True, color=INK)
+        c.border = BOX
+        c.fill = PatternFill('solid', fgColor=SOFT)
+    ws.cell(row=wrow + 2, column=1,
+            value='Name the concepts in the header row. Leave the weight '
+                  'blank for a criterion you decide does not apply.'
+            ).font = Font(name='Calibri', size=9, italic=True, color=INK3)
+    dv = DataValidation(type='whole', operator='between', formula1='1',
+                        formula2='5', allow_blank=True)
+    ws.add_data_validation(dv)
+    dv.add('B%d:%s%d' % (hrow + 1, get_column_letter(2 + NC), last))
+    ws.freeze_panes = ws.cell(row=hrow + 1, column=2)
+    wb.save(path)
+
+
+# ------------------------------------------------------------------ test log
+def test_log(path):
+    """One instrument for every pathway that measures something: mechanical
+    test data, electrical measurements, automation cycle times. One row per
+    reading. The Predicted and Difference columns are what make it engineering
+    rather than record-keeping."""
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = 'Test Log'
+    heads = ['#', 'Date', 'Test / what you measured', 'Setup and conditions',
+             'Predicted', 'Measured', 'Unit', 'Difference',
+             'What the difference tells you to change']
+    widths = [5, 11, 30, 30, 11, 11, 8, 11, 40]
+    _sheet_head(ws, 'Test and Measurement Log',
+                'One row per reading. Write the prediction BEFORE you take '
+                'the measurement, or the last column has nothing to say.',
+                len(heads))
+    _identity_rows(ws, 5, ['Name', 'Project', 'Instrument(s) used'])
+    hrow = 10
+    _header_row(ws, hrow, heads, widths)
+    last = hrow + 40
+    _blank_rows(ws, hrow + 1, last, len(heads))
+    for r in range(hrow + 1, last + 1):
+        ws.cell(row=r, column=1, value=r - hrow).font = Font(
+            name='Calibri', size=9, color=INK3)
+        ws.cell(row=r, column=2).number_format = 'm/d/yy'
+        ws.cell(row=r, column=8).value = (
+            '=IF(OR(E%d="",F%d=""),"",F%d-E%d)' % (r, r, r, r))
+    ws.freeze_panes = ws.cell(row=hrow + 1, column=3)
+    wb.save(path)
+
+
+# -------------------------------------------------------------------- I/O map
+def io_map(path):
+    """Every input and output on an automated system, what it is wired to and
+    what it means. The first document a controls engineer writes and the one
+    they reach for when it stops."""
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = 'I-O Map'
+    heads = ['Tag', 'Type', 'Device', 'Wired to (pin / terminal)',
+             'Signal', 'Meaning when ON / high', 'Meaning when OFF / low',
+             'Tested?', 'Notes']
+    widths = [10, 12, 24, 20, 12, 26, 26, 9, 30]
+    _sheet_head(ws, 'I/O Map',
+                'Every input and output, one row each. If it is not on this '
+                'sheet it is not commissioned.', len(heads))
+    _identity_rows(ws, 5, ['Name', 'System', 'Controller', 'Revision'])
+    hrow = 11
+    _header_row(ws, hrow, heads, widths)
+    last = hrow + 32
+    _blank_rows(ws, hrow + 1, last, len(heads))
+
+    lists = wb.create_sheet('Lists')
+    lists['A1'] = 'Type'; lists['B1'] = 'Signal'; lists['C1'] = 'Tested'
+    for c in ('A1', 'B1', 'C1'):
+        lists[c].font = Font(bold=True, color=PURPLE)
+    types = ['Digital input', 'Digital output', 'Analogue input',
+             'Analogue output', 'Comms']
+    sigs = ['24 V DC', '5 V logic', '3.3 V logic', '0\u201310 V',
+            '4\u201320 mA', 'PWM', 'I2C', 'SPI', 'Serial']
+    tested = ['Yes', 'No', 'Fault']
+    for i, v in enumerate(types, 2): lists.cell(row=i, column=1, value=v)
+    for i, v in enumerate(sigs, 2): lists.cell(row=i, column=2, value=v)
+    for i, v in enumerate(tested, 2): lists.cell(row=i, column=3, value=v)
+    for col, opts, letter in ((2, types, 'A'), (5, sigs, 'B'),
+                              (8, tested, 'C')):
+        dv = DataValidation(type='list',
+                            formula1='=Lists!$%s$2:$%s$%d'
+                            % (letter, letter, len(opts) + 1),
+                            allow_blank=True)
+        ws.add_data_validation(dv)
+        L = get_column_letter(col)
+        dv.add('%s%d:%s%d' % (L, hrow + 1, L, last))
+
+    # commissioning checklist on a second tab -- same document, because you
+    # commission against the map
+    ck = wb.create_sheet('Commissioning')
+    _sheet_head(ck, 'Commissioning Checklist',
+                'Tick each line only when you have SEEN it, not when you '
+                'believe it.', 3)
+    _header_row(ck, 5, ['Check', 'Done', 'Notes'], [56, 8, 40])
+    steps = [
+        'Power off. Every wire traced against the I/O map.',
+        'Grounds and commons connected; no floating references.',
+        'Fuses / breakers correct for each circuit.',
+        'Emergency stop tested: cuts power to every actuator.',
+        'Power on with all outputs disabled. Supply voltages measured.',
+        'Each INPUT forced by hand and seen to change in the controller.',
+        'Each OUTPUT driven from the controller and the device seen to act.',
+        'Sensor readings sanity-checked against a known value.',
+        'Guards in place. Nothing moving that a hand can reach.',
+        'First automatic cycle run at reduced speed, with a hand on the stop.',
+        'Cycle time and error count recorded in the Test Log.',
+        'Instructor sign-off before unattended running.',
+    ]
+    for i, st in enumerate(steps, 6):
+        ck.cell(row=i, column=1, value=st).border = BOX
+        ck.cell(row=i, column=2).border = BOX
+        ck.cell(row=i, column=3).border = BOX
+        ck.row_dimensions[i].height = 22
+    dvc = DataValidation(type='list', formula1='"\u2611,\u2610"', allow_blank=True)
+    ck.add_data_validation(dvc)
+    dvc.add('B6:B%d' % (5 + len(steps)))
+    ws.freeze_panes = ws.cell(row=hrow + 1, column=2)
+    wb.save(path)
+
+
 SHEETS = [
-    ('BHR-ENG-Research-Log.xlsx', research_log),
-    ('BHR-ENG-Order-Request-Form.xlsx', order_request),
-    ('BHR-ENG-Project-Gantt-Chart.xlsx', gantt),
-    ('BHR-ENG-Part-List.xlsx', part_list),
+    ('BHR27-Research-Log.xlsx', research_log),
+    ('BHR27-Order-Request-Form.xlsx', order_request),
+    ('BHR27-Project-Gantt-Chart.xlsx', gantt),
+    ('BHR27-Part-List.xlsx', part_list),
+    ('BHR27-Decision-Matrix.xlsx', decision_matrix),
+    ('BHR27-Test-Log.xlsx', test_log),
+    ('BHR27-IO-Map-and-Commissioning.xlsx', io_map),
 ]
 
 

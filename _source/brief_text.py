@@ -108,6 +108,17 @@ REDACT = [
     (re.compile(r'\bFrank-\d{4,}\b'), '[join code is in Classroom]'),
     (re.compile(r'\b(?:class|activation)\s+code\s*[:=]\s*\S+', re.I),
      'code is in Classroom'),
+    # Retired names, normalised to the current instrument. The brief is
+    # otherwise Classroom's wording; a student must not be told to keep a
+    # document that no longer exists under that name.
+    (re.compile(r'Daily Journal Log', re.I), 'Daily Logbook'),
+    (re.compile(r'Engineering Daily Journal', re.I), 'Daily Logbook'),
+    (re.compile(r'\bDaily journals\b'), 'Logbook entries'),
+    (re.compile(r'\bDaily journal\b'), 'Daily Logbook'),
+    (re.compile(r'\bdaily journals\b'), 'logbook entries'),
+    (re.compile(r'\bdaily journal\b'), 'daily logbook'),
+    (re.compile(r'\bweekly journal\b', re.I), 'weekly logbook summary'),
+    (re.compile(r'\bindependent study\b', re.I), 'Independent Focus'),
 ]
 
 # Paragraphs written for Dan during the harvest, not for a student reading the

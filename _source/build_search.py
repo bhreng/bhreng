@@ -156,7 +156,7 @@ def build():
             add(title, 'pathways/%s.html' % pkey,
                 '%s \u00b7 already run' % nav, 'run', desc, y)
     add('Exploratory week', 'grades/9.html#exploratory', 'Grade 9', 'page',
-        SP.EXPLORATORY['lede'], 'One week in each of nine shops')
+        SP.EXPLORATORY['lede'], 'Two mini exploratory days, eighteen shops, nine week-long visits')
 
     # --- every verified source -------------------------------------------
     for key in ('architecture', 'automation', 'mechanical', 'industrial',

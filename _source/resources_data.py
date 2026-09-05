@@ -259,11 +259,13 @@ add(name='HP LIFE', url='https://www.life-global.org/',
 # ----------------------------------------------------------- the credentials
 CREDS = [
     dict(name='OSHA 10 — Construction',
-         who='Every student, Grade 10',
+         who='Every student, Grade 10 — whichever shop they are in',
          cost='School provides',
-         what='The safety credential that lets you work on the equipment here, and it is '
-              'recognised well outside this building. Nothing in a hub happens without it.',
-         url=''),
+         what='The safety credential behind machine authorisation here, delivered '
+              'through CareerSafe and recognised well outside this building. Every '
+              'Grade 10 student in the school earns it; it stays with you after '
+              'school.',
+         url='https://www.careersafeonline.com/'),
     dict(name='Autodesk Certified User',
          who='Fusion, Inventor, Revit or AutoCAD',
          cost='School provides',

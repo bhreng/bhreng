@@ -59,47 +59,88 @@ def page_name(grade_key, title):
 # The file itself must exist in ./attachments/ or it is skipped with a warning.
 
 FILE_INFO = {
-    'BHR-ENG-Daily-Logbook.docx': (
+    'BHR27-Daily-Logbook.docx': (
         'Daily Logbook',
         'The running record of every shop day. Print it or keep it in Drive.'),
-    'BHR-ENG-Weekly-Planner.docx': (
+    'BHR27-Weekly-Planner.docx': (
         'Weekly Planner',
         'What you intend to get done this shop week, before the week starts.'),
-    'BHR-ENG-Weekly-Reflection.docx': (
+    'BHR27-Weekly-Reflection.docx': (
         'Weekly Reflection',
         'The Friday counterpart to the planner: what actually happened.'),
-    'BHR-ENG-Project-Reflection.docx': (
+    'BHR27-Project-Reflection.docx': (
         'Project Reflection',
         'At the end of a project. What worked, what you would change.'),
-    'BHR-ENG-Do-Now-Reflection.docx': (
+    'BHR27-Do-Now-Reflection.docx': (
         'Do Now Reflection',
         'The short write-up after a Do Now session.'),
-    'BHR-ENG-Mid-Project-Design-Review.docx': (
+    'BHR27-Mid-Project-Design-Review.docx': (
         'Mid-Project Design Review',
         'Partway through: where you are, and the one thing most likely '
         'to fail.'),
-    'BHR-ENG-Design-Brief-and-Initial-Planner.docx': (
+    'BHR27-Design-Brief-and-Initial-Planner.docx': (
         'Design Brief and Initial Planner',
         'The document that fixes what &ldquo;finished&rdquo; means, before '
         'you start.'),
-    'BHR-ENG-Instructor-Meeting-Notes.docx': (
+    'BHR27-Instructor-Meeting-Notes.docx': (
         'Instructor Meeting Notes',
         'After a one-on-one. Action items with names and dates on them.'),
-    'BHR-ENG-Research-Log.xlsx': (
+    'BHR27-Research-Log.xlsx': (
         'Research Log',
         'A spreadsheet. One new source a day is the target.'),
-    'BHR-ENG-Order-Request-Form.xlsx': (
+    'BHR27-Order-Request-Form.xlsx': (
         'Order Request Form',
         'A spreadsheet. The &ldquo;why you need it&rdquo; column is the one '
         'that gets it approved.'),
-    'BHR-ENG-Project-Gantt-Chart.xlsx': (
+    'BHR27-Project-Gantt-Chart.xlsx': (
         'Project Gantt Chart',
         'A spreadsheet. Tasks on a calendar, to find where two of them '
         'collide.'),
-    'BHR-ENG-Part-List.xlsx': (
+    'BHR27-Part-List.xlsx': (
         'Part List',
         'A spreadsheet. Every part including the fasteners, made or bought.'),
-    'BHR-ENG-Which-Document-When.pdf': (
+    'BHR27-Independent-Focus-Proposal.docx': (
+        'Independent Focus Proposal',
+        'First day of the term. The idea, the work, the five weeks, and a '
+        'review box for your instructor.'),
+    'BHR27-Independent-Focus-Reflection.docx': (
+        'Independent Focus Reflection',
+        'Last day of the term. What got done, what changed, and where next '
+        'term starts.'),
+    'BHR27-Project-Rubric.pdf': (
+        'Project Rubric',
+        'The five criteria every project is graded on, with what each level '
+        'means. The same rubric Classroom uses.'),
+    'BHR27-Weekly-Grade-Rubric.pdf': (
+        'Weekly Grade Rubric',
+        'The six things assessed every shop week, level by level.'),
+    'BHR27-Project-Rubric.xlsx': (
+        'Project Rubric (Classroom import)',
+        'The rubric in the shape Google Classroom reads. For instructors.'),
+    'BHR27-Weekly-Grade-Rubric.xlsx': (
+        'Weekly Grade Rubric (Classroom import)',
+        'For instructors.'),
+    'BHR27-Independent-Focus-Record.pdf': (
+        'Independent Focus Record',
+        'One page, one row per term, kept in your binder. The shape of what '
+        'you chose across two years.'),
+    'BHR27-Decision-Matrix.xlsx': (
+        'Decision Matrix',
+        'A spreadsheet. Weighted criteria against your concepts; the totals '
+        'decide.'),
+    'BHR27-Test-Log.xlsx': (
+        'Test and Measurement Log',
+        'A spreadsheet. Predicted, measured, and the difference &mdash; one '
+        'row per reading.'),
+    'BHR27-IO-Map-and-Commissioning.xlsx': (
+        'I/O Map and Commissioning Checklist',
+        'A spreadsheet. Every input and output on the system, and the '
+        'checklist you commission it against.'),
+    'BHR27-Welcome-Families.pdf': (
+        'Welcome to BHR Engineering',
+        'Three pages for parents and prospective students: what the shop is, '
+        'the four years, and how choosing us works.'),
+    'BHR27-Which-Document-When.pdf': (
         'Which document, and when',
         'One page. The whole document set and the moment each one is for.'),
 }
@@ -107,14 +148,78 @@ FILE_INFO = {
 # grade key -> { assignment title -> [filenames] }
 # Everything here is a document THIS PROJECT built. Nothing is invented:
 # if an assignment is not listed, it simply has no attachment yet.
+LOG = 'BHR27-Daily-Logbook.docx'
+PLAN = 'BHR27-Weekly-Planner.docx'
+WREF = 'BHR27-Weekly-Reflection.docx'
+PREF = 'BHR27-Project-Reflection.docx'
+DONOW = 'BHR27-Do-Now-Reflection.docx'
+MID = 'BHR27-Mid-Project-Design-Review.docx'
+BRIEF = 'BHR27-Design-Brief-and-Initial-Planner.docx'
+MEET = 'BHR27-Instructor-Meeting-Notes.docx'
+RLOG = 'BHR27-Research-Log.xlsx'
+ORDER = 'BHR27-Order-Request-Form.xlsx'
+GANTT = 'BHR27-Project-Gantt-Chart.xlsx'
+PARTS = 'BHR27-Part-List.xlsx'
+DMX = 'BHR27-Decision-Matrix.xlsx'
+TLOG = 'BHR27-Test-Log.xlsx'
+IOMAP = 'BHR27-IO-Map-and-Commissioning.xlsx'
+PROP = 'BHR27-Independent-Focus-Proposal.docx'
+REFL = 'BHR27-Independent-Focus-Reflection.docx'
+RUB = 'BHR27-Project-Rubric.pdf'
+WRUB = 'BHR27-Weekly-Grade-Rubric.pdf'
+RECORD = 'BHR27-Independent-Focus-Record.pdf'
+GUIDE = 'BHR27-Which-Document-When.pdf'
+
+# What each KIND of assignment offers by default. A short project gets the
+# brief and the reflection; a long one adds the mid-project review and the
+# planning sheets; a course or admin entry gets only the logbook.
+KIND_ATTACH = {
+    'project':    [RUB, LOG, BRIEF, PREF],
+    'skills':     [LOG, DONOW],
+    'reflection': [LOG, PREF],
+    'course':     [LOG],
+    'admin':      [LOG],
+}
+
+# Per-assignment overrides, by exact title. These are sensible defaults, not
+# a teaching decision -- retune freely.
 ATTACH = {
-    '11': {},
-    '12': {},
+    '11': {
+        'Full Scope Project':      [RUB, LOG, BRIEF, GANTT, PARTS, MID, PREF],
+        'ADU Design Project':      [RUB, LOG, BRIEF, MID, PREF],
+        'City Design':             [RUB, LOG, BRIEF, MID, PREF],
+        'Tiny House':              [RUB, LOG, BRIEF, PARTS, PREF],
+        'Speaker Design':          [RUB, LOG, BRIEF, DMX, TLOG, PARTS, PREF],
+        'Intro to ESEC: Arduino':  [LOG, TLOG],
+        'Elegoo Uno Project Kit':  [LOG, TLOG],
+        'VEX V5 Clawbot Project':  [RUB, LOG, IOMAP, TLOG],
+        'Robotic Arm Build':       [RUB, LOG, IOMAP, TLOG, PARTS],
+        'Simple Machines to Functional Mechanisms': [RUB, LOG, DMX, TLOG, PREF],
+        'Grade 11 Capstone':       [RUB, LOG, BRIEF, GANTT, PARTS, ORDER, MID,
+                                    RLOG, PREF],
+        'Reflection Portfolio Presentation': [LOG, PREF],
+        'Independent Focus':       [PROP, REFL, RECORD, LOG, PLAN, WREF, MEET],
+        'Gmetrix':                 [LOG],
+    },
+    '12': {
+        'Design a Laptop':         [RUB, LOG, BRIEF, PREF],
+        'Shop Equipment Project':  [RUB, LOG, PLAN, WREF, PREF],
+        'Industrial Design Challenge: The LED Desk Lamp':
+                                   [RUB, LOG, BRIEF, DMX, PARTS, TLOG, PREF],
+        'Research &amp; Analysis: LTT Screwdriver': [LOG, RLOG],
+        'Holiday Collaborative Rube Goldberg Machine': [RUB, LOG, PARTS, TLOG],
+        'Mars Colony Design':      [RUB, LOG, BRIEF, MID, PREF],
+        'Bunker House Design':     [RUB, LOG, BRIEF, PREF],
+        'Senior Capstone':         [RUB, LOG, BRIEF, GANTT, PARTS, ORDER, RLOG,
+                                    MID, MEET, PREF],
+        'Independent Focus':       [PROP, REFL, RECORD, LOG, PLAN, WREF, MEET],
+        'Platform training':       [LOG],
+    },
 }
 
 # Files offered on every assignment page that has no specific list of its own.
 # The logbook is genuinely universal; the rest are opt-in per assignment.
-DEFAULT_ATTACH = ['BHR-ENG-Daily-Logbook.docx']
+DEFAULT_ATTACH = ['BHR27-Daily-Logbook.docx']
 
 SRC_DIR = 'attachments'
 OUT_DIR = 'files'
@@ -144,10 +249,10 @@ def available(root='.'):
             if not f.startswith('.') and os.path.isfile(os.path.join(d, f))}
 
 
-def files_for(grade_key, title, have):
+def files_for(grade_key, title, have, kind=None):
     names = ATTACH.get(grade_key, {}).get(title)
     if names is None:
-        names = DEFAULT_ATTACH
+        names = KIND_ATTACH.get(kind, DEFAULT_ATTACH)
     return [n for n in names if n in have]
 
 

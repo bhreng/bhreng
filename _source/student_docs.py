@@ -40,6 +40,7 @@ FIELD TYPES
 """
 
 import os
+import generation as G
 from docx import Document
 from docx.shared import Pt, Inches, RGBColor, Emu
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -274,6 +275,7 @@ def _footer(doc, docname):
     p = ftr.paragraphs[0]
     p.paragraph_format.space_before = Pt(0)
     _run(p, docname, 7.5, colour=INK3)
+    _run(p, '   \u00b7   rev ' + G.REV_TEXT, 7.5, colour=INK3)
     _run(p, '\t\t', 7.5)
     _run(p, 'Page ', 7.5, colour=INK3)
     # PAGE field

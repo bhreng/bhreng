@@ -67,12 +67,14 @@ P.append(dict(
                ('Kids toy', 'Adds safety constraints, durability and a user who cannot read instructions.'),
                ('Reverse-engineer and improve', 'Scan or measure an existing product, rebuild it in CAD, then change one thing and prove the change is better.'),
                ('Before-and-after case study', 'Take something badly designed and redesign it. The deliverable is the visual story — renders and photographs that make the improvement obvious without a paragraph of explanation.')]),
-    files=['Logbook template — three intervals, daily.',
-           'Bill of Materials worksheet — every part, material, quantity, unit cost.',
-           '&ldquo;Do Now!&rdquo; reflection.',
-           'Independent Focus term-end reflection.',
-           'Makerspace safety rules.',
-           'Design brief template.'],
+    files=[('Daily Logbook', 'BHR27-Daily-Logbook.docx', 'three intervals, daily'),
+           ('Design Brief and Initial Planner', 'BHR27-Design-Brief-and-Initial-Planner.docx', 'fixes what &ldquo;finished&rdquo; means before you start'),
+           ('Part List', 'BHR27-Part-List.xlsx', 'every part, material, quantity, made or bought'),
+           ('Decision Matrix', 'BHR27-Decision-Matrix.xlsx', 'weighted criteria against your concepts'),
+           ('Do Now Reflection', 'BHR27-Do-Now-Reflection.docx', ''),
+           ('Independent Focus Proposal', 'BHR27-Independent-Focus-Proposal.docx', 'first day of the term, for review'),
+           ('Independent Focus Reflection', 'BHR27-Independent-Focus-Reflection.docx', 'last day of the term'),
+           ('Makerspace rules', 'shop/makerspace.html', '')],
 ))
 
 P.append(dict(
@@ -125,12 +127,14 @@ P.append(dict(
         items=[('The unique structure', 'Design an original structure with a gravity-defying or unusual structural element — then prove it works, with MD Solids simulation or physical load testing. The proof is the assignment; the shape is the easy part.'),
                ('The revitalization pitch', 'Pick a real existing building and bring it back. Branding, usability, aesthetics, and a before-and-after that convinces a town board.'),
                ('Site design set', 'A complete professional site plan: soil testing results, cut and fill volume calculations, engineered drainage, parking, roads, and ADA circulation.')]),
-    files=['Logbook template.',
-           'Site design checklist — soil, cut and fill, drainage, circulation.',
-           'Bill of Materials worksheet.',
-           'Sheet set title block template.',
-           '&ldquo;Do Now!&rdquo; reflection and Independent Focus term-end reflection.',
-           'Makerspace safety rules.'],
+    files=[('Daily Logbook', 'BHR27-Daily-Logbook.docx', ''),
+           ('Design Brief and Initial Planner', 'BHR27-Design-Brief-and-Initial-Planner.docx', 'site, criteria and constraints go here &mdash; soil, cut and fill, drainage, circulation'),
+           ('Part List', 'BHR27-Part-List.xlsx', ''),
+           ('Project Gantt Chart', 'BHR27-Project-Gantt-Chart.xlsx', 'a drawing set has a lot of sheets; schedule them'),
+           ('Do Now Reflection', 'BHR27-Do-Now-Reflection.docx', ''),
+           ('Independent Focus Proposal', 'BHR27-Independent-Focus-Proposal.docx', ''),
+           ('Independent Focus Reflection', 'BHR27-Independent-Focus-Reflection.docx', ''),
+           ('Makerspace rules', 'shop/makerspace.html', '')],
 ))
 
 P.append(dict(
@@ -188,13 +192,14 @@ P.append(dict(
         items=[('Parametric optimization', 'Build a smart assembly where changing one driving dimension correctly updates every related component without breaking design intent. Harder than it sounds, and the failures are instructive.'),
                ('Simulate, print, break', 'Design a bracket. Use FEA to predict where and at what load it fails. 3D print it, test it to destruction, and account for the difference between the two numbers. The analysis of the gap is the deliverable.'),
                ('Three simple machines', 'Design a system integrating at least three simple machines — gears, pulleys, levers. Calculate the mechanical advantage as output force over input force, then measure it and explain the loss.')]),
-    files=['Logbook template.',
-           'FEA report template.',
-           'Test data log.',
-           'Bill of Materials worksheet.',
-           'Decision matrix template.',
-           '&ldquo;Do Now!&rdquo; reflection and Independent Focus term-end reflection.',
-           'Makerspace safety rules.'],
+    files=[('Daily Logbook', 'BHR27-Daily-Logbook.docx', ''),
+           ('Test and Measurement Log', 'BHR27-Test-Log.xlsx', 'calculated, simulated, measured &mdash; and the difference between them'),
+           ('Decision Matrix', 'BHR27-Decision-Matrix.xlsx', ''),
+           ('Part List', 'BHR27-Part-List.xlsx', ''),
+           ('Do Now Reflection', 'BHR27-Do-Now-Reflection.docx', ''),
+           ('Independent Focus Proposal', 'BHR27-Independent-Focus-Proposal.docx', ''),
+           ('Independent Focus Reflection', 'BHR27-Independent-Focus-Reflection.docx', ''),
+           ('Makerspace rules', 'shop/makerspace.html', '')],
 ))
 
 P.append(dict(
@@ -252,12 +257,13 @@ P.append(dict(
         items=[('Sensor and actuator integration', 'Build a system that senses something in the environment and produces a mechanical response. The engineering is in the threshold and the timing, not the wiring.'),
                ('Diagnostic challenge', 'Take a system with a fault in it and find the fault methodically — measurement, not part-swapping. Document the sequence of measurements that isolated it.'),
                ('Renewable energy analysis', 'Evaluate conversion efficiency and integration for a solar or wind setup. Measure real output against rated output and explain the difference.')]),
-    files=['Logbook template.',
-           'Schematic template.',
-           'As-built drawing set — the final state of the system, not the plan.',
-           'Test and measurement log.',
-           '&ldquo;Do Now!&rdquo; reflection and Independent Focus term-end reflection.',
-           'Electrical safety rules — GFCI use, lockout/tagout, reporting frayed wiring.'],
+    files=[('Daily Logbook', 'BHR27-Daily-Logbook.docx', 'schematics and as-built drawings go in here, dated'),
+           ('Test and Measurement Log', 'BHR27-Test-Log.xlsx', 'predicted, measured, difference'),
+           ('Part List', 'BHR27-Part-List.xlsx', ''),
+           ('Do Now Reflection', 'BHR27-Do-Now-Reflection.docx', ''),
+           ('Independent Focus Proposal', 'BHR27-Independent-Focus-Proposal.docx', ''),
+           ('Independent Focus Reflection', 'BHR27-Independent-Focus-Reflection.docx', ''),
+           ('Shop safety', 'shop/index.html', 'GFCI use, lockout/tagout, reporting frayed wiring')],
 ))
 
 P.append(dict(
@@ -310,12 +316,12 @@ P.append(dict(
         extra="Every project needs a before-and-after on your own code: show a logic "
               "simplification or algorithmic change, and give the measured improvement in "
               "response time. &ldquo;It felt faster&rdquo; is not a result."),
-    files=['Logbook template.',
-           'Iterative prototype log — versions, what changed, what it measured.',
-           'Flowchart and truth table templates.',
-           'Code comment and documentation standard.',
-           '&ldquo;Do Now!&rdquo; reflection and Independent Focus term-end reflection.',
-           'Electrical and machine safety rules — power down and unplug before cleaning or repairing.'],
+    files=[('Daily Logbook', 'BHR27-Daily-Logbook.docx', 'the iterative prototype log lives here: versions, what changed, what it measured'),
+           ('Test and Measurement Log', 'BHR27-Test-Log.xlsx', 'response time before and after, in numbers'),
+           ('Do Now Reflection', 'BHR27-Do-Now-Reflection.docx', ''),
+           ('Independent Focus Proposal', 'BHR27-Independent-Focus-Proposal.docx', ''),
+           ('Independent Focus Reflection', 'BHR27-Independent-Focus-Reflection.docx', ''),
+           ('Shop safety', 'shop/index.html', 'power down and unplug before cleaning or repairing')],
 ))
 
 P.append(dict(
@@ -378,13 +384,14 @@ P.append(dict(
                ('Pick and place with custom tooling', 'Design and fabricate the end effector yourself for a specific awkward part, then program the arm to handle it reliably. The gripper is the engineering.'),
                ('Machine tending', 'Use a robot to load and unload a piece of shop equipment. Cycle time and safe interaction are the constraints, and the safety interlock is not optional.'),
                ('Closed-loop control demo', 'Build something that holds a target — position, speed, level, temperature. Show the response with and without feedback and explain the difference in the data.')]),
-    files=['Logbook template.',
-           'I/O map — every input and output, what it is wired to, and what it means.',
-           'Commissioning checklist.',
-           'Cycle time and error rate log.',
-           'Bill of Materials worksheet.',
-           '&ldquo;Do Now!&rdquo; reflection and Independent Focus term-end reflection.',
-           'Machine safety rules — guarding, lockout/tagout, and safe interaction distances.'],
+    files=[('Daily Logbook', 'BHR27-Daily-Logbook.docx', ''),
+           ('I/O Map and Commissioning Checklist', 'BHR27-IO-Map-and-Commissioning.xlsx', 'every input and output, and the checklist you commission against'),
+           ('Test and Measurement Log', 'BHR27-Test-Log.xlsx', 'cycle time and error rate, per run'),
+           ('Part List', 'BHR27-Part-List.xlsx', ''),
+           ('Do Now Reflection', 'BHR27-Do-Now-Reflection.docx', ''),
+           ('Independent Focus Proposal', 'BHR27-Independent-Focus-Proposal.docx', ''),
+           ('Independent Focus Reflection', 'BHR27-Independent-Focus-Reflection.docx', ''),
+           ('Equipment checks', 'shop/equipment.html', 'guarding, lockout/tagout, safe interaction distances')],
     isnew=True,
 ))
 
@@ -442,13 +449,16 @@ P.append(dict(
         items=[('Full capstone plan', 'Take a junior or senior capstone and produce the complete management set: breakdown structure, Gantt with critical path, Bill of Materials with lead times, and a risk list. Then run it and record where the plan was wrong.'),
                ('The revitalization pitch', 'Act as lead developer for a proposal to transform an existing space, and pitch it to stakeholders. Before-and-after visuals, technical justification for every change, and a schedule and budget that hold up to questions.'),
                ('Post-mortem', 'Take a finished project — yours or a documented one — and analyze what drove the schedule. What was on the critical path, what slipped, and what would you have done differently at week one.')]),
-    files=['Logbook template.',
-           'Weekly planner — milestones, dates, resources.',
-           'Work breakdown structure template.',
-           'Gantt chart template.',
-           'Bill of Materials worksheet with lead time and unit cost.',
-           'Decision matrix template.',
-           'Independent Focus term-end reflection.'],
+    files=[('Daily Logbook', 'BHR27-Daily-Logbook.docx', ''),
+           ('Weekly Planner', 'BHR27-Weekly-Planner.docx', 'milestones, dates, resources'),
+           ('Project Gantt Chart', 'BHR27-Project-Gantt-Chart.xlsx', 'the WBS column is the work breakdown structure; the calendar is the schedule'),
+           ('Part List', 'BHR27-Part-List.xlsx', 'with made-or-bought, so lead time is visible'),
+           ('Order Request Form', 'BHR27-Order-Request-Form.xlsx', 'unit cost, total, and the reason that gets it approved'),
+           ('Decision Matrix', 'BHR27-Decision-Matrix.xlsx', ''),
+           ('Instructor Meeting Notes', 'BHR27-Instructor-Meeting-Notes.docx', 'action items with names and dates'),
+           ('Independent Focus Proposal', 'BHR27-Independent-Focus-Proposal.docx', ''),
+           ('Independent Focus Reflection', 'BHR27-Independent-Focus-Reflection.docx', ''),
+           ('Independent Focus Record', 'BHR27-Independent-Focus-Record.pdf', 'one row per term, kept in the binder')],
 ))
 
 # ---------------------------------------------------------------- render
@@ -549,12 +559,24 @@ def render_pathway(p):
     o.append('<div class="topic"><div class="th"><span class="tn">5</span>'
              '<div><h3>Get the Files</h3><p class="tq">%s</p></div></div>' % TOPICS[4][2])
     o.append('<ul class="files">')
-    for i in p['files']:
-        o.append('<li>%s</li>' % i)
+    for label, target, why in p['files']:
+        if target and target.endswith(('.docx', '.xlsx', '.pdf')):
+            href = '../files/' + target
+            ext = target.rsplit('.', 1)[-1].upper()
+            o.append('<li><a href="%s" download><b>%s</b></a>'
+                     '<span class="ext">%s</span>%s</li>'
+                     % (href, label, ext,
+                        (' &mdash; ' + why) if why else ''))
+        elif target:
+            o.append('<li><a href="../%s"><b>%s</b></a>%s</li>'
+                     % (target, label, (' &mdash; ' + why) if why else ''))
+        else:
+            o.append('<li><b>%s</b>%s</li>'
+                     % (label, (' &mdash; ' + why) if why else ''))
     o.append('</ul>')
     o.append('<p class="note">Logbook rules are the same in every pathway &mdash; see '
              '<em>Your Engineering Logbook</em>. Anything you read in an older hub guide '
-             'about notebook rules is superseded by it.</p>')
+             'about logbook rules is superseded by it.</p>')
     o.append('</div>')
 
     o.append('</section>')
@@ -684,10 +706,12 @@ overview = '''
       <p class="tq">You do not need to read this seven times.</p></div></div>
     <dl class="defs">
       <dt>OSHA 10 &mdash; Construction</dt>
-      <dd>The base credential for every pathway. Nothing in a hub happens without it on file.</dd>
+      <dd>Earned in Grade 10, by every student in the school. It is the credential
+        behind machine authorisation, not a gate on your focus &mdash; Grade 9 and 10
+        students have a focus too, and work within whatever they are authorised on.</dd>
       <dt>The logbook</dt>
       <dd>One set of rules, program-wide, in <em>Your Engineering Logbook</em>. Older hub guides
-        carried four different notebook rulebooks; those are retired.</dd>
+        carried four different logbook rulebooks; those are retired.</dd>
       <dt>Standard 11 &mdash; integrated research</dt>
       <dd>A business plan for a design in an emerging field: the technical design, evidence of
         market potential, and an implementation strategy. This is where entrepreneurship
@@ -837,6 +861,9 @@ ul.ticks li,ul.files li{background:var(--card);padding:11px 18px 11px 40px;posit
   font-size:15.5px;line-height:1.5}
 ul.ticks li::before{content:"";position:absolute;left:19px;top:20px;width:7px;height:7px;
   border-radius:50%;background:var(--accent)}
+ul.files li a{text-decoration:none;color:var(--accent)}
+ul.files li a:hover{text-decoration:underline}
+ul.files .ext{font-family:var(--mono);font-size:9px;letter-spacing:.09em;margin-left:7px;padding:1px 5px;border:1px solid var(--rule);border-radius:2px;color:var(--ink-3)}
 ul.files li::before{content:"";position:absolute;left:18px;top:17px;width:9px;height:11px;
   border:1.4px solid var(--accent);border-radius:1px}
 

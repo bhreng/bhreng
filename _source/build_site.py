@@ -27,7 +27,9 @@ import pathway_nav as PNAV      # noqa: E402  (per-hub section summaries)
 import site_nav as SNAV        # noqa: E402  (the site-wide rail)
 import theme_ui as THEME       # noqa: E402  (light / dark switch)
 import build_grades as GR
-import work_pages as WPG      # noqa: E402  (the four grade homes)
+import work_pages as WPG
+import families_page as FAM
+import documents_page as DOCP      # noqa: E402  (the four grade homes)
 import grade_data as GD        # noqa: E402
 import grade_work as GW        # noqa: E402
 import brief_text as BT        # noqa: E402
@@ -425,7 +427,8 @@ HOME = '''
       <dt>This site</dt>
       <dd>Instructions, rules, guides, examples and rubrics &mdash; everything that is the same
         for everyone. It is always the current version, so an old assignment still points at
-        the right thing.</dd>
+        the right thing. Every template is on the
+        <a href="logbook/documents.html">Documents</a> page.</dd>
       <dt>Google Classroom</dt>
       <dd>Your assignments, your copies of the templates, and turning work in. Grades are there,
         not here.</dd>
@@ -535,7 +538,8 @@ def build_work_pages():
             next_a = same[j + 1] if j + 1 < len(same) else None
             block = GR.assignment(a, 1, full=briefs.get(a['title'], ''),
                                   standalone=True)
-            dl = WPG.files_for(g['key'], a['title'], have)
+            dl = WPG.files_for(g['key'], a['title'], have,
+                               kind=a.get('kind'))
             body = WPG.render(g, a, briefs.get(a['title'], ''), block,
                               prev_a, next_a, dl, depth=1)
             path = WPG.page_name(g['key'], a['title'])
@@ -547,6 +551,37 @@ def build_work_pages():
                         desc='Grade %d, %s. %s' % (g['num'], a['w'], desc)))
             n += 1
     print('  %-42s %6d pages' % ('work/', n))
+
+
+def build_documents():
+    import shutil
+    have = WPG.available(SRC)
+    pdir = os.path.join(SRC, 'posters')
+    posters = set()
+    if os.path.isdir(pdir):
+        out = os.path.join(OUT, 'posters')
+        os.makedirs(out, exist_ok=True)
+        for f in os.listdir(pdir):
+            if f.endswith('.pdf'):
+                shutil.copy2(os.path.join(pdir, f), os.path.join(out, f))
+                posters.add(f)
+        print('  %-42s %6d files' % ('posters/', len(posters)))
+    write('logbook/documents.html',
+          shell('Documents', DOCP.page(have, posters), depth=1,
+                section='logbook', path='logbook/documents.html',
+                page_css=DOCP.CSS,
+                desc='Every template the shop uses, grouped by when you '
+                     'reach for it, plus the print files for the walls.'))
+
+
+def build_families():
+    write('families/index.html',
+          shell('Thinking about Engineering Technology?', FAM.page(), depth=1,
+                section='families', path='families/index.html',
+                page_css=FAM.CSS,
+                desc='For parents, guardians and eighth graders: what the '
+                     'shop is, how it is graded, how safe it is, and how '
+                     'choosing a shop works.'))
 
 
 def build_engineering_page():
@@ -975,7 +1010,7 @@ WELCOME = '''
       <thead><tr><th>Item</th><th>What is required</th></tr></thead>
       <tbody>
         <tr><td class="k">Shop attire</td><td>Anything carrying the Engineering Technology logo, bought through the school store &mdash; T-shirts long or short sleeve, hoodies, crew necks, quarter-zips, sweaters. Any of it counts.</td></tr>
-        <tr><td class="k">Footwear</td><td>Shoes, sneakers or work boots. <strong>No open-toed shoes, sandals or Crocs</strong> in the Makerspace.</td></tr>
+        <tr><td class="k">Footwear</td><td>Shoes, sneakers or work boots. <strong>No open-toed shoes, sandals or Crocs</strong> &mdash; anywhere in the shop, every day.</td></tr>
         <tr><td class="k">Eye protection</td><td>Required in the Makerspace. Situational in the main shop &mdash; if you are unsure, put them on.</td></tr>
       </tbody>
     </table></div>
@@ -1306,6 +1341,8 @@ if __name__ == '__main__':
     build_home()
     build_grades()
     build_work_pages()
+    build_families()
+    build_documents()
     build_extras()
     build_engineering_page()
     build_404()

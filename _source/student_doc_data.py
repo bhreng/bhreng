@@ -20,8 +20,8 @@ DOCS = []
 
 # --------------------------------------------------------------- 1. logbook
 DOCS.append(dict(
-    file='BHR-ENG-Daily-Logbook.docx',
-    name='BHR ENG — Daily Logbook',
+    file='BHR27-Daily-Logbook.docx',
+    name='BHR27 · Daily Logbook',
     title='Daily Logbook',
     standfirst='The record of one day in the shop. Three intervals, filled in '
                'as the day goes, not written from memory at the end of it.',
@@ -80,8 +80,8 @@ DOCS.append(dict(
 
 # ---------------------------------------------------------- 2. weekly planner
 DOCS.append(dict(
-    file='BHR-ENG-Weekly-Planner.docx',
-    name='BHR ENG — Weekly Planner',
+    file='BHR27-Weekly-Planner.docx',
+    name='BHR27 · Weekly Planner',
     title='Weekly Planner',
     standfirst='Handed in Monday. What you intend to do this week, and how '
                'you intend to do it.',
@@ -111,8 +111,8 @@ DOCS.append(dict(
 
 # ------------------------------------------------------- 3. weekly reflection
 DOCS.append(dict(
-    file='BHR-ENG-Weekly-Reflection.docx',
-    name='BHR ENG — Weekly Reflection',
+    file='BHR27-Weekly-Reflection.docx',
+    name='BHR27 · Weekly Reflection',
     title='Weekly Reflection',
     standfirst='Handed in Friday. What actually happened this week, against '
                'what you planned on Monday.',
@@ -133,7 +133,7 @@ DOCS.append(dict(
 
         ('h', 'Reflection on the work'),
         ('note', 'What would you improve? Why did you make the choices you '
-                 'made? What went wrong, and how did you solve it? Does any '
+                 'made? What did the results tell you to change, and how did you change it? Does any '
                  'of that change what you do next week? Attach screenshots '
                  'or photographs of the work.'),
         ('box', 'l'),
@@ -147,8 +147,8 @@ DOCS.append(dict(
 
 # ------------------------------------------------------ 4. project reflection
 DOCS.append(dict(
-    file='BHR-ENG-Project-Reflection.docx',
-    name='BHR ENG — Project Reflection',
+    file='BHR27-Project-Reflection.docx',
+    name='BHR27 · Project Reflection',
     title='Project Reflection',
     standfirst='Handed in at the end of a project. The honest account of what '
                'you built and what you would do differently.',
@@ -168,7 +168,7 @@ DOCS.append(dict(
 
         ('h', 'Reflection on the work'),
         ('note', 'What would you improve? Why did you make the choices you '
-                 'made? What went wrong, and how did you solve it? If this '
+                 'made? What did the results tell you to change, and how did you change it? If this '
                  'was a group project, cover how the group worked. Attach '
                  'screenshots or photographs.'),
         ('box', 'l'),
@@ -182,8 +182,8 @@ DOCS.append(dict(
 
 # ------------------------------------------------------- 5. Do Now reflection
 DOCS.append(dict(
-    file='BHR-ENG-Do-Now-Reflection.docx',
-    name='BHR ENG — Do Now! Reflection',
+    file='BHR27-Do-Now-Reflection.docx',
+    name='BHR27 · Do Now! Reflection',
     title='Do Now! Reflection',
     standfirst='The short companion to a Do Now. One skill, learned and '
                'written down while it is still fresh.',
@@ -215,8 +215,8 @@ DOCS.append(dict(
 
 # ------------------------------------------------ 6. mid-project design review
 DOCS.append(dict(
-    file='BHR-ENG-Mid-Project-Design-Review.docx',
-    name='BHR ENG — Mid-Project Design Review',
+    file='BHR27-Mid-Project-Design-Review.docx',
+    name='BHR27 · Mid-Project Design Review',
     title='Mid-Project Design Review and Feasibility Check',
     standfirst='The stop-and-check partway through a project. Cheaper to find '
                'out here that something will not work than in week four.',
@@ -255,8 +255,8 @@ DOCS.append(dict(
 
 # ------------------------------------------------------- 7. design brief
 DOCS.append(dict(
-    file='BHR-ENG-Design-Brief-and-Initial-Planner.docx',
-    name='BHR ENG — Design Brief and Initial Planner',
+    file='BHR27-Design-Brief-and-Initial-Planner.docx',
+    name='BHR27 · Design Brief and Initial Planner',
     title='Design Brief and Initial Planner',
     standfirst='The document that starts a project. It fixes what the problem '
                'is, who it is for, and how you will know when you are done.',
@@ -303,8 +303,8 @@ DOCS.append(dict(
 
 # ------------------------------------------------- 8. instructor meeting notes
 DOCS.append(dict(
-    file='BHR-ENG-Instructor-Meeting-Notes.docx',
-    name='BHR ENG — Instructor Meeting Notes',
+    file='BHR27-Instructor-Meeting-Notes.docx',
+    name='BHR27 · Instructor Meeting Notes',
     title='Instructor Meeting Notes',
     standfirst='The record of a one-on-one. Written by you, so that the next '
                'meeting starts where this one finished.',
@@ -332,4 +332,142 @@ DOCS.append(dict(
         ('h', 'For the next meeting'),
         ('note', 'What you want to raise next time.'),
         ('box', 's'),
+    ]))
+
+
+# ------------------------------------- 9. independent focus: term start proposal
+# The start-of-term document is a PROPOSAL, because Dan reviews it. It has
+# to carry enough for a teacher to say yes, revise, or no: what the idea is,
+# why this pathway, what will be researched and made, what it needs, how the
+# five shop weeks break down, and what "done" looks like. Then a review box.
+DOCS.append(dict(
+    file='BHR27-Independent-Focus-Proposal.docx',
+    name='BHR27 · Independent Focus Proposal',
+    title='Independent Focus — Term Proposal',
+    standfirst='Fill this in on the first day of the term and hand it in for '
+               'review before you start. It is a proposal, not a contract: '
+               'plans change, and the term-end reflection is where you say '
+               'how. But it has to be clear enough that your instructor can '
+               'say yes.',
+    identity=['Name', 'Term', 'Pathway', 'Date'],
+    body=[
+        ('h', 'The pathway'),
+        ('pick', 'Home pathway this term',
+         ['Industrial Design', 'Architecture &amp; Civil', 'Mechanical',
+          'Electrical', 'Software', 'Automation &amp; Robotics',
+          'Project Management', 'Other (approved)'],
+         'Mechanical', 'The hub you are living in this term.'),
+        ('pick', 'New, or continuing?',
+         ['New this term', 'Continuing from last term'], 'New this term',
+         'Continuing is fine. Say below which part you are on now.'),
+        ('label', 'Why this pathway',
+         '&ldquo;It is next to what I want to do&rdquo; and &ldquo;no idea, '
+         'it looked interesting&rdquo; are both good answers. Say which.'),
+        ('box', 's'),
+
+        ('h', 'The idea'),
+        ('label', 'Independent Project title', 'One line.'),
+        ('box', 'xs'),
+        ('label', 'What it is',
+         'Describe the idea so someone who has not heard it could repeat it '
+         'back. What will exist at the end of the term that does not exist '
+         'now &mdash; a thing, a piece of research, a skill, a working '
+         'system?'),
+        ('box', 'm'),
+        ('label', 'Why it is worth a term',
+         'What you expect to learn, and what it has to do with where you '
+         'think you might be going.'),
+        ('box', 's'),
+
+        ('h', 'The work'),
+        ('label', 'Research',
+         'What you need to find out before or while you build. Name the '
+         'kind of source: a datasheet, a standard, a tutorial, a person.'),
+        ('box', 's'),
+        ('label', 'Design and build',
+         'What you will actually make, model, code or test. Be specific '
+         'about the first thing you will do on day one.'),
+        ('box', 'm'),
+        ('label', 'Tools, materials and training',
+         'Which machines and software. Anything you are not yet authorised '
+         'on. Anything that has to be ordered &mdash; if so, an Order '
+         'Request Form goes with this proposal.'),
+        ('box', 's'),
+
+        ('h', 'The five weeks'),
+        ('note', 'A term is about five shop weeks. One goal per week, '
+                 'checkable. Remember each week goes cold for a week before '
+                 'the next &mdash; write goals you can pick back up.'),
+        ('tbl', ['Shop week', 'Goal for the week', 'How I will know it is done'], 5),
+        ('label', 'What &ldquo;done&rdquo; looks like at the end of the term',
+         'One sentence. This is the line the term-end reflection compares '
+         'against.'),
+        ('box', 's'),
+        ('label', 'What could stop this',
+         'The one thing most likely to get in the way, and what you would do '
+         'instead.'),
+        ('box', 's'),
+
+        ('h', 'Instructor review'),
+        ('note', 'Leave this section blank. Your instructor fills it in.'),
+        ('pick', 'Decision', ['Approved', 'Approved with changes',
+                              'Revise and resubmit', 'Not approved'],
+         'Approved', ''),
+        ('label', 'Notes', ''),
+        ('box', 'm'),
+        ('tbl', ['Instructor', 'Date'], 1),
+    ]))
+
+
+# ---------------------------------------- 10. independent focus: term reflection
+# Dan's term-end reflection, as the binder specifies it (Section 5): project
+# title, equipment, tasks completed, skills learned or improved, status and
+# progress, challenges and adaptations, evaluation of project management,
+# goals for next term. Stands alone.
+DOCS.append(dict(
+    file='BHR27-Independent-Focus-Reflection.docx',
+    name='BHR27 · Independent Focus Reflection',
+    title='Independent Focus — Term Reflection',
+    standfirst='Fill this in on the last day of the term, with your proposal '
+               'open next to it. Ten minutes. This is the record of one term '
+               'of your focus, and one row of your two-year record comes '
+               'from it.',
+    identity=['Name', 'Term', 'Pathway', 'Date'],
+    body=[
+        ('label', 'Independent Project title', 'As it ended up, if it changed.'),
+        ('box', 'xs'),
+        ('label', 'Equipment and software used',
+         'Everything you touched this term, so the record is complete.'),
+        ('bul', ['[Item 1]', '[Item 2]', '[&hellip; add as many as you need]']),
+        ('label', 'Tasks completed',
+         'What actually got done. Specific: &ldquo;modelled the enclosure and '
+         'printed two revisions&rdquo;, not &ldquo;worked on the project&rdquo;.'),
+        ('bul', ['[Task 1]', '[Task 2]', '[Task 3]',
+                 '[&hellip; add as many as you need]']),
+        ('label', 'Skills learned or improved',
+         'Name the skill and the evidence &mdash; a file, a print, a working '
+         'circuit, a certification level.'),
+        ('box', 'm'),
+        ('pick', 'Project status',
+         ['Complete', 'On track, continuing next term', 'Behind, continuing',
+          'Paused', 'Stopped &mdash; changing direction'],
+         'On track, continuing next term',
+         'Where it actually is, not where the plan said it would be.'),
+        ('label', 'Progress against the proposal',
+         'Look at the five-week table and the &ldquo;done&rdquo; line you '
+         'wrote at the start. What matched, what moved.'),
+        ('box', 'm'),
+        ('label', 'Challenges and adaptations',
+         'What the results told you to change, and what you changed. '
+         'Analysis, adjustment, improvement.'),
+        ('box', 'l'),
+        ('label', 'How well did you manage the project?',
+         'Time, scope, the week-off restarts. What would you run differently?'),
+        ('box', 'm'),
+        ('pick', 'Next term', ['Staying in this pathway', 'Moving to another',
+                              'Not decided yet'], 'Staying in this pathway',
+         'Either is a good answer. Say why in the next box.'),
+        ('label', 'Goals for next term',
+         'Where the next term starts. Specific enough to be checked.'),
+        ('box', 'm'),
     ]))

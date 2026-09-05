@@ -36,7 +36,10 @@ def tree():
             ('staff/frank.html', 'Mr. Frank \u2014 EDF'),
             ('staff/dryer.html', 'Mr. Dryer \u2014 ESEC'),
         ]),
-        ('logbook', 'Logbook', 'logbook/index.html', []),
+        ('logbook', 'Logbook', 'logbook/index.html', [
+            ('logbook/index.html', 'Your engineering logbook'),
+            ('logbook/documents.html', 'All documents'),
+        ]),
         ('pathways', 'The seven pathways', 'pathways/index.html',
          [('pathways/index.html', 'Which one is for you?')] +
          [(h, n) for h, n, s in paths]),
@@ -49,6 +52,7 @@ def tree():
             ('shop/themes.html', 'Which theme? (practice)'),
         ] + checks),
         ('resources', 'Training and credentials', 'resources/index.html', []),
+        ('families', 'For families', 'families/index.html', []),
         ('extras', 'More', 'extras/do-nows.html', [
             ('extras/do-nows.html', 'Do Nows and bonus work'),
             ('extras/links.html', 'Links'),

@@ -159,8 +159,8 @@ G11 = [
                'cost, and MA ADU compliance.',
                '<b>Phase 2 &mdash; modelling and documentation.</b> Build the '
                'full model, then generate the drawings from it.',
-               '<b>Phase 3 &mdash; reflection.</b> Keep the Daily Journal Log '
-               'running the whole way, including what went wrong in Fusion and '
+               '<b>Phase 3 &mdash; reflection.</b> Keep the Daily Logbook '
+               'running the whole way, including what the model told you to change in Fusion and '
                'how you got out of it.'],
          gives=['<b>ADU type</b> &mdash; detached new build, garage '
                 'conversion, or attached addition',
@@ -173,7 +173,7 @@ G11 = [
                 'entrance shown',
                 'An <b>elevation view</b> of one exterior side',
                 'The mid-project feasibility check',
-                'The completed Daily Journal Log'],
+                'The completed Daily Logbook'],
          tool='Fusion 360', path='architecture',
          note='The Mid-Project Design Review and Feasibility Check is part of '
               'this project, not a separate assignment. Partway through, '
@@ -428,7 +428,7 @@ G11 = [
                 'methods, in Fusion 360 or equivalent',
                 'The presentation package for the second project &mdash; '
                 'the design as a firm would present it to a client',
-                'A weekly journal across all four weeks'],
+                'Your logbook, kept across all four weeks'],
          tool='Fusion 360, Revit', path='architecture',
          note='Runs over four weeks: conceptual design, detailed design, then '
               'two weeks of proof.'),
@@ -438,7 +438,7 @@ G11 = [
          hook='Your whole year, compiled into one presentation.',
          body=['Compile your assignments from the year into a single Google '
                'Slides presentation. Take screenshots from the assignments and '
-               'your daily journals, and put them next to a reflection on what '
+               'your logbook entries, and put them next to a reflection on what '
                'you got out of them.',
                'You are not expected to reflect on every single assignment. '
                'Pick several for real depth, or group them &mdash; all the Do '
@@ -512,7 +512,7 @@ G12 = [
                 'for each piece of equipment',
                 'The <b>Weekly Planner</b>, Monday morning',
                 'The <b>Project Reflection</b>, Friday',
-                'The <b>Engineering Daily Journal</b>, every day',
+                'The <b>Daily Logbook</b>, every day',
                 'The finished project itself, documented'],
          tool='Engraver, VEX, Shaper Origin, Arduino, 3D printers',
          path='mechanical', note=''),
@@ -566,8 +566,8 @@ G12 = [
          body=[], gives=[], tool='', path='industrial', note=''),
 
     dict(t=2, w='Wk 2', title='Try Again! Moon Base 2.0', kind='project',
-         hook='A second run at the moon base, knowing what went wrong the '
-              'first time.',
+         hook='A second run at the moon base, carrying everything the first '
+              'run taught you.',
          body=[], gives=[], tool='', path='architecture', note=''),
 
     dict(t=2, w='Wk 3', title='Intro to CorelDraw', kind='skills',
@@ -617,10 +617,10 @@ G12 = [
                '<b>Defending it.</b> The Term 4 presentation is not show and '
                'tell. You prove the why with patent and market research, the '
                'how with your technical tools, and the proof with raw test '
-               'data and the redesigns your failures forced.'],
+               'data and the redesigns that data led you to.'],
          gives=['Three initial project concepts, before the work starts',
                 '<b>Design brief</b>, kept current',
-                '<b>Daily journal</b>, every session',
+                '<b>Daily Logbook</b>, every session',
                 '<b>Weekly planner</b> on Mondays, <b>weekly reflection</b> '
                 'on Fridays',
                 '<b>Meeting notes</b> after every instructor meeting',
@@ -633,13 +633,18 @@ G12 = [
               'Texture Extrude land in capstone week 5 &mdash; the resin '
               'printing and rendering skills, right when projects need them.'),
 
-    dict(t='always', w='All year', title='Independent Focus',
+    dict(t='always', w='Terms 1&ndash;2', title='Independent Focus',
          kind='project',
          hook='The parallel track: the field you want to go into, explored '
-              'properly, running alongside everything else.',
+              'properly, running alongside everything else &mdash; until the '
+              'capstone takes over.',
          body=['You pick a home pathway each term. By senior year you have '
                'had several goes at this, and the pattern of what you kept '
                'choosing tells you something worth listening to.',
+               'Your focus runs through Terms 1 and 2. When the Senior '
+               'Capstone starts in Term 3 it stops &mdash; the capstone is '
+               'the whole of the shop day from then on. It can grow out of '
+               'your focus work, but it does not have to.',
                'It feeds directly into the capstone concept, so what you '
                'choose here matters more than it looks.',
                'The Term 1 reflection is where you stop, assess your progress '
@@ -647,9 +652,8 @@ G12 = [
                'evolving is normal &mdash; the purpose is growth and '
                'exploration, not sticking to a proposal you have outgrown.'],
          gives=['A design proposal for each project',
-                'The Term 1 reflection, on the Research, Design and '
-                'Development reflection documents',
-                'End-of-year reflections'],
+                'A term-end reflection at the close of Term 1 and again at '
+                'the close of Term 2'],
          tool='', path='', note=''),
 
     dict(t='always', w='All year', title='Platform training', kind='course',

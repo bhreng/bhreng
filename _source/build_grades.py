@@ -320,15 +320,18 @@ def page(key, depth=1):
     if work:
         out.append('<section>')
         out.append('  <h2>The units this year</h2>')
-        out.append('  <p class="sub">The frame the assignments hang on.</p>')
+        out.append('  <p class="sub">The frame the assignments hang on. These are '
+                   'the EDF units; Mr. Dryer&rsquo;s ESEC units run alongside '
+                   'them.</p>')
         out.append(unit_list(g))
         out.append('</section>')
         n_full = sum(1 for a in work if a['title'] in briefs)
         if n_full:
             out.append(
                 '<div class="note acc"><p><strong>%d of these carry the full '
-                'brief</strong> &mdash; the instructions exactly as Classroom '
-                'words them, not a summary. Where a brief is missing it is '
+                'brief</strong> &mdash; the instructions as Classroom '
+                'words them, not a summary, with retired document names '
+                'updated to the current ones. Where a brief is missing it is '
                 'because Classroom has none either, and the entry says so.'
                 '</p></div>' % n_full)
         else:
@@ -370,8 +373,9 @@ def page(key, depth=1):
     else:
         out.append('<section>')
         out.append('  <h2>The units for the year</h2>')
-        out.append('  <p class="sub">Quoted from the shop&rsquo;s Grade %d unit '
-                   'breakdown. The order is the plan, not a promise.</p>' % g['num'])
+        out.append('  <p class="sub">Quoted from the shop&rsquo;s Grade %d EDF unit '
+                   'breakdown; Mr. Dryer&rsquo;s ESEC units run alongside. The '
+                   'order is the plan, not a promise.</p>' % g['num'])
         out.append(unit_list(g))
         out.append('</section>')
         out.append('<section><div class="gempty">'

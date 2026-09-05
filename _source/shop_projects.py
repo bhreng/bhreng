@@ -173,10 +173,8 @@ EXPLORATORY = dict(
          'Not models of things. A part that comes off the printer and fits. A '
          'circuit that does what you said it would. A drawing someone else '
          'can build from without asking you a question.'),
-        ('You will be wrong in public, constantly',
-         'Every project here ends with testing, and testing is where you find '
-         'out your prediction was off. The engineers who get good are the ones '
-         'who write down the difference instead of hiding it.'),
+        ('Testing tells you what to change next',
+         'Every project here ends in testing, and testing is where the measured result meets the one you predicted. The gap between them is the useful part &mdash; it is what tells you which change to make. Engineers who get good are the ones who write that gap down and act on it.'),
     ],
     ask=[
         'Ask an upperclassman what they are building for their capstone, and '
