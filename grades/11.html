@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
 <link rel="icon" href="../assets/icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
-<link rel="stylesheet" href="../assets/site.css?v=18858507">
+<link rel="stylesheet" href="../assets/site.css?v=22273e7d">
 <style>
 /* --- grade pages -------------------------------------------------------- */
 /* Three variables per grade, set inline on the page:
@@ -157,6 +157,17 @@
   color:var(--ink);line-height:1.3}
 .units .ud{margin:4px 0 0;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
 
+/* the exploratory section: for the visitors, not the students */
+.expl .exgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;
+  overflow:hidden}
+.expl .exgrid article{background:var(--card);padding:16px 19px}
+.expl .exgrid b{display:block;font-family:var(--sans);font-weight:700;
+  font-size:16px;line-height:1.3;color:var(--g-ink)}
+.expl .exgrid p{margin:6px 0 0;font-size:15px;line-height:1.55;color:var(--ink-2)}
+.expl .note ul{margin:8px 0 0;padding-left:20px}
+.expl .note li{margin:0 0 6px;font-size:15px;line-height:1.5}
+
 .gempty{border:1px dashed var(--rule);border-radius:6px;padding:20px 22px;
   background:var(--card)}
 .gempty p{margin:0 0 9px;font-size:15px;line-height:1.6;color:var(--ink-2)}
@@ -294,7 +305,7 @@ catch(e){}})();
 </section>
 <div class="note acc"><p><strong>21 of these carry the full brief</strong> &mdash; the instructions exactly as Classroom words them, not a summary. Where a brief is missing it is because Classroom has none either, and the entry says so.</p></div>
 <section class="term" id="term-1">
-  <div class="termhd"><h2>Term 1</h2><span class="tc">5 entries</span></div>
+  <div class="termhd"><h2>Term 1</h2><span class="tc">4 entries</span></div>
 <article class="asg">
   <div class="ah">
     <h3>Speaker Design</h3>
@@ -312,14 +323,17 @@ catch(e){}})();
     <li>A parts list of the reference components &mdash; speakers, power connectors, PCB</li>
     <li>The voltage requirement of your speaker, and a battery that matches it</li>
     <li>A prototype, if there is time and the design is approved</li>
+    <li>A short reflection: what changed between your first sketch and the final model, and why</li>
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>Welcome back to the shop! To get our brains and our design skills warmed up for the year, we're going to dive into a project that combines creativity with engineering principles: designing a custom casing for a Bluetooth speaker. This is a chance to shake off the summer rust and get familiar with our design process and tools again.</p>
-<p>Your goal is to design a unique and functional casing for a Bluetooth speaker. This isn't just about making a cool-looking box; you'll need to design for the components, considering how everything fits together and how the final product will be assembled. While we'll have a separate lesson on the internal speaker components, your design should be ready to house them. Think about how the speakers, battery, and circuit board will be secured inside your design.</p>
-<p><strong>Deliverables</strong></p>
-<ul><li><strong>Initial Sketches</strong> — Begin by brainstorming and sketching your ideas on paper. Think about different shapes, forms, and features. Don't worry about perfection; focus on exploring a variety of concepts. You should aim to have at least two distinct design concepts.</li><li><strong>Fusion 360 Model</strong> — Once you've chosen your best concept, you will translate your 2D sketches into a detailed 3D model in Fusion 360.</li><li><strong>Parts list</strong> — include a list of reference components (i.e., speakers, power supply connectors, and PCB).</li><li><strong>Power Requirements</strong> — Find the voltage requirement of the speaker you chose and source an applicable battery (only look for the appropriate voltage when looking for the battery, don't worry about anything else).</li><li><strong>Prototype</strong> — If time allows create a prototype from an approved (by instructor) design.</li></ul>
-<p>Companions in the same topic: <em>BHR Engineering Shop Safety Test</em>, <em>BHR Engineering Shop Safety Acknowledgement Form</em>, <em>Speaker Project Reflection</em>.</p></div>
+    <div class="bt"><p>Design a custom casing for a Bluetooth speaker. The casing has to hold real components, so this is a packaging problem as much as a styling one: the speaker driver, the battery and the circuit board all have to fit, be held in place, and go together in an order that works.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Sketch on paper first. Explore shapes, forms and features, and develop at least two distinct concepts before you commit to one.</li><li>Pick your strongest concept and model it in Fusion 360.</li><li>Work out how each component is retained, and how the casing assembles. If it cannot be put together, it is not finished.</li><li>Find the voltage your chosen speaker needs, and source a battery that matches it. Voltage is the only spec you need to match — ignore the rest.</li><li>If time allows and the instructor approves your design, build a prototype.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>Two or more sketched concepts.</li><li>A Fusion 360 model of the concept you chose.</li><li>A parts list of the reference components: speaker, power connector, PCB.</li><li>The speaker's voltage requirement and the battery you matched to it.</li><li>A prototype, if you got that far.</li><li>A short written reflection: what changed between your first sketch and the final model, and why.</li></ul>
+<p><strong>Watch out for</strong></p>
+<p>Modelling the outside first and discovering the components do not fit. Place the components as reference bodies before you shape anything around them.</p></div>
   </details>
   <p class="anote">The safety test and acknowledgement are in this same week. Nothing gets built before they are done.</p>
   <div class="meta"><span><b>Tools</b> Fusion 360, 3D printing</span><span><b>Pathway</b> <a href="../pathways/mechanical.html">Mechanical</a></span></div>
@@ -339,47 +353,29 @@ catch(e){}})();
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>For each of the 7 "Roles of an Engineer" write a short description in a Google Doc. Use this slide show as a base for your knowledge. You can also use online and Chapter 2 of the Engineering Fundamentals book.</p></div>
+    <div class="bt"><p>Write a short description of each of the seven roles an engineer can work in. This is the groundwork for the Full Scope Project, where you then have to actually work in those roles.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Use the slide deck as your base.</li><li>Fill it out with Chapter 2 of the Engineering Fundamentals book, and online sources where you need them.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>One Google Doc with all seven roles described in your own words.</li></ul></div>
   </details>
   <p class="anote">This is the setup for the Full Scope Project. Those seven roles are the roles you then have to work in.</p>
   <div class="meta"><span><b>Pathway</b> <a href="../pathways/project.html">Project Management</a></span></div>
 </article>
 <article class="asg">
   <div class="ah">
-    <h3>Full Scope Project: Vision Statement</h3>
-    <span class="wk">Wk 2</span>
-    <span class="kind">Project</span>
-  </div>
-  <p class="hook">The brief for your own theme park, written before you design any of it.</p>
-  <div class="bd">
-    <p>A short vision statement describing what your theme park will be like. It gives the seven engineering roles something concrete to act on.</p>
-  </div>
-  <div class="gives"><p class="gl">What you hand in</p><ul>
-    <li><b>Theme</b> &mdash; the central story of the park</li>
-    <li><b>Experience</b> &mdash; how you want visitors to feel</li>
-    <li><b>Unique features</b> &mdash; what makes it different</li>
-    <li><b>Target audience</b> &mdash; who it is for</li>
-  </ul></div>
-  <details class="brief" open>
-    <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>Before you begin designing, write a brief vision statement describing what your theme park will be like. Consider the following:</p>
-<ul><li><strong>Theme</strong> — What is the central theme or story of your park? Is it based on fantasy, adventure, history, or something else entirely?</li><li><strong>Experience</strong> — How do you want visitors to feel while they are there? Should they feel thrilled, relaxed, inspired, or transported to another world?</li><li><strong>Unique Features</strong> — What makes your park different from others? Are there groundbreaking technologies, exclusive attractions, or a unique cultural influence?</li><li><strong>Target Audience</strong> — Who is your park designed for? Families, thrill-seekers, fans of a specific genre?</li></ul>
-<p>Submit in a Google Doc.</p></div>
-  </details>
-  <div class="meta"><span><b>Pathway</b> <a href="../pathways/project.html">Project Management</a></span></div>
-</article>
-<article class="asg">
-  <div class="ah">
-    <h3>Full Scope Project, Weeks 1&ndash;3</h3>
+    <h3>Full Scope Project</h3>
     <span class="wk">Wk 2&ndash;4</span>
     <span class="kind">Project</span>
   </div>
   <p class="hook">Three weeks working as a different kind of engineer each week, with a real deliverable for each role.</p>
   <div class="bd">
-    <p>You choose a new role &mdash; or more than one &mdash; each week and produce what a professional in that field would actually produce. Some weeks you will have to take two roles, so think about which ones pair well.</p>
+    <p>It starts with a vision statement for a theme park of your own &mdash; its theme, the experience you want visitors to have, what makes it different, and who it is for. That gives the seven engineering roles something concrete to act on.</p>
+    <p>You then choose a new role &mdash; or more than one &mdash; each week and produce what a professional in that field would actually produce. Some weeks you will have to take two roles, so think about which ones pair well.</p>
     <p>Monday: submit your Weekly Planner. Friday: submit your Project Reflection with all project files.</p>
   </div>
   <div class="gives"><p class="gl">What you hand in</p><ul>
+    <li>A vision statement for the park</li>
     <li><b>Design Engineer</b> &mdash; a drawing set or a CAD model</li>
     <li><b>Research Engineer</b> &mdash; research and a prediction about a new use for an existing item</li>
     <li><b>Development Engineer</b> &mdash; a model or a prototype</li>
@@ -390,27 +386,48 @@ catch(e){}})();
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>This project challenges you to step into the different roles of an engineer and produce a specific deliverable for each. Over the next three weeks, you will choose a new role (or roles) each week and create a project that a professional in that field would. This will help you understand the diverse tasks and responsibilities that make up the world of engineering.</p>
-<p><strong>Instructions</strong></p>
-<p>On Monday, submit your Weekly Planner Document to outline your goals for the week. On Friday, submit your Project Reflection Document along with all project files.</p>
-<p>You will tackle several engineering roles over a three-week stretch. Because of this, there are some weeks you will have to choose more than one role. You'll need to figure out what roles may best pair together.</p>
-<p><strong>The Roles &amp; Potential Deliverables</strong> — For each role you select, you will have an end product. You can choose from the following suggestions, or request approval for your own ideas:</p>
-<div class="tw"><table><thead><tr><th>Role</th><th>Deliverable</th></tr></thead><tbody><tr><td data-label="Role">Design Engineer</td><td data-label="Deliverable">Create a detailed design, such as a drawing set or a CAD model.</td></tr><tr><td data-label="Role">Research Engineer</td><td data-label="Deliverable">Conduct research and make a prediction on a new use for an existing item or a new strategy to accomplish a task.</td></tr><tr><td data-label="Role">Development Engineer</td><td data-label="Deliverable">Make a model or a prototype.</td></tr><tr><td data-label="Role">Production &amp; Construction Engineer</td><td data-label="Deliverable">Develop a Work Breakdown Structure for a project, with a Gantt Chart to determine the sequence.</td></tr><tr><td data-label="Role">Operations Engineer</td><td data-label="Deliverable">Create a design of a large-scale system, including operational notes.</td></tr><tr><td data-label="Role">Sales Engineer</td><td data-label="Deliverable">Create a marketing piece for a product, such as an ad, a commercial, or a brochure, to sell the engineering behind it.</td></tr><tr><td data-label="Role">Management Engineer</td><td data-label="Deliverable">Create an imaginary team and assign tasks to each person to complete a product.</td></tr></tbody></table></div>
-<p><strong>This is the spine of the whole course.</strong> The seven roles here are the same seven from the <em>Roles of an Engineer</em> assignment the week before, and the Gantt chart deliverable is why <em>Full Scope Project - Gantt chart</em> is the template that propagated into thirty-plus Drive copies. The vision statement gives it a concrete subject (a theme park) so the roles have something to act on.</p></div>
+    <div class="bt"><p>Three weeks working as a different kind of engineer each week, producing what a professional in that role would actually produce. The subject is a theme park of your own design, so the roles have something concrete to act on.</p>
+<p><strong>What to do</strong></p>
+<ul><li><strong>Start with a vision statement.</strong> Before you design anything, write a short statement covering the park's central theme or story; the experience you want visitors to have; the unique features that separate it from any other park; and the audience it is built for.</li><li>Each week, choose a role — or more than one — from the table below and produce its deliverable. Seven roles across three weeks means some weeks carry two, so think about which pair well together.</li><li>Every Monday, submit a Weekly Planner setting out your goals for the week.</li><li>Every Friday, submit a Project Reflection along with all your project files.</li></ul>
+<p><strong>The roles and what each one produces</strong></p>
+<div class="tw"><table><thead><tr><th>Role</th><th>Deliverable</th></tr></thead><tbody><tr><td data-label="Role">Design Engineer</td><td data-label="Deliverable">A detailed design: a drawing set or a CAD model.</td></tr><tr><td data-label="Role">Research Engineer</td><td data-label="Deliverable">Research and a prediction: a new use for an existing item, or a new strategy for accomplishing a task.</td></tr><tr><td data-label="Role">Development Engineer</td><td data-label="Deliverable">A model or a prototype.</td></tr><tr><td data-label="Role">Production &amp; Construction Engineer</td><td data-label="Deliverable">A Work Breakdown Structure, with a Gantt chart setting the sequence.</td></tr><tr><td data-label="Role">Operations Engineer</td><td data-label="Deliverable">A large-scale system design, including operational notes.</td></tr><tr><td data-label="Role">Sales Engineer</td><td data-label="Deliverable">A marketing piece — ad, commercial or brochure — that sells the engineering behind the product.</td></tr><tr><td data-label="Role">Management Engineer</td><td data-label="Deliverable">An imaginary team, with tasks assigned to each person to complete a product.</td></tr></tbody></table></div>
+<p>You can propose your own deliverable for a role instead, with approval.</p>
+<p><strong>What you hand in</strong></p>
+<ul><li>The vision statement.</li><li>One deliverable per role, all seven covered by the end of week three.</li><li>Three Weekly Planners and three Project Reflections.</li><li>All project files.</li></ul></div>
   </details>
-  <p class="anote">The three weekly assignments carry identical instructions. Only the role you pick changes.</p>
+  <p class="anote">Each of the three weeks carries the same instructions. Only the role you pick changes.</p>
   <div class="meta"><span><b>Tools</b> Fusion 360, AutoCAD, Google Docs, Gantt chart template</span><span><b>Pathway</b> <a href="../pathways/project.html">Project Management</a></span></div>
 </article>
 <article class="asg">
   <div class="ah">
-    <h3>Tiny House &mdash; Fusion 360</h3>
+    <h3>Tiny House</h3>
     <span class="wk">Wk 3</span>
     <span class="kind">Project</span>
   </div>
-  <p class="hook">A tiny house modelled in Fusion 360.</p>
+  <p class="hook">A detailed tiny house in Fusion 360 &mdash; 400 sq ft or less, so every space has to do more than one job.</p>
   <div class="bd">
-    <p>Listed in Classroom without a written brief. Ask Mr. Frank for the requirements.</p>
+    <p>The first large project of junior year. Think less about &ldquo;rooms&rdquo; and more about &ldquo;spaces&rdquo;: how they blend into each other, and how one space can serve more than one purpose.</p>
+    <p>You can either convert an existing structure into a tiny house, or frame a design built from scratch.</p>
   </div>
+  <div class="gives"><p class="gl">What you hand in</p><ul>
+    <li>A design brief</li>
+    <li>The Fusion 360 model, every item its own <b>named</b> component</li>
+    <li>2D floor plans and elevations</li>
+    <li>3D renderings</li>
+    <li>At least one animated item &mdash; a door counts, but a space-saving feature is a better answer</li>
+    <li>A Google Doc listing anything you borrowed, from a classmate or from online</li>
+  </ul></div>
+  <details class="brief" open>
+    <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
+    <div class="bt"><p>The first large project of junior year. Design a detailed tiny house in Fusion 360. A tiny house is typically 400 square feet or less, so planning for a tight space is the whole exercise. Think less about "rooms" and more about "spaces" — how they blend into each other, and how one space can serve more than one purpose.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Start with brainstorming and conceptual design work.</li><li>Write a design brief.</li><li>Decide your approach: either convert an existing structure into a tiny house, or frame a design built from scratch.</li><li>Model it in Fusion 360. Make every item its own component, and <strong>name the components</strong> — this will save you a great deal of time later.</li><li>Work in multiple files if that suits you. Create a project folder and keep your parts as separate files inside it.</li><li>Make furniture. You have the tables you built last year; include those. Using a good GrabCAD model is acceptable, but your own work has to be visible in the design too.</li><li>Animate at least one item. A door counts, but a space-saving feature is a better answer.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>A design brief.</li><li>The Fusion 360 3D model.</li><li>2D floor plans and elevations.</li><li>3D renderings.</li><li>At least one animation.</li><li>A Google Doc listing anything you borrowed, from a classmate or from online.</li></ul>
+<p><strong>Watch out for</strong></p>
+<p>Modelling the whole house as one body. Separate, named components are what make the drawings, the renders and the animation possible at the end.</p></div>
+  </details>
+  <p class="anote">Work in multiple files if it suits you &mdash; a project folder with each part as its own file. Include the tables you built last year, and make some of the furniture yourself rather than pulling all of it from GrabCAD.</p>
   <div class="meta"><span><b>Tools</b> Fusion 360</span><span><b>Pathway</b> <a href="../pathways/architecture.html">Architecture &amp; Civil</a></span></div>
 </article>
 </section>
@@ -436,23 +453,26 @@ catch(e){}})();
     <li>A complete Fusion 360 model showing kitchen, bath, sleeping area, walls, roof, windows and doors</li>
     <li>A dimensioned <b>floor plan</b>, labelled, with the separate entrance shown</li>
     <li>An <b>elevation view</b> of one exterior side</li>
+    <li>The mid-project feasibility check</li>
+    <li>The completed Daily Journal Log</li>
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>The Massachusetts Affordable Homes Act now allows homeowners in single-family zones to build one Accessory Dwelling Unit (ADU) "by-right," which simplifies the process and creates a massive market opportunity for small-scale, affordable housing.</p>
-<p>Your challenge is to act as a Design Engineer and create a 3D model for a new ADU.</p>
-<p><strong>Project Deliverables &amp; BHR Documentation.</strong> You will use the BHR Engineering Design Process and Documentation Procedures to complete this project.</p>
-<p><strong>Phase 1: Ideation &amp; Research (Project Start / Design Brief)</strong></p>
-<p>Project / Design Prep — Define your ADU:</p>
-<ul><li><strong>ADU Type</strong> — Specify the type you are designing (e.g. Detached New Construction (freestanding), Garage Conversion, or Attached Addition).</li><li><strong>Target Size</strong> — State the exact square footage of your floor plan (must be ≤ 900 sq ft).</li><li><strong>Target User</strong> — Who is this unit for? (e.g. an elderly parent, a college student.)</li></ul>
-<p>Then: start by creating different conceptual floor plan sketches (e.g. studio layout, one-bedroom layout, lofted design). Evaluate and select the best concept based on Space Utilization, Estimated Material Cost (simple high/medium/low), and MA ADU Compliance.</p>
-<p><strong>Phase 2: Modeling and Documentation (Detail Design Work)</strong></p>
-<ul><li><strong>Fusion 360 3D Model</strong> — Develop a complete 3D model of your selected ADU design. This model must clearly show the interior layout (kitchen, bath, sleeping area) and all exterior components (walls, roof, windows, doors).</li><li><strong>Technical Graphics Output</strong> — From your 3D model, generate at least two professional 2D drawings: a <strong>Floor Plan</strong> (dimensions and clear labelling for the kitchen, bath, and separate entrance) and an <strong>Elevation View</strong> (the exterior from one side).</li></ul>
-<p><strong>Phase 3: Project Reflection</strong></p>
-<ul><li><strong>Daily Documentation</strong> — Maintain your Daily Journal Log throughout the project, documenting tasks completed, any issues encountered with Fusion 360, and how you solved them.</li></ul>
-<p>Paired with <em>ADU Design Project - Mid-Project Design Review &amp; Feasibility Check</em> (edited 17 Nov 2025).</p></div>
+    <div class="bt"><p>The Massachusetts Affordable Homes Act lets homeowners in single-family zones build one Accessory Dwelling Unit by right. That makes small, affordable housing a real market. You are the design engineer for one such unit.</p>
+<p>You will use the BHR Engineering Design Process and Documentation Procedures throughout.</p>
+<p><strong>What to do</strong></p>
+<p><strong>Phase 1 — ideation and research.</strong> Define the unit before you draw it:</p>
+<ul><li><strong>Type</strong> — detached new construction, garage conversion, or attached addition.</li><li><strong>Target size</strong> — the exact square footage of your floor plan, 900 sq ft or under.</li><li><strong>Target user</strong> — who lives here. An elderly parent, a college student, someone else.</li></ul>
+<p>Then sketch several conceptual floor plans — a studio layout, a one-bedroom, a lofted design — and choose between them on three criteria: space utilisation, estimated material cost (high, medium or low is enough), and compliance with the Massachusetts ADU rules.</p>
+<p><strong>Phase 2 — modelling and documentation.</strong> Build the complete 3D model in Fusion 360, showing the interior layout (kitchen, bath, sleeping area) and every exterior component (walls, roof, windows, doors). Generate your 2D drawings from that model rather than drawing them separately.</p>
+<p><strong>Phase 3 — mid-project review.</strong> Partway through, stop and check feasibility: does the plan still meet the square footage limit, does the layout still work for your target user, and is anything in the model going to be impossible to build? Record what you changed as a result.</p>
+<p><strong>Phase 4 — documentation and reflection.</strong> Keep your Daily Journal Log running the whole way: tasks completed, problems hit in Fusion 360, and how you solved them.</p>
+<p><strong>What you hand in</strong></p>
+<ul><li>The ADU definition: type, exact square footage, target user.</li><li>Your conceptual floor plan sketches, and a short justification of the one you chose against the three criteria.</li><li>A complete Fusion 360 model.</li><li>A <strong>floor plan</strong> drawing: dimensioned, with the kitchen, bath and separate entrance clearly labelled.</li><li>An <strong>elevation view</strong> of one exterior side.</li><li>The mid-project feasibility check.</li><li>The completed Daily Journal Log.</li></ul>
+<p><strong>Watch out for</strong></p>
+<p>The 900 sq ft ceiling is a hard constraint, not a target. Check your floor area before you start detailing, not after.</p></div>
   </details>
-  <p class="anote">Runs with a Mid-Project Design Review and Feasibility Check.</p>
+  <p class="anote">The Mid-Project Design Review and Feasibility Check is part of this project, not a separate assignment. Partway through, stop and check the square footage, the layout, and whether anything in the model would be impossible to build.</p>
   <div class="meta"><span><b>Tools</b> Fusion 360</span><span><b>Pathway</b> <a href="../pathways/architecture.html">Architecture &amp; Civil</a></span></div>
 </article>
 <article class="asg">
@@ -467,15 +487,18 @@ catch(e){}})();
     <p>Sign up through the under-18 route at <code>app.arduino.cc/minors</code>. The class code and activation code are in Classroom &mdash; they are not published here.</p>
   </div>
   <div class="gives"><p class="gl">What you hand in</p><ul>
-    <li>The completed student logbook</li>
-    <li>The Arduino reflection assignment</li>
+    <li>The completed student logbook, filled in as you go</li>
+    <li>A written reflection on the course: hardest lesson, what you could now build alone, what you would still need help with</li>
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>Sign up through the under-18 route at <code>app.arduino.cc/minors</code>. The class code and the activation code are with the assignment in Google Classroom.</p>
-<p>Welcome to the Arduino Education Starter course and kit. This curriculum is designed as an introduction to the Arduino system. It contains 10 lessons that build students' knowledge of coding and electronics. Each lesson builds off of the next and gives students the opportunity to apply skills and concepts that were covered in previous lessons.</p>
-<p>This course also has a logbook that you will complete as you work through the lessons. You will find a copy of the student logbook on this assignment. This document will be submitted at the end of your project. (A PDF is also provided if any information is missing.)</p>
-<p>Paired with <em>Intro to ESEC - Arduino - Reflection</em>.</p></div>
+    <div class="bt"><p>The Arduino Education Starter course and kit: ten lessons that build from nothing to working circuits and code. Each lesson builds on the one before and applies what the previous lesson taught.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Sign up through the under-18 route at <code>app.arduino.cc/minors</code>. The class code and the activation code are with the assignment in Google Classroom.</li><li>Work through all ten lessons in order.</li><li>Fill in the student logbook as you go, not at the end. A copy is attached to the assignment; a PDF is also provided if anything is missing from the doc.</li><li>Finish with a written reflection on the course: which lesson was hardest, what you would now be able to build on your own, and what you would still need help with.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>The completed student logbook.</li><li>The course reflection.</li></ul>
+<p><strong>Watch out for</strong></p>
+<p>Filling the logbook in retrospectively. It is the record of what you actually did, and it is obvious when it was written all at once afterwards.</p></div>
   </details>
   <div class="alinks"><p class="gl">Files and links</p>
     <a href="https://app.arduino.cc/minors" target="_blank" rel="noopener"><b>Arduino under-18 signup</b><span>The signup route for students under eighteen. Not the generic Arduino signup &mdash; use this one.</span><em>app.arduino.cc</em></a>
@@ -501,12 +524,14 @@ catch(e){}})();
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>This project is designed to demonstrate your mastery of key BHR Engineering Core Concepts learned this year, specifically in Documentation, Technical Knowledge, and Analysis, through the build of a VEX V5 Clawbot build.</p>
-<p><strong>Process</strong></p>
-<p>Begin your week this week by building the VEX V5 Clawbot using the provided build guides. Once you have a working Clawbot use the provided webpage to complete lessons/activities found under the Play, Apply, Rethink, and Know sections. During this process create a portfolio or document of all work done.</p>
-<p><strong>Deliverable</strong> — You must submit a single, complete VEX Project Document using Google Slides.</p>
-<p><strong>Focus of Slides</strong></p>
-<ul><li><strong>Log Book</strong> — track your build process as well as troubleshooting issues and the solutions you implemented during both the build and the programming process.</li><li><strong>Major Part List (BOM)</strong> — A formalized table listing all major components (e.g. motors, sensors, brain). Must include Port Numbers and a concise function description for each part.</li><li><strong>VEX Code &amp; Annotations</strong> — Screenshots of your VEX code with detailed written annotations explaining the goal and function of the code blocks and variables.</li><li><strong>Modification Justification</strong> — Describe modifications done to final build. Provide a justification linking the changes directly to a weakness you observed during the robot's testing and evaluation.</li></ul></div>
+    <div class="bt"><p>Build the VEX V5 Clawbot, program it, and document the whole thing as one professional project record. This project is assessed on Documentation, Technical Knowledge and Analysis — three of the shop's core concepts — not on getting a robot to move.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Build the Clawbot using the provided build guides.</li><li>Once it works, complete the lessons and activities on the VEX site under the Play, Apply, Rethink and Know sections.</li><li>Document everything as you go, in one place.</li><li>Test the finished robot, note where it is weak, and modify it in response.</li></ul>
+<p><strong>What you hand in</strong></p>
+<p>One complete VEX Project Document in Google Slides, containing:</p>
+<ul><li><strong>Log book</strong> — the build process, the problems you hit in both building and programming, and the fixes you actually applied.</li><li><strong>Major part list (BOM)</strong> — a formal table of every major component (motors, sensors, brain), with port numbers and a concise function description for each.</li><li><strong>Code and annotations</strong> — screenshots of your VEX code, annotated to explain the goal and function of each block and variable.</li><li><strong>Modification justification</strong> — what you changed on the final build, each change tied to a specific weakness you observed during testing.</li></ul>
+<p><strong>Watch out for</strong></p>
+<p>A modification you cannot justify. "It looked better" is not an answer; the grade is in the link between the test result and the change.</p></div>
   </details>
   <div class="alinks"><p class="gl">Files and links</p>
     <a href="https://education.vex.com/stemlabs/v5" target="_blank" rel="noopener"><b>VEX V5 STEM Labs</b><span>The Play / Apply / Rethink / Know activities the brief sends you to. Free and open, no account needed.</span><em>education.vex.com</em></a>
@@ -531,8 +556,11 @@ catch(e){}})();
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>Today we will do several things in CorelDraw. I gave a quick intro to the program now I would like for you to do some independent learning. However, do feel free to work with classmates and get their feedback. By day's end have the following tasks completed. Upload files/images/screenshots/written descriptions/whatever to show completion:</p>
-<ul><li>Find a beginners/intro CorelDraw tutorial to learn some of the program's basics</li><li>Pick a full walkthrough on how to make something in CorelDraw and complete the walkthrough</li><li>Make something on your own — try using a video that teaches a new skill and work around that concept</li><li>Create some other thing(s) with your remaining time</li></ul></div>
+    <div class="bt"><p>A day of teaching yourself CorelDraw, with work to show for it. There is a short intro from the instructor; the rest is independent learning. Work with classmates and take their feedback.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Find a beginner tutorial and work through the program's basics.</li><li>Pick a full walkthrough on making something in CorelDraw, and complete it.</li><li>Make something of your own — find a video that teaches a new skill and build around that skill.</li><li>Use whatever time is left on something else of your choosing.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>Files, images, screenshots or written descriptions — whatever shows each of the four tasks above got done.</li></ul></div>
   </details>
   <div class="meta"><span><b>Tools</b> CorelDraw, laser engraver</span><span><b>Pathway</b> <a href="../pathways/industrial.html">Industrial Design</a></span></div>
 </article>
@@ -556,13 +584,15 @@ catch(e){}})();
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>In this project, you will move from "Digital Designer" to "Mechanical Engineer." You aren't just drawing shapes; you are designing a machine that must work in the real world. You will master Joints and Motion Links in Fusion 360 and then bring your most complex design to life using our 3D printers.</p>
-<p>Your mission is to prove that you can account for the "Physical Gap" — the tolerances required to make plastic parts move against each other without fusing together.</p>
-<p><strong>Part 1: The Digital Foundation (2 Simple Machines).</strong> Before building your final 3D printed design, you must demonstrate mastery of the basics. Model and animate two different simple machines of your choice (e.g. lever, wheel and axle, pulley, inclined plane, wedge, screw). <em>Requirement:</em> each must have functional Joints (Revolute, Slider, etc). <em>Deliverable:</em> a high-quality render and a short animation of each.</p>
-<p><strong>Part 2: The "Mechanism Thing" (Compound Prototype).</strong> Research and design one "Mechanical Fidget" or "Mechanism Sandbox." This is a small, handheld device that uses at least two simple machines working together.</p>
-<ul><li><em>Inspiration:</em> Think of the "Coin Vending Fidget" or a "Rack and Pinion Slider." It should be something you can hold in your hand and interact with (turn a crank, push a lever, slide a button).</li><li><em>The Constraint:</em> You must use a gap for tolerance (suggestion of 0.3 mm) between all moving parts. If your parts touch in Fusion, they will be stuck forever in the 3D printer!</li><li><em>The "Link":</em> Use a Motion Link to show how moving one part (the input) automatically moves the others (the outputs).</li></ul>
-<p><strong>Submission Checklist</strong></p>
-<ul><li>The Digital (Fusion 360) — Renders: 3 total (one for each simple machine, one for the complex mechanism). Animations: video exports showing all 3 designs in motion.</li><li>The Physical Prototype — A functional, 3D-printed version of your complex mechanism. It must move freely without being forced or broken.</li></ul></div>
+    <div class="bt"><p>This project moves you from digital designer to mechanical engineer. You are not drawing shapes; you are designing a machine that has to work in the real world. The test is the physical gap: the tolerance that lets printed plastic parts move against each other instead of fusing solid.</p>
+<p><strong>What to do</strong></p>
+<p><strong>Part 1 — the digital foundation.</strong> Model and animate two different simple machines of your choice: lever, wheel and axle, pulley, inclined plane, wedge, screw. Each must have functional joints — revolute, slider, and so on.</p>
+<p><strong>Part 2 — the compound prototype.</strong> Research and design one mechanical fidget or mechanism sandbox: a small handheld device using at least two simple machines working together, that you can interact with by turning a crank, pushing a lever or sliding a button. A coin vending fidget or a rack-and-pinion slider is the kind of thing.</p>
+<ul><li>Leave a tolerance gap between all moving parts. 0.3 mm is the suggested figure.</li><li>Use a Motion Link so that moving the input part automatically moves the outputs.</li><li>Print it, and make sure it moves freely.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>Three high-quality renders: one per simple machine, one for the mechanism.</li><li>Animation video exports showing all three designs in motion.</li><li>A functional 3D-printed version of the compound mechanism, moving freely without being forced.</li></ul>
+<p><strong>Watch out for</strong></p>
+<p>If two parts touch each other in Fusion, they come off the printer permanently fused. Check every interface for clearance before you send the file.</p></div>
   </details>
   <p class="anote">Leave a tolerance gap between all moving parts &mdash; 0.3 mm is the suggested figure. If the parts touch in Fusion, they come off the printer stuck together permanently.</p>
   <div class="meta"><span><b>Tools</b> Fusion 360, 3D printing</span><span><b>Pathway</b> <a href="../pathways/mechanical.html">Mechanical</a></span></div>
@@ -585,8 +615,11 @@ catch(e){}})();
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>Follow along with the video to create a robotic arm design that will be made using the engraver.</p>
-<p>Start by doing a cardboard prototype. Finished product will be out of wood. Engraver needs 2D drawings of parts. When done I will want orthographic drawings of the final product.</p></div>
+    <div class="bt"><p>A robotic arm, prototyped in cardboard and cut in wood on the engraver.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Follow the video to develop the design.</li><li>Build a cardboard prototype first and check the motion before you cut wood.</li><li>Produce 2D drawings of every part — the engraver needs them.</li><li>Cut and assemble the final arm in wood.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>The cardboard prototype.</li><li>2D part drawings for the engraver.</li><li>The finished wooden arm.</li><li>Orthographic drawings of the final product.</li></ul></div>
   </details>
   <div class="meta"><span><b>Tools</b> Laser engraver, CorelDraw</span><span><b>Pathway</b> <a href="../pathways/mechanical.html">Mechanical</a></span></div>
 </article>
@@ -605,37 +638,17 @@ catch(e){}})();
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>As a class, you will go through all the tutorials in the kit. What I will need from you is in a Google Doc — document this project. Take pictures, screenshots, write about what you have done.</p></div>
+    <div class="bt"><p>Work through every tutorial in the Elegoo Uno kit as a class, documenting the project as you go.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Complete the kit's tutorials in order.</li><li>Photograph and screenshot your circuits and your code.</li><li>Write about what you did, not just what the tutorial said.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>One Google Doc documenting the whole project: pictures, screenshots, and your own written account of each build.</li></ul></div>
   </details>
   <div class="meta"><span><b>Tools</b> Elegoo Uno kit</span><span><b>Pathway</b> <a href="../pathways/electrical.html">Electrical</a></span></div>
 </article>
 </section>
 <section class="term" id="term-3">
-  <div class="termhd"><h2>Term 3</h2><span class="tc">5 entries</span></div>
-<article class="asg">
-  <div class="ah">
-    <h3>Fusion 360 Animation</h3>
-    <span class="wk">Wk 1</span>
-    <span class="kind">Project</span>
-  </div>
-  <p class="hook">An animation of an assembly in Fusion 360.</p>
-  <div class="bd">
-    <p>Listed in Classroom with a reflection but no written brief. Ask Mr. Frank for the requirements.</p>
-  </div>
-  <div class="meta"><span><b>Tools</b> Fusion 360</span><span><b>Pathway</b> <a href="../pathways/mechanical.html">Mechanical</a></span></div>
-</article>
-<article class="asg">
-  <div class="ah">
-    <h3>Client Desk Organizer</h3>
-    <span class="wk">Wk 1</span>
-    <span class="kind">Project</span>
-  </div>
-  <p class="hook">A desk organiser designed to a client brief.</p>
-  <div class="bd">
-    <p>Listed in Classroom with a Mid-Project Design Review but no written brief. Ask Mr. Frank for the requirements.</p>
-  </div>
-  <div class="meta"><span><b>Tools</b> Fusion 360, 3D printing</span><span><b>Pathway</b> <a href="../pathways/industrial.html">Industrial Design</a></span></div>
-</article>
+  <div class="termhd"><h2>Term 3</h2><span class="tc">3 entries</span></div>
 <article class="asg">
   <div class="ah">
     <h3>Creative Concept Design</h3>
@@ -652,9 +665,13 @@ catch(e){}})();
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>Today is a session in conceptual design. You have the floor, the tools, and total creative freedom. Your goal is to design, model, and refine anything your brain can cook up in a professional CAD program (Fusion, Revit, AutoCAD, etc.).</p>
-<p><strong>Directive</strong></p>
-<ul><li>This isn't the place for "Lego-style" building. Use the advanced tools — Lofts, Sweeps, Patterns, Parameters, or complex Architectural Families.</li><li>Depth is key, pick a project that will actually fill your day. If I look at your final model and think, "I could have done that in 20 minutes," you haven't reached your goal.</li><li>No constraints and have high expectations. There are no specific requirements for what you build, but there are expectations for how you build it. I want to see intricate details, moving parts, or structurally sound architecture.</li><li>The Bottom Line: Impress yourself. Don't take the easy way out and make something that kinda looks like what you are going for.</li></ul></div>
+    <div class="bt"><p>One day of conceptual design. You have the floor, the tools, and total creative freedom. Design, model and refine anything you can think of in a professional CAD program — Fusion 360, Revit, AutoCAD.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Use the advanced tools: lofts, sweeps, patterns, parameters, complex architectural families. This is not the place for Lego-style building.</li><li>Pick something with enough depth to fill the day.</li><li>There are no requirements for <em>what</em> you build. There are expectations for <em>how</em> you build it: intricate detail, moving parts, or structure that would actually stand up.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>One model that genuinely took the day, plus renders of it.</li><li>A few lines on which advanced tools you used and what they let you do.</li></ul>
+<p><strong>Watch out for</strong></p>
+<p>If the finished model looks like twenty minutes of work, it was. Aim past what you are already comfortable with.</p></div>
   </details>
   <p class="anote">Use the advanced tools &mdash; lofts, sweeps, patterns, parameters, architectural families. Not Lego-style building. If it looks like twenty minutes of work, it was.</p>
   <div class="meta"><span><b>Tools</b> Fusion 360, Revit, AutoCAD</span><span><b>Pathway</b> <a href="../pathways/mechanical.html">Mechanical</a></span></div>
@@ -676,21 +693,25 @@ catch(e){}})();
     <li>One digital master site plan</li>
     <li>One physical scale model</li>
     <li>Named roles: <b>Project Manager</b> holds the Forma master file and the deadlines; <b>Infrastructure Lead</b> prints the road and park tiles everyone connects to; <b>Zoning Leads</b> for residential, commercial and industrial</li>
+    <li>A written reflection: your role, where the interface standard held and where it failed, and what you would set differently next time</li>
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p><strong>Objective:</strong> Work as a unified firm to design, analyze, and 3D print a modern city. The class will produce one digital "Master Site Plan" and one physical "Scale Model."</p>
-<p><strong>Phase 1: The Master Plan (Autodesk Forma).</strong> The class will act as the Urban Planning Board. Before anyone models a building, we must define the world.</p>
-<ul><li><em>Site Selection</em> — Use Autodesk Forma to select a real-world location (or a fictional plot).</li><li><em>Environmental Analysis</em> — Use Forma's AI tools to check sun hours, wind patterns, and noise. This data should dictate where "Green Space" goes and where "High-Rises" go.</li><li><em>Zoning</em> — Divide the city into zones (Residential, Commercial, Industrial, Transit). Each student/pair will be assigned a specific zone.</li></ul>
-<p><strong>Phase 2: The Infrastructure Standard (The "Base Tile").</strong> To make the city model modular, the whole class must agree on a Connection Standard. This ensures that a building designed by Student A fits perfectly next to a road designed by Student B.</p>
-<ul><li><em>The Grid</em> — Every city block will be an agreed upon size and shape.</li><li><em>The Connection</em> — Each tile must feature a predetermined system to connect all four sides.</li><li><em>The "Road Curb"</em> — You must agree on the height of the sidewalk and the width of the road so they line up across the whole model.</li></ul>
-<p><strong>Phase 3: Architecture &amp; Modeling (Fusion 360).</strong> Once the grid is set, students move into Fusion 360 to build their specific blocks.</p>
-<ul><li><em>Building Massing</em> — Use the data from Forma to design buildings that make sense for the environment (e.g. "This building needs a slanted roof because it gets the most sun").</li><li><em>Modular Design</em> — Students model their building directly onto a copy of the Master Base Tile.</li><li><em>The "Featured" Building</em> — Each student must have at least one "Featured" building designed in high detail.</li></ul>
-<p><strong>Phase 4: Physical Production (3D Printing).</strong></p>
-<ul><li><em>Basic Buildings</em> — Use "Massing" models (simple geometric shapes) for the background buildings to save print time.</li><li><em>Featured Buildings</em> — High-detail prints for the centrepieces of the model.</li><li><em>The Assembly</em> — As prints finish, they are "clicked" into the master city layout on a large table in the classroom.</li></ul>
-<p><strong>New Project Roles (Industry Simulation).</strong> To make the "One Big Team" work, assign students specific leadership roles:</p>
-<ul><li><em>Project Manager (1–2 students)</em> — Manages the Forma Master File and ensures everyone is meeting their deadlines.</li><li><em>Infrastructure Lead</em> — Responsible for printing the "Road" and "Park" tiles that connect everyone else's buildings.</li><li><em>Zoning Leads</em> — One lead for Residential, Commercial, and Industrial.</li></ul>
-<p>Paired with <em>City Design - Mid-Project Design Review &amp; Feasibility Check</em>.</p></div>
+    <div class="bt"><p>The whole class works as one firm to design, analyse and 3D print a modern city. The class produces one digital master site plan and one physical scale model. Everything has to fit together, which makes the shared standards as important as the buildings.</p>
+<p><strong>What to do</strong></p>
+<p><strong>Phase 1 — the master plan, in Autodesk Forma.</strong> The class acts as the urban planning board.</p>
+<ul><li><strong>Site selection</strong> — choose a real-world location, or a fictional plot.</li><li><strong>Environmental analysis</strong> — use Forma's analysis tools for sun hours, wind and noise. That data decides where green space goes and where high-rises go.</li><li><strong>Zoning</strong> — divide the city into residential, commercial, industrial and transit zones. Each student or pair is assigned a zone.</li></ul>
+<p><strong>Phase 2 — the infrastructure standard.</strong> The class agrees one connection standard so that a building designed by one student fits the road designed by another.</p>
+<ul><li><strong>The grid</strong> — every city block is an agreed size and shape.</li><li><strong>The connection</strong> — every tile uses the same system to connect on all four sides.</li><li><strong>The road curb</strong> — one agreed sidewalk height and road width, across the whole model.</li></ul>
+<p><strong>Phase 3 — architecture, in Fusion 360.</strong> Once the grid is set, build your blocks.</p>
+<ul><li><strong>Massing</strong> — use the Forma data to justify your design decisions. If a building needs a slanted roof because of the sun it gets, say so.</li><li><strong>Modular design</strong> — model directly onto a copy of the master base tile.</li><li><strong>The featured building</strong> — each student produces at least one building in high detail.</li></ul>
+<p><strong>Phase 4 — physical production.</strong> Simple massing prints for background buildings to save print time; high-detail prints for the featured buildings. Prints are clicked into the master layout on the classroom table as they come off.</p>
+<p><strong>Project roles.</strong> For the class to work as one team, these roles are assigned:</p>
+<ul><li><strong>Project Manager</strong> (1–2 students) — holds the Forma master file and keeps everyone to their deadlines.</li><li><strong>Infrastructure Lead</strong> — prints the road and park tiles that connect everyone else's work.</li><li><strong>Zoning Leads</strong> — one each for residential, commercial and industrial.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>Your zone, modelled on the master base tile.</li><li>At least one high-detail featured building.</li><li>Your printed tiles, fitting the class standard.</li><li>A written reflection: what your role was, where the interface standard held and where it failed, and what you would set differently next time.</li></ul>
+<p><strong>Watch out for</strong></p>
+<p>Modelling before the connection standard is agreed. Anything built to your own dimensions will not fit the city, and it will have to be redone.</p></div>
   </details>
   <div class="alinks"><p class="gl">Files and links</p>
     <a href="https://www.autodesk.com/products/forma" target="_blank" rel="noopener"><b>Autodesk Forma</b><span>The site and environmental analysis tool Phase 1 runs on.</span><em>autodesk.com</em></a>
@@ -716,11 +737,12 @@ catch(e){}})();
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>This assignment transitions you into BIM (Building Information Modeling) using the Autodesk Learning Portal. You will work through the <em>Revit for Architectural Design Professional Certification Prep</em> course to build a professional foundation in architectural modeling and documentation.</p>
-<p><strong>The Mission: Revit Professional Progress Log.</strong> You are responsible for managing your own learning pace through the core lessons. To receive credit, you must maintain a Google Doc Progress Log that documents your journey from a basic user to a certification-ready designer.</p>
-<p><strong>Log Requirements.</strong> For every module or major exercise you complete, your Google Doc must include:</p>
-<ul><li><em>Module Title</em> — the specific lesson or exercise name (e.g. "Lesson 01: Modeling" or "Practice Exercise: Create a wall type").</li><li><em>Evidence of Completion</em> — a high-quality screenshot of the completed model, the "Lesson Complete" checkmark, or your quiz results.</li><li><em>Technical Reflection</em> — the tool you used and how it applies to a real-world building project (e.g. "I learned how to configure worksets to allow multiple people to edit the same building file simultaneously").</li></ul>
-<p><strong>Submission.</strong> Once you have completed all lessons and the Practice Exam, submit your Google Doc to Google Classroom.</p></div>
+    <div class="bt"><p>This moves you into BIM — Building Information Modeling — through the <em>Revit for Architectural Design Professional Certification Prep</em> course on the Autodesk Learning Portal. You manage your own pace; credit comes from the progress log rather than from finishing fast.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Work through the core lessons of the certification-prep course.</li><li>Maintain a Google Doc progress log as you go.</li><li>Complete the practice exam at the end.</li></ul>
+<p><strong>What you hand in</strong></p>
+<p>One Google Doc progress log, with an entry for every module or major exercise:</p>
+<ul><li><strong>Module title</strong> — the specific lesson or exercise, e.g. "Lesson 01: Modeling" or "Practice Exercise: Create a wall type".</li><li><strong>Evidence of completion</strong> — a high-quality screenshot of the finished model, the lesson-complete checkmark, or your quiz result.</li><li><strong>Technical reflection</strong> — the tool you used and how it applies to a real-world building project. For example: configuring worksets so several people can edit the same building file at once.</li></ul></div>
   </details>
   <div class="alinks"><p class="gl">Files and links</p>
     <a href="https://www.autodesk.com/learning" target="_blank" rel="noopener"><b>Autodesk Learning Portal</b><span>Where the Revit certification-prep course lives. Free with your Autodesk education account.</span><em>autodesk.com</em></a>
@@ -729,7 +751,7 @@ catch(e){}})();
 </article>
 </section>
 <section class="term" id="term-4">
-  <div class="termhd"><h2>Term 4</h2><span class="tc">4 entries</span></div>
+  <div class="termhd"><h2>Term 4</h2><span class="tc">3 entries</span></div>
 <article class="asg">
   <div class="ah">
     <h3>Famous Architect Presentation</h3>
@@ -745,20 +767,12 @@ catch(e){}})();
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>Pick an architect and create a presentation on their life and work. Highlight their unique works, show both conceptual and detail design work from them, in addition to actual photos. Be sure to include biographical information on the architect. Aim for a 3–5 minute presentation.</p></div>
+    <div class="bt"><p>A short presentation on one architect's life and work.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Pick an architect.</li><li>Gather both conceptual and detail design work from them, alongside real photographs of the built results.</li><li>Research their biography.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>A 3–5 minute presentation covering the architect's life, their significant works, and both the conceptual and the detail side of their design work.</li></ul></div>
   </details>
-  <div class="meta"><span><b>Pathway</b> <a href="../pathways/architecture.html">Architecture &amp; Civil</a></span></div>
-</article>
-<article class="asg">
-  <div class="ah">
-    <h3>Bridge Conceptual Design Model</h3>
-    <span class="wk">Wk 1</span>
-    <span class="kind">Project</span>
-  </div>
-  <p class="hook">A conceptual bridge model, with a reflection.</p>
-  <div class="bd">
-    <p>Listed in Classroom with a reflection but no written brief. Ask Mr. Frank for the requirements.</p>
-  </div>
   <div class="meta"><span><b>Pathway</b> <a href="../pathways/architecture.html">Architecture &amp; Civil</a></span></div>
 </article>
 <article class="asg">
@@ -767,14 +781,19 @@ catch(e){}})();
     <span class="wk">Wk 3</span>
     <span class="kind">Skills</span>
   </div>
-  <p class="hook">Two review materials on the Fusion features that matter most for the capstone.</p>
+  <p class="hook">Two review sessions on the Fusion features that matter most for the capstone.</p>
   <div class="bd">
-    <p>Both are attachment-only in Classroom &mdash; the drawings review and the stress simulation review.</p>
+    <p>The drawings environment, and stress simulation. The material is in the Classroom attachments.</p>
   </div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><ul><li><strong>Fusion Review - Drawings</strong> — "Here is a review of Fusion's drawings features"</li><li><strong>Fusion Review - Stress Simulations</strong></li></ul></div>
+    <div class="bt"><p>Two review sessions on the Fusion 360 features that matter most for the capstone: the drawings environment, and stress simulation.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Work through the drawings review, and the stress simulation review.</li><li>Both are attachment-based in Classroom — the material is in the attachments.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>Nothing is submitted separately. You are expected to use both in the capstone.</li></ul></div>
   </details>
+  <p class="anote">Nothing is submitted separately. You are expected to use both in the capstone.</p>
   <div class="meta"><span><b>Tools</b> Fusion 360</span><span><b>Pathway</b> <a href="../pathways/mechanical.html">Mechanical</a></span></div>
 </article>
 <article class="asg">
@@ -799,16 +818,18 @@ catch(e){}})();
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>Welcome to your final engineering challenge of the year! This week, we are throwing out the stress of manual syntax writing and stepping into the shoes of Tech Directors and Creative Founders.</p>
-<p>Your mission is to work in small teams to design, code, and pitch a brand-new app, program, or game using "Vibecoding" — letting Google Gemini do the heavy lifting of writing the actual code while your team focuses on the vision, user experience, logic, and presentation. This project is meant to be fast, collaborative, and, most importantly, fun. Choose something you actually want to play or use!</p>
-<p><strong>The Team Roles.</strong> Every team needs a cross-functional squad to handle the launch. Divide these roles among your team:</p>
-<ul><li><em>The Product Owner (The Vibe Director)</em> — Directs the AI on the core vision, gameplay, or utility functions. Manages the ultimate user experience.</li><li><em>The Lead Systems Engineer (The Code Prompter)</em> — Takes and refines the program code.</li><li><em>The Go-To-Market Specialist (The Business Lead)</em> — Uses Gemini to generate the business strategy, marketing angles, and financial feasibility.</li><li><em>The Creative Director (The Pitch Deck Designer)</em> — Leads the visual aesthetics, presentation flow, and asset requests.</li></ul>
-<p><strong>The 5-Day Sprint Roadmap</strong></p>
-<p><em>Days 1–2: Vision &amp; Business Strategy.</em> Before you code, you need a plan. Use Gemini to establish your product's identity. Power prompt: "We are a team of students building a casual [mobile game / productivity app / web tool] called [Name]. You are our business consultant. Open a Canvas and help us draft a 1-page business plan, including our target audience, unique features, and a fun marketing strategy."</p>
-<p><em>Days 3–4: The Vibecoding Hackathon.</em> Time to build. Use Gemini to write the prototype. Whether it's Python, HTML/JavaScript, or a custom script, let the AI generate the code files while you piece them together, test them, and direct changes. Power prompt: "You are our Lead software engineer. We want to write a functional prototype of a game where [explain your simple game mechanics, e.g. a ball dodging falling spikes]. Provide the clean, commented [HTML/JS or Python] code block for this setup so we can run it." Note: if the code breaks, just paste the error back into Gemini and say: "This broke at line 14, debug it for me!"</p>
-<p><em>Day 5: The Final Pitch Showcase.</em> Synthesize your business plan and code demo into a light, punchy presentation deck for the class.</p>
-<p><strong>Required Team Deliverables.</strong> Your team will submit a single Product Launch Package containing: the <strong>Functional Prototype</strong> (the actual script, program link, or code repository generated through your vibecoding sessions — it just needs to work at a basic level), the <strong>1-Page Business Summary</strong> (an AI-synthesized, student-polished plan covering why your app matters), and the <strong>Pitch Slide Deck</strong>.</p>
-<p><strong>How to Start.</strong> Get into your teams, open up Gemini, and copy/paste this exact prompt to kickstart the brainstorming engine: "Gemini, our team has 4 days to build a fun, light, end-of-year software prototype. Give us 3 unique, engaging, and highly achievable ideas for a web-based game or unique utility app that students our age would find cool. For each idea, briefly list what programming language we should use."</p></div>
+    <div class="bt"><p>Teams of four design, build and pitch an app, program or game, with an AI writing the code. Your team owns the vision, the user experience, the logic and the pitch; Gemini handles the syntax. Choose something you would actually use or play.</p>
+<p><strong>What to do</strong></p>
+<p><strong>Assign the four roles.</strong></p>
+<ul><li><strong>Product Owner</strong> — directs the AI on the core vision, gameplay or utility functions, and owns the user experience.</li><li><strong>Lead Systems Engineer</strong> — takes the generated code and refines it.</li><li><strong>Go-To-Market Specialist</strong> — business strategy, marketing angles, financial feasibility.</li><li><strong>Creative Director</strong> — visual design, presentation flow, and asset requests.</li></ul>
+<p><strong>Days 1–2: vision and business strategy.</strong> Before you write anything, use Gemini to establish the product's identity and draft a one-page business plan: target audience, unique features, marketing strategy.</p>
+<p><strong>Days 3–4: build the prototype.</strong> Whether it is Python, HTML/JavaScript or a custom script, have the AI generate code while you assemble it, test it and direct the changes. When something breaks, paste the error back in and say where it broke.</p>
+<p><strong>Day 5: the pitch.</strong> Combine the business plan and the working demo into one presentation for the class.</p>
+<p><strong>What you hand in</strong></p>
+<p>One Product Launch Package per team:</p>
+<ul><li><strong>Functional prototype</strong> — the actual script, program link, or code repository. It needs to work at a basic level; it does not need to be polished.</li><li><strong>One-page business summary</strong> — AI-drafted, student-edited, covering why the product matters.</li><li><strong>Pitch slide deck</strong>.</li></ul>
+<p><strong>Watch out for</strong></p>
+<p>Accepting generated code you cannot explain. You will be asked what a section does during the pitch.</p></div>
   </details>
   <div class="alinks"><p class="gl">Files and links</p>
     <a href="https://gemini.google.com/" target="_blank" rel="noopener"><b>Google Gemini</b><span>Where the code, the business plan and the pitch material get generated.</span><em>gemini.google.com</em></a>
@@ -833,11 +854,20 @@ catch(e){}})();
   <div class="gives"><p class="gl">What you hand in</p><ul>
     <li><b>Engineering Logic Report</b> &mdash; documented research on similar structures or the scientific principles that support your concept</li>
     <li><b>Structural Analysis</b> &mdash; simulation and test methods, in Fusion 360 or equivalent</li>
+    <li>The presentation package for the second project &mdash; the design as a firm would present it to a client</li>
+    <li>A weekly journal across all four weeks</li>
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>Grade 11 capstone requires you to demonstrate your understanding of Civil Engineering &amp; Architecture concepts, by managing two distinct projects simultaneously. One project will challenge your ability to prove engineering logic, while the other will challenge your ability to sell a professional vision.</p>
-<p><strong>Project 1: A Unique Concept.</strong> Develop an original structure that stretches the boundaries of traditional design (e.g. upside-down buildings or integrated vertical ecosystems) and prove that it is physically and logically viable. Focus: "Research and Prove your Concept." You must look at your design through the eyes of an engineer to justify why it will work. Key deliverables (the "Proof"): an <strong>Engineering Logic Report</strong> (documented research on similar structures or scientific principles that support your concept) and a <strong>Structural Analysis</strong> (use Fusion 360 or other simulation tools and test methods).</p></div>
+    <div class="bt"><p>The capstone runs across four weeks and asks you to demonstrate what you understand about civil engineering and architecture by managing two distinct projects at the same time. One challenges your ability to prove engineering logic; the other challenges your ability to sell a professional vision.</p>
+<p><strong>What to do</strong></p>
+<p><strong>Project 1 — a unique concept.</strong> Develop an original structure that stretches the boundaries of traditional design: an upside-down building, an integrated vertical ecosystem, something equally unreasonable. Then prove it is physically and logically viable. Look at your own design through an engineer's eyes and justify why it works.</p>
+<p><strong>Project 2 — the professional vision.</strong> Present a design as a firm would present it to a client: the concept, the reasoning, and the case for building it.</p>
+<p><strong>The four weeks.</strong> Week 1 is conceptual design. Week 2 is detailed design. Weeks 3 and 4 are proof — research, analysis and the presentation materials.</p>
+<p><strong>What you hand in</strong></p>
+<ul><li><strong>Engineering Logic Report</strong> — documented research on comparable structures, or the scientific principles that support your concept.</li><li><strong>Structural Analysis</strong> — simulation and test results, from Fusion 360 or equivalent tools.</li><li>The presentation package for Project 2.</li><li>A weekly journal across all four weeks.</li></ul>
+<p><strong>Watch out for</strong></p>
+<p>Running both projects sequentially instead of in parallel. Week 4 is not enough time to start the second one.</p></div>
   </details>
   <p class="anote">Runs over four weeks: conceptual design, detailed design, then two weeks of proof.</p>
   <div class="meta"><span><b>Tools</b> Fusion 360, Revit</span><span><b>Pathway</b> <a href="../pathways/architecture.html">Architecture &amp; Civil</a></span></div>
@@ -859,9 +889,13 @@ catch(e){}})();
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>Reflection, portfolio, presentation sounds like 3 words just thrown together, but they are 3 words that will each be considered in this final assignment. What you will do today is compile each of your assignments from this year into a single Google Slides presentation. Take screenshots from your assignments and daily journals and combine that with reflection on what was learned or gained from the experience. You are not expected to reflect on each assignment but pick several to give more detailed reflection on or group several together to reflect on. So maybe all Do Now! assignments, group and reflect on, or something like that.</p>
-<p>Finish with a reflection on the whole year as well.</p>
-<p>Make the presentation professional and only have what is necessary and appropriate in it. Use a template to make it look clean and professional. Additionally, go back and find last year's presentation and also upload that.</p></div>
+    <div class="bt"><p>Compile your year into a single presentation. Reflection, portfolio and presentation are three separate things, and all three are assessed here.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Gather your assignments from the whole year, and take screenshots from them and from your daily journals.</li><li>Reflect alongside the evidence. You are not expected to reflect on every assignment — pick several for real depth, or group related ones (all the Do Nows together, for instance) and reflect on the group.</li><li>Finish with a reflection on the year as a whole.</li><li>Find last year's presentation and upload it as well.</li><li>Use a template. Keep it professional, and include only what is necessary and appropriate.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>One Google Slides presentation covering the year.</li><li>Last year's presentation, uploaded alongside it.</li></ul>
+<p><strong>Watch out for</strong></p>
+<p>"Find last year's presentation" is only a reasonable instruction if you kept it somewhere you can find it. Keep this year's where you will still have it next September.</p></div>
   </details>
   <p class="anote">"Go back and find last year’s presentation" is only a reasonable instruction if last year’s work is still somewhere you can find it. Keep your portfolio where you can get at it.</p>
   <div class="meta"><span><b>Tools</b> Google Slides</span></div>
@@ -878,7 +912,11 @@ catch(e){}})();
   </div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>Create an account and join the class. The join code is with the assignment in Google Classroom.</p></div>
+    <div class="bt"><p>Certification practice ahead of the real exam.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Create a Gmetrix account and join the class. The join code is with the assignment in Google Classroom.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>Your practice test results.</li></ul></div>
   </details>
   <div class="meta"><span><b>Tools</b> Gmetrix</span></div>
 </article>
@@ -904,10 +942,13 @@ catch(e){}})();
   </ul></div>
   <details class="brief" open>
     <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
-    <div class="bt"><p>This is a year-long, independent project where you will explore an area of engineering that truly interests you. This is your chance to experiment and develop valuable skills at your own pace, treating your work like a personal engineering hobby.</p>
-<p><strong>Project Breakdown: Research, Design, and Development.</strong> Independent study will be broken down into three different project areas: research, design, and development. You can choose to have all three projects connected to one overarching idea, or you can have them be separate and distinct from one another. If you're struggling to come up with a specific project, you can focus on building up a "skill tree" in these areas to prepare you for when a project idea strikes.</p>
-<ul><li><em>Research Project</em> — Choose a specific engineering concept, theory, or process that sparks your curiosity. Your goal is to conduct a deep dive into the topic, gathering information from reputable sources and exploring its real-world applications.</li><li><em>Design Project</em> — This can be a stand-alone design or a component of a larger project. You will focus on designing a new product or solution, such as an ergonomic desk organizer or a custom phone case. This is where you'll cultivate your design thinking and problem-solving skills.</li><li><em>Development Project</em> — If you have an existing product or idea, you can choose to fix, modify, or improve it. This project is about gaining proficiency in relevant software and tools and applying your knowledge to a functional product.</li></ul>
-<p><strong>Documentation and Reflection.</strong> To keep track of your progress, you'll be responsible for submitting reflections at the mid-point and end of the year for each of your projects. You will also maintain a weekly journal to document your research findings, learnings, and any challenges you encounter. This can include sketches, notes, or even video logs.</p></div>
+    <div class="bt"><p>A year-long project in whatever part of engineering actually interests you. This is the one you run at your own pace, treated as a personal engineering hobby. It breaks into three areas, which can all serve one larger idea or stay completely separate.</p>
+<p><strong>What to do</strong></p>
+<ul><li><strong>Research</strong> — choose a concept, theory or process you are curious about. Conduct a deep dive using reputable sources, and end at its real-world applications.</li><li><strong>Design</strong> — design a new product or solution. It can stand alone or be a component of something larger: an ergonomic desk organiser, a custom phone case.</li><li><strong>Development</strong> — take something that already exists and fix, modify or improve it. This one is about proficiency with the software and tools.</li><li>Keep a weekly journal throughout: research findings, what you learned, what went wrong. Sketches, notes and video logs all count.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>The three project outputs, or documented progress on them.</li><li>The weekly journal.</li><li>A mid-year reflection and an end-of-year reflection on each project.</li></ul>
+<p><strong>Watch out for</strong></p>
+<p>If you do not have a project idea yet, do not wait for one. Build a skill tree in these three areas so you are ready when an idea does arrive — that is what the seven pathway guides are for.</p></div>
   </details>
   <p class="anote">If you have no idea yet, build a skill tree in these areas so you are ready when an idea does strike. That is exactly what the seven pathway guides are for.</p>
 </article>
@@ -923,12 +964,12 @@ catch(e){}})();
     <span>Blue Hills Regional Technical School</span>
     <span>Engineering Technology &middot; Room E-126</span>
     <span>Mr. Frank &middot; Mr. Dryer</span>
-    <span class="build">Build 04 Sep 2026, 4:37 pm</span>
+    <span class="build">Build 04 Sep 2026, 9:18 pm</span>
   </div>
 </footer>
 
 
-<script src="../assets/search-index.js?v=10f175bd" defer></script>
+<script src="../assets/search-index.js?v=b7afd619" defer></script>
 <script defer>
 (function(){
   var REL = '../';

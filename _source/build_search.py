@@ -22,6 +22,7 @@ import grade_work as GW
 import staff_data as STF
 import extras_data as ED
 import brief_text as BT
+import shop_projects as SP
 
 TOPIC_NAMES = {
     'field': 'Explore the Field',
@@ -38,6 +39,7 @@ KIND_LABEL = {
     'rule': 'Rule', 'check': 'Safety check', 'platform': 'Training',
     'sds': 'Safety data', 'pathway': 'Pathway',
     'unit': 'Unit', 'assignment': 'Assignment', 'donow': 'Do Now',
+    'run': 'Project (run before)',
     'link': 'Link', 'ask': 'Ask about',
 }
 
@@ -90,6 +92,12 @@ def build():
          'Practice for the shop safety test.'),
         ('Training and credentials', 'resources/index.html', 'Training',
          'Every platform and credential the shop uses or recommends.'),
+        ('What engineering actually is', 'start/engineering.html', 'Start here',
+         'The design process, the seven roles, and what the job really is.'),
+        ('The engineering design process', 'start/engineering.html#process',
+         'Start here', 'The eight steps, and what each one has to leave behind.'),
+        ('The seven roles of an engineer', 'start/engineering.html#roles',
+         'Start here', 'What each role does and what it has to produce.'),
         ('Find your year', 'grades/index.html', 'Your year',
          'The four grade homes: who delivers each year and what it holds.'),
         ('Do Nows and bonus work', 'extras/do-nows.html', 'More',
@@ -140,6 +148,15 @@ def build():
     for p in B.P:
         add(p['title'], 'pathways/%s.html' % p['key'], 'Pathway ' + p['std'],
             'pathway', p.get('tag', ''), p.get('lead', ''))
+
+    # --- briefs the shop has really run, offered in the hubs -------------
+    for pkey, runs in SP.RUNS.items():
+        nav = next((x['nav'] for x in B.P if x['key'] == pkey), pkey)
+        for y, title, desc in runs:
+            add(title, 'pathways/%s.html' % pkey,
+                '%s \u00b7 already run' % nav, 'run', desc, y)
+    add('Exploratory week', 'grades/9.html#exploratory', 'Grade 9', 'page',
+        SP.EXPLORATORY['lede'], 'One week in each of nine shops')
 
     # --- every verified source -------------------------------------------
     for key in ('architecture', 'automation', 'mechanical', 'industrial',

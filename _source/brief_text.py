@@ -28,10 +28,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 MAP_11 = {
     'Term 1 Week 1 — Speaker Design': 'Speaker Design',
     'Term 1 Week 2 — Roles of an Engineer': 'Roles of an Engineer',
-    'Term 1 Week 2 — Full Scope Project: Vision Statement':
-        'Full Scope Project: Vision Statement',
-    'Term 1 Weeks 2–4 — Full Scope Project, Weeks 1, 2 and 3':
-        'Full Scope Project, Weeks 1&ndash;3',
+    'Term 1 Weeks 2–4 — Full Scope Project': 'Full Scope Project',
+    'Term 1 Week 3 — Tiny House': 'Tiny House',
     'Term 2 Week 1 — ADU Design Project': 'ADU Design Project',
     'Term 2 Week 2 — Intro to ESEC: Arduino': 'Intro to ESEC: Arduino',
     'Term 2 Week 3 — VEX V5 Clawbot Project': 'VEX V5 Clawbot Project',
@@ -41,21 +39,39 @@ MAP_11 = {
     'Term 2 Week 5 — Robotic Arm Build': 'Robotic Arm Build',
     'Term 2 Week 5 — Elegoo Uno Project Kit': 'Elegoo Uno Project Kit',
     'Term 3 Week 2 — Creative Concept Design': 'Creative Concept Design',
-    'Term 3 Weeks 3–4 — Freshmen EOY City Design (w/ reflection)':
-        'City Design',
+    'Term 3 Weeks 3–4 — City Design': 'City Design',
     'Term 3 Week 4 — Learning Revit!': 'Learning Revit!',
     'Term 4 Week 1 — Famous Architect Presentation':
         'Famous Architect Presentation',
-    'Term 4 Week 3 — Fusion Review materials':
+    'Term 4 Week 3 — Fusion Review: Drawings and Stress Simulations':
         'Fusion Review: Drawings and Stress Simulations',
-    'Term 4 Week 5 — The End-of-Year "Vibecoding" Team Challenge':
+    'Term 4 Week 5 — End-of-Year Vibecoding Team Challenge':
         'The End-of-Year Vibecoding Team Challenge',
-    'EOY — Introduction: Grade 11 Capstone Day 1': 'Grade 11 Capstone',
-    'Final Assignment — Reflection Portfolio Presentation':
+    'End of year — Grade 11 Capstone': 'Grade 11 Capstone',
+    'Final — Reflection Portfolio Presentation':
         'Reflection Portfolio Presentation',
-    'Final Assignment — Gmetrix': 'Gmetrix',
-    'Independent Study — Independent Study Project':
+    'Final — Gmetrix': 'Gmetrix',
+    'Running all year — Independent Study Project':
         'Independent Study Project',
+}
+
+MAP_12 = {
+    'Term 1 Week 1 — Design a Laptop': 'Design a Laptop',
+    'Term 1 Weeks 2–5 — Shop Equipment Project': 'Shop Equipment Project',
+    'Term 1 Week 5 — Post-Lecture Reflection: Theory of the Week':
+        'Post-Lecture Reflection: Theory of the Week',
+    'Term 2 Week 1 — Industrial Design Challenge: The LED Desk Lamp':
+        'Industrial Design Challenge: The LED Desk Lamp',
+    'Term 2 Week 2 — Try Again! Moon Base 2.0': 'Try Again! Moon Base 2.0',
+    'Term 2 Week 2 — Research & Analysis: The LTT Screwdriver':
+        'Research &amp; Analysis: LTT Screwdriver',
+    'Term 2 Week 3 — Intro to CorelDraw': 'Intro to CorelDraw',
+    'Term 2 Week 3 — VEX Robotics': 'VEX Robotics',
+    'Term 2 Week 5 — Mars Colony Design': 'Mars Colony Design',
+    'Term 2 Week 5 — Bunker House Design': 'Bunker House Design',
+    'Term 2 Week 5 through Term 4 — Senior Capstone': 'Senior Capstone',
+    'Running all year — Independent Study': 'Independent Study',
+    'Running all year — Platform training': 'Platform training',
 }
 
 # headings that are notes to Dan rather than assignments
@@ -65,6 +81,13 @@ SKIP = (
     'A note on the other classes',
     'Independent Study — 3D Printer Shop Training: The Bambu Lab Academy',
     'Welcome to Engineering III — materials',
+    'The missing words — a real problem in Classroom, not in this harvest',
+    'What was not found',
+    'Term 3 Week 1 — Final Concepts and Ideas for Senior Capstone',
+    'Term 3 — Senior Capstone: Research Log',
+    'Welcome — VEX AIM Bot: Guided Lessons',
+    'Welcome — Universal Robots e-Learning',
+    'Senior Capstone Week 5 — Stratasys Academy Online Learning',
 )
 
 # text that must not reach a public page, and what replaces it
@@ -80,6 +103,11 @@ REDACT = [
     (re.compile(r'That is the entire description\. The class join code is '
                 r'recorded here because it\s+is not a credential — but it '
                 r'should not be posted publicly either\.', re.S), ''),
+    # Belt and braces. If a live code is ever pasted into a harvest again,
+    # it does not reach a public page no matter how the sentence is worded.
+    (re.compile(r'\bFrank-\d{4,}\b'), '[join code is in Classroom]'),
+    (re.compile(r'\b(?:class|activation)\s+code\s*[:=]\s*\S+', re.I),
+     'code is in Classroom'),
 ]
 
 # Paragraphs written for Dan during the harvest, not for a student reading the
@@ -208,6 +236,9 @@ def briefs(grade):
     if grade == '11':
         secs = _sections(os.path.join(HERE, 'PROJECT-INSTRUCTIONS-class27.md'))
         mapping = MAP_11
+    elif grade == '12':
+        secs = _sections(os.path.join(HERE, 'PROJECT-INSTRUCTIONS-class26.md'))
+        mapping = MAP_12
     else:
         return {}
     out = {}

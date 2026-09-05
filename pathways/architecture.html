@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
 <link rel="icon" href="../assets/icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
-<link rel="stylesheet" href="../assets/site.css?v=18858507">
+<link rel="stylesheet" href="../assets/site.css?v=22273e7d">
 <style>
 max-width:1140px;margin:0 auto;padding:28px 24px 90px;align-items:start}
 @media(max-width:900px){.shell{grid-template-columns:1fr;gap:24px}}
@@ -95,6 +95,20 @@ td.k{font-family:var(--sans);font-weight:600;white-space:nowrap}
 td.s{font-family:var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
 em{font-style:italic}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* briefs the shop has really run. The pathway pages take their CSS from the
+   ported guide artifact, not from build_hubs.py -- which is why this lives
+   here and not next to the markup that emits it. */
+.runsh{margin:26px 0 6px;font-family:var(--sans);font-weight:700;font-size:17px;
+  letter-spacing:-.01em;color:var(--ink)}
+.runs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+  gap:1px;background:var(--card);border:1px solid var(--rule)}
+.runs article{background:var(--card);padding:16px 19px;display:flex;
+  flex-direction:column;gap:6px;box-shadow:0 0 0 1px var(--rule)}
+.runs .ry{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);font-weight:700}
+.runs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.runs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+
 .pathnav{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
   background:var(--card);border:1px solid var(--rule);margin-top:-18px}
 .pathnav a{background:var(--card);box-shadow:0 0 0 1px var(--rule);
@@ -428,6 +442,14 @@ the <a href="../resources/index.html">Training &amp; Credentials</a> page.</p></
 <article><b>The revitalization pitch</b><p>Pick a real existing building and bring it back. Branding, usability, aesthetics, and a before-and-after that convinces a town board.</p></article>
 <article><b>Site design set</b><p>A complete professional site plan: soil testing results, cut and fill volume calculations, engineered drainage, parking, roads, and ADA circulation.</p></article>
 </div>
+<h4 class="runsh">Projects this shop has already run</h4>
+<p class="blurb">Real briefs from other years, offered here as optional work. You do not have to be in that grade to take one on &mdash; ask first, then build it.</p>
+<div class="runs">
+<article><span class="ry">Gr 9</span><b>City section around transit stops</b><p>Design four distinct transit stop areas, each with a featured building. A 2D site map in AutoCAD, 3D models of the featured buildings, one area modelled in full, then the map re-presented in CorelDraw with colour, labels and a legend.</p></article>
+<article><span class="ry">Gr 10</span><b>Architectural research and rebuild</b><p>Pick an iconic structure. Research it properly &mdash; architect, date, purpose, features, cultural context. Then a full day of sketching with no CAD at all, and only then three days rebuilding it in Revit, SketchUp or Fusion.</p></article>
+<article><span class="ry">Gr 10</span><b>Office shed, recreated exactly</b><p>Recreate a 10&times;12 lean-to office shed from a supplied document in AutoCAD: architectural units, separate layers per element, real line weights, dimensions matching the source, elevations of all four sides, and a title block on every sheet.</p></article>
+<article><span class="ry">Gr 10</span><b>Your own house in Revit</b><p>No tutorial. Recreate a floor of your own home from memory and estimate. All floors and the roof if you are feeling ambitious.</p></article>
+</div>
 </div>
 <div class="srchead"><h4>Go and look</h4><span>5 checked links &mdash; every one opens, free.</span></div>
 <div class="srcs">
@@ -472,12 +494,12 @@ the <a href="../resources/index.html">Training &amp; Credentials</a> page.</p></
     <span>Blue Hills Regional Technical School</span>
     <span>Engineering Technology &middot; Room E-126</span>
     <span>Mr. Frank &middot; Mr. Dryer</span>
-    <span class="build">Build 04 Sep 2026, 4:37 pm</span>
+    <span class="build">Build 04 Sep 2026, 9:18 pm</span>
   </div>
 </footer>
 
 
-<script src="../assets/search-index.js?v=10f175bd" defer></script>
+<script src="../assets/search-index.js?v=b7afd619" defer></script>
 <script defer>
 (function(){
   var REL = '../';

@@ -30,6 +30,7 @@ import build_grades as GR      # noqa: E402  (the four grade homes)
 import grade_data as GD        # noqa: E402
 import build_extras as EX      # noqa: E402  (instructors, Do Nows, links)
 import quick_bar as QBAR       # noqa: E402  (the grade / instructor strip)
+import build_engineering as ENG  # noqa: E402  (what engineering is, the design process)
 
 FONTS = {
     'a': dict(name='Space Grotesk + Literata',
@@ -275,6 +276,52 @@ def port(filename):
 # ---------------------------------------------------------------- home page
 
 HOME_CSS = '''
+/* --- the landing hero ---------------------------------------------------
+   The one place on the site that is allowed to be a poster. Deep purple band,
+   the shop mark, and three doors -- your year, what the job is, and safety.
+   ----------------------------------------------------------------------- */
+.bighero{background:var(--brand);border-radius:10px;overflow:hidden;
+  position:relative;margin:0 0 6px}
+.bighero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 130% at 88% 8%,rgba(255,255,255,.22),
+    rgba(255,255,255,0) 62%)}
+.bh-in{position:relative;z-index:1;padding:40px 38px 34px;
+  max-width:min(70ch,100%)}
+/* the crest has real detail in it -- knocking it to a white silhouette threw
+   all of that away, so it sits on a light plate instead */
+.bh-mark{display:block;width:52px;height:auto;margin:0 0 18px;
+  background:rgba(255,255,255,.94);border-radius:9px;padding:8px;
+  box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.bighero .kicker{margin:0;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.19em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+/* the site-wide mobile rule breaks long words; a two-word title must not be
+   hyphenated into "Tech / nology", so it opts out and shrinks instead */
+.bighero h1{margin:7px 0 0;color:#fff;font-size:clamp(28px,5.6vw,58px);
+  line-height:1.02;letter-spacing:-.03em;overflow-wrap:normal;
+  word-break:normal;hyphens:none}
+.bh-lede{margin:16px 0 0;color:rgba(255,255,255,.93);font-size:18.5px;
+  line-height:1.55;max-width:58ch}
+.bh-go{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
+.bh-go a{font-family:var(--sans);font-weight:600;font-size:15px;
+  text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.45);
+  border-radius:999px;padding:11px 20px;line-height:1;
+  transition:background .12s ease,border-color .12s ease}
+.bh-go a:hover{background:rgba(255,255,255,.16);border-color:#fff}
+.bh-go .bh-primary{background:#fff;color:#4a2f5e;border-color:#fff}
+.bh-go .bh-primary:hover{background:rgba(255,255,255,.88)}
+.bh-foot{margin:24px 0 0;color:rgba(255,255,255,.72);font-size:14px;
+  line-height:1.5;max-width:52ch}
+
+@media(max-width:640px){
+  .bh-in{padding:26px 18px 24px}
+  .bighero h1{font-size:clamp(25px,7.4vw,32px)}
+  .bh-mark{width:44px;margin-bottom:14px}
+  .bh-lede{font-size:17px}
+  .bh-go a{font-size:14.5px;padding:11px 17px}
+}
+@media print{.bighero{background:none;border:1px solid #999}
+  .bighero h1,.bh-lede,.bighero .kicker{color:#000}
+  .bh-go,.bh-foot,.bh-mark{display:none}}
 .doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(292px,1fr));gap:1px;
   background:var(--card);border:1px solid var(--rule)}
 .doors a{background:var(--card);padding:22px 22px 24px;text-decoration:none;color:inherit;
@@ -299,12 +346,23 @@ HOME_CSS = '''
 HOME = '''
 <div class="wrap wide">
 
-  <header class="hero">
-    <p class="kicker">Blue Hills Regional Technical School</p>
-    <h1>The Shop Hub</h1>
-    <p>Everything for Engineering Technology in one place &mdash; how the shop runs,
-      what is expected, and where to go deep. Your assignments live in Google Classroom
-      and link back here.</p>
+  <header class="bighero">
+    <div class="bh-in">
+      <img class="bh-mark" src="assets/logo-240.png" alt="" width="112" height="96">
+      <p class="kicker">Blue Hills Regional Technical School</p>
+      <h1>Engineering Technology</h1>
+      <p class="bh-lede">Four years of designing things, building them, and
+        finding out whether you were right. This is where the shop keeps what
+        it knows &mdash; the rules, the briefs, the training, and the seven
+        directions you can take it.</p>
+      <div class="bh-go">
+        <a class="bh-primary" href="grades/index.html">Find your year</a>
+        <a href="start/engineering.html">What engineering actually is</a>
+        <a href="shop/index.html">Shop safety</a>
+      </div>
+      <p class="bh-foot">Assignments live in Google Classroom and link back
+        here. Nothing on this site needs a login.</p>
+    </div>
   </header>
 
   <section>
@@ -445,6 +503,16 @@ def build_grades():
                          'for.' % g['num']))
 
 
+def build_engineering_page():
+    write('start/engineering.html',
+          shell('What engineering actually is', ENG.page(), depth=1,
+                section='start', path='start/engineering.html',
+                page_css=ENG.CSS,
+                desc='What engineering technology is as a career, the '
+                     'eight-step design process this shop runs on, and the '
+                     'seven roles of an engineer.'))
+
+
 def build_extras():
     for k, name in (('frank', 'Mr. Frank'), ('dryer', 'Mr. Dryer')):
         write('staff/%s.html' % k,
@@ -478,6 +546,20 @@ def build_home():
 # ---------------------------------------------------------------- pathways
 
 PATH_CSS_EXTRA = '''
+/* briefs the shop has really run. The pathway pages take their CSS from the
+   ported guide artifact, not from build_hubs.py -- which is why this lives
+   here and not next to the markup that emits it. */
+.runsh{margin:26px 0 6px;font-family:var(--sans);font-weight:700;font-size:17px;
+  letter-spacing:-.01em;color:var(--ink)}
+.runs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+  gap:1px;background:var(--card);border:1px solid var(--rule)}
+.runs article{background:var(--card);padding:16px 19px;display:flex;
+  flex-direction:column;gap:6px;box-shadow:0 0 0 1px var(--rule)}
+.runs .ry{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);font-weight:700}
+.runs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.runs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+
 .pathnav{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
   background:var(--card);border:1px solid var(--rule);margin-top:-18px}
 .pathnav a{background:var(--card);box-shadow:0 0 0 1px var(--rule);
@@ -1178,6 +1260,7 @@ if __name__ == '__main__':
     build_home()
     build_grades()
     build_extras()
+    build_engineering_page()
     build_404()
     build_welcome()
     build_ported()
@@ -1193,7 +1276,14 @@ if __name__ == '__main__':
     src_out = os.path.join(OUT, '_source')
     os.makedirs(src_out, exist_ok=True)
     for f in sorted(os.listdir(SRC)):
-        if f.endswith('.py') and not f.startswith(('make_', 'test_')):
+        # Site modules, the harvests they read, and the two builders for the
+        # student hand-in documents. Those two are make_*, but they are the
+        # only record of how those documents get regenerated, so they travel
+        # with the repository rather than living on one laptop.
+        keep_make = f in ('make_student_docs.py', 'make_docs_guide.py')
+        if (f.endswith('.py')
+                and (keep_make or not f.startswith(('make_', 'test_')))) \
+                or f.startswith('PROJECT-INSTRUCTIONS-'):
             shutil.copy2(os.path.join(SRC, f), os.path.join(src_out, f))
     print('  %-42s %6d files' % ('_source/', len(os.listdir(src_out))))
 

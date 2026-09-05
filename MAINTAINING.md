@@ -63,6 +63,8 @@ you are looking at an old copy.
 | The grade / instructor pills in the top bar | `_source/quick_bar.py` |
 | Colours, type, shared components | `assets/site.css` |
 | Home page wording | `_source/build_site.py` |
+| A student hand-in document | `_source/student_doc_data.py` |
+| The house style of those documents | `_source/student_docs.py` |
 
 `assets/site.css` is the one file that is **not** regenerated — the build keeps
 it and stamps the font and module styles into it. Edit it directly.
@@ -110,18 +112,46 @@ Briefs are **not** stored in `grade_work.py`. They are parsed at build time out
 of the harvest files by `_source/brief_text.py`, so there is exactly one copy
 and re-harvesting updates the site automatically.
 
-To add Grade 12's briefs:
+To add or change one:
 
-1. Create `_source/PROJECT-INSTRUCTIONS-class26.md` in the same shape as
-   `PROJECT-INSTRUCTIONS-class27.md`: a `## Heading` per assignment, then the
-   text as Classroom words it. Markdown bullets and tables both work.
-2. In `brief_text.py`, add a `MAP_12` dictionary mapping each heading to the
-   `title` used in `grade_work.py`, and add a branch for `'12'` in `briefs()`.
-3. Rebuild. The briefs appear with no other change.
+1. Add a `## Heading` section to the right harvest file, in the house format
+   above. Markdown bullets and tables both work.
+2. In `brief_text.py`, map that heading to the `title` used in `grade_work.py`
+   — `MAP_11` for Grade 11, `MAP_12` for Grade 12.
+3. Rebuild. The brief appears with no other change.
+
+Run `python3 brief_text.py` on its own to list what parsed and what is missing
+before you rebuild.
 
 Anything you write as a `> blockquote` in a harvest file is treated as a note
 to yourself and is **stripped** — it never reaches a student. Use that for
 "check this" comments.
+
+---
+
+## The student hand-in documents
+
+The ten Word documents and three spreadsheets students fill in are built from
+`_source/student_doc_data.py`:
+
+```
+python3 make_student_docs.py     # the thirteen documents
+python3 make_docs_guide.py       # the "which document, when" reference
+```
+
+They are Word and Excel on purpose. Upload a `.docx` to Drive and Google turns
+it into a Doc, and an `.xlsx` into a Sheet, keeping the headings, tables and
+drop-downs. Everything else the shop hands out is a PDF, because nobody types
+into it.
+
+**Edit the data file, never the .docx** — the .docx is regenerated and your
+change would vanish. Adding a section is one tuple: `('h', 'Heading')`, then
+`('note', 'the italic guidance line')`, then `('box', 6)` for a fill-in area
+or `('bul', [...])` for a list.
+
+The Daily Logbook here replaces both the old `Logbook Template` and the
+`Engineering Daily Journal`, which were the same instrument under two names
+and were being distributed to the same class simultaneously.
 
 ---
 
@@ -137,15 +167,48 @@ experiment with, name it so you cannot mistake it for the real one.
 
 ---
 
+## How the briefs are written
+
+Both harvest files follow one house format, and anything added to them should
+match it:
+
+```
+## Term X Week Y — Title
+
+One or two sentences: what you are making and why.
+
+**What to do**
+- ...
+
+**What you hand in**
+- ...
+
+**Watch out for**      (only where there is something real to warn about)
+```
+
+Three rules that matter more than the format:
+
+1. **One heading per project.** A project that ran three weeks is one entry,
+   not three. Its mid-project review and its reflection are folded in as
+   sections. Classroom is week-by-week because that is how it is taught; a
+   student looking something up in June does not remember which week it was.
+2. **Neutral voice.** No pep, no "welcome back", no AI throat-clearing.
+3. **Every brief states what you hand in.** Where a deliverable was implied by
+   the original post but never written down, it is written out — and the
+   addition is recorded in the teacher notes at the foot of the harvest file.
+
 ## Things that are deliberately unfinished
 
-- **Grade 12 briefs.** The structure is complete; the instruction text is not.
-  See "Adding a full brief" above — it is mechanical once the harvest exists.
 - **Grades 9 and 10** stop at the unit map on purpose. They are Mr. Dryer's to
   fill in, the same way Grades 11 and 12 were filled in.
-- **Four Grade 11 items** have no brief anywhere (Tiny House, Fusion 360
-  Animation, Client Desk Organizer, Bridge Conceptual Design). They say "ask
-  Mr. Frank" rather than inventing one.
+- **Five Grade 12 items have no brief**, because they sit behind a Classroom
+  "View more" control that could not be opened: Festo MecLabs, Reverse
+  Engineering (Breadboard), the Rube Goldberg Machine, Skills Revisited
+  (AutoCAD), and the Holiday Ornament. They say so rather than inventing one.
+- **Words are missing from three Grade 12 briefs** in Classroom itself — the
+  LED Desk Lamp worst of all, where most of the deliverables list is gone. The
+  site shows a warning banner wherever `[…]` appears. The document these were
+  pasted from was never found.
 - **A QR-code poster** for the shop wall, waiting on a real published URL.
 - Every Classroom topic hides older items behind **View more**; neither harvest
   includes those.

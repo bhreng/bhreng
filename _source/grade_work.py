@@ -7,9 +7,15 @@ which week it was in, and the weekly framing makes the year look like eighty
 separate things instead of a dozen real projects.
 
 Every entry is condensed from the assignment's own instruction text, harvested
-from Google Classroom on 4 September 2026. Nothing is invented. Where a brief
-is thin in Classroom, the entry here is thin too, and says so rather than
-padding it out.
+from Google Classroom on 4 September 2026. Where a brief is thin in Classroom,
+the entry here is thin too, and says so rather than padding it out.
+
+Multi-week projects are ONE entry, not one per week, and a project's
+mid-project review and its reflection are folded into it. Where a deliverable
+was clearly implied by the original post but never stated, it is written out;
+every such addition is recorded in the teacher notes at the foot of the
+matching harvest file, so it is always possible to tell what Classroom said
+from what was added.
 
 DELIBERATELY OMITTED, and they must stay omitted:
   * the Arduino class and activation codes (Term 2 Wk 2)
@@ -67,7 +73,9 @@ G11 = [
                 'power connectors, PCB',
                 'The voltage requirement of your speaker, and a battery that '
                 'matches it',
-                'A prototype, if there is time and the design is approved'],
+                'A prototype, if there is time and the design is approved',
+                'A short reflection: what changed between your first '
+                'sketch and the final model, and why'],
          tool='Fusion 360, 3D printing', path='mechanical',
          note='The safety test and acknowledgement are in this same week. '
               'Nothing gets built before they are done.'),
@@ -83,30 +91,22 @@ G11 = [
          note='This is the setup for the Full Scope Project. Those seven roles '
               'are the roles you then have to work in.'),
 
-    dict(t=1, w='Wk 2', title='Full Scope Project: Vision Statement',
-         kind='project',
-         hook='The brief for your own theme park, written before you design '
-              'any of it.',
-         body=['A short vision statement describing what your theme park will '
-               'be like. It gives the seven engineering roles something '
-               'concrete to act on.'],
-         gives=['<b>Theme</b> &mdash; the central story of the park',
-                '<b>Experience</b> &mdash; how you want visitors to feel',
-                '<b>Unique features</b> &mdash; what makes it different',
-                '<b>Target audience</b> &mdash; who it is for'],
-         tool='', path='project', note=''),
-
-    dict(t=1, w='Wk 2&ndash;4', title='Full Scope Project, Weeks 1&ndash;3',
+    dict(t=1, w='Wk 2&ndash;4', title='Full Scope Project',
          kind='project',
          hook='Three weeks working as a different kind of engineer each week, '
               'with a real deliverable for each role.',
-         body=['You choose a new role &mdash; or more than one &mdash; each '
-               'week and produce what a professional in that field would '
+         body=['It starts with a vision statement for a theme park of your own '
+               '&mdash; its theme, the experience you want visitors to have, '
+               'what makes it different, and who it is for. That gives the '
+               'seven engineering roles something concrete to act on.',
+               'You then choose a new role &mdash; or more than one &mdash; '
+               'each week and produce what a professional in that field would '
                'actually produce. Some weeks you will have to take two roles, '
                'so think about which ones pair well.',
                'Monday: submit your Weekly Planner. Friday: submit your '
                'Project Reflection with all project files.'],
-         gives=['<b>Design Engineer</b> &mdash; a drawing set or a CAD model',
+         gives=['A vision statement for the park',
+                '<b>Design Engineer</b> &mdash; a drawing set or a CAD model',
                 '<b>Research Engineer</b> &mdash; research and a prediction '
                 'about a new use for an existing item',
                 '<b>Development Engineer</b> &mdash; a model or a prototype',
@@ -120,14 +120,32 @@ G11 = [
                 'tasks assigned to each person'],
          tool='Fusion 360, AutoCAD, Google Docs, Gantt chart template',
          path='project',
-         note='The three weekly assignments carry identical instructions. '
-              'Only the role you pick changes.'),
+         note='Each of the three weeks carries the same instructions. Only '
+              'the role you pick changes.'),
 
-    dict(t=1, w='Wk 3', title='Tiny House &mdash; Fusion 360', kind='project',
-         hook='A tiny house modelled in Fusion 360.',
-         body=['Listed in Classroom without a written brief. Ask Mr. Frank for '
-               'the requirements.'],
-         gives=[], tool='Fusion 360', path='architecture', note=''),
+    dict(t=1, w='Wk 3', title='Tiny House', kind='project',
+         hook='A detailed tiny house in Fusion 360 &mdash; 400 sq ft or less, '
+              'so every space has to do more than one job.',
+         body=['The first large project of junior year. Think less about '
+               '&ldquo;rooms&rdquo; and more about &ldquo;spaces&rdquo;: how '
+               'they blend into each other, and how one space can serve more '
+               'than one purpose.',
+               'You can either convert an existing structure into a tiny '
+               'house, or frame a design built from scratch.'],
+         gives=['A design brief',
+                'The Fusion 360 model, every item its own <b>named</b> '
+                'component',
+                '2D floor plans and elevations',
+                '3D renderings',
+                'At least one animated item &mdash; a door counts, but a '
+                'space-saving feature is a better answer',
+                'A Google Doc listing anything you borrowed, from a classmate '
+                'or from online'],
+         tool='Fusion 360', path='architecture',
+         note='Work in multiple files if it suits you &mdash; a project folder '
+              'with each part as its own file. Include the tables you built '
+              'last year, and make some of the furniture yourself rather than '
+              'pulling all of it from GrabCAD.'),
 
     dict(t=2, w='Wk 1', title='ADU Design Project', kind='project',
          hook='A 3D model of an Accessory Dwelling Unit, under the '
@@ -153,9 +171,14 @@ G11 = [
                 'area, walls, roof, windows and doors',
                 'A dimensioned <b>floor plan</b>, labelled, with the separate '
                 'entrance shown',
-                'An <b>elevation view</b> of one exterior side'],
+                'An <b>elevation view</b> of one exterior side',
+                'The mid-project feasibility check',
+                'The completed Daily Journal Log'],
          tool='Fusion 360', path='architecture',
-         note='Runs with a Mid-Project Design Review and Feasibility Check.'),
+         note='The Mid-Project Design Review and Feasibility Check is part of '
+              'this project, not a separate assignment. Partway through, '
+              'stop and check the square footage, the layout, and whether '
+              'anything in the model would be impossible to build.'),
 
     dict(t=2, w='Wk 2', title='Intro to ESEC: Arduino', kind='course',
          hook='The Arduino Education Starter course &mdash; ten lessons that '
@@ -167,8 +190,10 @@ G11 = [
                '<code>app.arduino.cc/minors</code>. The class code and '
                'activation code are in Classroom &mdash; they are not '
                'published here.'],
-         gives=['The completed student logbook',
-                'The Arduino reflection assignment'],
+         gives=['The completed student logbook, filled in as you go',
+                'A written reflection on the course: hardest lesson, what '
+                'you could now build alone, what you would still need help '
+                'with'],
          tool='Arduino Education Starter kit',
          links=[
              ('Arduino under-18 signup', 'https://app.arduino.cc/minors',
@@ -257,18 +282,6 @@ G11 = [
          gives=['One documented Google Doc'],
          tool='Elegoo Uno kit', path='electrical', note=''),
 
-    dict(t=3, w='Wk 1', title='Fusion 360 Animation', kind='project',
-         hook='An animation of an assembly in Fusion 360.',
-         body=['Listed in Classroom with a reflection but no written brief. '
-               'Ask Mr. Frank for the requirements.'],
-         gives=[], tool='Fusion 360', path='mechanical', note=''),
-
-    dict(t=3, w='Wk 1', title='Client Desk Organizer', kind='project',
-         hook='A desk organiser designed to a client brief.',
-         body=['Listed in Classroom with a Mid-Project Design Review but no '
-               'written brief. Ask Mr. Frank for the requirements.'],
-         gives=[], tool='Fusion 360, 3D printing', path='industrial', note=''),
-
     dict(t=3, w='Wk 2', title='Creative Concept Design', kind='project',
          hook='One day, no constraints, and a high bar.',
          body=['You have the floor, the tools and total creative freedom. '
@@ -309,7 +322,10 @@ G11 = [
                 'Named roles: <b>Project Manager</b> holds the Forma master '
                 'file and the deadlines; <b>Infrastructure Lead</b> prints the '
                 'road and park tiles everyone connects to; <b>Zoning Leads</b> '
-                'for residential, commercial and industrial'],
+                'for residential, commercial and industrial',
+                'A written reflection: your role, where the interface '
+                'standard held and where it failed, and what you would set '
+                'differently next time'],
          tool='Autodesk Forma, Fusion 360, 3D printing',
          links=[
              ('Autodesk Forma', 'https://www.autodesk.com/products/forma',
@@ -347,19 +363,15 @@ G11 = [
          gives=['A 3&ndash;5 minute presentation'],
          tool='', path='architecture', note=''),
 
-    dict(t=4, w='Wk 1', title='Bridge Conceptual Design Model', kind='project',
-         hook='A conceptual bridge model, with a reflection.',
-         body=['Listed in Classroom with a reflection but no written brief. '
-               'Ask Mr. Frank for the requirements.'],
-         gives=[], tool='', path='architecture', note=''),
-
     dict(t=4, w='Wk 3', title='Fusion Review: Drawings and Stress Simulations',
          kind='skills',
-         hook='Two review materials on the Fusion features that matter most '
+         hook='Two review sessions on the Fusion features that matter most '
               'for the capstone.',
-         body=['Both are attachment-only in Classroom &mdash; the drawings '
-               'review and the stress simulation review.'],
-         gives=[], tool='Fusion 360', path='mechanical', note=''),
+         body=['The drawings environment, and stress simulation. The material '
+               'is in the Classroom attachments.'],
+         gives=[], tool='Fusion 360', path='mechanical',
+         note='Nothing is submitted separately. You are expected to use both '
+              'in the capstone.'),
 
     dict(t=4, w='Wk 5', title='The End-of-Year Vibecoding Team Challenge',
          kind='project',
@@ -413,7 +425,10 @@ G11 = [
                 'on similar structures or the scientific principles that '
                 'support your concept',
                 '<b>Structural Analysis</b> &mdash; simulation and test '
-                'methods, in Fusion 360 or equivalent'],
+                'methods, in Fusion 360 or equivalent',
+                'The presentation package for the second project &mdash; '
+                'the design as a firm would present it to a client',
+                'A weekly journal across all four weeks'],
          tool='Fusion 360, Revit', path='architecture',
          note='Runs over four weeks: conceptual design, detailed design, then '
               'two weeks of proof.'),
@@ -481,11 +496,23 @@ G12 = [
               'acknowledgement form are all in this same week.'),
 
     dict(t=1, w='Wk 2&ndash;5', title='Shop Equipment Project', kind='project',
-         hook='Four weeks building something the shop itself needs.',
-         body=['Runs from Term 1 Week 2 through Week 5, starting with a '
-               'Potential Ideas post and then a weekly build stage.',
-               'The weekly briefs live in Classroom.'],
-         gives=[], tool='', path='mechanical', note=''),
+         hook='Four weeks, four separate projects, each built on a different '
+              'piece of shop equipment.',
+         body=['You pick from the equipment available &mdash; engraver, VEX, '
+               'Shaper Origin and power tools, Arduinos, 3D printers &mdash; '
+               'and build something with it. Each week stands alone; you are '
+               'not continuing the previous project.',
+               'Some weeks you will need to pair equipment together. The '
+               'Shaper Origin can make a wooden base for an Arduino project, '
+               'for instance.'],
+         gives=['A <b>Potential Ideas</b> document up front, weighing ideas '
+                'for each piece of equipment',
+                'The <b>Weekly Planner</b>, Monday morning',
+                'The <b>Project Reflection</b>, Friday',
+                'The <b>Engineering Daily Journal</b>, every day',
+                'The finished project itself, documented'],
+         tool='Engraver, VEX, Shaper Origin, Arduino, 3D printers',
+         path='mechanical', note=''),
 
     dict(t=1, w='Wk 2', title='Festo MecLabs: Exploring Mechatronics',
          kind='course',
@@ -570,54 +597,74 @@ G12 = [
          hook='A house built for a hostile environment, on Earth this time.',
          body=[], gives=[], tool='Fusion 360', path='architecture', note=''),
 
-    dict(t=3, w='Wk 1', title='Final Concepts and Ideas for Senior Capstone',
+    dict(t=3, w='Term 2 Wk 5 &rarr; Term 4', title='Senior Capstone',
          kind='project',
-         hook='The decision that shapes the rest of your year.',
-         body=['Term 3 Week 1 is where the capstone concept gets locked. '
-               'Everything after this is that project.'],
-         gives=[], tool='', path='', note=''),
-
-    dict(t=3, w='Capstone Wk 1&ndash;6', title='Senior Capstone', kind='project',
-         hook='One project, chosen by you, run by you, across the back half of '
-              'the year.',
-         body=['The capstone is week-numbered rather than term-numbered '
-               'because it does not fit inside a term. It runs from the '
-               'introduction week straight through to the final presentation.',
-               'It comes with its own machinery: a daily journal for every '
-               'session, a research log, and an order request form for the '
-               'parts you need.'],
-         gives=['<b>Daily journal</b> &mdash; every session, all the way '
-                'through',
-                '<b>Research log</b>',
-                '<b>Order request form</b> for materials and parts',
-                'A mid-capstone review',
-                '<b>Final presentation</b>'],
+         hook='One open-ended project, chosen by you and run by you, from the '
+              'end of Term 2 to the final defence.',
+         body=['Research, design and development of an original solution that '
+               'shows what you learned in four years here. It does not fit '
+               'inside a term, so it is not filed under one.',
+               '<b>Choosing it.</b> At the end of Term 2 you develop initial '
+               'planning and concepts for <b>three different</b> potential '
+               'ideas &mdash; or three different approaches to the same idea '
+               'if you already have a strong one.',
+               '<b>Running it.</b> The weekly documents are not paperwork '
+               'around the project; they are the evidence your final defence '
+               'is built from.',
+               '<b>Defending it.</b> The Term 4 presentation is not show and '
+               'tell. You prove the why with patent and market research, the '
+               'how with your technical tools, and the proof with raw test '
+               'data and the redesigns your failures forced.'],
+         gives=['Three initial project concepts, before the work starts',
+                '<b>Design brief</b>, kept current',
+                '<b>Daily journal</b>, every session',
+                '<b>Weekly planner</b> on Mondays, <b>weekly reflection</b> '
+                'on Fridays',
+                '<b>Meeting notes</b> after every instructor meeting',
+                '<b>Research log</b> &mdash; aim for one new source a day',
+                '<b>Order request forms</b> for materials and parts',
+                'The functional prototype',
+                'The final slide deck, with high-resolution as-built photos'],
          tool='', path='',
-         note='Stratasys Academy online learning sits in capstone week 5 '
-              '&mdash; the resin printer training, right when projects need it.'),
+         note='Stratasys Academy online learning, KeyShot and Fusion&rsquo;s '
+              'Texture Extrude land in capstone week 5 &mdash; the resin '
+              'printing and rendering skills, right when projects need them.'),
 
-    dict(t=4, w='Final', title='Senior Capstone Final Presentation',
-         kind='project',
-         hook='The presentation the whole year builds to.',
-         body=['Followed by the exam report and the end-of-year wrap-up.'],
-         gives=[], tool='', path='', note=''),
+    dict(t='always', w='All year', title='Independent Study', kind='project',
+         hook='The parallel track: your own project in research, design '
+              'and/or development, running alongside everything else.',
+         body=['It feeds directly into the capstone concept, so what you '
+               'choose here matters more than it looks.',
+               'The Term 1 reflection is where you stop, assess your progress '
+               'and set your strategy for the rest of the year. Plans '
+               'evolving is normal &mdash; the purpose is growth and '
+               'exploration, not sticking to a proposal you have outgrown.'],
+         gives=['A design proposal for each project',
+                'The Term 1 reflection, on the Research, Design and '
+                'Development reflection documents',
+                'End-of-year reflections'],
+         tool='', path='', note=''),
 
-    dict(t='always', w='All year', title='Independent Study / Senior Capstone',
-         kind='project',
-         hook='The parallel track: your own project, running alongside '
-              'everything else.',
-         body=['Design proposal, then reflections through the year, feeding '
-               'into the capstone concept.'],
-         gives=[], tool='', path='', note=''),
-
-    dict(t='always', w='Welcome', title='Platform training', kind='course',
-         hook='Three external courses that unlock equipment and count toward '
-              'your record.',
-         body=['<b>VEX AIM Bot: Guided Lessons</b>, the <b>Bambu Lab Academy</b> '
-               '3D printer training ladder, and <b>Universal Robots '
-               'e-Learning</b> for the cobots. All three are free and all '
-               'three are on the training page.'],
-         gives=[], tool='', path='automation', note=''),
+    dict(t='always', w='All year', title='Platform training', kind='course',
+         hook='Three external courses that unlock equipment and go on your '
+              'record.',
+         body=['<b>VEX AIM Bot</b> &mdash; the AIM Intro Course STEM Lab, in '
+               'teams.',
+               '<b>Universal Robots e-Learning</b> &mdash; the e-Series Core '
+               'Track first, then the Pro and Application Tracks, finishing '
+               'with a unique program of your own on one of the two URbots.',
+               '<b>Bambu Lab Academy</b> &mdash; the 3D printer certification '
+               'ladder. Beginner lets you print with an instructor, '
+               'Intermediate with an approved peer, Advanced on your own. '
+               'Machines unlock in order: A1 Mini, then X1C, then H2D.'],
+         gives=['The VEX AIM STEM Lab, completed as a team',
+                'A Universal Robots progress document, and one unique URbot '
+                'program',
+                'Your Bambu Lab certifications, at whatever level you reach'],
+         tool='', path='automation',
+         note='Every print job still needs instructor approval at every '
+              'level. Advanced means you may run the machine alone, not that '
+              'you may print whatever you like.'),
 ]
 
 

@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
 <link rel="icon" href="../assets/icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
-<link rel="stylesheet" href="../assets/site.css?v=18858507">
+<link rel="stylesheet" href="../assets/site.css?v=22273e7d">
 <style>
 /* --- grade pages -------------------------------------------------------- */
 /* Three variables per grade, set inline on the page:
@@ -157,6 +157,17 @@
   color:var(--ink);line-height:1.3}
 .units .ud{margin:4px 0 0;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
 
+/* the exploratory section: for the visitors, not the students */
+.expl .exgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;
+  overflow:hidden}
+.expl .exgrid article{background:var(--card);padding:16px 19px}
+.expl .exgrid b{display:block;font-family:var(--sans);font-weight:700;
+  font-size:16px;line-height:1.3;color:var(--g-ink)}
+.expl .exgrid p{margin:6px 0 0;font-size:15px;line-height:1.55;color:var(--ink-2)}
+.expl .note ul{margin:8px 0 0;padding-left:20px}
+.expl .note li{margin:0 0 6px;font-size:15px;line-height:1.5}
+
 .gempty{border:1px dashed var(--rule);border-radius:6px;padding:20px 22px;
   background:var(--card)}
 .gempty p{margin:0 0 9px;font-size:15px;line-height:1.6;color:var(--ink-2)}
@@ -278,7 +289,7 @@ catch(e){}})();
   </div>
 </div>
 <section>
-  <p class="lede">Grade 9 is exploratory. You spend one week in each of nine shops before you choose the one you will be in for the next three and a half years. This page is what that week looks like here.</p>
+  <p class="lede">Grade 9 in this shop is <b>Terms 3 and 4</b>. You spend the first half of the year on exploratory, one week in each of nine shops, and you join us for the back half once you have chosen. So this is half a year, and it moves quickly.</p>
 </section>
 <section>
   <h2>The units for the year</h2>
@@ -293,7 +304,22 @@ catch(e){}})();
 </div>
 </section>
 <section><div class="gempty"><p><strong>Assignments for this year live in Google Classroom.</strong> Mr. Dryer delivers Grade 9, and this page deliberately stops at the unit map rather than guessing at his assignments.</p><p>If you want the briefs here too, they can be added the same way Grades 11 and 12 were.</p></div></section>
-<section><div class="note"><p><strong>What exploratory means.</strong> In Grade 9 you spend one week in each of nine shops before choosing the one you stay in for the next three and a half years. One week is not long, so use it: ask what the seniors are building, and look at <a href="../pathways/index.html">the seven pathways</a> to see where this shop can actually take you.</p></div></section>
+<section id="exploratory" class="expl">
+  <h2>Exploratory week</h2>
+  <p class="sub">Before you join a shop you spend one week in each of nine of them. If this is your exploratory week, this section is for you &mdash; the rest of the page is what the year looks like if you choose us.</p>
+  <div class="exgrid">
+    <article><b>Engineering technology is not one job</b><p>It is at least seven. Someone designs the part, someone works out whether it will hold, someone writes the code that moves it, someone gets it manufactured, someone manages the schedule so it ships. All of those are engineering, and they suit very different people.</p></article>
+    <article><b>It is a trade and a degree path at the same time</b><p>People leave this shop and go straight into work with certifications that employers recognise. People also leave it and go to engineering school with four years of CAD, documentation and project work behind them. Neither route is the fallback.</p></article>
+    <article><b>The work is making things that have to actually work</b><p>Not models of things. A part that comes off the printer and fits. A circuit that does what you said it would. A drawing someone else can build from without asking you a question.</p></article>
+    <article><b>You will be wrong in public, constantly</b><p>Every project here ends with testing, and testing is where you find out your prediction was off. The engineers who get good are the ones who write down the difference instead of hiding it.</p></article>
+  </div>
+  <div class="note acc"><p><strong>Three things worth doing while you are here.</strong></p><ul>
+    <li>Ask a senior what they are building for their capstone, and why they chose it.</li>
+    <li>Ask what the worst thing they ever printed was, and what they changed.</li>
+    <li>Look at the seven pathways and see which one you keep coming back to.</li>
+  </ul></div>
+  <div class="doors" style="margin-top:20px"><a href="../start/engineering.html"><span class="n">The real answer</span><b>What engineering actually is</b><span>The design process, the seven roles, and what the job is once you are doing it.</span></a><a href="../pathways/index.html"><span class="n">Seven areas</span><b>Pick a pathway</b><span>The clearest picture of where this shop can take you.</span></a></div>
+</section>
 <section><h2>Wherever you are in the shop</h2><div class="doors"><a href="../shop/index.html"><b>Safety</b><span>Rules, equipment checks, SDS sheets</span></a><a href="../start/how-class-works.html"><b>How this class works</b><span>Rules, uniform, grading</span></a><a href="../logbook/index.html"><b>The logbook</b><span>What goes in it, every day</span></a><a href="../resources/index.html"><b>Training and credentials</b><span>Every platform the shop uses</span></a></div></section>
 </div>
 </div>
@@ -304,12 +330,12 @@ catch(e){}})();
     <span>Blue Hills Regional Technical School</span>
     <span>Engineering Technology &middot; Room E-126</span>
     <span>Mr. Frank &middot; Mr. Dryer</span>
-    <span class="build">Build 04 Sep 2026, 4:37 pm</span>
+    <span class="build">Build 04 Sep 2026, 9:18 pm</span>
   </div>
 </footer>
 
 
-<script src="../assets/search-index.js?v=10f175bd" defer></script>
+<script src="../assets/search-index.js?v=b7afd619" defer></script>
 <script defer>
 (function(){
   var REL = '../';

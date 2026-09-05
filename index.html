@@ -10,8 +10,54 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
 <link rel="icon" href="assets/icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
-<link rel="stylesheet" href="assets/site.css?v=18858507">
+<link rel="stylesheet" href="assets/site.css?v=22273e7d">
 <style>
+/* --- the landing hero ---------------------------------------------------
+   The one place on the site that is allowed to be a poster. Deep purple band,
+   the shop mark, and three doors -- your year, what the job is, and safety.
+   ----------------------------------------------------------------------- */
+.bighero{background:var(--brand);border-radius:10px;overflow:hidden;
+  position:relative;margin:0 0 6px}
+.bighero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 130% at 88% 8%,rgba(255,255,255,.22),
+    rgba(255,255,255,0) 62%)}
+.bh-in{position:relative;z-index:1;padding:40px 38px 34px;
+  max-width:min(70ch,100%)}
+/* the crest has real detail in it -- knocking it to a white silhouette threw
+   all of that away, so it sits on a light plate instead */
+.bh-mark{display:block;width:52px;height:auto;margin:0 0 18px;
+  background:rgba(255,255,255,.94);border-radius:9px;padding:8px;
+  box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.bighero .kicker{margin:0;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.19em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+/* the site-wide mobile rule breaks long words; a two-word title must not be
+   hyphenated into "Tech / nology", so it opts out and shrinks instead */
+.bighero h1{margin:7px 0 0;color:#fff;font-size:clamp(28px,5.6vw,58px);
+  line-height:1.02;letter-spacing:-.03em;overflow-wrap:normal;
+  word-break:normal;hyphens:none}
+.bh-lede{margin:16px 0 0;color:rgba(255,255,255,.93);font-size:18.5px;
+  line-height:1.55;max-width:58ch}
+.bh-go{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
+.bh-go a{font-family:var(--sans);font-weight:600;font-size:15px;
+  text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.45);
+  border-radius:999px;padding:11px 20px;line-height:1;
+  transition:background .12s ease,border-color .12s ease}
+.bh-go a:hover{background:rgba(255,255,255,.16);border-color:#fff}
+.bh-go .bh-primary{background:#fff;color:#4a2f5e;border-color:#fff}
+.bh-go .bh-primary:hover{background:rgba(255,255,255,.88)}
+.bh-foot{margin:24px 0 0;color:rgba(255,255,255,.72);font-size:14px;
+  line-height:1.5;max-width:52ch}
+
+@media(max-width:640px){
+  .bh-in{padding:26px 18px 24px}
+  .bighero h1{font-size:clamp(25px,7.4vw,32px)}
+  .bh-mark{width:44px;margin-bottom:14px}
+  .bh-lede{font-size:17px}
+  .bh-go a{font-size:14.5px;padding:11px 17px}
+}
+@media print{.bighero{background:none;border:1px solid #999}
+  .bighero h1,.bh-lede,.bighero .kicker{color:#000}
+  .bh-go,.bh-foot,.bh-mark{display:none}}
 .doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(292px,1fr));gap:1px;
   background:var(--card);border:1px solid var(--rule)}
 .doors a{background:var(--card);padding:22px 22px 24px;text-decoration:none;color:inherit;
@@ -104,12 +150,23 @@ catch(e){}})();
 
 <div class="wrap wide">
 
-  <header class="hero">
-    <p class="kicker">Blue Hills Regional Technical School</p>
-    <h1>The Shop Hub</h1>
-    <p>Everything for Engineering Technology in one place &mdash; how the shop runs,
-      what is expected, and where to go deep. Your assignments live in Google Classroom
-      and link back here.</p>
+  <header class="bighero">
+    <div class="bh-in">
+      <img class="bh-mark" src="assets/logo-240.png" alt="" width="112" height="96">
+      <p class="kicker">Blue Hills Regional Technical School</p>
+      <h1>Engineering Technology</h1>
+      <p class="bh-lede">Four years of designing things, building them, and
+        finding out whether you were right. This is where the shop keeps what
+        it knows &mdash; the rules, the briefs, the training, and the seven
+        directions you can take it.</p>
+      <div class="bh-go">
+        <a class="bh-primary" href="grades/index.html">Find your year</a>
+        <a href="start/engineering.html">What engineering actually is</a>
+        <a href="shop/index.html">Shop safety</a>
+      </div>
+      <p class="bh-foot">Assignments live in Google Classroom and link back
+        here. Nothing on this site needs a login.</p>
+    </div>
   </header>
 
   <section>
@@ -197,12 +254,12 @@ catch(e){}})();
     <span>Blue Hills Regional Technical School</span>
     <span>Engineering Technology &middot; Room E-126</span>
     <span>Mr. Frank &middot; Mr. Dryer</span>
-    <span class="build">Build 04 Sep 2026, 4:37 pm</span>
+    <span class="build">Build 04 Sep 2026, 9:18 pm</span>
   </div>
 </footer>
 
 
-<script src="assets/search-index.js?v=10f175bd" defer></script>
+<script src="assets/search-index.js?v=b7afd619" defer></script>
 <script defer>
 (function(){
   var REL = '';

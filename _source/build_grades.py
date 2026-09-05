@@ -11,6 +11,7 @@ import grade_data as GD
 import grade_work as GW
 import build_hubs as B
 import brief_text as BT
+import shop_projects as SP
 
 PATH_NAMES = {p['key']: p['nav'] for p in B.P}
 
@@ -160,6 +161,17 @@ CSS = '''
   color:var(--ink);line-height:1.3}
 .units .ud{margin:4px 0 0;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
 
+/* the exploratory section: for the visitors, not the students */
+.expl .exgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;
+  overflow:hidden}
+.expl .exgrid article{background:var(--card);padding:16px 19px}
+.expl .exgrid b{display:block;font-family:var(--sans);font-weight:700;
+  font-size:16px;line-height:1.3;color:var(--g-ink)}
+.expl .exgrid p{margin:6px 0 0;font-size:15px;line-height:1.55;color:var(--ink-2)}
+.expl .note ul{margin:8px 0 0;padding-left:20px}
+.expl .note li{margin:0 0 6px;font-size:15px;line-height:1.5}
+
 .gempty{border:1px dashed var(--rule);border-radius:6px;padding:20px 22px;
   background:var(--card)}
 .gempty p{margin:0 0 9px;font-size:15px;line-height:1.6;color:var(--ink-2)}
@@ -305,6 +317,15 @@ def page(key, depth=1):
                 'briefs live inside each Classroom post and are being moved '
                 'here the same way Grade 11&rsquo;s were. Until then, open the '
                 'assignment in Classroom for the wording.</p></div>')
+        if any('[&hellip;]' in v or '[…]' in v for v in briefs.values()):
+            out.append(
+                '<div class="note warn"><p><strong>Where you see '
+                '&ldquo;[&hellip;]&rdquo;, a word is missing in the original '
+                'Classroom post</strong> &mdash; not here. Those assignments '
+                'were pasted in from a document and Classroom dropped some of '
+                'the key terms on save, so the gap is in what you are reading '
+                'in Classroom too. Ask Mr. Frank for the missing word rather '
+                'than guessing at it.</p></div>')
         for tkey, tlabel in GW.TERMS:
             items = [a for a in work if a['t'] == tkey]
             if not items:
@@ -339,14 +360,30 @@ def page(key, depth=1):
                    'same way Grades 11 and 12 were.</p></div></section>'
                    % (g['teacher'], g['num']))
         if g.get('exploratory'):
+            e = SP.EXPLORATORY
+            out.append('<section id="exploratory" class="expl">')
+            out.append('  <h2>%s</h2>' % e['title'])
+            out.append('  <p class="sub">%s</p>' % e['lede'])
+            out.append('  <div class="exgrid">')
+            for t, d in e['what']:
+                out.append('    <article><b>%s</b><p>%s</p></article>' % (t, d))
+            out.append('  </div>')
+            out.append('  <div class="note acc"><p><strong>Three things worth '
+                       'doing while you are here.</strong></p><ul>')
+            for a in e['ask']:
+                out.append('    <li>%s</li>' % a)
+            out.append('  </ul></div>')
             out.append(
-                '<section><div class="note"><p><strong>What exploratory '
-                'means.</strong> In Grade 9 you spend one week in each of nine '
-                'shops before choosing the one you stay in for the next three '
-                'and a half years. One week is not long, so use it: ask what '
-                'the seniors are building, and look at '
-                '<a href="%spathways/index.html">the seven pathways</a> to see '
-                'where this shop can actually take you.</p></div></section>' % r)
+                '  <div class="doors" style="margin-top:20px">'
+                '<a href="%sstart/engineering.html"><span class="n">The real '
+                'answer</span><b>What engineering actually is</b>'
+                '<span>The design process, the seven roles, and what the job '
+                'is once you are doing it.</span></a>'
+                '<a href="%spathways/index.html"><span class="n">Seven '
+                'areas</span><b>Pick a pathway</b><span>The clearest picture '
+                'of where this shop can take you.</span></a>'
+                '</div>' % (r, r))
+            out.append('</section>')
 
     out.append(
         '<section><h2>Wherever you are in the shop</h2>'

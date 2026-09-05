@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Builds the seven E.E.P. pathway hub guides as one HTML artifact."""
 
+import shop_projects as SP   # briefs the shop has really run, per pathway
+
 # ---------------------------------------------------------------- content
 # Each pathway: key, short nav label, standard, full title, lead, one-line
 # pitch, then the five topics.
@@ -526,6 +528,21 @@ def render_pathway(p):
     o.append('</div>')
     if b.get('extra'):
         o.append('<p class="note">%s</p>' % b['extra'])
+
+    # Briefs this shop has actually set, harvested from the real classes. Kept
+    # separate from the seeds above because these have been built and marked --
+    # a student picking one knows it works as a project.
+    runs = SP.RUNS.get(p['key']) or []
+    if runs:
+        o.append('<h4 class="runsh">Projects this shop has already run</h4>')
+        o.append('<p class="blurb">Real briefs from other years, offered here '
+                 'as optional work. You do not have to be in that grade to '
+                 'take one on &mdash; ask first, then build it.</p>')
+        o.append('<div class="runs">')
+        for y, t, d in runs:
+            o.append('<article><span class="ry">%s</span><b>%s</b><p>%s</p>'
+                     '</article>' % (y, t, d))
+        o.append('</div>')
     o.append('</div>')
 
     # 5 Get the Files
@@ -738,6 +755,19 @@ ul.files li::before{content:"";position:absolute;left:18px;top:17px;width:9px;he
   gap:6px;box-shadow:0 0 0 1px var(--rule)}
 .briefs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
 .briefs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+
+/* briefs the shop has really run -- same grid, but tagged with the class it
+   ran in, so a student can see it is a real assignment rather than a seed */
+.runsh{margin:26px 0 6px;font-family:var(--sans);font-weight:700;font-size:17px;
+  letter-spacing:-.01em;color:var(--ink)}
+.runs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.runs article{background:var(--card);padding:16px 19px;display:flex;
+  flex-direction:column;gap:6px;box-shadow:0 0 0 1px var(--rule)}
+.runs .ry{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);font-weight:700}
+.runs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.runs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
 
 .note{margin:16px 0 0;font-size:14.5px;color:var(--ink-2);background:var(--card);
   border:1px solid var(--rule);border-left:3px solid var(--ink-3);padding:12px 16px;

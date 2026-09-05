@@ -28,9 +28,10 @@ GRADES = [
         key='9', num=9, course='Engineering I', teacher='Mr. Dryer',
         banner='grade-1.jpg',
         ink='#a03c36', ink_dark='#e59089', soft='#fbeceb', soft_dark='#3a1e1c',
-        lede='Grade 9 is exploratory. You spend one week in each of nine shops '
-             'before you choose the one you will be in for the next three and '
-             'a half years. This page is what that week looks like here.',
+        lede='Grade 9 in this shop is <b>Terms 3 and 4</b>. You spend the '
+             'first half of the year on exploratory, one week in each of nine '
+             'shops, and you join us for the back half once you have chosen. '
+             'So this is half a year, and it moves quickly.',
         exploratory=True,
         units=[
             ('Exploratory &amp; Shop Readiness',

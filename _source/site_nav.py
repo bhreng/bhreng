@@ -23,6 +23,7 @@ def tree():
         ('start', 'Start here', 'start/welcome.html', [
             ('start/welcome.html', 'Welcome to the shop'),
             ('start/how-class-works.html', 'How this class works'),
+            ('start/engineering.html', 'What engineering is'),
         ]),
         ('grades', 'Your year', 'grades/index.html', [
             ('grades/index.html', 'Which year are you?'),
