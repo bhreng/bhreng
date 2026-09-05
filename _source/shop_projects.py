@@ -176,8 +176,8 @@ EXPLORATORY = dict(
          'who write down the difference instead of hiding it.'),
     ],
     ask=[
-        'Ask a senior what they are building for their capstone, and why they '
-        'chose it.',
+        'Ask an upperclassman what they are building for their capstone, and '
+        'why they chose it.',
         'Ask what the worst thing they ever printed was, and what they '
         'changed.',
         'Look at the seven pathways and see which one you keep coming back to.',

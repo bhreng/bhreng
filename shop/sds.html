@@ -248,11 +248,56 @@ catch(e){}})();
       resins and support material for that machine, so they are exactly right &mdash;
       and they matter, because uncured resin is a skin sensitiser and a Category 1 eye
       hazard. See the <a href="check-polyjet.html">resin printing check</a>.</p>
-    <p class="note warn"><strong>What is missing is the filament side.</strong> For the
-      Bambu Lab printers there is one sheet, for PLA, and nothing for PETG, ABS, ASA,
-      TPU or any of the Bambu-branded materials. The set is also labelled MSDS, which is
-      the pre-2015 naming &mdash; the current standard is a 16-section SDS. Both are
-      worth fixing before students are told to rely on this library.</p>
+    <p class="note"><strong>A sheet belongs to a product, not to a material.</strong>
+      A sheet for one brand of PLA does not cover another brand&rsquo;s, because the
+      colourant and the additives differ and those are the parts that carry the hazard.
+      Match the sheet to what is actually printed on the spool. If the spool in your
+      hand has no sheet in the library, ask before you load it.</p>
+    <p class="note"><strong>On the older sheets labelled MSDS.</strong> That is the
+      naming used before 2015. The current standard is the 16-section SDS described
+      below. An old sheet is not wrong, but it is laid out differently and is worth
+      replacing when the chance comes.</p>
+  </section>
+
+  <section>
+    <h2>Filament, and the part the sheet does not cover</h2>
+    <p class="sub">This is the gap that matters most in this shop, so it is worth
+      understanding rather than looking up.</p>
+    <p>A filament sheet describes the spool as it sits on the shelf: a solid plastic,
+      not much of a hazard, which is why those sheets are short and reassuring. What it
+      barely covers is the thing you are actually exposed to &mdash; what comes off the
+      nozzle at 220&ndash;260&nbsp;&deg;C while the print runs.</p>
+    <p>Two things come off a running printer. <b>Ultrafine particles</b>, small enough
+      to reach deep into your lungs and pass into the bloodstream. And <b>volatile
+      organic compounds</b>, which cause eye, nose and throat irritation, headaches,
+      loss of coordination and nausea. You will usually smell the second one and never
+      notice the first.</p>
+    <p><b>Not all filament is equal.</b> Measured worst to best it runs <b>ABS</b>, then
+      <b>nylon</b>, then <b>PLA</b>. PLA is the lowest-emitting of the common materials,
+      which is the real reason it is the shop default &mdash; not just that it prints
+      easily.</p>
+    <dl class="defs">
+      <dt>Use PLA unless the part needs something else</dt>
+      <dd>Heat resistance, outdoor use or impact strength are real reasons to reach for
+        PETG, ASA or ABS. &ldquo;It was the spool already loaded&rdquo; is not.</dd>
+      <dt>Print with the enclosure shut</dt>
+      <dd>On the X1C and the H2D the enclosure is a containment measure, not a dust
+        cover. Shut it for anything that is not PLA, and prefer it shut for PLA too.</dd>
+      <dt>Run the lowest temperature that still prints well</dt>
+      <dd>Emissions rise with nozzle and plate temperature. If a profile prints cleanly
+        20&nbsp;&deg;C lower, that is a real reduction in what you are breathing.</dd>
+      <dt>Do not sit with your face at the printer</dt>
+      <dd>Watch the first layer, then step back. Concentrations are highest right at the
+        machine and fall off quickly with distance.</dd>
+      <dt>Say so if the room smells of plastic</dt>
+      <dd>A smell means VOCs are building up faster than the room clears them. That is a
+        ventilation problem to fix, not a normal part of printing.</dd>
+    </dl>
+    <p class="note">This follows the schools guidance published by <b>Underwriters
+      Laboratories&rsquo; Chemical Insights institute with Georgia Tech</b>, written for
+      exactly this situation &mdash; desktop printers in a classroom, not industrial
+      machines in a plant. The full guide is on the
+      <a href="../extras/links.html">links page</a>.</p>
   </section>
 
   <section>
@@ -295,12 +340,12 @@ catch(e){}})();
     <span>Blue Hills Regional Technical School</span>
     <span>Engineering Technology &middot; Room E-126</span>
     <span>Mr. Frank &middot; Mr. Dryer</span>
-    <span class="build">Build 04 Sep 2026, 9:18 pm</span>
+    <span class="build">Build 04 Sep 2026, 11:49 pm</span>
   </div>
 </footer>
 
 
-<script src="../assets/search-index.js?v=b7afd619" defer></script>
+<script src="../assets/search-index.js?v=40aac8ee" defer></script>
 <script defer>
 (function(){
   var REL = '../';

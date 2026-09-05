@@ -148,6 +148,13 @@ LINKS = [
             ('Arduino language reference',
              'https://docs.arduino.cc/language-reference/',
              'Every function, with an example for each. Faster than searching.'),
+            ('3D printer safety in schools (UL Chemical Insights)',
+             'https://greenstrides.org/sites/default/files/'
+             '3D_Printer_School_Safety.pdf',
+             'What a desktop printer actually puts into the air, and what to '
+             'do about it. Written by Underwriters Laboratories with Georgia '
+             'Tech for classrooms specifically, not for factories. It is the '
+             'source behind the filament advice on the SDS page.'),
         ],
     ),
     dict(
