@@ -1,0 +1,649 @@
+<title>BHR Engineering Binder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --paper:#eef2f5; --card:#fff; --ink:#141c26; --ink-2:#3f4e5d; --ink-3:#6d7c8a;
+  --rule:#c3d0da; --rule-soft:#dbe3ea; --accent:#14607f; --accent-soft:#e0edf3;
+  --amber:#8a5a12; --amber-soft:#f6ecd8; --crimson:#963129; --crimson-soft:#f7e3e1;
+  --moss:#3d6b43; --moss-soft:#e2eee3;
+  --shadow:0 1px 2px rgba(20,28,38,.05),0 8px 24px -14px rgba(20,28,38,.18);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0e151c; --card:#161f28; --ink:#e6ecf1; --ink-2:#b3c0cc; --ink-3:#7d8b98;
+  --rule:#2d3b47; --rule-soft:#232f3a; --accent:#63b5d6; --accent-soft:#13303d;
+  --amber:#d7a355; --amber-soft:#33280f; --crimson:#e0817a; --crimson-soft:#3a1e1b;
+  --moss:#8fbe95; --moss-soft:#1c2e1f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
+}}
+:root[data-theme="dark"]{
+  --paper:#0e151c; --card:#161f28; --ink:#e6ecf1; --ink-2:#b3c0cc; --ink-3:#7d8b98;
+  --rule:#2d3b47; --rule-soft:#232f3a; --accent:#63b5d6; --accent-soft:#13303d;
+  --amber:#d7a355; --amber-soft:#33280f; --crimson:#e0817a; --crimson-soft:#3a1e1b;
+  --moss:#8fbe95; --moss-soft:#1c2e1f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Spectral",Georgia,serif;
+  font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+
+/* layout */
+.shell{display:grid;grid-template-columns:236px minmax(0,1fr);gap:44px;
+  max-width:1180px;margin:0 auto;padding:28px 24px 100px;align-items:start}
+@media(max-width:900px){.shell{grid-template-columns:1fr;gap:24px}}
+
+/* nav */
+nav{position:sticky;top:24px;font-family:"Archivo",system-ui,sans-serif;
+  border-right:1px solid var(--rule);padding-right:20px}
+@media(max-width:900px){nav{position:static;border-right:0;border-bottom:1px solid var(--rule);
+  padding:0 0 18px}}
+.nav-title{font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--accent);font-family:"IBM Plex Mono",monospace;margin:0 0 14px}
+nav ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+nav a{display:grid;grid-template-columns:20px 1fr;gap:9px;text-decoration:none;
+  color:var(--ink-2);font-size:13.5px;font-weight:500;padding:5px 8px;border-radius:3px;
+  line-height:1.35}
+nav a:hover{background:var(--accent-soft);color:var(--ink)}
+nav a.on{background:var(--accent-soft);color:var(--accent);font-weight:600}
+nav a span:first-child{font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+  color:var(--ink-3);padding-top:1px}
+nav a.on span:first-child{color:var(--accent)}
+
+/* head */
+.masthead{border:1.5px solid var(--ink);background:var(--card);margin-bottom:40px}
+.mh-top{padding:24px 26px 20px;border-bottom:1.5px solid var(--ink)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-family:"Archivo",system-ui,sans-serif;font-weight:700;
+  font-size:clamp(27px,4.2vw,38px);line-height:1.08;letter-spacing:-.02em;margin:0;
+  text-wrap:balance}
+.mh-sub{margin:11px 0 0;color:var(--ink-2);max-width:60ch;font-size:16.5px}
+.mh-fields{display:grid;grid-template-columns:repeat(4,1fr)}
+.mh-fields div{padding:11px 16px;border-right:1px solid var(--rule)}
+.mh-fields div:last-child{border-right:0}
+.mh-fields dt{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 3px}
+.mh-fields dd{margin:0;font-family:"Archivo",sans-serif;font-weight:600;font-size:13.5px}
+@media(max-width:640px){.mh-fields{grid-template-columns:1fr 1fr}
+  .mh-fields div{border-bottom:1px solid var(--rule)}}
+
+/* sections */
+section{margin-bottom:52px;scroll-margin-top:24px}
+.sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:1.5px solid var(--ink);
+  padding-bottom:8px;margin-bottom:20px}
+.sec-num{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);
+  letter-spacing:.08em;flex:none}
+h2{font-family:"Archivo",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.012em;
+  margin:0;text-wrap:balance}
+h3{font-family:"Archivo",sans-serif;font-weight:600;font-size:17.5px;margin:26px 0 10px;
+  letter-spacing:-.005em}
+h4{font-family:"Archivo",sans-serif;font-weight:600;font-size:14.5px;margin:20px 0 7px;
+  color:var(--ink-2)}
+p{margin:0 0 12px;max-width:70ch}
+ul,ol.body{margin:0 0 14px;padding-left:20px;max-width:70ch}
+li{margin-bottom:5px}
+strong{font-weight:600}
+em{font-style:italic;color:var(--ink-2)}
+.mono,code{font-family:"IBM Plex Mono",monospace;font-size:.86em}
+.lede{font-size:17px;color:var(--ink-2);max-width:68ch}
+
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--card);
+  box-shadow:var(--shadow);margin:0 0 18px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14.5px}
+th{font-family:"Archivo",sans-serif;font-weight:600;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);text-align:left;padding:10px 13px;
+  border-bottom:1.5px solid var(--rule);white-space:nowrap}
+td{padding:10px 13px;border-bottom:1px solid var(--rule-soft);vertical-align:top;
+  line-height:1.45}
+tr:last-child td{border-bottom:0}
+td.n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  white-space:nowrap;color:var(--ink-2)}
+td.k{font-family:"Archivo",sans-serif;font-weight:500;font-size:14px}
+td.sk{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-2);line-height:1.7}
+
+/* callouts */
+.note{background:var(--card);border-left:4px solid var(--accent);padding:16px 18px;
+  margin:0 0 18px;box-shadow:var(--shadow)}
+.note.warn{border-left-color:var(--amber)}
+.note.open{border-left-color:var(--crimson)}
+.note p:last-child{margin-bottom:0}
+.note-tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 7px}
+.note.warn .note-tag{color:var(--amber)}
+.note.open .note-tag{color:var(--crimson)}
+
+/* definition blocks */
+.defs{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule);margin:0 0 18px}
+.def{background:var(--card);padding:15px 17px}
+.def h4{margin:0 0 5px;font-size:15px;color:var(--ink)}
+.def p{font-size:14.5px;margin:0 0 6px;color:var(--ink-2)}
+.def p:last-child{margin:0}
+.def .meta{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3)}
+
+.chip{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+  letter-spacing:.09em;text-transform:uppercase;padding:2px 6px;border-radius:2px;
+  font-weight:500;vertical-align:middle;margin-left:6px}
+.c-new{background:var(--amber-soft);color:var(--amber)}
+.c-ok{background:var(--moss-soft);color:var(--moss)}
+
+footer{border-top:1px solid var(--rule);padding-top:16px;font-size:13px;color:var(--ink-3);
+  max-width:72ch}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;
+  scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+
+<div class="shell">
+
+<nav>
+  <p class="nav-title">Binder</p>
+  <ol>
+    <li><a href="#s1"><span>1</span><span>Instructor Specializations</span></a></li>
+    <li><a href="#s2"><span>2</span><span>Foundational Pillars</span></a></li>
+    <li><a href="#s3"><span>3</span><span>Program Content Categories</span></a></li>
+    <li><a href="#s4"><span>4</span><span>Core Class Tasks</span></a></li>
+    <li><a href="#s5"><span>5</span><span>Program Overview</span></a></li>
+    <li><a href="#s6"><span>6</span><span>Scope &amp; Sequence</span></a></li>
+    <li><a href="#s7"><span>7</span><span>Standards Alignment</span></a></li>
+    <li><a href="#s8"><span>8</span><span>DESE Voc Standards</span></a></li>
+    <li><a href="#open"><span>—</span><span>Open Items</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<div class="masthead">
+  <div class="mh-top">
+    <p class="eyebrow">Blue Hills Regional &middot; Engineering Technology</p>
+    <h1>BHR Engineering Binder</h1>
+    <p class="mh-sub">The program's structural document, in eight sections read in order. Rewritten September 2026 — plain language, DESE terminology, planned and running distinguished.</p>
+  </div>
+  <dl class="mh-fields">
+    <div><dt>Lead</dt><dd>Mr. Frank (EDF)</dd></div>
+    <div><dt>Co-teacher</dt><dd>Mr. Dryer (ESEC)</dd></div>
+    <div><dt>Revised</dt><dd>Sep 2026</dd></div>
+    <div><dt>Framework</dt><dd>MA Chapter 74</dd></div>
+  </dl>
+</div>
+
+<div class="note open">
+  <p class="note-tag">Read first</p>
+  <p><strong>Five task types in Section 4</strong> are marked <span class="chip c-new">New</span> and need your approval or removal. <strong>Cooperative Education is missing entirely</strong> — Grade 11 from Term 3, Grade 12 from Term 1. And the <strong>July 2026 program of study</strong> is newer and fuller than this binder on standards coverage, credentials, proficiency levels and coordinated academics; treat it as authoritative where the two disagree.</p>
+</div>
+
+<!-- ========== 1 ========== -->
+<section id="s1">
+  <div class="sec-head"><span class="sec-num">SECTION 1</span><h2>Instructor Specializations</h2></div>
+  <p class="lede">Two instructors with complementary specializations cover the full engineering lifecycle. Both support all student projects; the split exists so students know who to go to for what.</p>
+
+  <h3>Mr. Frank — Engineering Design &amp; Fabrication (EDF)</h3>
+  <p><strong>Focus:</strong> turning ideas into physical things. The visual, structural, and manufacturable side of engineering.</p>
+  <ul>
+    <li><strong>Industrial and aesthetic design</strong> — user-centered design, form, ergonomics, visual impact</li>
+    <li><strong>Technical graphics and documentation</strong> — CAD modeling, drafting standards including GD&amp;T, architectural drawing, as-built documentation <em>(Standard 2)</em></li>
+    <li><strong>Prototyping and manufacturing</strong> — DFM for additive (3D printing) and subtractive (laser, CNC) processes <em>(Standard 7)</em></li>
+    <li><strong>Structural and construction principles</strong> — structural integrity, construction materials, civil engineering concepts <em>(Standard 10)</em></li>
+  </ul>
+  <p><strong>EDP stages emphasized:</strong> Develop Solutions (form), Plan a Solution (physical build), Create (fabrication), Improve &amp; Redesign, Present Your Solution.</p>
+  <p><strong>Career paths:</strong> product design, industrial design, architectural engineering, design-focused mechanical engineering, manufacturing engineering, construction management, technical drafting.</p>
+
+  <h3>Mr. Dryer — Engineering Systems &amp; Emerging Concepts (ESEC)</h3>
+  <p><strong>Focus:</strong> the intelligence, functionality, and control that make engineered systems work. The digital, electrical, and analytical side.</p>
+  <ul>
+    <li><strong>Digital systems and controls</strong> — electrical fundamentals, digital electronics, logic design, Arduino/Python/PLC, control systems, mechatronics <em>(Standards 5, 6, 9)</em></li>
+    <li><strong>Software and algorithmic analysis</strong> — efficient code, software architecture, computational thinking <em>(Standard 6)</em></li>
+    <li><strong>Applied research and emerging technology</strong> — AI and ML in control systems, IoT, quantum computing concepts</li>
+    <li><strong>System analysis and mechanical function</strong> — materials science, FEA theory, kinematics, dynamics, actuation <em>(Standards 7, 8)</em></li>
+  </ul>
+  <p><strong>EDP stages emphasized:</strong> Identify the Problem (requirements), Research &amp; Brainstorm, Develop Solutions (architecture, code), Create (functional prototypes), Test &amp; Evaluate, Improve &amp; Redesign.</p>
+  <p><strong>Career paths:</strong> electrical engineering, software engineering, computer engineering, robotics, control systems, systems integration, R&amp;D, automation engineering.</p>
+
+  <div class="note">
+    <p class="note-tag">Teaching split</p>
+    <p>Mr. Frank teaches Grades 11 and 12; Mr. Dryer teaches Grades 9 and 10. The arrangement is collaborative — both teach across grades as needed, and all four years sit under the lead teacher's oversight.</p>
+  </div>
+</section>
+
+<!-- ========== 2 ========== -->
+<section id="s2">
+  <div class="sec-head"><span class="sec-num">SECTION 2</span><h2>Foundational Pillars</h2></div>
+  <p class="lede">Five pillars organize everything students do, from the daily Do Now to the capstone. Each answers a different question: what are you learning, what are you building, are you working safely, are you working professionally, and how do you know it worked.</p>
+
+  <div class="defs">
+    <div class="def">
+      <h4>Knowledge Consumption (KC)</h4>
+      <p>Acquiring new information, concepts, and procedural skills — the "why" and the "how-to" before application.</p>
+      <p class="meta">Activities: Do Now! · Theory-Based Lesson · Training-Based Lesson<br>Roles: Research Engineer · Standards: 3, 5, 6, 7, 8, 10, 15</p>
+    </div>
+    <div class="def">
+      <h4>Applied Learning (AL)</h4>
+      <p>Using what you've learned to solve problems, build designs, develop systems, and produce something real. The doing.</p>
+      <p class="meta">Activities: Project Work · Assignment · Lab &amp; Testing · Independent Focus<br>Roles: Design, Development, Production &amp; Construction Engineer · Standards: 3, 11, 12</p>
+    </div>
+    <div class="def">
+      <h4>Safety &amp; Operations (S&amp;O)</h4>
+      <p>Keeping the shop secure, functional, and maintained. Equipment protocols, organization, stewardship.</p>
+      <p class="meta">Activities: Training-Based Lesson (safety) · Shop Stewardship<br>Roles: Production &amp; Construction, Operations Engineer · Standard: 1</p>
+    </div>
+    <div class="def">
+      <h4>Professional Practice (PP)</h4>
+      <p>The non-technical skills every engineering career needs — teamwork, communication, ethics, project management.</p>
+      <p class="meta">Activities: Professional Development Activity · One-on-One Mentoring<br>Roles: Management, Sales, Operations Engineer · Standards: 2, 4, 13, 14</p>
+    </div>
+    <div class="def">
+      <h4>Assessment &amp; Reflection (A&amp;R)</h4>
+      <p>Evaluating outcomes, documenting progress, and thinking about your own thinking. Accountability and improvement.</p>
+      <p class="meta">Activities: Presentation/Review · Quiz/Test · Project Reflection · Engineering Logbook<br>Standards: 3, 11, 12, 13</p>
+    </div>
+  </div>
+
+  <h3>Where each specialization puts its emphasis</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Pillar</th><th>EDF — Design &amp; Fabrication</th><th>ESEC — Systems &amp; Concepts</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Knowledge Consumption</td><td>Statics, DFM, advanced CAD geometry, structural analysis, drafting standards</td><td>Electrical fundamentals, control algorithms, system dynamics, materials science, FEA theory</td></tr>
+      <tr><td class="k">Applied Learning</td><td>Prototyping, build and assembly, form optimization, CAD/CAM execution</td><td>Functional testing, code integration, digital troubleshooting, data analysis</td></tr>
+      <tr><td class="k">Safety &amp; Operations</td><td>Additive manufacturing safety, laser operation, physical tool usage</td><td>Electrical and circuit safety, power tools, machine tools, system maintenance</td></tr>
+      <tr><td class="k">Professional Practice</td><td>Design reviews, visual presentation, aesthetics, design management</td><td>Technical reporting, requirements analysis, systematic troubleshooting</td></tr>
+      <tr><td class="k">Assessment &amp; Reflection</td><td>Design quality, drafting accuracy, evidence of iteration, fabrication quality</td><td>System performance, analytical rigor, code efficiency, spec conformance</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ========== 3 ========== -->
+<section id="s3">
+  <div class="sec-head"><span class="sec-num">SECTION 3</span><h2>Program Content Categories</h2></div>
+  <p class="lede">Ten categories describing what the program teaches. Each names its scope, what falls inside it, and which instructor leads it.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Category</th><th>Scope includes</th><th>Lead</th><th>Std</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td class="k">Digital Design &amp; Visualization</td><td>CAD, sketching, industrial design, parametric and direct modeling, generative design for form, animation</td><td>EDF</td><td class="n">8</td></tr>
+      <tr><td class="n">2</td><td class="k">Technical Graphics &amp; Documentation</td><td>Drafting, GD&amp;T, technical reporting, the Engineering Logbook, BIM, architectural plans, part lists</td><td>EDF</td><td class="n">2</td></tr>
+      <tr><td class="n">3</td><td class="k">Manufacturing &amp; Fabrication</td><td>Additive manufacturing, rapid prototyping, CAM, assembly, construction, material joining</td><td>EDF</td><td class="n">7</td></tr>
+      <tr><td class="n">4</td><td class="k">Quality Assurance &amp; Systems Testing</td><td>Testing, quality control, inspection, calibration, statistical process control, verification</td><td>EDF</td><td class="n">4</td></tr>
+      <tr><td class="n">5</td><td class="k">Foundational Science &amp; Math</td><td>Physics, mathematics, material properties, structural theory, electrical fundamentals</td><td>ESEC</td><td class="n">3, 5</td></tr>
+      <tr><td class="n">6</td><td class="k">Software &amp; Algorithmic Engineering</td><td>Coding, programming, firmware, software architecture, debugging, logic analysis</td><td>ESEC</td><td class="n">6</td></tr>
+      <tr><td class="n">7</td><td class="k">Digital Systems &amp; Control</td><td>Automation, digital electronics, microcontrollers, control systems, mechatronics</td><td>ESEC</td><td class="n">9</td></tr>
+      <tr><td class="n">8</td><td class="k">Empirical Analysis &amp; Optimization</td><td>Functional analysis, FEA and CFD simulation, optimization, data-driven testing</td><td>ESEC</td><td class="n">8</td></tr>
+      <tr><td class="n">9</td><td class="k">Engineering Methodology &amp; Planning</td><td>Project management, the EDP, work breakdown structures, decision matrices, Gantt scheduling</td><td>Shared</td><td class="n">4</td></tr>
+      <tr><td class="n">10</td><td class="k">Professionalism &amp; Safe Operations</td><td>Engineering roles, employability, technical communication, shop safety, OSHA protocols</td><td>Shared</td><td class="n">1, 13</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note warn">
+    <p class="note-tag">Overlap worth watching</p>
+    <p>PCC 9 corresponds closely to Standard 4, and PCC 10 to Standards 1 and 13 plus the S&amp;O pillar. If the categories are ever consolidated, these two are the first candidates to fold into the standards directly.</p>
+  </div>
+</section>
+
+<!-- ========== 4 ========== -->
+<section id="s4">
+  <div class="sec-head"><span class="sec-num">SECTION 4</span><h2>Core Class Tasks</h2></div>
+  <p class="lede">The activity types students encounter, and how each maps to the pillars. This list governs how work is categorized — and therefore how it lands in the gradebook.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Task type</th><th>Primary</th><th>Secondary</th><th>Std</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td class="k">Do Now!</td><td>KC</td><td>A&amp;R</td><td class="n">—</td></tr>
+      <tr><td class="n">2</td><td class="k">Theory-Based Lesson</td><td>KC</td><td>—</td><td class="n">—</td></tr>
+      <tr><td class="n">3</td><td class="k">Training-Based Lesson</td><td>KC <em>or</em> S&amp;O</td><td>—</td><td class="n">1</td></tr>
+      <tr><td class="n">4</td><td class="k">Project Work</td><td>AL</td><td>S&amp;O, PP, A&amp;R</td><td class="n">3</td></tr>
+      <tr><td class="n">5</td><td class="k">Assignment</td><td>AL</td><td>KC, PP</td><td class="n">—</td></tr>
+      <tr><td class="n">6</td><td class="k">Lab &amp; Testing</td><td>AL</td><td>S&amp;O, A&amp;R</td><td class="n">—</td></tr>
+      <tr><td class="n">7</td><td class="k">Independent Focus</td><td>AL</td><td>KC, PP, A&amp;R</td><td class="n">12</td></tr>
+      <tr><td class="n">8</td><td class="k">One-on-One / Mentoring</td><td>PP <em>or</em> A&amp;R</td><td>KC, AL</td><td class="n">—</td></tr>
+      <tr><td class="n">9</td><td class="k">Quiz / Test</td><td>A&amp;R</td><td>—</td><td class="n">—</td></tr>
+      <tr><td class="n">10</td><td class="k">Shop Stewardship <span class="chip c-new">New</span></td><td>S&amp;O</td><td>—</td><td class="n">1</td></tr>
+      <tr><td class="n">11</td><td class="k">Professional Development Activity <span class="chip c-new">New</span></td><td>PP</td><td>—</td><td class="n">2, 13, 14</td></tr>
+      <tr><td class="n">12</td><td class="k">Project Presentation / Review <span class="chip c-new">New</span></td><td>A&amp;R</td><td>PP</td><td class="n">13</td></tr>
+      <tr><td class="n">13</td><td class="k">Project Reflection <span class="chip c-new">New</span></td><td>A&amp;R</td><td>—</td><td class="n">3, 12</td></tr>
+      <tr><td class="n">14</td><td class="k">Engineering Logbook <span class="chip c-new">New</span></td><td>A&amp;R</td><td>PP</td><td class="n">3</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note warn">
+    <p class="note-tag">Why five are marked new</p>
+    <p>All five appear as pillar activities in Section 2 but had no entry here — meaning the document that classifies work omitted them. The Engineering Logbook is the consequential one: the crosswalk names the Engineering Daily Logbook as the documentation requirement for Standard 3, so the program's core documentation instrument was unclassified. <strong>Approve, amend, or cut.</strong> If any are cut, Section 2's activity lists need the matching edit so the two agree.</p>
+  </div>
+
+  <h3>Terminology retired this year</h3>
+  <p><strong>Independent Study → Independent Focus</strong> — self-directed, term-length work in a chosen engineering field, for every student in the shop. Seven pathways: Industrial Design, Architecture/Civil, Mechanical, Software, Electrical, Automation/Robotics, Project Management.</p>
+  <p><strong>Engineering Notebook → Daily Logbook.</strong> Note that DESE's own skill S3-e says <em>"maintain an engineering journal."</em> The logbook is this program's implementation of that requirement; the name differs, the function does not.</p>
+</section>
+
+<!-- ========== 5 ========== -->
+<section id="s5">
+  <div class="sec-head"><span class="sec-num">SECTION 5</span><h2>Program Overview</h2></div>
+  <p class="lede">Framework in practice, assessment, resources, and shop policy. Sections 1–4 define the framework; this section is where the pieces meet and where the operational material lives.</p>
+
+  <h3>Grading policy</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Category</th><th>Description</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Project Grade</td><td>Individual rubrics per project — productivity, creativity, accuracy, timing</td><td class="n">35%</td></tr>
+      <tr><td class="k">Weekly Grade</td><td>Safety, initiative, preparation, attitude, work ethic, productivity</td><td class="n">30%</td></tr>
+      <tr><td class="k">Classwork Assignments</td><td>Pacing, staying on task, following directions</td><td class="n">15%</td></tr>
+      <tr><td class="k">Employability</td><td>Weekly and term-based soft skills, shop professionalism</td><td class="n">20%</td></tr>
+    </tbody>
+  </table></div>
+  <p>Weekly Grade and Employability together carry <strong>50%</strong> of the course grade. Both map to Standard 13.</p>
+
+  <h3>Weekly grade rubric — the "Excellent" standard</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Criteria</th><th>Excellent</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Safety</td><td>Follows all safety rules, maintains a clean work area, returns materials to their proper place on completing a task.</td></tr>
+      <tr><td class="k">Initiative</td><td>Stays on task, seeks additional work, offers assistance to peers, asks for help when needed, uses downtime effectively.</td></tr>
+      <tr><td class="k">Preparation</td><td>On time, agenda present, writing instrument present, dressed to shop standards, awake and alert.</td></tr>
+      <tr><td class="k">Attitude</td><td>Positive attitude, interacts appropriately, appropriate language, maintains self-control at all times.</td></tr>
+      <tr><td class="k">Work Ethic</td><td>Work reflects best effort, cooperative, demonstrates peer leadership, self-starter.</td></tr>
+      <tr><td class="k">Productivity</td><td>Highest-quality work, actively suggests solutions, routinely uses time well, contributes useful ideas.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>The Engineering Logbook</h3>
+  <p>The primary daily record. The day divides into <strong>three intervals</strong> — prior to break, break to lunch, lunch to end of day. Each carries an EDP status code and records work highlights, roadblocks, and captioned visual evidence. The day closes with challenges and troubleshooting, a daily synthesis, and next class's agenda.</p>
+
+  <h4>EDP status codes</h4>
+  <p>Five codes as working shorthand for the eight EDP stages. The compression is deliberate — a student choosing a code at the start of an interval shouldn't have to split hairs between adjacent planning stages.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Code</th><th>Stage</th><th>Covers</th></tr></thead>
+    <tbody>
+      <tr><td class="n">[PI]</td><td class="k">Problem Identification / Research</td><td>Identify the Problem · Research &amp; Brainstorm</td></tr>
+      <tr><td class="n">[DD]</td><td class="k">Detailed Design (CAD/Modeling)</td><td>Develop Solutions · Plan a Solution</td></tr>
+      <tr><td class="n">[FAB]</td><td class="k">Fabrication &amp; Development</td><td>Create (Model or Prototype)</td></tr>
+      <tr><td class="n">[TE]</td><td class="k">Testing &amp; Evaluation</td><td>Test and Evaluate</td></tr>
+      <tr><td class="n">[IR]</td><td class="k">Improve &amp; Redesign</td><td>Improve and Redesign</td></tr>
+    </tbody>
+  </table></div>
+  <p><em>Present Your Solution</em> has no daily code — it is a project milestone rather than a daily working state.</p>
+
+  <h4>Other documentation</h4>
+  <p><strong>"Do Now!" Reflection</strong> — title, equipment used, new knowledge acquired, brief process summary, application to current project, confidence self-rating.</p>
+  <p><strong>Independent Focus Reflection</strong> — term-end self-assessment: project title, equipment, tasks completed, skills learned, status and progress, challenges and adaptations, project management evaluation, goals for next term.</p>
+
+  <h3>Core textbooks</h3>
+  <ul>
+    <li><em>Fundamentals of Modern Drafting</em> (1st Ed.) — Paul Ross Wallach</li>
+    <li><em>Engineering Drawing and Design</em> (3rd Ed.) — David A. Madsen</li>
+    <li><em>Digital Electronics: Principles and Applications</em> (6th Ed.) — Roger L. Tokheim</li>
+    <li><em>Foundations of Engineering</em> (2nd Ed.) — Holtzapple &amp; Reece. Source of the term <strong>Engineering Accounting</strong> — systematically accounting for the physical and mathematical basis of every engineering decision.</li>
+    <li><em>Engineering Fundamentals: Design, Principles, and Careers</em> (2nd Ed.) — Ryan A. Brown et al.</li>
+  </ul>
+
+  <h3>Industry platforms</h3>
+  <p>Festo Learning Experience (Festo LX) · Arduino Education · Universal Robots Academy · VEX Robotics · Autodesk Learning · Khan Academy · Brilliant.org</p>
+
+  <h3>Makerspace safety — the non-negotiables</h3>
+  <ul>
+    <li>Report all injuries immediately. If chemicals contact the eyes, wash for <strong>15 minutes</strong> before seeking treatment.</li>
+    <li>Eye protection at all times. No loose clothing, ties, jewelry or gloves around moving machinery. Long hair tied back. Shoes covering the entire foot.</li>
+    <li>Never use a tool you haven't been trained on. Never work alone with power tools. Never walk away from a running tool.</li>
+    <li>Machines operate only with all required guards and shields in place.</li>
+    <li>Clean up every time you leave an area, including sweeping the floor. Shut off and unplug machines before cleaning or repair.</li>
+  </ul>
+</section>
+
+<!-- ========== 6 ========== -->
+<section id="s6">
+  <div class="sec-head"><span class="sec-num">SECTION 6</span><h2>Four-Year Scope &amp; Sequence</h2></div>
+  <p class="lede">Every year opens with review and shop acclimation, builds through specialized technical units, and closes with a major project. Grades 9–11 run eight units; Grade 12 runs five, because the 35-day Senior Capstone occupies roughly half the year.</p>
+
+  <h3>Program frame</h3>
+  <p>From the <strong>Engineering Technology Program Scope and Sequence</strong> (July 2026), the school's current program of study. This is a <strong>Chapter 74 CTE program</strong> aligned to the Massachusetts Chapter 74 Engineering Technology Frameworks — the earlier syllabi are superseded.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Year</th><th>Proficiency</th><th>Credential earned</th><th>Coordinated academics</th><th>Co-op</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Grade 9</td><td>Introductory</td><td>Engineering Technology Safety Test</td><td>Biology, Algebra I or II, ELA</td><td>—</td></tr>
+      <tr><td class="k">Grade 10</td><td>Developing</td><td>OSHA-10 Construction</td><td>Biology II, Geometry, ELA</td><td>—</td></tr>
+      <tr><td class="k">Grade 11</td><td>Proficient</td><td>ACU — Inventor and/or Fusion 360</td><td>Chemistry I, Algebra II or Pre-Calculus, ELA</td><td class="n">From Term 3</td></tr>
+      <tr><td class="k">Grade 12</td><td>Advanced</td><td>ACU — Revit Architecture; Program Completion Certificate</td><td>Chemistry II, Statistics / Pre-Calc / Calculus, ELA</td><td class="n">From Term 1</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note warn">
+    <p class="ntag">Cooperative Education is missing from this binder</p>
+    <p>The program of study names Grade 12 as <strong>"Engineering Technology IV / Cooperative Education"</strong> and makes Grade 11 students eligible from Term 3. Co-op appears nowhere else in the binder — no unit references it, no assessment accounts for it, and Grade 12's common assessments in the program of study include <strong>employer evaluations</strong>. A whole strand of the senior year is undocumented here.</p>
+  </div>
+
+  <h3>Freshman Exploratory</h3>
+  <p>Before the program proper: Grade 9 Terms 1 and 2 are exploratory. Two <strong>mini exploratory days</strong>, one per term, between them show every one of the school's <strong>eighteen</strong> shops; from each, a student picks four or five to spend a full vocational week in — <strong>nine week-long visits</strong> in all — then ranks their choices. Placement follows, and students join their shop for Terms 3 and 4.</p>
+  <p>The Engineering Technology exploratory covers the engineering design process, shop safety, hand sketching, CAD, 3D printing and professionalism — touching Standards 1, 2, 3, 7, 13, 14 and 15.</p>
+
+  <h3>Universal Design for Learning</h3>
+  <p>The program of study specifies UDL practices for every year: <strong>Engagement</strong> through hands-on labs and design challenges; <strong>Representation</strong> through visual models, videos and demonstrations; <strong>Action &amp; Expression</strong> through oral explanations and skill demos.</p>
+
+  <h3>Grade 9 — Engineering I: Foundations and Acclimation</h3>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Unit</th><th>PCC</th><th>Emphasis</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td class="k">Exploratory &amp; Shop Readiness</td><td class="n">10</td><td>Acclimation, safety protocols, proper tool usage</td></tr>
+      <tr><td class="n">2</td><td class="k">Intro to Digital Design &amp; CAD</td><td class="n">1</td><td>Parametric modeling and conceptual sketching</td></tr>
+      <tr><td class="n">3</td><td class="k">Engineering Design &amp; Planning</td><td class="n">9</td><td>The Engineering Design Process, design briefs</td></tr>
+      <tr><td class="n">4</td><td class="k">Measurement &amp; Mechanical Foundations</td><td class="n">5</td><td>Technical measurement, applied math for engineering</td></tr>
+      <tr><td class="n">5</td><td class="k">Intro to Logic and Circuits</td><td class="n">7</td><td>Basic circuit building, electronic principles</td></tr>
+      <tr><td class="n">6</td><td class="k">Graphics &amp; Documentation Basics</td><td class="n">2</td><td>Reading drawings, dimensions, the Engineering Logbook</td></tr>
+      <tr><td class="n">7</td><td class="k">Intro to Fabrication &amp; Prototyping</td><td class="n">3</td><td>Safe fabrication equipment use, additive manufacturing</td></tr>
+      <tr><td class="n">8</td><td class="k">End-of-Year Project</td><td class="n">1, 9</td><td>Design process applied to an integrated problem</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Grade 10 — Engineering II: Technical Mastery and Safety</h3>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Unit</th><th>PCC</th><th>Emphasis</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td class="k">Review, Safety Certification &amp; Prep</td><td class="n">10</td><td>Re-acclimation, project management review</td></tr>
+      <tr><td class="n">2</td><td class="k">Technical Documentation Mastery</td><td class="n">2</td><td>Professional drafting, GD&amp;T, technical reporting</td></tr>
+      <tr><td class="n">3</td><td class="k">Electrical &amp; Analog Systems</td><td class="n">5</td><td>Ohm's and Kirchhoff's laws applied to analog circuits</td></tr>
+      <tr><td class="n">4</td><td class="k">Safety &amp; Certification (OSHA Prep)</td><td class="n">10</td><td>Dedicated OSHA training — mandatory credential</td></tr>
+      <tr><td class="n">5</td><td class="k">Mechanical Principles &amp; Simulation</td><td class="n">5, 8</td><td>Static forces, FEA theory for predictive performance</td></tr>
+      <tr><td class="n">6</td><td class="k">Intro to Quality Assurance &amp; Testing</td><td class="n">4</td><td>Inspection and calibration methodologies</td></tr>
+      <tr><td class="n">7</td><td class="k">Civil/Architectural Foundations</td><td class="n">1</td><td>Architectural drawing in BIM/Revit, structural systems</td></tr>
+      <tr><td class="n">8</td><td class="k">End-of-Year Capstone</td><td class="n">1, 2, 9</td><td>Design-build integrating documentation and data analysis</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Grade 11 — Engineering III: Specialization and Industrial Application</h3>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Unit</th><th>PCC</th><th>Emphasis</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td class="k">Review, Acclimation &amp; Prep</td><td class="n">10</td><td>Transition to junior-year expectations</td></tr>
+      <tr><td class="n">2</td><td class="k">Roles of an Engineer &amp; Project Management</td><td class="n">9, 10</td><td>Engineering roles, Gantt charts, scheduling</td></tr>
+      <tr><td class="n">3</td><td class="k">Skill Reinforcement for Upperclassmen</td><td class="n">1–4</td><td>Flexible unit targeting gaps before the capstone</td></tr>
+      <tr><td class="n">4</td><td class="k">Advanced Manufacturing &amp; DFM Theory</td><td class="n">3</td><td>DFM theory, additive and subtractive fabrication</td></tr>
+      <tr><td class="n">5</td><td class="k">Control Systems &amp; Mechatronics</td><td class="n">7</td><td>Control theory, sensors and actuators integrated</td></tr>
+      <tr><td class="n">6</td><td class="k">Algorithmic Programming &amp; Analysis</td><td class="n">6, 8</td><td>Code for control, advanced simulation</td></tr>
+      <tr><td class="n">7</td><td class="k">Junior Capstone: Architectural Design</td><td class="n">1, 2, 9, 10</td><td>15 days — conceptual and detailed architectural design</td></tr>
+      <tr><td class="n">8</td><td class="k">Year-End Wrap-Up &amp; Portfolio</td><td class="n">10</td><td>Reports, reflection, portfolio building</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">
+    <p class="note-tag">Junior Capstone — a dual challenge</p>
+    <p><strong>Unique Concept.</strong> An original concept with a distinctive structural or visual aspect — an upside-down building, a structure with integrated gardens. What makes it engineering rather than art is validating the concept's logic through research or testing.</p>
+    <p><strong>Revitalization.</strong> Select an existing area, space or structure and plan how to bring new life to it — researching comparable efforts, developing a vision for how people would connect with the space, and pitching it.</p>
+  </div>
+
+  <h3>Grade 12 — Engineering IV: Professionalism and Capstone Mastery</h3>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Unit</th><th>PCC</th><th>Emphasis</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td class="k">Review, Career Readiness &amp; Leadership</td><td class="n">10</td><td>Employability, entrepreneurship, senior expectations</td></tr>
+      <tr><td class="n">2</td><td class="k">Skill Reinforcement: Shop Equipment Mastery</td><td class="n">3, 10</td><td>Mastery of shop equipment, additive and subtractive</td></tr>
+      <tr><td class="n">3</td><td class="k">Skill Reinforcement / Elective Exploration</td><td class="n">Std 12</td><td>Capstone skill-building or Independent Focus work</td></tr>
+      <tr><td class="n">4</td><td class="k">Robotics and Automation</td><td class="n">7, 9</td><td>Robotics principles, systems integration</td></tr>
+      <tr><td class="n">5</td><td class="k">Advanced Mastery &amp; Senior Capstone</td><td class="n">1–10</td><td>35 days — original solution, research through defense</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">
+    <p class="note-tag">Senior Capstone — 35 days</p>
+    <p>Not a guided assignment. Students identify their own problem, develop a solution, and manage the whole process. <strong>Project management</strong> — meticulous documentation, daily logbook, instructor meeting records. <strong>Research</strong> — define and justify a problem, evaluate approaches with a decision matrix. <strong>Design</strong> — concept to detailed design, analyzing viability, materials, production. <strong>Prototype, test, redesign</strong> — build, collect data, iterate. <strong>Reflection and presentation</strong> — defend the process and the critical decisions.</p>
+  </div>
+</section>
+
+<!-- ========== 7 ========== -->
+<section id="s7">
+  <div class="sec-head"><span class="sec-num">SECTION 7</span><h2>Standards Alignment</h2></div>
+  <p class="lede">DESE Standards 3–10 mapped to the units that teach them, at skill level. This is the document that demonstrates the program meets the state frameworks — the skill descriptions are DESE's own wording and are not rewritten.</p>
+
+  <h3>Official standard titles</h3>
+  <p>Taken from the July 2026 program of study. Several are longer than the abbreviated forms used elsewhere in the binder and in the pathway crosswalk; these are the ones to cite.</p>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Official title</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td>Safety and Health in an Engineering Technology Environment</td></tr>
+      <tr><td class="n">2</td><td>Role of Engineering Technology Professionals in Society</td></tr>
+      <tr><td class="n">3</td><td>Fundamentals of Engineering</td></tr>
+      <tr><td class="n">4</td><td>Engineering Project Management and Quality Assurance</td></tr>
+      <tr><td class="n">5</td><td>Electrical Engineering Fundamentals and Analog Circuits</td></tr>
+      <tr><td class="n">6</td><td>Digital Electronics, Logic Design, and Emerging Technologies</td></tr>
+      <tr><td class="n">7</td><td>Mechanical Engineering Principles, Materials, and Prototyping</td></tr>
+      <tr><td class="n">8</td><td>Mechanical CAD Modeling, Simulation, and Digital Design Integration</td></tr>
+      <tr><td class="n">9</td><td>Automated Systems Engineering Demonstration, Design, and Implementation</td></tr>
+      <tr><td class="n">10</td><td>Civil Engineering, Architecture Demonstration, Design, and Implementation</td></tr>
+      <tr><td class="n">11</td><td>Advanced Engineering — Integrated Area Research, Design, and Implementation</td></tr>
+      <tr><td class="n">12</td><td>Advanced Elective Engineering Area Design Template</td></tr>
+      <tr><td class="n">13</td><td>Employability Skills</td></tr>
+      <tr><td class="n">14</td><td>Entrepreneurship</td></tr>
+      <tr><td class="n">15</td><td>Digital Literacy</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note">
+    <p class="ntag">The program of study maps all fifteen</p>
+    <p>Where this section covers Standards 3–10, the program of study maps <strong>all fifteen</strong> across the four years, with named skills and student activities for each. Standards 1, 2, 13, 14 and 15 are covered every year from Grade 9. That is a better and more current mapping than this section holds, and the two should be reconciled rather than maintained separately.</p>
+  </div>
+
+  <div class="note warn">
+    <p class="note-tag">Coverage gap</p>
+    <p>Standards <strong>1, 2, 11, 12, 13, 14 and 15</strong> are not mapped here. Those are the general standards common to every shop, and they are covered in practice — Standard 1 by the Grade 10 OSHA unit and the S&amp;O pillar, Standard 13 by the Weekly Grade and Employability categories, Standard 12 by the Independent Focus Standards <strong>11 and 14</strong> are the real gap: both name a Business Plan as their documentation requirement, and no unit currently produces one.</p>
+  </div>
+
+  <h4>Grade 9</h4>
+  <div class="tw"><table>
+    <thead><tr><th>Unit</th><th>Skills covered</th></tr></thead>
+    <tbody>
+      <tr><td class="k">2 · Intro to Digital Design &amp; CAD</td><td class="sk">S3-f, S3-h, S3-i, S8-a, S8-b, S8-i</td></tr>
+      <tr><td class="k">3 · Engineering Design &amp; Planning</td><td class="sk">S3-a, S3-b, S3-c, S3-d, S3-j</td></tr>
+      <tr><td class="k">4 · Measurement &amp; Mechanical Foundations</td><td class="sk">S3-g, S5-a, S5-b, S7-c</td></tr>
+      <tr><td class="k">5 · Intro to Logic and Circuits</td><td class="sk">S5-c, S5-d, S5-h, S6-b, S6-c</td></tr>
+      <tr><td class="k">6 · Graphics &amp; Documentation Basics</td><td class="sk">S3-e, S3-p, S7-p</td></tr>
+      <tr><td class="k">7 · Intro to Fabrication &amp; Prototyping</td><td class="sk">S3-k, S3-l, S7-y, S8-k</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Grade 10</h4>
+  <div class="tw"><table>
+    <thead><tr><th>Unit</th><th>Skills covered</th></tr></thead>
+    <tbody>
+      <tr><td class="k">2 · Technical Documentation Mastery</td><td class="sk">S4-g, S7-d, S7-q, S8-f</td></tr>
+      <tr><td class="k">3 · Electrical &amp; Analog Systems</td><td class="sk">S5-e, S5-f, S5-g, S5-i, S5-j, S5-k, S5-l, S5-m, S5-n, S5-o, S5-p, S5-q, S5-r, S5-s, S5-t, S5-u</td></tr>
+      <tr><td class="k">5 · Mechanical Principles &amp; Simulation</td><td class="sk">S7-e, S7-f, S7-h, S7-s, S7-t, S7-u, S7-v, S7-w, S8-d, S8-j</td></tr>
+      <tr><td class="k">6 · Intro to Quality Assurance &amp; Testing</td><td class="sk">S4-a, S4-b, S4-j, S4-l, S4-m</td></tr>
+      <tr><td class="k">7 · Civil/Architectural Foundations</td><td class="sk">S8-c, S10-a, S10-d, S10-x, S10-y</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Grade 11</h4>
+  <div class="tw"><table>
+    <thead><tr><th>Unit</th><th>Skills covered</th></tr></thead>
+    <tbody>
+      <tr><td class="k">2 · Roles of an Engineer &amp; Management</td><td class="sk">S4-c, S4-o, S8-e, S8-g, S9-a, S9-n</td></tr>
+      <tr><td class="k">4 · Advanced Manufacturing &amp; DFM</td><td class="sk">S4-d, S4-k, S7-a, S7-b, S7-i, S7-j, S7-k, S7-l, S7-m, S7-n, S7-o, S7-r, S7-x, S7-z</td></tr>
+      <tr><td class="k">5 · Control Systems &amp; Mechatronics</td><td class="sk">S9-b, S9-d, S9-e, S9-f, S9-g, S9-h, S9-i, S9-l, S9-p, S9-r, S9-s, S9-ab</td></tr>
+      <tr><td class="k">6 · Algorithmic Programming &amp; Analysis</td><td class="sk">S6-a, S6-d, S6-e, S6-f, S6-g, S6-h, S6-i, S6-j, S6-k, S6-l, S6-m, S6-n, S6-o, S9-j, S9-k, S9-ac, S9-ad</td></tr>
+      <tr><td class="k">7 · Junior Capstone: Architectural Design</td><td class="sk">S8-h, S10-b, S10-h, S10-p, S10-v, S10-y, S10-cc</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Grade 12</h4>
+  <div class="tw"><table>
+    <thead><tr><th>Unit</th><th>Skills covered</th></tr></thead>
+    <tbody>
+      <tr><td class="k">2 · Shop Equipment Mastery</td><td class="sk">S7-aa, S7-bb</td></tr>
+      <tr><td class="k">4 · Robotics and Automation</td><td class="sk">S9-c, S9-m, S9-o, S9-q, S9-t, S9-u, S9-v, S9-w, S9-x, S9-y, S9-z, S9-aa, S9-ae, S9-af, S9-ag, S9-ah, S9-ai, S9-aj, S9-ak</td></tr>
+      <tr><td class="k">5 · Advanced Mastery &amp; Senior Capstone</td><td class="sk">S3-m, S3-n, S3-o, S3-q, S4-e, S4-f, S4-h, S4-i, S4-n</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note warn">
+    <p class="note-tag">Unmapped units</p>
+    <p>Grade 9 units 1 and 8 · Grade 10 units 1, 4 and 8 · Grade 11 units 1, 3 and 8 · Grade 12 units 1 and 3. Review and skill-reinforcement units being unmapped is reasonable. But Grade 10's OSHA unit maps squarely to Standard 1, and the Grade 9 and 10 end-of-year projects are substantial graded work with nothing attached.</p>
+  </div>
+</section>
+
+<!-- ========== 8 ========== -->
+<section id="s8">
+  <div class="sec-head"><span class="sec-num">SECTION 8</span><h2>DESE Voc Standards, Highlighted by Level</h2></div>
+  <p>The Massachusetts DESE vocational standards text with level highlighting applied. <strong>This section is not rewritten and should not be</strong> — it is the state's own wording, and the highlighting is the program's mapping of which standards are taught at which grade level.</p>
+  <div class="note">
+    <p class="note-tag">Outstanding</p>
+    <p>The highlight colours encode the level mapping but are not readable as data — text extraction returns the words without the colours. Turning that into a standard-by-level table would need a script that reads each element's background colour. Apps Script is disabled for the school account, so that route is currently closed.</p>
+  </div>
+</section>
+
+<!-- ========== OPEN ========== -->
+<section id="open">
+  <div class="sec-head"><span class="sec-num">OPEN</span><h2>Items Awaiting Decision</h2></div>
+  <div class="defs">
+    <div class="def">
+      <h4>1 · Five new task types in Section 4</h4>
+      <p>Shop Stewardship, Professional Development Activity, Project Presentation/Review, Project Reflection, Engineering Logbook. All appear as pillar activities in Section 2 but were never classified. Approve, amend, or cut — and if cut, Section 2 needs the matching edit.</p>
+    </div>
+    <div class="def">
+      <h4>2 · Standards 11 and 14 — resolved</h4>
+      <p><s>No unit produces the Business Plan these standards require.</s> The Mechanical, Electrical and Project Management pathway hub guides all require one; Project Management specifies it in detail, applied to an emerging engineering field. The business plan lives in the Independent Focus, not the core courses. Standard 14 is covered from Grade 9 onward in the program of study.</p>
+    </div>
+    <div class="def">
+      <h4>3 · Reconcile this binder with the program of study</h4>
+      <p>The <strong>Engineering Technology Program Scope and Sequence</strong> (July 2026) is newer and more complete than this binder on several points: it maps all fifteen standards rather than eight, covers Cooperative Education, sets a proficiency level per year, names credentials by year, and lists coordinated academics. It should be treated as authoritative where the two disagree.</p>
+    </div>
+    <div class="def">
+      <h4>4 · Cooperative Education is undocumented here</h4>
+      <p>Grade 11 from Term 3, Grade 12 from Term 1. Grade 12 is formally "Engineering Technology IV / Cooperative Education" and its assessments include employer evaluations. Nothing in this binder covers it.</p>
+    </div>
+    <div class="def">
+      <h4>5 · Unmapped units in Section 7</h4>
+      <p>Grade 10's OSHA unit maps to Standard 1. The Grade 9 and 10 end-of-year projects are graded work with no standards attached — though the program of study does map both.</p>
+    </div>
+    <div class="def">
+      <h4>6 · Section 5's grading policy lost detail</h4>
+      <p>The live <span class="mono">BHR ENG Doc - Grading &amp; Assessment</span> (May 2026) groups the weekly grade into <strong>Behavior</strong> and <strong>Performance</strong>, and defines the full <strong>0–4 scoring range</strong> — Poor 28, Unsatisfactory 52, Fair 78, Good 92, Excellent 100. Section 5 has neither. Correct from that source.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Rewritten from the eight-section Google Docs binder, September 2026, and cross-referenced against the <strong>Engineering Technology Program Scope and Sequence</strong> (July 2026) and the live <span class="mono">BHR ENG Doc</span> set (May 2026). Corrections applied: two unfilled placeholders replaced · instructor naming standardized · Engineering Notebook renamed to Engineering Logbook throughout · Independent Study renamed to Independent Focus · "PCC 12" corrected to Standard 12 · senior capstone corrected from "year-long" to 35 days · stale documentation template replaced · Section 5's duplication of Sections 1–4 and 6 replaced with cross-references. "Engineering Accounting" retained — it is a term from <em>Foundations of Engineering</em> (Holtzapple &amp; Reece), not invented jargon.
+</footer>
+
+</main>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function sync(){
+    var best = 0, top = -1e9;
+    secs.forEach(function(s,i){
+      if(!s) return;
+      var r = s.getBoundingClientRect().top - 90;
+      if(r <= 0 && r > top){ top = r; best = i; }
+    });
+    links.forEach(function(a,i){ a.classList.toggle('on', i === best); });
+  }
+  var tick = false;
+  window.addEventListener('scroll', function(){
+    if(tick) return; tick = true;
+    window.requestAnimationFrame(function(){ sync(); tick = false; });
+  }, {passive:true});
+  sync();
+})();
+</script>

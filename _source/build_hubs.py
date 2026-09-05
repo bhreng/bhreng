@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """Builds the seven Independent Focus pathway hub guides as one HTML artifact."""
 
@@ -142,8 +143,8 @@ P.append(dict(
     title='Mechanical Engineering',
     lead='Mr. Frank',
     tag='Forces, motion, materials, and whether the part survives.',
-    intro="This is the pathway where you predict what will happen and then find out whether "
-          "you were right. Calculate the load, simulate it, print it, break it, and account "
+    intro="This is the pathway where you predict what will happen and then measure "
+          "what does. Calculate the load, simulate it, print it, break it, and account "
           "for the difference between the three numbers.",
     field=dict(
         blurb="Mechanical engineering is the physics of things that move and things that "
@@ -940,5 +941,5 @@ if __name__ == '__main__':
     html = html.replace('__OVERVIEW__', overview)
     html = html.replace('__VIEWS__', '\n'.join(render_pathway(p) for p in P))
 
-    open('/tmp/outputs/eep-guides.html', 'w').write(html)
+    open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'eep-guides.html'), 'w').write(html)
     print('built', len(html), 'bytes')

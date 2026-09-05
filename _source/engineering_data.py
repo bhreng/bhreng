@@ -38,7 +38,7 @@ STEPS = [
      'A chosen concept, and the reason it beat the others.'),
     ('Create',
      'Model it, then make it. The model is not the deliverable; the model is '
-     'how you find out what you got wrong before you spend material.',
+     'where you find what to change before you spend material.',
      'A CAD model, and a prototype you can hold.'),
     ('Test and evaluate',
      'Measure it against what you predicted. This is the step students skip, '

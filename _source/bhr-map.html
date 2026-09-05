@@ -1,0 +1,528 @@
+<title>BHR Engineering Program Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --paper:#eef2f5;
+  --card:#ffffff;
+  --ink:#141c26;
+  --ink-2:#3f4e5d;
+  --ink-3:#6d7c8a;
+  --rule:#c3d0da;
+  --rule-soft:#dbe3ea;
+  --accent:#14607f;
+  --accent-soft:#e0edf3;
+  --amber:#8a5a12;
+  --amber-soft:#f6ecd8;
+  --crimson:#963129;
+  --crimson-soft:#f7e3e1;
+  --moss:#3d6b43;
+  --moss-soft:#e2eee3;
+  --shadow:0 1px 2px rgba(20,28,38,.06),0 8px 24px -12px rgba(20,28,38,.18);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0e151c;
+    --card:#161f28;
+    --ink:#e6ecf1;
+    --ink-2:#b3c0cc;
+    --ink-3:#7d8b98;
+    --rule:#2d3b47;
+    --rule-soft:#232f3a;
+    --accent:#63b5d6;
+    --accent-soft:#13303d;
+    --amber:#d7a355;
+    --amber-soft:#33280f;
+    --crimson:#e0817a;
+    --crimson-soft:#3a1e1b;
+    --moss:#8fbe95;
+    --moss-soft:#1c2e1f;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0e151c;
+  --card:#161f28;
+  --ink:#e6ecf1;
+  --ink-2:#b3c0cc;
+  --ink-3:#7d8b98;
+  --rule:#2d3b47;
+  --rule-soft:#232f3a;
+  --accent:#63b5d6;
+  --accent-soft:#13303d;
+  --amber:#d7a355;
+  --amber-soft:#33280f;
+  --crimson:#e0817a;
+  --crimson-soft:#3a1e1b;
+  --moss:#8fbe95;
+  --moss-soft:#1c2e1f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Spectral",Georgia,serif;
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:940px;margin:0 auto;padding:32px 24px 96px;display:flex;flex-direction:column;gap:44px}
+
+/* ---- title block: echoes a drawing sheet title block ---- */
+.titleblock{
+  border:1.5px solid var(--ink);
+  background:var(--card);
+  display:grid;
+  grid-template-columns:1fr;
+}
+.tb-main{padding:26px 26px 22px;border-bottom:1.5px solid var(--ink)}
+.tb-eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 12px;
+}
+h1{
+  font-family:"Archivo",system-ui,sans-serif;
+  font-weight:700;font-size:clamp(28px,4.6vw,42px);line-height:1.08;
+  letter-spacing:-.02em;margin:0;text-wrap:balance;
+}
+.tb-sub{margin:12px 0 0;color:var(--ink-2);font-size:17px;max-width:60ch}
+.tb-fields{display:grid;grid-template-columns:repeat(4,1fr)}
+.tb-field{padding:12px 16px;border-right:1px solid var(--rule)}
+.tb-field:last-child{border-right:0}
+.tb-field dt{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin:0 0 3px;
+}
+.tb-field dd{margin:0;font-family:"Archivo",system-ui,sans-serif;font-weight:600;font-size:14px}
+@media(max-width:640px){.tb-fields{grid-template-columns:repeat(2,1fr)}.tb-field{border-bottom:1px solid var(--rule)}}
+
+/* ---- generic section ---- */
+section{display:flex;flex-direction:column;gap:16px}
+h2{
+  font-family:"Archivo",system-ui,sans-serif;
+  font-weight:700;font-size:24px;letter-spacing:-.01em;margin:0;
+  padding-bottom:9px;border-bottom:1.5px solid var(--ink);text-wrap:balance;
+}
+h3{
+  font-family:"Archivo",system-ui,sans-serif;
+  font-weight:600;font-size:17px;margin:0;letter-spacing:-.005em;
+}
+p{margin:0;max-width:68ch}
+.lede{font-size:17.5px;color:var(--ink-2)}
+strong{font-weight:600}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em}
+
+/* ---- callout ---- */
+.callout{
+  background:var(--card);border-left:4px solid var(--accent);
+  padding:20px 22px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);
+}
+.callout.warn{border-left-color:var(--amber)}
+.callout-tag{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);
+}
+.callout .callout-tag.acc{color:var(--accent)}
+
+/* ---- tables ---- */
+.tscroll{overflow-x:auto;border:1px solid var(--rule);background:var(--card);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:14.5px}
+th{
+  font-family:"Archivo",system-ui,sans-serif;font-weight:600;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+  text-align:left;padding:11px 14px;border-bottom:1.5px solid var(--rule);white-space:nowrap;
+}
+td{padding:11px 14px;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.45}
+tr:last-child td{border-bottom:0}
+td.num{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink-2)}
+td.name{font-family:"Archivo",system-ui,sans-serif;font-weight:500;font-size:14px}
+
+/* ---- status chips ---- */
+.chip{
+  display:inline-block;font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  padding:2.5px 7px;border-radius:2px;white-space:nowrap;font-weight:500;
+}
+.c-ok{background:var(--moss-soft);color:var(--moss)}
+.c-rev{background:var(--amber-soft);color:var(--amber)}
+.c-dup{background:var(--crimson-soft);color:var(--crimson)}
+.c-ext{background:var(--accent-soft);color:var(--accent)}
+
+/* ---- era timeline ---- */
+.eras{display:flex;flex-direction:column;gap:0;border-left:2px solid var(--rule);padding-left:0}
+.era{display:grid;grid-template-columns:132px 1fr;gap:20px;padding:16px 0 16px 20px;position:relative;border-bottom:1px solid var(--rule-soft)}
+.era:last-child{border-bottom:0}
+.era::before{
+  content:"";position:absolute;left:-6px;top:23px;width:10px;height:10px;
+  background:var(--paper);border:2px solid var(--accent);border-radius:50%;
+}
+.era.hot::before{background:var(--accent)}
+.era-when{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;
+  color:var(--ink-3);letter-spacing:.02em;padding-top:2px;
+}
+.era-what{display:flex;flex-direction:column;gap:5px}
+.era-what h3{font-size:15.5px}
+.era-what p{font-size:14.5px;color:var(--ink-2)}
+@media(max-width:640px){.era{grid-template-columns:1fr;gap:5px}}
+
+/* ---- taxonomy grid ---- */
+.tax{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.tax-cell{background:var(--card);padding:16px 18px;display:flex;flex-direction:column;gap:5px}
+.tax-n{font-family:"Archivo",system-ui,sans-serif;font-weight:700;font-size:30px;line-height:1;letter-spacing:-.02em}
+.tax-cell.state .tax-n{color:var(--accent)}
+.tax-cell.local .tax-n{color:var(--amber)}
+.tax-name{font-family:"Archivo",system-ui,sans-serif;font-weight:600;font-size:14px}
+.tax-src{font-size:12.5px;color:var(--ink-3);font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+/* ---- collision list ---- */
+.collisions{display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.col-item{background:var(--card);padding:16px 18px;display:flex;flex-direction:column;gap:7px}
+.col-head{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.col-head h3{font-size:15px}
+.col-body{font-size:14.5px;color:var(--ink-2);max-width:70ch}
+.col-fix{font-size:14px;color:var(--ink);background:var(--accent-soft);padding:8px 12px;border-radius:2px;max-width:70ch}
+.col-fix b{font-family:"Archivo",system-ui,sans-serif;font-weight:600;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px}
+
+/* ---- ordered work plan ---- */
+ol.plan{list-style:none;counter-reset:step;margin:0;padding:0;display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+ol.plan li{background:var(--card);counter-increment:step;padding:16px 18px 16px 58px;position:relative}
+ol.plan li::before{
+  content:counter(step);position:absolute;left:18px;top:16px;
+  font-family:"Archivo",system-ui,sans-serif;font-weight:700;font-size:15px;color:var(--accent);
+  border:1.5px solid var(--accent);width:24px;height:24px;display:grid;place-items:center;border-radius:50%;
+}
+ol.plan h3{margin-bottom:4px}
+ol.plan p{font-size:14.5px;color:var(--ink-2)}
+
+/* ---- questions ---- */
+ul.qs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.qs li{display:flex;gap:12px;font-size:15.5px}
+ul.qs li::before{content:"?";font-family:"Archivo",system-ui,sans-serif;font-weight:700;color:var(--amber);flex:none;font-size:17px;line-height:1.5}
+
+footer{border-top:1px solid var(--rule);padding-top:16px;font-size:13px;color:var(--ink-3);max-width:70ch}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+  <div class="titleblock">
+    <div class="tb-main">
+      <p class="tb-eyebrow">Document Audit &middot; Blue Hills Regional</p>
+      <h1>BHR Engineering Program Map</h1>
+      <p class="tb-sub">Every program document found in Drive — what it is, which era it belongs to, what conflicts with what, and what to fix first.</p>
+    </div>
+    <dl class="tb-fields">
+      <div class="tb-field"><dt>Program</dt><dd>BHR ENG / Independent Focus</dd></div>
+      <div class="tb-field"><dt>Lead</dt><dd>D. Frank (EDF)</dd></div>
+      <div class="tb-field"><dt>Compiled</dt><dd>Sep 2, 2026</dd></div>
+      <div class="tb-field"><dt>Status</dt><dd>For review</dd></div>
+    </dl>
+  </div>
+
+  <section>
+    <div class="callout warn">
+      <p class="callout-tag">Scope &amp; working rules</p>
+      <p><strong>This map covers documents Dan authored.</strong> Student work is out of scope — student-owned files on the school domain are excluded from this audit and from the rewrite, and student rosters, submissions and grades never enter the working conversation.</p>
+      <p><strong>Nothing is written to Google Drive.</strong> Drafts and outputs are produced and kept locally for review. No existing file is modified, moved, renamed or deleted; superseded documents get archived, never removed.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>What's working — don't touch this</h2>
+    <p class="lede">The spine is sound. The seven technical DESE standards map one-to-one onto the seven hubs. That is a real design, it uses state language, and it should survive every rewrite.</p>
+    <div class="tscroll">
+      <table>
+        <thead><tr><th>DESE Standard</th><th>Pathway Hub</th><th>Lead</th><th>PCC</th></tr></thead>
+        <tbody>
+          <tr><td class="num">Standard 4</td><td class="name">Project Management</td><td>Shared</td><td class="num">9</td></tr>
+          <tr><td class="num">Standard 5</td><td class="name">Electrical Engineering</td><td>Dryer (ESEC)</td><td class="num">5</td></tr>
+          <tr><td class="num">Standard 6</td><td class="name">Software Engineering</td><td>Dryer (ESEC)</td><td class="num">6</td></tr>
+          <tr><td class="num">Standard 7</td><td class="name">Mechanical Engineering</td><td>Frank (EDF)</td><td class="num">7, 8</td></tr>
+          <tr><td class="num">Standard 8</td><td class="name">Industrial Design</td><td>Frank (EDF)</td><td class="num">1</td></tr>
+          <tr><td class="num">Standard 9</td><td class="name">Automation / Robotics</td><td>Both</td><td class="num">7</td></tr>
+          <tr><td class="num">Standard 10</td><td class="name">Architecture / Civil</td><td>Frank (EDF)</td><td class="num">2, 10</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Standards <span class="mono">1, 2, 3, 11, 12, 13, 14, 15</span> are the universal core every student gets regardless of hub — safety, professional role, engineering fundamentals, integrated research, advanced elective, employability, entrepreneurship, digital literacy.</p>
+  </section>
+
+  <section>
+    <h2>Why the documents are bloated</h2>
+    <p class="lede">Not just wordy prose. Four classification systems run in parallel, and every document restates all four.</p>
+    <div class="tax">
+      <div class="tax-cell state"><span class="tax-n">15</span><span class="tax-name">DESE Standards</span><span class="tax-src">state-mandated</span></div>
+      <div class="tax-cell local"><span class="tax-n">10</span><span class="tax-name">Program Content Categories</span><span class="tax-src">local invention</span></div>
+      <div class="tax-cell local"><span class="tax-n">5</span><span class="tax-name">Foundational Pillars</span><span class="tax-src">local invention</span></div>
+      <div class="tax-cell local"><span class="tax-n">5</span><span class="tax-name">Hub Topics</span><span class="tax-src">local invention</span></div>
+    </div>
+    <p>The standards are non-negotiable and carry DESE's own vocabulary. The other three overlap with them and with each other — <span class="mono">PCC 10 "Professionalism &amp; Safe Ops"</span> is substantially Standard 1 plus Standard 13 plus the S&amp;O pillar; <span class="mono">PCC 9 "Methodology &amp; Planning"</span> is substantially Standard 4. Each overlap forces another paragraph of cross-referencing in every document that mentions either.</p>
+    <div class="callout">
+      <p class="callout-tag acc">Governing rule for the rewrite</p>
+      <p><strong>DESE language wins over local coinage.</strong> Where a state term and an invented term mean the same thing, the state term survives. Invented vocabulary with no DESE equivalent — <span class="mono">"Engineering Accounting"</span>, <span class="mono">"Dual-Axis Framework"</span>, <span class="mono">"Knowledge Consumption pillar"</span>, <span class="mono">"a-la-carte learning environment"</span> — gets replaced with plain description. Nothing is deleted; superseded documents are archived, not removed.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Four eras</h2>
+    <p class="lede">The timestamps sort themselves cleanly, and they support the read that the older material is the truer material.</p>
+    <div class="eras">
+      <div class="era">
+        <div class="era-when">2019 – 2024</div>
+        <div class="era-what">
+          <h3>Original standards work</h3>
+          <p>Priority Standards sheets, Eng Voc Standards by grade level, simplified frameworks PDFs. Pre-Gemini, pre-Dryer. Reference material for what the program actually did.</p>
+        </div>
+      </div>
+      <div class="era">
+        <div class="era-when">Sep – Dec 2025</div>
+        <div class="era-what">
+          <h3>The 2025 update — new standards, new co-teacher</h3>
+          <p>Nine <span class="mono">"2025 update to…"</span> files plus the new DESE standards PDF and the highlighted-by-level docs. This is where the real mapping happened. Treated here as the load-bearing layer.</p>
+        </div>
+      </div>
+      <div class="era">
+        <div class="era-when">Jan 2026</div>
+        <div class="era-what">
+          <h3>The binders</h3>
+          <p>Binders 5–8 and the standards alignment sheets. Consolidation of the autumn work into reference documents.</p>
+        </div>
+      </div>
+      <div class="era hot">
+        <div class="era-when">May – Jun 2026</div>
+        <div class="era-what">
+          <h3>The pathway hub layer</h3>
+          <p>Seven hub guides, program reports, crosswalk, Gem directives, source migration tables. Densest Gemini output, most invented vocabulary, most aspirational claims. Highest rewrite priority.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Collisions to resolve</h2>
+    <p class="lede">Duplicate and near-duplicate files where it is not currently possible to tell which one is live. Each needs a one-line decision from you; none should be deleted, only archived.</p>
+
+    <div class="collisions">
+      <div class="col-item">
+        <div class="col-head"><h3>Two "Highlighted by Level" standards docs</h3><span class="chip c-dup">Duplicate</span></div>
+        <p class="col-body"><span class="mono">engineering-tech-standards-skills</span> (401,750 bytes) and <span class="mono">Binder 8: DESE Voc Standards</span> (403,172 bytes). Both created Sept 24, 2025, minutes apart. Binder 8 was edited through Jan 7, 2026; the other was not touched after creation.</p>
+        <div class="col-fix"><b>Suggested</b>Binder 8 is the live one, the other is the working copy it was made from. Needs your confirmation before anything is built on it.</div>
+      </div>
+
+      <div class="col-item">
+        <div class="col-head"><h3>Two Standards Alignment spreadsheets</h3><span class="chip c-dup">Duplicate</span></div>
+        <p class="col-body"><span class="mono">BHR ENG Standards Alignment</span> (11,262 bytes, created 14:47) and <span class="mono">BHR ENG Voc Standards Alignment</span> (11,403 bytes, created 16:26) — same day, Jan 9, 2026, 100 minutes apart. The later one is slightly larger and the earlier one stopped being edited at exactly the moment the later one appeared.</p>
+        <div class="col-fix"><b>Suggested</b>The 16:26 "Voc" version is the continuation. Worth a diff before archiving the other — 141 bytes could be a real row.</div>
+      </div>
+
+      <div class="col-item">
+        <div class="col-head"><h3>Two Architecture &amp; Civil Hub Guides</h3><span class="chip c-dup">Duplicate</span></div>
+        <p class="col-body">Identical titles, 9,408 and 9,141 bytes, created one minute apart on May 19, 2026. The larger one is the earlier one — so the second is not simply a longer revision.</p>
+        <div class="col-fix"><b>Suggested</b>Diff required. Both are being rewritten anyway, so this resolves itself if we merge them into one new guide.</div>
+      </div>
+
+      <div class="col-item">
+        <div class="col-head"><h3>Two Program Directory Reports</h3><span class="chip c-dup">Duplicate</span></div>
+        <p class="col-body">7,668 bytes (May 15) and 7,671 bytes (May 20). Three bytes apart, five days apart.</p>
+        <div class="col-fix"><b>Suggested</b>Keep May 20, archive May 15.</div>
+      </div>
+
+      <div class="col-item">
+        <div class="col-head"><h3>Two Electrical Engineering hub folders</h3><span class="chip c-dup">Duplicate</span></div>
+        <p class="col-body">Two Drive folders with the identical name <span class="mono">Pathway Hub - Electrical Engineering BHR ENG</span>, created 11 seconds apart on May 6, 2026. Files may have gone into either.</p>
+        <div class="col-fix"><b>Suggested</b>Check both for contents, consolidate into one, archive the empty one.</div>
+      </div>
+
+      <div class="col-item">
+        <div class="col-head"><h3>Software Engineering has two overlapping docs</h3><span class="chip c-rev">Review</span></div>
+        <p class="col-body">A <span class="mono">Hub Guide</span> (May 19) and a <span class="mono">Resource Directory and Guide</span> (June 5). Different genres that partly overlap — the June one appears to be the newer pattern, matching the Industrial Design source directory.</p>
+        <div class="col-fix"><b>Suggested</b>Decide whether guide and directory are one document or two, then apply that choice to all seven pathways.</div>
+      </div>
+
+      <div class="col-item">
+        <div class="col-head"><h3>Copy of 2025 update to BHR ENG Daily Schedule</h3><span class="chip c-dup">Duplicate</span></div>
+        <p class="col-body">A literal <span class="mono">"Copy of"</span> file from Dec 2, 2025, 1,322 bytes larger than the template it was copied from.</p>
+        <div class="col-fix"><b>Suggested</b>Likely a filled-in instance rather than a stray copy. Check before archiving.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Gaps</h2>
+    <div class="collisions">
+      <div class="col-item">
+        <div class="col-head"><h3>Automation &amp; Robotics Hub Guide is empty</h3><span class="chip c-rev">Stub</span></div>
+        <p class="col-body">1,024 bytes, versus 6,854–9,408 for the other six. Created in the same batch on May 19, 2026 and never filled in. This is the hub the crosswalk describes as the program's synthesis point for mechatronics and CIM — the most interdisciplinary pathway has the least documentation.</p>
+      </div>
+      <div class="col-item">
+        <div class="col-head"><h3>Binders 1–4 not found</h3><span class="chip c-rev">Review</span></div>
+        <p class="col-body">The series runs 5, 6, 7, 8. Either 1–4 exist under names that don't contain "Binder", or the numbering starts at 5 for a historical reason.</p>
+      </div>
+      <div class="col-item">
+        <div class="col-head"><h3>No Project Management hub folder</h3><span class="chip c-rev">Review</span></div>
+        <p class="col-body">Six pathway folders exist in Drive (with Electrical doubled). Project Management has a hub guide and a Classroom class but no Drive folder.</p>
+      </div>
+      <div class="col-item">
+        <div class="col-head"><h3>Gems 1 and 3 not found</h3><span class="chip c-rev">Review</span></div>
+        <p class="col-body">Directive documents exist for Gem 2, Gem 4 and Gem 5, plus an <span class="mono">11th Grade Capstone GEM</span> and an <span class="mono">Operational Implementation Guide: Independent Focus Pathway Gems</span>. Gems 1 and 3 either sit elsewhere or were never written up.</p>
+      </div>
+      <div class="col-item">
+        <div class="col-head"><h3>Highlight colors are not readable as data</h3><span class="chip c-rev">Blocked</span></div>
+        <p class="col-body">Binder 8 encodes which level teaches which standard in highlight color. Text extraction returns the words without the colors, so the mapping is currently only readable by eye. An Apps Script pass over the document can read each element's background color and emit a standard-by-level table — turning the color coding into data the rest of the work can build against.</p>
+      </div>
+      <div class="col-item">
+        <div class="col-head"><h3>Migration table hyperlinks may be missing</h3><span class="chip c-rev">Blocked</span></div>
+        <p class="col-body">The Industrial Design source migration table lists 70 sources, but the Hyperlink column reads as the literal word "Link" on every row. If the URLs are embedded as Sheets hyperlinks they can be recovered by script; if they were never captured, the sourcing work needs redoing. This determines whether that pathway is days or weeks from publishing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Inventory</h2>
+    <p class="lede">Everything located, by cluster. Sizes in bytes are a rough proxy for how complete a document is.</p>
+
+    <h3>pathway hub layer — May &amp; June 2026</h3>
+    <div class="tscroll">
+      <table>
+        <thead><tr><th>Document</th><th>Bytes</th><th>Date</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Architecture &amp; Civil Hub Guide</td><td class="num">9,408</td><td class="num">May 19</td><td><span class="chip c-dup">Dup</span></td></tr>
+          <tr><td class="name">Architecture &amp; Civil Hub Guide</td><td class="num">9,141</td><td class="num">May 19</td><td><span class="chip c-dup">Dup</span></td></tr>
+          <tr><td class="name">Mechanical Engineering Hub Guide</td><td class="num">8,943</td><td class="num">May 19</td><td><span class="chip c-rev">Rewrite</span></td></tr>
+          <tr><td class="name">Software Engineering Hub Guide</td><td class="num">8,504</td><td class="num">May 19</td><td><span class="chip c-rev">Rewrite</span></td></tr>
+          <tr><td class="name">Electrical Engineering Hub Guide</td><td class="num">8,033</td><td class="num">May 19</td><td><span class="chip c-rev">Rewrite</span></td></tr>
+          <tr><td class="name">Industrial Design Hub Guide</td><td class="num">7,086</td><td class="num">May 19</td><td><span class="chip c-rev">Rewrite</span></td></tr>
+          <tr><td class="name">Project Management Hub Guide</td><td class="num">6,854</td><td class="num">May 19</td><td><span class="chip c-rev">Rewrite</span></td></tr>
+          <tr><td class="name">Automation &amp; Robotics Hub Guide</td><td class="num">1,024</td><td class="num">May 19</td><td><span class="chip c-dup">Stub</span></td></tr>
+          <tr><td class="name">MA Standards to Pathway Hub Crosswalk</td><td class="num">9,802</td><td class="num">May 20</td><td><span class="chip c-ok">Keep</span></td></tr>
+          <tr><td class="name">Operational Implementation Guide: Pathway Gems</td><td class="num">8,215</td><td class="num">May 20</td><td><span class="chip c-rev">Review</span></td></tr>
+          <tr><td class="name">Program Directory Report</td><td class="num">7,671</td><td class="num">May 20</td><td><span class="chip c-rev">Rewrite</span></td></tr>
+          <tr><td class="name">Program Directory Report</td><td class="num">7,668</td><td class="num">May 15</td><td><span class="chip c-dup">Dup</span></td></tr>
+          <tr><td class="name">Program Implementation Report</td><td class="num">6,743</td><td class="num">May 15</td><td><span class="chip c-rev">Rewrite</span></td></tr>
+          <tr><td class="name">Program Framework &amp; Aesthetic Initiative Brief</td><td class="num">6,586</td><td class="num">May 19</td><td><span class="chip c-rev">Review</span></td></tr>
+          <tr><td class="name">Industrial Design Source Migration Table</td><td class="num">6,286</td><td class="num">Jun 5</td><td><span class="chip c-rev">Repair</span></td></tr>
+          <tr><td class="name">Software Eng Hub: Resource Directory &amp; Guide</td><td class="num">6,975</td><td class="num">Jun 5</td><td><span class="chip c-rev">Review</span></td></tr>
+          <tr><td class="name">Pathway Hub Source Directory: Industrial Design</td><td class="num">6,143</td><td class="num">Jun 5</td><td><span class="chip c-rev">Review</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Binders — Jan 2026</h3>
+    <div class="tscroll">
+      <table>
+        <thead><tr><th>Document</th><th>Bytes</th><th>Created</th><th>Last edit</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Engineering digital Binder</td><td class="num">2,488,175</td><td class="num">Jan 7</td><td class="num">Jan 7</td></tr>
+          <tr><td class="name">Binder 8: DESE Voc Standards (Highlighted by Level)</td><td class="num">403,172</td><td class="num">Sep 24 '25</td><td class="num">Jan 7</td></tr>
+          <tr><td class="name">Binder 5: Program Overview</td><td class="num">33,111</td><td class="num">Jan 6</td><td class="num">May 20</td></tr>
+          <tr><td class="name">Binder 7: Curriculum Standards Analysis Report</td><td class="num">32,936</td><td class="num">Jan 7</td><td class="num">May 15</td></tr>
+          <tr><td class="name">Binder 6: A Four-Year Scope and Sequence</td><td class="num">16,308</td><td class="num">Jan 5</td><td class="num">May 15</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The 2025 update family — Oct &amp; Dec 2025</h3>
+    <div class="tscroll">
+      <table>
+        <thead><tr><th>Document</th><th>Type</th><th>Date</th></tr></thead>
+        <tbody>
+          <tr><td class="name">BHR ENG: Foundational Pillars</td><td>Doc</td><td class="num">Oct 28</td></tr>
+          <tr><td class="name">Engineering Program Content Categories</td><td>Doc</td><td class="num">Oct 28</td></tr>
+          <tr><td class="name">Core Class Tasks &amp; Their Classification (Revised)</td><td>Doc</td><td class="num">Oct 28</td></tr>
+          <tr><td class="name">Program Integration Matrix (What, How, Who)</td><td>Doc</td><td class="num">Oct 28</td></tr>
+          <tr><td class="name">BHR ENG — Instructor Specialization Overview</td><td>Doc</td><td class="num">Oct 28</td></tr>
+          <tr><td class="name">BHR Eng Program Breakdown</td><td>Sheet</td><td class="num">Oct 28</td></tr>
+          <tr><td class="name">BHR Eng Program Content Categories tracker</td><td>Sheet</td><td class="num">Dec 4</td></tr>
+          <tr><td class="name">BHR ENG Daily Schedule — Template</td><td>Sheet</td><td class="num">Dec 2</td></tr>
+          <tr><td class="name">Copy of BHR ENG Daily Schedule — Template</td><td>Sheet</td><td class="num">Dec 2</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Standards &amp; alignment</h3>
+    <div class="tscroll">
+      <table>
+        <thead><tr><th>Document</th><th>Type</th><th>Date</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="name">2025 Engineering Voc Standards</td><td>PDF, 13.7 MB</td><td class="num">Sep 24 '25</td><td><span class="chip c-ok">Source of truth</span></td></tr>
+          <tr><td class="name">engineering-tech-standards-skills (Highlighted by Level)</td><td>Doc</td><td class="num">Sep 24 '25</td><td><span class="chip c-dup">Dup</span></td></tr>
+          <tr><td class="name">State Standards Alignment Map</td><td>Doc</td><td class="num">Dec 18 '25</td><td><span class="chip c-rev">Review</span></td></tr>
+          <tr><td class="name">BHR ENG Standards Alignment</td><td>Sheet</td><td class="num">Jan 9</td><td><span class="chip c-dup">Dup</span></td></tr>
+          <tr><td class="name">BHR ENG Voc Standards Alignment</td><td>Sheet</td><td class="num">Jan 9</td><td><span class="chip c-rev">Review</span></td></tr>
+          <tr><td class="name">Framework for Lesson &amp; Unit Development</td><td>Doc</td><td class="num">Jan 28</td><td><span class="chip c-rev">Review</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Gemini scaffolding</h3>
+    <p>Not program documents — these are the instructions that generated the house voice. Worth reading as a specification of what to stop doing.</p>
+    <div class="tscroll">
+      <table>
+        <thead><tr><th>Document</th><th>Bytes</th><th>Date</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Gem 2: Technical Standards and Gatekeeper Protocols</td><td class="num">6,939</td><td class="num">May 18</td></tr>
+          <tr><td class="name">Gem 4: Compliance Board Safety Audit &amp; Regulatory Manual</td><td class="num">7,472</td><td class="num">May 18</td></tr>
+          <tr><td class="name">Gem 5: Launch Director Strategic Directive</td><td class="num">5,863</td><td class="num">May 18</td></tr>
+          <tr><td class="name">11th Grade Capstone GEM</td><td class="num">5,097</td><td class="num">Apr 6</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Proposed order of work</h2>
+    <ol class="plan">
+      <li>
+        <h3>Rewrite the program structure binder</h3>
+        <p>The binder that spells out the program's structure is the anchor document — every hub guide and report restates parts of it. A clean new version, in DESE language, gives everything downstream something correct to reference instead of re-explaining.</p>
+      </li>
+      <li>
+        <h3>Resolve the collisions</h3>
+        <p>Seven decisions, mostly one line each. Archive rather than delete. This stops the rewrite from being applied to the wrong copy of a file.</p>
+      </li>
+      <li>
+        <h3>Extract the highlight data from Binder 8</h3>
+        <p>Apps Script pass returning a standard-by-level table. Small, concrete, unblocks all curriculum mapping.</p>
+      </li>
+      <li>
+        <h3>Recover the migration table hyperlinks</h3>
+        <p>Same technique, different document. Determines whether Industrial Design is close to publishable or needs re-sourcing.</p>
+      </li>
+      <li>
+        <h3>Write the house style spec</h3>
+        <p>DESE language over local coinage; a glossary mapping each invented term to its state equivalent or to plain description; a rule for marking planned versus running. Applied to one sample guide for approval before it goes anywhere else.</p>
+      </li>
+      <li>
+        <h3>Rewrite the seven hub guides against the spec</h3>
+        <p>Including filling the Automation &amp; Robotics stub. Teacher and program facing, per your call.</p>
+      </li>
+      <li>
+        <h3>Then populate the Classroom hubs</h3>
+        <p>The original goal. The builder script already exists and is tested; it needs correct content pointed at it.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Open questions</h2>
+    <ul class="qs">
+      <li><span>Do Binders 1–4 exist under other names, or does the series start at 5?</span></li>
+      <li><span>Is the Automation &amp; Robotics guide a stub because it is Mr. Dryer's to write, or was it simply dropped?</span></li>
+      <li><span>Of the certifications listed as pathway outcomes — ACU Fusion 360, ACU Revit, ACU Inventor / CSWA, Festo LX, Universal Robots Academy — which are actually available to students now?</span></li>
+      <li><span>Should the 10 PCCs remain a separate system, or fold into Standards and Pillars?</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    Compiled from a Google Drive search of the BHR ENG program materials, September 2, 2026. Coverage is thorough but not guaranteed complete — files whose titles and contents omit the search terms used may not appear here. Byte sizes are Drive-reported and are a proxy for completeness, not a measure of quality. No file has been modified, moved, or deleted.
+  </footer>
+
+</div>

@@ -1,0 +1,274 @@
+<title>How This Class Works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+
+<style>
+:root{
+  --paper:#f0f3f6;--card:#fff;--ink:#131b24;--ink-2:#3d4c5a;--ink-3:#6b7a88;
+  --rule:#c6d2dc;--rule-soft:#dde5eb;--accent:#14607f;--accent-soft:#e2eef4;
+  --warm:#a8541c;--warm-soft:#fbeade;--moss:#3d6b43;--moss-soft:#e2eee3;
+  --shadow:0 1px 2px rgba(19,27,36,.05),0 10px 28px -16px rgba(19,27,36,.22);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0d141b;--card:#161f28;--ink:#e8eef3;--ink-2:#b5c2ce;--ink-3:#7f8d9a;
+  --rule:#2e3c48;--rule-soft:#222e39;--accent:#66b8d8;--accent-soft:#12313e;
+  --warm:#e0965f;--warm-soft:#36230f;--moss:#8fbe95;--moss-soft:#1c2e1f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -16px rgba(0,0,0,.75);
+}}
+:root[data-theme="dark"]{
+  --paper:#0d141b;--card:#161f28;--ink:#e8eef3;--ink-2:#b5c2ce;--ink-3:#7f8d9a;
+  --rule:#2e3c48;--rule-soft:#222e39;--accent:#66b8d8;--accent-soft:#12313e;
+  --warm:#e0965f;--warm-soft:#36230f;--moss:#8fbe95;--moss-soft:#1c2e1f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -16px rgba(0,0,0,.75);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Spectral",Georgia,serif;
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:36px 24px 100px;
+  display:flex;flex-direction:column;gap:46px}
+
+.hero{display:flex;flex-direction:column;gap:14px;padding-bottom:28px;
+  border-bottom:2px solid var(--ink)}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--accent);margin:0}
+h1{font-family:"Archivo",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(32px,6vw,50px);line-height:1.02;letter-spacing:-.03em;margin:0;
+  text-wrap:balance;max-width:15ch}
+.hero p{margin:0;font-size:19px;color:var(--ink-2);max-width:56ch}
+
+section{display:flex;flex-direction:column}
+h2{font-family:"Archivo",sans-serif;font-weight:700;font-size:26px;letter-spacing:-.015em;
+  margin:0 0 8px;text-wrap:balance}
+.sub{margin:0 0 18px;color:var(--ink-2);max-width:64ch;font-size:17px}
+h3{font-family:"Archivo",sans-serif;font-weight:600;font-size:17.5px;margin:0 0 6px}
+p{margin:0 0 13px;max-width:66ch}
+
+.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.quick div{background:var(--card);padding:18px 20px}
+.quick dt{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 5px}
+.quick dd{margin:0;font-family:"Archivo",sans-serif;font-weight:600;font-size:16px;
+  line-height:1.35}
+.quick dd span{display:block;font-family:"Spectral",serif;font-weight:400;font-size:14.5px;
+  color:var(--ink-2);margin-top:3px;line-height:1.45}
+
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--card);
+  box-shadow:var(--shadow);margin:0 0 16px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:15.5px}
+th{font-family:"Archivo",sans-serif;font-weight:600;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);text-align:left;padding:11px 14px;
+  border-bottom:1.5px solid var(--rule);white-space:nowrap}
+td{padding:12px 14px;border-bottom:1px solid var(--rule-soft);vertical-align:top;
+  line-height:1.5}
+tr:last-child td{border-bottom:0}
+td.w{font-family:"Archivo",sans-serif;font-weight:700;font-size:19px;color:var(--accent);
+  font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+td.k{font-family:"Archivo",sans-serif;font-weight:600;font-size:15.5px;white-space:nowrap}
+
+ol.rules{list-style:none;counter-reset:r;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+ol.rules li{background:var(--card);counter-increment:r;padding:15px 20px 15px 56px;
+  position:relative;font-size:16px;line-height:1.55}
+ol.rules li::before{content:counter(r);position:absolute;left:20px;top:15px;
+  font-family:"Archivo",sans-serif;font-weight:700;font-size:14px;color:var(--accent);
+  width:24px;height:24px;display:grid;place-items:center;
+  background:var(--accent-soft);border-radius:3px}
+ol.rules strong{font-weight:600}
+.bonus{background:var(--card);border:1px solid var(--rule);border-top:0;
+  padding:15px 20px;font-family:"Archivo",sans-serif;font-weight:600;font-size:16px;
+  color:var(--accent)}
+
+.years{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.year{background:var(--card);padding:18px 20px;display:grid;
+  grid-template-columns:96px 1fr;gap:18px}
+@media(max-width:600px){.year{grid-template-columns:1fr;gap:5px}}
+.year .yn{font-family:"Archivo",sans-serif;font-weight:700;font-size:15px;color:var(--accent)}
+.year p{margin:0;font-size:15.5px;color:var(--ink-2);max-width:60ch}
+
+.note{background:var(--card);border-left:4px solid var(--warm);padding:18px 20px;
+  box-shadow:var(--shadow)}
+.note.acc{border-left-color:var(--accent)}
+.ntag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--warm);margin:0 0 7px}
+.note.acc .ntag{color:var(--accent)}
+.note p:last-child{margin-bottom:0}
+
+.official{border:1.5px solid var(--rule);background:var(--card)}
+.official-head{padding:16px 22px;border-bottom:1px solid var(--rule);
+  background:var(--rule-soft)}
+.official-head p{margin:0;font-size:14.5px;color:var(--ink-2);max-width:64ch}
+.official-head strong{font-family:"Archivo",sans-serif;font-weight:700;font-size:15px;
+  color:var(--ink);display:block;margin-bottom:4px}
+.official-body{padding:22px}
+.official-body h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--accent);margin:22px 0 7px}
+.official-body h3:first-child{margin-top:0}
+.official-body p{font-size:15.5px;color:var(--ink-2);max-width:68ch}
+
+footer{border-top:1px solid var(--rule);padding-top:18px;font-size:14px;color:var(--ink-3);
+  max-width:70ch}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <p class="kicker">BHR Engineering Technology &middot; Room E-126</p>
+  <h1>How this class works</h1>
+  <p>What you need, how you're graded, and what's expected of you in the shop.</p>
+</header>
+
+<section>
+  <h2>The basics</h2>
+  <dl class="quick">
+    <div><dt>Room</dt><dd>E-126</dd></div>
+    <div><dt>Uniform</dt><dd>Anything with the shop logo<span>T-shirts, long sleeves, hoodies, sweaters — any shop attire bought through the school store</span></dd></div>
+    <div><dt>Footwear</dt><dd>Closed-toe only<span>Shoes, sneakers or work boots. No sandals, no Crocs.</span></dd></div>
+    <div><dt>Eye protection</dt><dd>In the Makerspace<span>Required whenever you're in the Makerspace. Situational in the main shop — if you're unsure, put them on.</span></dd></div>
+  </dl>
+  <p style="margin-top:16px">Uniforms are ordered through <a href="https://store.bluehills.org/">store.bluehills.org</a> during the ordering window, when pricing is best and delivery to school is free. Most students buy at least two. Any of it counts as uniform as long as it carries the shop logo and came from the store.</p>
+</section>
+
+<section>
+  <h2>How the year is shaped</h2>
+  <p class="sub">Shop one week, academics the next. Everything else follows from that.</p>
+  <dl class="quick">
+    <div><dt>Your shop week</dt><dd>All five days<span>When it is your shop week you are here the whole day, every day. The following week you are in academics and not in the shop at all.</span></dd></div>
+    <div><dt>A term</dt><dd>About five shop weeks<span>Roughly ten weeks on the school calendar, which alternates down to about five weeks &mdash; twenty-five full days &mdash; actually in the shop.</span></dd></div>
+    <div><dt>The school year</dt><dd>180 days<span>Four terms. About half of those days are shop days.</span></dd></div>
+  </dl>
+  <div class="note acc">
+    <p class="ntag">Why this matters more than it sounds</p>
+    <p>A week away is a long time. Whatever you were in the middle of is two weeks older by the time you next touch it, and you will not remember the detail &mdash; nobody does. <strong>This is the entire reason the logbook exists</strong>, and why the last thing you do on a Friday is write down where you got to and what comes next. Your first hour back is either a fast restart or a slow one, and your notes decide which.</p>
+  </div>
+</section>
+
+<section>
+  <h2>How you're graded</h2>
+  <p class="sub">Four categories. Notice what they add up to.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Category</th><th>What it measures</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Project Grade</td><td>Every project is graded on the same five criteria — concept, background knowledge, technical knowledge, participation and teamwork, presentation. <a href="../files/BHR27-Project-Rubric.pdf" download>The rubric, level by level</a>.</td><td class="w">35%</td></tr>
+      <tr><td class="k">Weekly Grade</td><td>How you work: safety, initiative, preparation, attitude, work ethic, productivity</td><td class="w">30%</td></tr>
+      <tr><td class="k">Classwork</td><td>Day-to-day assignments — pacing, staying on task, following directions</td><td class="w">15%</td></tr>
+      <tr><td class="k">Employability</td><td>Professionalism in the shop, week to week and term to term</td><td class="w">20%</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note acc">
+    <p class="ntag">The thing most people miss</p>
+    <p><strong>Half your grade — 50% — is how you work, not what you make.</strong> Weekly Grade and Employability together outweigh your projects. You can build something impressive and still not do well here, and you can have a project come out nothing like you planned and still have a strong term. That's deliberate: it's how you'd be judged in an actual shop.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The weekly grade</h2>
+  <p class="sub">Six things, in two groups, assessed every shop week. This is what excellent looks like in each &mdash; <a href="../files/BHR27-Weekly-Grade-Rubric.pdf" download>the full rubric</a> shows all five levels.</p>
+
+  <h3 style="margin-bottom:10px">Behavior</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Criteria</th><th>What excellent looks like</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Safety</td><td>Follows every safety rule, keeps a clean work area, puts materials back where they belong when a task is done.</td></tr>
+      <tr><td class="k">Initiative</td><td>Stays on task. Asks for more work when finished. Helps classmates. Comes for help when needed. Uses downtime between jobs instead of waiting.</td></tr>
+      <tr><td class="k">Preparation</td><td>On time, agenda out, something to write with, dressed to shop standards and ready for work, awake and alert.</td></tr>
+      <tr><td class="k">Attitude</td><td>Positive. Interacts appropriately with others. Appropriate language. Keeps self-control at all times.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin-bottom:10px">Performance</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Criteria</th><th>What excellent looks like</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Work Ethic</td><td>Work reflects your best effort. Cooperative. Shows peer leadership. Stays on task, self-starter, proper language — and is <strong>never publicly critical of someone else's work</strong>.</td></tr>
+      <tr><td class="k">Productivity</td><td>Work of the highest quality. Actively looks for and suggests solutions. Routinely uses time well and contributes useful ideas in group discussion.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin-bottom:10px">What each level is worth</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Level</th><th>Grade equivalent</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Excellent</td><td class="w">100</td></tr>
+      <tr><td class="k">Good</td><td class="w">92</td></tr>
+      <tr><td class="k">Fair</td><td class="w">78</td></tr>
+      <tr><td class="k">Unsatisfactory</td><td class="w">52</td></tr>
+      <tr><td class="k">Poor</td><td class="w">28</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">
+    <p class="ntag">Worth noticing</p>
+    <p>Good to Fair costs you <strong>14 points</strong>. Fair to Unsatisfactory costs another <strong>26</strong>. The scale isn't evenly spaced — the bottom drops away fast. "Fair" is not a comfortable place to sit.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Classroom rules and privileges</h2>
+  <p class="sub">In order for us to live well with each other, we need some boundaries. Rules are not to restrict us; rules are given to us to fully enjoy the privileges of education, each other, and the equipment we have been given.</p>
+  <ol class="rules">
+    <li>Cell phones during break and lunch only. Headphones are allowed <strong>occasionally</strong> while working on individual projects.</li>
+    <li>Appropriate uniform, attire, and PPE are required and are part of your weekly grade. Maintain a professional workspace and use professional language and behavior.</li>
+    <li>No eating or drinking in shop common areas.</li>
+    <li><strong>Respect</strong> your teacher and classmates — which includes their property, their space, and their creativity.</li>
+    <li>The Engineering Lab and its equipment are used with permission. No writing, drawing or cutting on tables. Do not intentionally misuse equipment or property.</li>
+    <li>Return things to their proper places after use. Clean up after <strong>yourself and others</strong>. Follow the end-of-day cleanup routine. This is all of our workspace, so keep it clean.</li>
+    <li><strong>Stay in your assigned area.</strong> Do not leave the shop without verbal permission or an e-hall pass.</li>
+    <li>Computers are for educational purposes. When your work is done, ask a teacher for more, help a classmate, or help the department.</li>
+    <li><strong>Time.</strong> Be on time for class and for deadlines. Break and end-of-day preparation don't start until the instructor grants them.</li>
+    <li>Communication is key. If you have questions or concerns, it is <strong>your</strong> responsibility to ask before the assignment is due, so what you hand in is grade-level work.</li>
+    <li>Always work to your potential. Prepare to be challenged.</li>
+  </ol>
+  <div class="bonus">Bonus rule: use common sense.</div>
+  <p style="margin-top:16px"><em>Some of these are privileges, and privileges are not guaranteed. Follow the rules and we keep them — here and in the shop.</em></p>
+</section>
+
+<section>
+  <h2>Certifications and co-op</h2>
+  <p>The certifications you can earn here are <strong>Autodesk</strong> — Certified User in Inventor, Fusion 360 and Revit Architecture — on top of your <strong>OSHA 10</strong> in Grade 10. Which ones you go for depends on the work you're doing and when you're ready.</p>
+  <p><strong>Cooperative education</strong> is available to juniors from Term 3 and to seniors from Term 1 — working in a real engineering setting for part of your schedule.</p>
+</section>
+
+<section>
+  <h2>Getting help</h2>
+  <p><strong>Mr. Frank</strong> helps you make it real — designing it, drawing it, and building it. Come to him for CAD, 3D printing and laser cutting, structures, drawings, and prototypes that didn't come out right.</p>
+  <p><strong>Mr. Dryer</strong> helps you make it work — circuits, code, and proving it performs. Come to him for wiring, debugging, sensors and motors, and showing with data that your thing does what you claim.</p>
+</section>
+
+<section>
+  <div class="official">
+    <div class="official-head">
+      <p><strong>The official course descriptions</strong>
+      These are the descriptions from the Engineering Technology Program Scope and Sequence, the school's current program of study. Formal wording, kept here for reference — the rest of this page is the day-to-day.</p>
+    </div>
+    <div class="official-body">
+      <h3>Program Overview</h3>
+      <p>The Chapter 74 Engineering Technology Career Technical Education (CTE) Program prepares students with the academic, technical, and employability skills required for entry-level employment and postsecondary education in the engineering field. Aligned with the Massachusetts Chapter 74 Engineering Technology Frameworks, the program emphasizes safety, professionalism, the engineering design process, technical competence, and industry-relevant problem solving.</p>
+      <p>Students develop foundational knowledge in engineering design, computer-aided design (CAD), fabrication and prototyping, electrical and digital systems, mechanical principles, automation and robotics, and civil/architectural design. Instruction integrates classroom learning with hands-on laboratory practice in a modern engineering shop through a dual-specialization instructional model: Engineering Design &amp; Fabrication (EDF), emphasizing the transformation of ideas into tangible forms, and Engineering Systems &amp; Emerging Concepts (ESEC), emphasizing the intelligence, functionality, and control that drive modern engineered systems.</p>
+      <p>Assessment is competency-based and includes skill demonstrations, practical exams, written assessments, design projects, engineering logbooks, and portfolio development. By program completion, students are prepared for industry-recognized credentials, cooperative education experiences, and continued education in engineering, engineering technology, or related technical fields.</p>
+
+      <h3>Engineering Technology I — Grade 9</h3>
+      <p>Students in grade nine are introduced to foundational concepts and skills related to engineering technology. Instruction focuses on the Engineering Design Process (EDP), computer-aided design (CAD) and parametric modeling, technical measurement, basic electrical circuits and digital logic, technical graphics and documentation, workplace safety, and professional behaviors within an engineering environment. Learning experiences include classroom-based instruction and laboratory activities designed to introduce shop tools, fabrication equipment, 3D printing, and the maintenance of a professional engineering journal.</p>
+
+      <h3>Engineering Technology II — Grade 10</h3>
+      <p>Engineering Technology II builds on foundational knowledge and skills acquired in the introductory year, emphasizing technical mastery, professional documentation, and safety certification. Students deepen their understanding of electrical and analog systems, mechanical principles and simulation, quality assurance, and civil/architectural foundations (BIM/Revit) while practicing professional drafting skills, including Geometric Dimensioning &amp; Tolerancing (GD&amp;T). The course integrates OSHA 10 safety training — a mandatory credential at this grade level — professional ethics, and empirical analysis to prepare students for the specialized work of the junior year.</p>
+
+      <h3>Engineering Technology III — Grade 11</h3>
+      <p>Engineering Technology III is an advanced course designed for 11th-grade students to refine and apply their design, fabrication, and systems skills in industry-relevant applications. Building on prior coursework, students expand their expertise in advanced manufacturing and Design for Manufacturing (DFM) theory, control systems and mechatronics, algorithmic programming, and digital logic design. Emphasis is placed on professional project management using tools such as Gantt charts, with hands-on practice in modern technologies including CNC machining, 3D printing, programmable logic devices, and robotics. The year culminates in a 15-day Junior Capstone in architectural engineering requiring conceptual design, structural analysis, and evaluation of original concepts. Students prepare for Autodesk Certified User (ACU) examinations. Grade 11 Engineering Technology students are eligible for Cooperative Education beginning Term 3.</p>
+
+      <h3>Engineering Technology IV / Co-op — Grade 12</h3>
+      <p>Engineering Technology IV is the capstone course for 12th-grade students, designed to prepare them for professional engineering practice and postsecondary study. Students refine advanced skills in robotics and automation, computer-integrated manufacturing (CIM), quality assurance, and systems testing while upholding the highest standards of safety and professionalism. The course emphasizes leadership, employability, entrepreneurship, and continued preparation for Autodesk Certified User (ACU) examinations. The year culminates in a 35-day, self-directed Senior Capstone requiring research, design, prototyping, testing, and a formal defense, supported by a comprehensive portfolio. Grade 12 Engineering Technology students are eligible for Cooperative Education beginning Term 1.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  BHR Engineering Technology · Blue Hills Regional. For anything about uniform rules beyond what's here, see the Blue Hills Parent/Student Handbook.
+</footer>
+
+</div>

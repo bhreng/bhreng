@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
+const p = await b.newPage({ viewport: { width: 1180, height: 1400 } });
+await p.goto('file:///tmp/outputs/eep-guides.html');
+await p.waitForTimeout(1200);
+await p.screenshot({ path: 'h1.png' });
+await p.click('nav button[data-v="automation"]');
+await p.waitForTimeout(400);
+await p.screenshot({ path: 'h2.png', fullPage: true });
+await b.close();

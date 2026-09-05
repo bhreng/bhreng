@@ -16,8 +16,10 @@ def markup(html):
 
 def main():
     os.chdir(OUT)
+    # _source/ is the shipped source tree, not part of the site
     pages = [os.path.join(r, f)[2:] for r, d, g in os.walk('.')
-             for f in g if f.endswith('.html')]
+             for f in g if f.endswith('.html')
+             and not os.path.join(r, f)[2:].startswith('_source')]
     bad, linked = [], set()
     for p in pages:
         root = os.path.dirname(p) or '.'

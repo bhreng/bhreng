@@ -1,0 +1,614 @@
+<title>Independent Focus Pathway Hubs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --paper:#eef2f5;--card:#fff;--ink:#141c26;--ink-2:#3f4e5d;--ink-3:#6d7c8a;
+  --rule:#c3d0da;--rule-soft:#dbe3ea;--accent:#14607f;--accent-soft:#e0edf3;
+  --amber:#8a5a12;--amber-soft:#f6ecd8;--crimson:#963129;--crimson-soft:#f7e3e1;
+  --moss:#3d6b43;--moss-soft:#e2eee3;
+  --shadow:0 1px 2px rgba(20,28,38,.05),0 8px 24px -14px rgba(20,28,38,.18);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0e151c;--card:#161f28;--ink:#e6ecf1;--ink-2:#b3c0cc;--ink-3:#7d8b98;
+  --rule:#2d3b47;--rule-soft:#232f3a;--accent:#63b5d6;--accent-soft:#13303d;
+  --amber:#d7a355;--amber-soft:#33280f;--crimson:#e0817a;--crimson-soft:#3a1e1b;
+  --moss:#8fbe95;--moss-soft:#1c2e1f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
+}}
+:root[data-theme="dark"]{
+  --paper:#0e151c;--card:#161f28;--ink:#e6ecf1;--ink-2:#b3c0cc;--ink-3:#7d8b98;
+  --rule:#2d3b47;--rule-soft:#232f3a;--accent:#63b5d6;--accent-soft:#13303d;
+  --amber:#d7a355;--amber-soft:#33280f;--crimson:#e0817a;--crimson-soft:#3a1e1b;
+  --moss:#8fbe95;--moss-soft:#1c2e1f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Spectral",Georgia,serif;
+  font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.shell{display:grid;grid-template-columns:222px minmax(0,1fr);gap:40px;
+  max-width:1160px;margin:0 auto;padding:28px 24px 90px;align-items:start}
+@media(max-width:880px){.shell{grid-template-columns:1fr;gap:22px}}
+
+nav{position:sticky;top:24px;font-family:"Archivo",system-ui,sans-serif;
+  border-right:1px solid var(--rule);padding-right:18px}
+@media(max-width:880px){nav{position:static;border-right:0;
+  border-bottom:1px solid var(--rule);padding:0 0 16px}}
+.nt{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);
+  font-family:"IBM Plex Mono",monospace;margin:0 0 12px}
+.nt+.nt{margin-top:20px}
+nav button{display:flex;width:100%;text-align:left;gap:9px;align-items:baseline;
+  background:none;border:0;cursor:pointer;color:var(--ink-2);font-size:13.5px;
+  font-weight:500;padding:6px 8px;border-radius:3px;font-family:inherit;line-height:1.35}
+nav button:hover{background:var(--accent-soft);color:var(--ink)}
+nav button.on{background:var(--accent-soft);color:var(--accent);font-weight:600}
+nav .std{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);flex:none;width:26px}
+nav button.on .std{color:var(--accent)}
+.navgroup{display:flex;flex-direction:column;gap:1px}
+
+.view{display:none}
+.view.on{display:block}
+
+.masthead{border:1.5px solid var(--ink);background:var(--card);margin-bottom:32px}
+.mh-top{padding:24px 26px 20px;border-bottom:1.5px solid var(--ink)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(26px,4vw,36px);
+  line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.mh-sub{margin:11px 0 0;color:var(--ink-2);max-width:62ch}
+.mh-fields{display:grid;grid-template-columns:repeat(4,1fr)}
+.mh-fields div{padding:11px 16px;border-right:1px solid var(--rule)}
+.mh-fields div:last-child{border-right:0}
+.mh-fields dt{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 3px}
+.mh-fields dd{margin:0;font-family:"Archivo",sans-serif;font-weight:600;font-size:13.5px}
+@media(max-width:640px){.mh-fields{grid-template-columns:1fr 1fr}
+  .mh-fields div{border-bottom:1px solid var(--rule)}}
+
+h2{font-family:"Archivo",sans-serif;font-weight:700;font-size:22px;letter-spacing:-.012em;
+  margin:34px 0 14px;padding-bottom:7px;border-bottom:1.5px solid var(--ink);text-wrap:balance}
+h2:first-of-type{margin-top:0}
+h3{font-family:"Archivo",sans-serif;font-weight:600;font-size:16px;margin:22px 0 8px}
+p{margin:0 0 12px;max-width:70ch}
+ul{margin:0 0 14px;padding-left:20px;max-width:70ch}
+li{margin-bottom:5px}
+.lede{font-size:17px;color:var(--ink-2);max-width:68ch}
+.mono,code{font-family:"IBM Plex Mono",monospace;font-size:.86em}
+
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--card);
+  box-shadow:var(--shadow);margin:0 0 18px}
+table{border-collapse:collapse;width:100%;min-width:500px;font-size:14.5px}
+th{font-family:"Archivo",sans-serif;font-weight:600;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);text-align:left;padding:10px 13px;
+  border-bottom:1.5px solid var(--rule);white-space:nowrap}
+td{padding:10px 13px;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.45}
+tr:last-child td{border-bottom:0}
+td.n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  white-space:nowrap;color:var(--ink-2)}
+td.k{font-family:"Archivo",sans-serif;font-weight:500;font-size:14px}
+
+.topics{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule);margin:0 0 18px}
+.topic{background:var(--card);padding:15px 17px;display:grid;
+  grid-template-columns:26px 1fr;gap:13px}
+.topic .tn{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent);
+  padding-top:3px}
+.topic h4{font-family:"Archivo",sans-serif;font-weight:600;font-size:15px;margin:0 0 5px}
+.topic p{font-size:14.5px;margin:0 0 6px;color:var(--ink-2);max-width:64ch}
+.topic p:last-child{margin:0}
+.topic .empty{color:var(--crimson);font-style:italic}
+
+.note{background:var(--card);border-left:4px solid var(--accent);padding:16px 18px;
+  margin:0 0 18px;box-shadow:var(--shadow)}
+.note.warn{border-left-color:var(--amber)}
+.note.bad{border-left-color:var(--crimson)}
+.note p:last-child{margin-bottom:0}
+.ntag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 7px}
+.note.warn .ntag{color:var(--amber)}
+.note.bad .ntag{color:var(--crimson)}
+
+.chip{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+  letter-spacing:.09em;text-transform:uppercase;padding:2px 6px;border-radius:2px;
+  font-weight:500;vertical-align:middle}
+.c-ok{background:var(--moss-soft);color:var(--moss)}
+.c-rev{background:var(--amber-soft);color:var(--amber)}
+.c-bad{background:var(--crimson-soft);color:var(--crimson)}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);margin:0 0 20px}
+.fact{background:var(--card);padding:13px 15px}
+.fact dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 4px}
+.fact dd{margin:0;font-family:"Archivo",sans-serif;font-weight:600;font-size:14px;
+  line-height:1.35}
+
+footer{border-top:1px solid var(--rule);padding-top:16px;margin-top:36px;font-size:13px;
+  color:var(--ink-3);max-width:72ch}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="shell">
+<nav>
+  <p class="nt">Overview</p>
+  <div class="navgroup">
+    <button data-v="all" class="on"><span class="std">—</span><span>All Seven Pathways</span></button>
+  </div>
+  <p class="nt">Pathways</p>
+  <div class="navgroup">
+    <button data-v="id"><span class="std">S8</span><span>Industrial Design</span></button>
+    <button data-v="ac"><span class="std">S10</span><span>Architecture / Civil</span></button>
+    <button data-v="me"><span class="std">S7</span><span>Mechanical</span></button>
+    <button data-v="se"><span class="std">S6</span><span>Software</span></button>
+    <button data-v="ee"><span class="std">S5</span><span>Electrical</span></button>
+    <button data-v="ar"><span class="std">S9</span><span>Automation / Robotics</span></button>
+    <button data-v="pm"><span class="std">S4</span><span>Project Management</span></button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ OVERVIEW ============ -->
+<div class="view on" id="v-all">
+  <div class="masthead">
+    <div class="mh-top">
+      <p class="eyebrow">Independent Focus &middot; BHR ENG</p>
+      <h1>Independent Focus Pathway Hubs</h1>
+      <p class="mh-sub">Seven specialized hubs for self-directed Independent Focus work in emerging engineering fields, open to every student in the shop. Each maps to one DESE technical standard and shares a common five-topic structure.</p>
+    </div>
+    <dl class="mh-fields">
+      <div><dt>Pathways</dt><dd>7</dd></div>
+      <div><dt>Topics each</dt><dd>5</dd></div>
+      <div><dt>Buckets to fill</dt><dd>35</dd></div>
+      <div><dt>Posted so far</dt><dd>1</dd></div>
+    </dl>
+  </div>
+
+  <h2>What your Independent Focus is</h2>
+  <p class="lede">The Independent Focus replaces what was called Independent Study: self-directed, term-length work in an emerging engineering field. Every student in the shop has one; it ends when the Senior Capstone starts. It classifies as <strong>Applied Learning</strong> and is the primary vehicle for <strong>Standard 12 — Advanced Elective Area</strong>.</p>
+  <p>The hubs are not courses. Grade-level classrooms remain the instructional and assessment centers; the hubs are specialized resource libraries students draw on for research and deep specialization.</p>
+
+  <h2>The seven pathways</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Pathway</th><th>Std</th><th>PCC</th><th>Lead</th><th>Credential</th><th>Guide</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Project Management</td><td class="n">4</td><td class="n">9</td><td>Shared</td><td>Gantt / WBS mastery</td><td><span class="chip c-ok">Full</span></td></tr>
+      <tr><td class="k">Electrical Engineering</td><td class="n">5</td><td class="n">5, 7</td><td>Dryer</td><td>Multimeter &amp; oscilloscope</td><td><span class="chip c-ok">Full</span></td></tr>
+      <tr><td class="k">Software Engineering</td><td class="n">6</td><td class="n">6</td><td>Dryer</td><td>Python / Arduino</td><td><span class="chip c-ok">Full</span></td></tr>
+      <tr><td class="k">Mechanical Engineering</td><td class="n">7</td><td class="n">7, 8</td><td>Frank</td><td>ACU Inventor <span class="chip c-bad">CSWA struck — Autodesk only</span></td><td><span class="chip c-ok">Full</span></td></tr>
+      <tr><td class="k">Industrial Design</td><td class="n">8</td><td class="n">1</td><td>Frank</td><td>ACU Fusion 360</td><td><span class="chip c-ok">Full</span></td></tr>
+      <tr><td class="k">Automation / Robotics</td><td class="n">9</td><td class="n">7</td><td>Both</td><td>Festo LX / UR Academy</td><td><span class="chip c-ok">Full</span> <span class="mono">(rebuilt Sep 2026; the May source was empty)</span></td></tr>
+      <tr><td class="k">Architecture / Civil</td><td class="n">10</td><td class="n">2, 10</td><td>Frank</td><td>ACU Revit</td><td><span class="chip c-ok">Full</span></td></tr>
+    </tbody>
+  </table></div>
+  <p>Standards 4 through 10 are the seven technical DESE standards, and they map one-to-one onto the seven pathways. That correspondence is the strongest piece of design in the whole program.</p>
+
+  <h2>The shared five-topic structure</h2>
+  <p class="lede">Every hub uses the same five topics. Each answers one question, and the question is the sorting test — if a resource doesn't answer it, it belongs in a different topic.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Topic</th><th>Sorting question</th><th>What belongs here</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Explore the Field</td><td><em>Would this help someone decide whether to pick this pathway?</em></td><td>Careers, roles, what practitioners actually do, where the discipline leads</td></tr>
+      <tr><td class="k">Learn the Concepts</td><td><em>Is this something you study to understand how the work works?</em></td><td>Textbooks, theory, principles, the science behind the decisions</td></tr>
+      <tr><td class="k">Build Your Skills</td><td><em>Is this a procedure you practice until you can do it?</em></td><td>Software walkthroughs, equipment training, technique</td></tr>
+      <tr><td class="k">Find a Project</td><td><em>Is this something you could go build?</em></td><td>Design briefs, challenges, project seeds</td></tr>
+      <tr><td class="k">Get the Files</td><td><em>Would you open this while working, rather than read it start to finish?</em></td><td>Templates, forms, rubrics, safety rules</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note">
+    <p class="ntag">Why the names changed</p>
+    <p>These were <em>Pathway Foundational Knowledge, Pathway Learning, Skill Training, Idea Lab</em> and <em>Resource Hub</em>. The first two read as synonyms, which is why sorting drifted: when a boundary is unclear, everything lands in the first bucket. Of the 70 sources sorted for Industrial Design, <strong>48 went to Foundational and none to Skill Training</strong> — in the pathway where Fusion 360 competency is the whole point.</p>
+    <p>The underlying five buckets were right. The names and the sorting test are what needed fixing.</p>
+  </div>
+
+  <div class="topics">
+    <div class="topic"><span class="tn">01</span><div><h4>Explore the Field</h4>
+      <p>What this discipline is and where it leads. Engineering roles, career trajectories, what practitioners spend their days doing. Deliverables: career vision summaries, discipline research reports.</p></div></div>
+    <div class="topic"><span class="tn">02</span><div><h4>Learn the Concepts</h4>
+      <p>The theory you study to understand how the work works. Materials science, FEA theory, systems engineering principles — and the textbooks. Deliverables: theory summaries, research-based logic reports.</p></div></div>
+    <div class="topic"><span class="tn">03</span><div><h4>Build Your Skills</h4>
+      <p>Procedures you practice until you can do them. Walkthroughs and Do Now activities for 3D scanners, multimeters, oscilloscopes, CNC. Deliverables: procedural walkthroughs, skill self-assessments.</p></div></div>
+    <div class="topic"><span class="tn">04</span><div><h4>Find a Project</h4>
+      <p>Things you could go build. Design briefs and project seeds, bridging digital simulation and physical performance through design-build-test loops. Deliverables: prototype logs, before-and-after case studies.</p></div></div>
+    <div class="topic"><span class="tn">05</span><div><h4>Get the Files</h4>
+      <p>What you open while working rather than read start to finish. Logbook template, reflections, makerspace safety rules, Bill of Materials worksheets, rubrics.</p></div></div>
+  </div>
+
+  <h2>Where the build actually stands</h2>
+  <div class="facts">
+    <div class="fact"><dt>Classroom hubs created</dt><dd>7 of 7</dd></div>
+    <div class="fact"><dt>Topics scaffolded</dt><dd>35 of 35</dd></div>
+    <div class="fact"><dt>Posts published</dt><dd>1</dd></div>
+    <div class="fact"><dt>Written guides</dt><dd>6 of 7</dd></div>
+    <div class="fact"><dt>Source tables built</dt><dd>1 of 7</dd></div>
+  </div>
+  <p>All seven Classroom hubs exist with custom banner art and all five topics created. Only <strong>Architecture/Civil</strong> has a published post — a material called <em>"How We Keep Making Offices Worse"</em> under Pathway Learning. The remaining 34 topic buckets are empty.</p>
+
+  <h2>Findings across all seven</h2>
+
+  <div class="note bad">
+    <p class="ntag">The Automation / Robotics guide is empty</p>
+    <p>Not thin — <strong>blank</strong>. The file exists and returns no content at all. This is the pathway the program's own crosswalk describes as the primary synthesis point for mechatronics and CIM, drawing on Standards 5, 6, 7 and 9 together. The most interdisciplinary pathway has no guide.</p>
+  </div>
+
+  <div class="note warn">
+    <p class="ntag">Correction to an earlier finding</p>
+    <p>I previously flagged <strong>Standard 11</strong> as an uncovered gap because no core course produces a Business Plan. That was incomplete. The Mechanical, Electrical and Project Management hub guides all require one — Project Management specifies it in detail, applied to an emerging engineering field with design, market potential and implementation strategy. <strong>The business plan lives in the Independent Focus, not the core courses.</strong> Standard 14 (Entrepreneurship) is arguably covered by the same work.</p>
+  </div>
+
+  <div class="note warn">
+    <p class="ntag">Every guide uses retired terminology</p>
+    <p>All six written guides say <strong>"Engineering Notebook"</strong> and <strong>"Engineering Daily Journal."</strong> Both were replaced by the <strong>Engineering Logbook</strong> this year. Given the guides also carry the strictest documentation rules in the program, the naming needs to match what students actually open.</p>
+  </div>
+
+  <div class="note warn">
+    <p class="ntag">Three different logbook rule sets</p>
+    <p>Industrial Design cites a <strong>"Rule of 11"</strong> from University of Georgia standards. Architecture/Civil cites <strong>"17 strict rules"</strong> from the same source. Mechanical cites <strong>Kelley &amp; Wicklein</strong>. Project Management cites <strong>Kelley</strong> plus the Tesla-versus-Marconi case. Same underlying practice, four presentations, different counts. A student in two pathways gets two rulebooks.</p>
+  </div>
+
+  <div class="note warn">
+    <p class="ntag">Two things to verify before students see them</p>
+    <p><strong>Salary figures.</strong> The Project Management guide states $120,000+ for Management Engineer, $98,000+ for Construction Manager, $92,000+ for Systems Integrator, and projects 6–10% growth. No source, no date, no region. <strong>Formatting corruption.</strong> Section 6 of the same guide has raw escape characters visible in the text — <span class="mono">\#\#\#\#\#</span> and <span class="mono">\*\*</span> appearing as literal characters.</p>
+  </div>
+
+  <h2>What each guide does distinctively well</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Pathway</th><th>The part worth keeping verbatim</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Industrial Design</td><td>The "Rule of 11" for taping loose sheets — sign across the tape so the signature begins on the sheet and ends on the page</td></tr>
+      <tr><td class="k">Architecture / Civil</td><td>The site design checklist: soil testing, cut and fill calculations, drainage, circulation and ADA</td></tr>
+      <tr><td class="k">Mechanical</td><td>The Engineering Accounting equation stated in full — <span class="mono">Input − Output + Generation − Consumption = Accumulation</span></td></tr>
+      <tr><td class="k">Electrical</td><td>The five-step breadboarding walkthrough, calibration before measurement</td></tr>
+      <tr><td class="k">Software</td><td>Boolean algebra, DeMorgan's theorem, flowcharting before syntax</td></tr>
+      <tr><td class="k">Project Management</td><td>The Agile-to-EDP mapping table — sprint backlog, scrum loop, sprint review</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<!-- ============ INDUSTRIAL DESIGN ============ -->
+<div class="view" id="v-id">
+  <div class="masthead"><div class="mh-top">
+    <p class="eyebrow">Pathway &middot; Standard 8 &middot; PCC 1</p>
+    <h1>Industrial Design</h1>
+    <p class="mh-sub">Transforming ideas into tangible forms — user-centered design, ergonomics, and aesthetic modeling. The most developed of the seven pathways.</p>
+  </div>
+  <dl class="mh-fields">
+    <div><dt>Lead</dt><dd>Mr. Frank (EDF)</dd></div>
+    <div><dt>Standard</dt><dd>8</dd></div>
+    <div><dt>Credential</dt><dd>ACU Fusion 360</dd></div>
+    <div><dt>Prerequisite</dt><dd>OSHA 10</dd></div>
+  </dl></div>
+
+  <h2>The five topics</h2>
+  <div class="topics">
+    <div class="topic"><span class="tn">01</span><div><h4>Explore the Field</h4>
+      <p>Careers: Product Design, Manufacturing Engineering, Technical Drafting, Research Engineer, Development Engineer — what each role is responsible for and where it leads after graduation.</p></div></div>
+    <div class="topic"><span class="tn">02</span><div><h4>Learn the Concepts</h4>
+      <p>User-centered design and human factors. DFM theory split into <strong>additive geometry</strong> (3D printing) and <strong>subtractive geometry</strong> (laser, CNC). Visual communication of design intent. <strong>Engineering Accounting</strong> from Holtzapple &amp; Reece — scientific principles as a unifying framework for design decisions.</p>
+      <p>Texts: Wallach's <em>Modern Drafting</em> for descriptive geometry and ASME standards; Madsen's <em>Engineering Drawing and Design</em> for visualization. <em>(Moved here from topic 1 — textbooks are concepts you study, not orientation to the field.)</em></p></div></div>
+    <div class="topic"><span class="tn">03</span><div><h4>Build Your Skills</h4>
+      <p>Fusion 360 — parametric (history-driven), direct modeling (rapid iteration), and visualization (renders, animations, exploded views). Equipment vault: 3D scanners for reverse engineering, 3D printers, laser engravers and CNC.</p></div></div>
+    <div class="topic"><span class="tn">04</span><div><h4>Find a Project</h4>
+      <p>Named briefs: <strong>Desk Organizer</strong> and <strong>Kids Toy</strong>. Four-phase loop — Identify &amp; Research, Develop &amp; Plan (massing), Create (digital then physical), Test &amp; Redesign. Deliverable is a "before and after" transformation case study, explicitly an exercise in visual storytelling.</p></div></div>
+    <div class="topic"><span class="tn">05</span><div><h4>Get the Files</h4>
+      <p>Documentation as a legal single source of truth. Templates: logbook, BOM worksheets, reflections, makerspace safety rules.</p></div></div>
+  </div>
+
+  <h2>The Rule of 11</h2>
+  <p>The strictest documentation practice in any pathway, from University of Georgia standards:</p>
+  <ul>
+    <li><strong>Permanent ink only.</strong> No pencils, no erasures. Errors get a single X.</li>
+    <li><strong>Chronological integrity.</strong> No pages skipped; every page numbered, signed, dated.</li>
+    <li><strong>Taping loose sheets.</strong> External data taped to the next available page — tape every corner and <strong>sign across the tape</strong>, so the signature begins on the loose sheet and ends on the page.</li>
+    <li><strong>Witness signatures.</strong> Entries witnessed by a peer with the technical ability to understand the work.</li>
+  </ul>
+
+  <h2>Operational rhythm</h2>
+  <p>A mandatory <strong>two-hour weekly block</strong> for Knowledge Consumption and Skill Training. Regular design reviews with Mr. Frank covering manufacturability, GD&amp;T accuracy and aesthetic finish. Culminates in a professional defense with physical evidence of fabrication quality.</p>
+
+  <div class="note">
+    <p class="ntag">Only pathway with a source library</p>
+    <p>Industrial Design has a <strong>Source Migration Table of 70 resources</strong> already sorted into topics — MIT computational geometry, NASA human-factors standards, MIL-STD-1472, Fusion 360 tutorials, TED talks. No other pathway has one. Two caveats: the hyperlink column may not contain live URLs, and the sort is lopsided — 48 of 70 landed in Foundational Knowledge and <strong>none in Skill Training</strong>, despite this being the pathway where Fusion 360 competency gets built.</p>
+  </div>
+</div>
+
+<!-- ============ ARCHITECTURE / CIVIL ============ -->
+<div class="view" id="v-ac">
+  <div class="masthead"><div class="mh-top">
+    <p class="eyebrow">Pathway &middot; Standard 10 &middot; PCC 2, 10</p>
+    <h1>Architecture &amp; Civil Engineering</h1>
+    <p class="mh-sub">Structural systems, BIM modeling, and site planning for the built environment. The only hub with a published post.</p>
+  </div>
+  <dl class="mh-fields">
+    <div><dt>Lead</dt><dd>Mr. Frank (EDF)</dd></div>
+    <div><dt>Standard</dt><dd>10, 12</dd></div>
+    <div><dt>Credential</dt><dd>ACU Revit</dd></div>
+    <div><dt>Prerequisite</dt><dd>OSHA 10</dd></div>
+  </dl></div>
+
+  <h2>The five topics</h2>
+  <div class="topics">
+    <div class="topic"><span class="tn">01</span><div><h4>Explore the Field</h4>
+      <p>PCCs 1, 2 and 10. Engineering roles mapped to pillars: Research Engineer (KC), Design Engineer (AL), Development Engineer (AL), Construction Engineer (AL). Standards 10 and 12.</p></div></div>
+    <div class="topic"><span class="tn">02</span><div><h4>Learn the Concepts</h4>
+      <p>Load-bearing systems analysed with <strong>MD Solids</strong> — steel frames, concrete frames, foundations. <strong>Sustainable</strong> design (efficiency, waste reduction) distinguished from <strong>regenerative</strong> design (actively restoring ecosystems). Moment of inertia calculations and stress-strain diagrams.</p></div></div>
+    <div class="topic"><span class="tn">03</span><div><h4>Build Your Skills</h4>
+      <p>Revit for building modeling, Fusion 360 for components. ACU roadmap: 3D modeling, clash detection, schedules and IFC/DWG interoperability, sheet sets with title blocks. Surveying with total stations, levels and GPS.</p></div></div>
+    <div class="topic"><span class="tn">04</span><div><h4>Find a Project</h4>
+      <p>Mirrors the Junior Capstone — a <strong>Unique Concept</strong> challenge (gravity-defying structure, justified with MD Solids simulation or physical load testing) and a <strong>Revitalization Pitch</strong> (existing structure brought back to life, pitched with before-and-after transformations).</p></div></div>
+    <div class="topic"><span class="tn">05</span><div><h4>Get the Files</h4>
+      <p>The 17 logbook rules, makerspace safety with PPE, tool authorization and cleanup protocols.</p></div></div>
+  </div>
+
+  <h2>The professional site design checklist</h2>
+  <p>Every site plan must include:</p>
+  <ul>
+    <li><strong>Soil testing</strong> — documented analysis of results</li>
+    <li><strong>Cut and fill calculations</strong> — accurate volumes for grading</li>
+    <li><strong>Drainage</strong> — engineered plans for water runoff</li>
+    <li><strong>Circulation</strong> — parking, roads and ADA accessibility</li>
+  </ul>
+  <p>This is the most concrete, checkable deliverable list in any of the seven guides.</p>
+
+  <div class="note warn">
+    <p class="ntag">Operational detail to verify</p>
+    <p>This guide names the school nurse's extension (<span class="mono">Ex. 2230</span>) in its emergency procedure. Worth confirming it's still current — it's the kind of detail that silently goes stale and matters most on the day it's needed.</p>
+  </div>
+</div>
+
+<!-- ============ MECHANICAL ============ -->
+<div class="view" id="v-me">
+  <div class="masthead"><div class="mh-top">
+    <p class="eyebrow">Pathway &middot; Standard 7 &middot; PCC 7, 8</p>
+    <h1>Mechanical Engineering</h1>
+    <p class="mh-sub">Kinematics, statics and parametric mastery — from manual vector resolution to Finite Element Analysis.</p>
+  </div>
+  <dl class="mh-fields">
+    <div><dt>Lead</dt><dd>Mr. Frank (EDF)</dd></div>
+    <div><dt>Standard</dt><dd>7, 11, 12</dd></div>
+    <div><dt>Credential</dt><dd>ACU Inventor. <em>The source guide also named SolidWorks CSWA; struck — the shop is Autodesk only.</em></dd></div>
+    <div><dt>Prerequisite</dt><dd>OSHA 10</dd></div>
+  </dl></div>
+
+  <h2>The five topics</h2>
+  <div class="topics">
+    <div class="topic"><span class="tn">01</span><div><h4>Explore the Field</h4>
+      <p><strong>Engineering Accounting</strong> stated as an actual equation — <span class="mono">Input − Output + Generation − Consumption = Accumulation</span> — tracking mass, energy and momentum across any mechanical system. Newton's three laws framed by function: inertia as the foundation of statics, F=ma for dynamic systems, action-reaction for resolving joints and fasteners.</p></div></div>
+    <div class="topic"><span class="tn">02</span><div><h4>Learn the Concepts</h4>
+      <p>Vector resolution, kinematic equations, free body diagrams, stress and strain. The key pedagogical link: <strong>manual vector calculations are the mathematical precursor to the mesh nodes a digital solver uses.</strong> Materials classification and Mean Time Between Failure for reliability.</p></div></div>
+    <div class="topic"><span class="tn">03</span><div><h4>Build Your Skills</h4>
+      <p>Tiered: <strong>Inventor (ACU)</strong> for parametric modeling, then <strong>Fusion 360 (ACP)</strong> for assemblies, simulation and GD&amp;T. Measurement and calibration — calipers, micrometers, multimeters, oscilloscopes, all calibrated against known standards before data collection.</p></div></div>
+    <div class="topic"><span class="tn">04</span><div><h4>Find a Project</h4>
+      <p>Three named challenges. <strong>Parametric optimization</strong> — one driving dimension updates all related components. <strong>Functional prototype loop</strong> — FEA-simulate a bracket's failure point, print it, test it, analyse the variance between simulation and reality. <strong>Simple machine integration</strong> — three machines minimum, mechanical advantage calculated and verified.</p></div></div>
+    <div class="topic"><span class="tn">05</span><div><h4>Get the Files</h4>
+      <p>The logbook as legal document per Kelley &amp; Wicklein — hardbound, numbered, ink only, signed and witnessed. Safety non-negotiables including the 15-minute eye-wash rule and the two-person rule for power tools.</p></div></div>
+  </div>
+
+  <div class="note">
+    <p class="ntag">Best-articulated idea in any guide</p>
+    <p>The insistence that design decisions be <strong>data-driven</strong>: "Intuition is a starting point, but Improve &amp; Redesign phases require objective evidence from FEA reports or physical test logs to justify modifications." That sentence does more work than most of the vision statements in the other guides.</p>
+  </div>
+
+  <h2>Mastery requirements</h2>
+  <p><strong>Standard 11</strong> — a lifecycle analysis and detailed <strong>business plan</strong> for a design in an emerging field, covering market potential, implementation strategy and interdisciplinary coordination.</p>
+  <p><strong>Standard 12</strong> — a mandatory <strong>reverse engineering</strong> task: select a mechanical system, analyse component interactions, recreate it digitally, and validate with stress and motion simulation.</p>
+</div>
+
+<!-- ============ SOFTWARE ============ -->
+<div class="view" id="v-se">
+  <div class="masthead"><div class="mh-top">
+    <p class="eyebrow">Pathway &middot; Standard 6 &middot; PCC 6</p>
+    <h1>Software Engineering</h1>
+    <p class="mh-sub">Algorithmic logic, firmware and logic analysis — the pathway for code, structure and digital architecture.</p>
+  </div>
+  <dl class="mh-fields">
+    <div><dt>Lead</dt><dd>Mr. Dryer (ESEC)</dd></div>
+    <div><dt>Standard</dt><dd>6</dd></div>
+    <div><dt>Platforms</dt><dd>Python / Arduino</dd></div>
+    <div><dt>Prerequisite</dt><dd>OSHA 10</dd></div>
+  </dl></div>
+
+  <h2>The five topics</h2>
+  <div class="topics">
+    <div class="topic"><span class="tn">01</span><div><h4>Explore the Field</h4>
+      <p>Careers: Software Engineer, Computer Engineering, Robotics Engineering, Systems Integration. The framing: you don't write code on intuition — you use physical laws and mathematics to calculate what the software must achieve.</p></div></div>
+    <div class="topic"><span class="tn">02</span><div><h4>Learn the Concepts</h4>
+      <p>Boolean algebra and truth tables for verifying circuit and code operation. <strong>DeMorgan's theorem</strong> for logic simplification. Flowcharting logic before writing syntax. Number conversions between binary, decimal and hexadecimal for low-level memory management. Aligned to Massachusetts Standards 6 and 9.</p></div></div>
+    <div class="topic"><span class="tn">03</span><div><h4>Build Your Skills</h4>
+      <p>Python IDE for algorithmic logic and data analysis with NumPy/Pandas. Arduino Education for firmware, I2C/SPI communication and C syntax. PLC via Festo LX for industrial ladder logic and CIM.</p></div></div>
+    <div class="topic"><span class="tn">04</span><div><h4>Find a Project</h4>
+      <p>Bridging simulation and physical performance — systems that sense environmental variables and execute responses, plus diagnostic challenges resolving faults across hardware and software together.</p></div></div>
+    <div class="topic"><span class="tn">05</span><div><h4>Get the Files</h4>
+      <p>Documentation templates and reflections, plus the shared safety and prerequisite requirements.</p></div></div>
+  </div>
+
+  <h2>Where to go for what</h2>
+  <p>Mr. Dryer is named for four specific things — worth reproducing because it's the clearest "ask me about" list in any guide:</p>
+  <ul>
+    <li><strong>Logic analysis</strong> — developing, simplifying and verifying Boolean expressions and truth tables</li>
+    <li><strong>Debugging</strong> — syntax errors or logical flaws in Python, C++ (Arduino) or ladder logic</li>
+    <li><strong>System architecture</strong> — designing the data flow of automated systems</li>
+    <li><strong>Functional simulation</strong> — predicting mechanical behavior through digital models</li>
+  </ul>
+
+  <div class="note warn">
+    <p class="ntag">Two documents for one pathway</p>
+    <p>Software Engineering has both a <strong>Hub Guide</strong> (May 2026) and a separate <strong>Resource Directory and Guide</strong> (June 2026) — overlapping genres. The June document matches the newer pattern used for Industrial Design's source directory. Decide whether guide and directory are one document or two, then apply that answer to all seven pathways.</p>
+  </div>
+</div>
+
+<!-- ============ ELECTRICAL ============ -->
+<div class="view" id="v-ee">
+  <div class="masthead"><div class="mh-top">
+    <p class="eyebrow">Pathway &middot; Standard 5 &middot; PCC 5, 7</p>
+    <h1>Electrical Engineering</h1>
+    <p class="mh-sub">Analog circuits, Ohm's and Kirchhoff's laws, and test-device proficiency — from electron flow to intelligent system performance.</p>
+  </div>
+  <dl class="mh-fields">
+    <div><dt>Lead</dt><dd>Mr. Dryer (ESEC)</dd></div>
+    <div><dt>Standard</dt><dd>5, 11, 12</dd></div>
+    <div><dt>Credential</dt><dd>Multimeter / oscilloscope</dd></div>
+    <div><dt>Prerequisite</dt><dd>OSHA 10</dd></div>
+  </dl></div>
+
+  <h2>The five topics</h2>
+  <div class="topics">
+    <div class="topic"><span class="tn">01</span><div><h4>Explore the Field</h4>
+      <p>Careers: Electrical Engineering, Robotics Engineering, Systems Integration. Atomic structure and its role in electrical properties. Materials as conductors, insulators, semiconductors. The four circuit components — <strong>source, load, control, conductors</strong>. Ohm's Law as the cornerstone relationship.</p></div></div>
+    <div class="topic"><span class="tn">02</span><div><h4>Learn the Concepts</h4>
+      <p>DC versus AC and where each is used. Series, parallel and series-parallel configurations. Kirchhoff's current and voltage laws. Resistor colour codes for identification without instruments. Renewable energy applications — conversion efficiency for solar and wind. Text: Tokheim's <em>Digital Electronics</em>.</p></div></div>
+    <div class="topic"><span class="tn">03</span><div><h4>Build Your Skills</h4>
+      <p>Multimeter proficiency across V, I, R and C. Oscilloscope mastery — square, sawtooth and sine waveforms, determining time, fall time, frequency and amplitude. Platforms: Arduino Education, Festo LX.</p></div></div>
+    <div class="topic"><span class="tn">04</span><div><h4>Find a Project</h4>
+      <p>Sensor and actuator integration — systems that sense environmental variables and execute mechanical responses. Troubleshooting challenges across integrated hardware and software. A data-driven redesign loop.</p></div></div>
+    <div class="topic"><span class="tn">05</span><div><h4>Get the Files</h4>
+      <p>Documentation as legal record of intellectual property. Electrical safety: GFCIs, immediate reporting of frayed wiring, and strict <strong>Lockout/Tagout</strong> compliance for de-energizing equipment.</p></div></div>
+  </div>
+
+  <h2>The breadboarding walkthrough</h2>
+  <p>The most usable procedure in any of the seven guides — five steps a student can follow unsupervised:</p>
+  <ul>
+    <li><strong>Interpret the schematic</strong> — translate the diagram into a physical component layout</li>
+    <li><strong>Breadboard setup</strong> — insert components, strictly observing polarity for diodes and electrolytic capacitors</li>
+    <li><strong>Calibration</strong> — self-test and calibrate the multimeter and oscilloscope <em>before</em> measuring</li>
+    <li><strong>Connectivity</strong> — link source, control and load with appropriate gauge conductors</li>
+    <li><strong>Initial power-on testing</strong> — verify continuity and node voltage before full energization</li>
+  </ul>
+
+  <h2>Mastery requirements</h2>
+  <p><strong>Standard 11</strong> — a comprehensive <strong>business plan</strong>: market potential, implementation strategy, lifecycle analysis.</p>
+  <p><strong>Standard 12</strong> — a <strong>reverse engineering report</strong> on a complex component, including a repair log and maintenance strategy.</p>
+</div>
+
+<!-- ============ AUTOMATION / ROBOTICS ============ -->
+<div class="view" id="v-ar">
+  <div class="masthead"><div class="mh-top">
+    <p class="eyebrow">Pathway &middot; Standard 9 &middot; PCC 7</p>
+    <h1>Automation &amp; Robotics</h1>
+    <p class="mh-sub">Mechatronics, PLC programming and CIM systems — the program's synthesis pathway, and the only one with no guide written.</p>
+  </div>
+  <dl class="mh-fields">
+    <div><dt>Lead</dt><dd>Frank &amp; Dryer</dd></div>
+    <div><dt>Standard</dt><dd>9</dd></div>
+    <div><dt>Credential</dt><dd>Festo LX / UR Academy</dd></div>
+    <div><dt>Guide status</dt><dd>Rebuilt September 2026. The May 2026 source guide was empty; the current hub is authored in full.</dd></div>
+  </dl></div>
+
+  <div class="note bad">
+    <p class="ntag">No guide exists</p>
+    <p>The document <span class="mono">Independent Focus Hub Guide: Automation &amp; Robotics</span> was created in the same batch as the other six on 19 May 2026 and never written. It returns <strong>no content at all</strong>. Everything below is reconstructed from the Standards-to-Hub Crosswalk and the Program Implementation Report, not from a guide.</p>
+  </div>
+
+  <h2>What the program says this pathway is</h2>
+  <p class="lede">The crosswalk describes Automation/Robotics as the program's <strong>primary synthesis point</strong> — the place where the two specializations genuinely have to work together rather than dividing the work.</p>
+
+  <h3>Technical focus</h3>
+  <ul>
+    <li>Mechatronics and Computer Integrated Manufacturing (CIM)</li>
+    <li>PLC programming and robotic controller integration</li>
+    <li>End-of-arm tooling, sensor and actuator feedback loops</li>
+  </ul>
+
+  <h3>Why it draws on four standards at once</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Standard</th><th>Contribution</th></tr></thead>
+    <tbody>
+      <tr><td class="n">5 · Electrical</td><td>Analog circuit requirements, power distribution, sensor wiring</td></tr>
+      <tr><td class="n">6 · Digital</td><td>Logical frameworks, Boolean design, PLC programming for system intelligence</td></tr>
+      <tr><td class="n">7 · Mechanical</td><td>Drive systems, kinematics of work envelopes, physical chassis fabrication</td></tr>
+      <tr><td class="n">9 · Automated Systems</td><td>The anchor — CIM components, robotic controllers, the CNC-to-robot relationship</td></tr>
+    </tbody>
+  </table></div>
+  <p>This is also the only pathway with <strong>shared instructional leadership</strong>: Mr. Frank guides physical fabrication, structural integrity and manufacturability; Mr. Dryer covers code efficiency, circuit troubleshooting and analytical validation of control loops.</p>
+
+  <h2>Where the content would come from</h2>
+  <p>Grade 12 Unit 4 (Robotics and Automation) is the richest existing source — Section 7 maps <strong>19 skills</strong> to it: S9-c, m, o, q, t, u, v, w, x, y, z, aa, ae, af, ag, ah, ai, aj, ak. That covers end effectors, CIM operation, drive system integration, cybersecurity for automated systems, Industry 4.0 and digital twins, and collaborative robot programming.</p>
+  <p>Grade 11 Unit 5 (Control Systems &amp; Mechatronics) adds twelve more: S9-b, d, e, f, g, h, i, l, p, r, s, ab.</p>
+  <p>Between them, the curriculum content for this pathway already exists and is standards-mapped. It has simply never been written into a guide.</p>
+
+  <div class="note warn">
+    <p class="ntag">Open question</p>
+    <p>Is this blank because it's Mr. Dryer's to write, or did it get dropped in the May batch? It's the only one of the seven with shared leadership, which may be exactly why nobody owned it.</p>
+  </div>
+</div>
+
+<!-- ============ PROJECT MANAGEMENT ============ -->
+<div class="view" id="v-pm">
+  <div class="masthead"><div class="mh-top">
+    <p class="eyebrow">Pathway &middot; Standard 4 &middot; PCC 9</p>
+    <h1>Project Management</h1>
+    <p class="mh-sub">Resource allocation, scheduling and engineering methodology — the pathway that manages, while technical execution happens in the others.</p>
+  </div>
+  <dl class="mh-fields">
+    <div><dt>Lead</dt><dd>Shared</dd></div>
+    <div><dt>Standard</dt><dd>4, 11, 12</dd></div>
+    <div><dt>Credential</dt><dd>Gantt / WBS mastery</dd></div>
+    <div><dt>Prerequisite</dt><dd>OSHA 10</dd></div>
+  </dl></div>
+
+  <h2>The five topics</h2>
+  <div class="topics">
+    <div class="topic"><span class="tn">01</span><div><h4>Explore the Field</h4>
+      <p>Develops the <strong>Management Engineer</strong> — synthesizing technical design with business planning so projects are economically viable as well as functional. Roles: Management Engineer (shared), Construction Manager (Frank), Systems Integrator (Dryer).</p></div></div>
+    <div class="topic"><span class="tn">02</span><div><h4>Learn the Concepts</h4>
+      <p>The EDP as a non-linear cycle. <strong>Work Breakdown Structure</strong> — hierarchical decomposition of scope into deliverables. <strong>Decision matrices</strong> for weighing competing solutions against weighted constraints. Requirements analysis separating user needs from functional specifications.</p></div></div>
+    <div class="topic"><span class="tn">03</span><div><h4>Build Your Skills</h4>
+      <p>WBS then Gantt: decompose the capstone into phases, map onto a timeline, identify the <strong>critical path</strong> — the task sequence that pushes the final defense date if it slips. Track lead time for material procurement in the BOM. Brilliant.org for the mathematical rigor behind critical path method.</p></div></div>
+    <div class="topic"><span class="tn">04</span><div><h4>Find a Project</h4>
+      <p>The Junior Capstone <strong>Revitalization</strong> project as the primary case study — students act as lead developers pitching to town stakeholders. Checklist: before-and-after transformations, technical justification, visual storytelling with 3D renders or scale models, and reverse-engineering documentation.</p></div></div>
+    <div class="topic"><span class="tn">05</span><div><h4>Get the Files</h4>
+      <p>Weekly planner with milestones and resource allocation. BOM for procurement — part number, description, material, quantity, unit cost. Logbook and term-end reflections.</p></div></div>
+  </div>
+
+  <h2>Agile mapped onto the EDP</h2>
+  <p>The most useful table in any guide — it reconciles the program's own process with the methodology students will meet in industry:</p>
+  <div class="tw"><table>
+    <thead><tr><th>Agile component</th><th>EDP stage</th><th>Function</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Sprint Backlog</td><td>Plan a Solution</td><td>Defining immediate tasks from the broader project scope</td></tr>
+      <tr><td class="k">Scrum Loop</td><td>Improve &amp; Redesign</td><td>Daily iterative testing to refine code or hardware</td></tr>
+      <tr><td class="k">Sprint Review</td><td>Test &amp; Evaluate</td><td>Verifying functional metrics against original requirements</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Standard 11 — the business plan</h2>
+  <p>Specified here in more detail than anywhere else: a business plan applied to an <strong>emerging engineering field</strong> — aerospace, sustainable tech, advanced manufacturing — requiring a CAD-validated technical model, data-driven market research, and a procurement and manufacturing roadmap with scaling logistics.</p>
+
+  <div class="note">
+    <p class="ntag">Metacognitive coding</p>
+    <p>The source guide had students tag logbook entries with a mix of EDP codes (<strong>PI</strong>) and pillar codes (<strong>AL</strong>, Applied Learning). <strong>Reconciled:</strong> the Daily Logbook now uses one scheme only — the five EDP status codes PI, DD, FAB, TE, IR — and the pillar codes stay in the binder where they belong.</p>
+  </div>
+
+  <div class="note warn">
+    <p class="ntag">Two fixes needed before students see this</p>
+    <p><strong>Unsourced salary figures.</strong> $120,000+, $98,000+, $92,000+, and 6–10% projected growth — no source, date or region given. <strong>Formatting corruption.</strong> Section 6 contains raw escape characters as literal text: <span class="mono">\#\#\#\#\#</span> and <span class="mono">\*\*</span>.</p>
+  </div>
+</div>
+
+<footer>
+  Compiled September 2026 from the seven Independent Focus Hub Guides, the Massachusetts Standards to Independent Focus Hub Crosswalk, the Program Implementation Report and the Industrial Design Source Migration Table. Six guides were read in full; the Automation &amp; Robotics guide is empty and its section is reconstructed from program-level documents. Standard and PCC citations follow those source documents and have not been checked against the 2025 DESE framework.
+</footer>
+
+</main>
+</div>
+
+<script>
+(function(){
+  var btns = Array.prototype.slice.call(document.querySelectorAll('nav button'));
+  var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var id = b.getAttribute('data-v');
+      btns.forEach(function(x){ x.classList.toggle('on', x === b); });
+      views.forEach(function(v){ v.classList.toggle('on', v.id === 'v-' + id); });
+      window.scrollTo(0,0);
+    });
+  });
+})();
+</script>

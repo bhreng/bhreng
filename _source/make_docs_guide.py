@@ -8,6 +8,7 @@ you fill in on a Monday.
 
 import os
 import generation as G
+import paths
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
 from reportlab.lib.colors import HexColor, white
@@ -32,14 +33,14 @@ PAGE_W, PAGE_H = letter
 MARGIN = 0.7 * inch
 
 for name, path in [
-    ('DejaVu', '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'),
-    ('DejaVu-Bold', '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'),
-    ('DejaVu-Oblique', '/usr/share/fonts/truetype/dejavu/DejaVuSans-Oblique.ttf'),
+    ('DejaVu', paths.font('DejaVuSans.ttf')),
+    ('DejaVu-Bold', paths.font('DejaVuSans-Bold.ttf')),
+    ('DejaVu-Oblique', paths.font('DejaVuSans-Oblique.ttf')),
 ]:
     if os.path.exists(path):
         pdfmetrics.registerFont(TTFont(name, path))
 SANS = 'DejaVu' if os.path.exists(
-    '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf') else 'Helvetica'
+    paths.font('DejaVuSans.ttf')) else 'Helvetica'
 BOLD = SANS + '-Bold' if SANS == 'DejaVu' else 'Helvetica-Bold'
 ITAL = SANS + '-Oblique' if SANS == 'DejaVu' else 'Helvetica-Oblique'
 

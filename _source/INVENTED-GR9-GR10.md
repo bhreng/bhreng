@@ -141,9 +141,9 @@ Grade 9 and 10 sentences are my summary of the unit maps.
 | grade 10 unit line | "Back in the shop, re-certified" | "signed off on safety before anything is switched on" |
 | grade 10 unit line | "The OSHA unit. This is the one that follows you out of school." | "Every Grade 10 student earns the OSHA 10 card, whichever shop they are in." |
 | exploratory section | "It is a trade and a degree path at the same time" | "It opens more than one road" — college for most, direct routes for some, no promises |
-| Grade 11 + Grade 12 all-year entry | "Independent Study" / "Independent Study Project" | "Elective Engineering Pathway" |
+| Grade 11 + Grade 12 all-year entry | "Independent Study" / "Independent Study Project" | "Independent Focus" |
 | Weekly journal document | BHR-ENG-Independent-Study-Weekly-Journal.docx | BHR-ENG-EEP-Weekly-Journal.docx |
-| Do Now, skill library, docs guide | "independent study log", "Capstone and independent study" | "E.E.P. log", "Capstone and E.E.P." |
+| Do Now, skill library, docs guide | "independent study log", "Capstone and independent study" | "Independent Focus log", "Capstone and Independent Focus" |
 
 Four "Independent Study" strings remain in `brief_text.py` and
 `skills_data.py`. They are lookup keys that have to match the headings in the

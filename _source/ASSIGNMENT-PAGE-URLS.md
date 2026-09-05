@@ -61,19 +61,19 @@ to `SLUG_OVERRIDE` in `work_pages.py` so links you already sent keep working.
 
 Everything in `attachments/` is published to `files/` and is linkable directly:
 
-- `files/BHR-ENG-Daily-Logbook.docx` — Daily Logbook
-- `files/BHR-ENG-Design-Brief-and-Initial-Planner.docx` — Design Brief and Initial Planner
-- `files/BHR-ENG-Do-Now-Reflection.docx` — Do Now Reflection
-- `files/BHR-ENG-Instructor-Meeting-Notes.docx` — Instructor Meeting Notes
-- `files/BHR-ENG-Mid-Project-Design-Review.docx` — Mid-Project Design Review
-- `files/BHR-ENG-Order-Request-Form.xlsx` — Order Request Form
-- `files/BHR-ENG-Part-List.xlsx` — Part List
-- `files/BHR-ENG-Project-Gantt-Chart.xlsx` — Project Gantt Chart
-- `files/BHR-ENG-Project-Reflection.docx` — Project Reflection
-- `files/BHR-ENG-Research-Log.xlsx` — Research Log
-- `files/BHR-ENG-Weekly-Planner.docx` — Weekly Planner
-- `files/BHR-ENG-Weekly-Reflection.docx` — Weekly Reflection
-- `files/BHR-ENG-Which-Document-When.pdf` — Which document, and when
+- `files/BHR27-Daily-Logbook.docx` — Daily Logbook
+- `files/BHR27-Design-Brief-and-Initial-Planner.docx` — Design Brief and Initial Planner
+- `files/BHR27-Do-Now-Reflection.docx` — Do Now Reflection
+- `files/BHR27-Instructor-Meeting-Notes.docx` — Instructor Meeting Notes
+- `files/BHR27-Mid-Project-Design-Review.docx` — Mid-Project Design Review
+- `files/BHR27-Order-Request-Form.xlsx` — Order Request Form
+- `files/BHR27-Part-List.xlsx` — Part List
+- `files/BHR27-Project-Gantt-Chart.xlsx` — Project Gantt Chart
+- `files/BHR27-Project-Reflection.docx` — Project Reflection
+- `files/BHR27-Research-Log.xlsx` — Research Log
+- `files/BHR27-Weekly-Planner.docx` — Weekly Planner
+- `files/BHR27-Weekly-Reflection.docx` — Weekly Reflection
+- `files/BHR27-Which-Document-When.pdf` — Which document, and when
 
 ## Attaching a file to an assignment
 
@@ -87,8 +87,8 @@ Two steps, in `work_pages.py`:
 ```python
 ATTACH = {
     '11': {
-        'City Design': ['BHR-ENG-Design-Brief-and-Initial-Planner.docx',
-                        'BHR-ENG-Daily-Logbook.docx'],
+        'City Design': ['BHR27-Design-Brief-and-Initial-Planner.docx',
+                        'BHR27-Daily-Logbook.docx'],
     },
 }
 ```

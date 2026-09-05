@@ -1,0 +1,423 @@
+<title>The Shop Hub Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --paper:#f3f1f7;--card:#fff;--ink:#191622;--ink-2:#4a4359;--ink-3:#78718a;
+  --rule:#cdc6db;--rule-soft:#e3ddee;--accent:#5c3d8f;--accent-soft:#eee9f7;
+  --moss:#3d6b43;--moss-soft:#e2eee3;--warm:#a8541c;--warm-soft:#fbeade;
+  --shadow:0 1px 2px rgba(25,22,34,.05),0 8px 24px -14px rgba(25,22,34,.2);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#100d17;--card:#1a1622;--ink:#ece8f3;--ink-2:#bcb4cc;--ink-3:#877f99;
+  --rule:#332c42;--rule-soft:#262032;--accent:#b195e0;--accent-soft:#2a2140;
+  --moss:#8fbe95;--moss-soft:#1c2e1f;--warm:#e0965f;--warm-soft:#36230f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.75);
+}}
+:root[data-theme="dark"]{
+  --paper:#100d17;--card:#1a1622;--ink:#ece8f3;--ink-2:#bcb4cc;--ink-3:#877f99;
+  --rule:#332c42;--rule-soft:#262032;--accent:#b195e0;--accent-soft:#2a2140;
+  --moss:#8fbe95;--moss-soft:#1c2e1f;--warm:#e0965f;--warm-soft:#36230f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.75);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Spectral",Georgia,serif;
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:36px 24px 100px;
+  display:flex;flex-direction:column;gap:48px}
+
+.hero{display:flex;flex-direction:column;gap:13px;padding-bottom:26px;
+  border-bottom:2px solid var(--ink)}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--accent);margin:0}
+h1{font-family:"Archivo",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(32px,6vw,48px);line-height:1.02;letter-spacing:-.03em;margin:0;
+  text-wrap:balance;max-width:16ch}
+.hero p{margin:0;font-size:19px;color:var(--ink-2);max-width:60ch}
+
+section{display:flex;flex-direction:column}
+h2{font-family:"Archivo",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.015em;
+  margin:0 0 8px;text-wrap:balance}
+.sub{margin:0 0 18px;color:var(--ink-2);max-width:66ch;font-size:16.5px}
+h3{font-family:"Archivo",sans-serif;font-weight:600;font-size:17px;margin:0 0 5px}
+p{margin:0 0 13px;max-width:68ch}
+p:last-child{margin-bottom:0}
+strong{font-weight:600}
+em{font-style:italic}
+code{font-family:"IBM Plex Mono",monospace;font-size:.87em;background:var(--accent-soft);
+  color:var(--accent);padding:1px 5px;border-radius:3px;word-break:break-word}
+
+/* the answer callout */
+.answer{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);
+  padding:20px 24px;display:flex;flex-direction:column;gap:9px}
+.answer b{font-family:"Archivo",sans-serif;font-weight:600;font-size:16.5px}
+.answer p{margin:0;color:var(--ink-2);font-size:16px}
+
+/* three-stage flow */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:stretch;
+  border:1px solid var(--rule);background:var(--card);box-shadow:var(--shadow)}
+.flow .st{padding:20px 20px 22px;display:flex;flex-direction:column;gap:7px}
+.flow .ar{display:grid;place-items:center;padding:0 4px;color:var(--accent);
+  font-family:"IBM Plex Mono",monospace;font-size:19px;
+  border-left:1px solid var(--rule-soft);border-right:1px solid var(--rule-soft)}
+.flow .lbl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3)}
+.flow b{font-family:"Archivo",sans-serif;font-weight:700;font-size:16px;line-height:1.25}
+.flow span{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.flow .st.mid{background:var(--accent-soft)}
+@media(max-width:760px){
+  .flow{grid-template-columns:1fr}
+  .flow .ar{border:0;border-top:1px solid var(--rule-soft);
+    border-bottom:1px solid var(--rule-soft);padding:6px;transform:rotate(90deg)}
+}
+
+/* file tree */
+pre.tree{margin:0;overflow-x:auto;background:var(--card);border:1px solid var(--rule);
+  padding:20px 22px;font-family:"IBM Plex Mono",monospace;font-size:13px;line-height:1.75;
+  color:var(--ink-2);box-shadow:var(--shadow)}
+pre.tree b{color:var(--accent);font-weight:600}
+pre.tree i{color:var(--ink-3);font-style:normal}
+
+/* two-col split lists */
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.split article{background:var(--card);padding:18px 20px;display:flex;flex-direction:column;
+  gap:9px;box-shadow:0 0 0 1px var(--rule)}
+.split .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;align-self:flex-start;padding:3px 8px;border-radius:3px}
+.split .yes .tag{color:var(--moss);background:var(--moss-soft)}
+.split .no .tag{color:var(--warm);background:var(--warm-soft)}
+.split ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;
+  font-size:15.5px;color:var(--ink-2)}
+.split li{line-height:1.5}
+
+/* numbered steps */
+ol.steps{list-style:none;counter-reset:s;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:1px;background:var(--card);
+  border:1px solid var(--rule)}
+ol.steps li{background:var(--card);counter-increment:s;padding:15px 20px 15px 56px;
+  position:relative;font-size:16px;line-height:1.55;box-shadow:0 0 0 1px var(--rule)}
+ol.steps li::before{content:counter(s);position:absolute;left:20px;top:15px;
+  font-family:"Archivo",sans-serif;font-weight:700;font-size:13px;color:var(--accent);
+  width:23px;height:23px;display:grid;place-items:center;
+  background:var(--accent-soft);border-radius:3px}
+ol.steps b{font-family:"Archivo",sans-serif;font-weight:600}
+
+/* definition rows */
+dl.defs{margin:0;display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+dl.defs dt{background:var(--card);padding:14px 18px 4px;font-family:"Archivo",sans-serif;
+  font-weight:600;font-size:15.5px;line-height:1.35}
+dl.defs dd{background:var(--card);margin:0;padding:0 18px 14px;color:var(--ink-2);
+  font-size:15.5px;line-height:1.55}
+
+/* checks before you commit */
+.checks{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.checks div{background:var(--card);padding:15px 20px;display:grid;
+  grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:5px 22px;font-size:15.5px}
+.checks b{font-family:"Archivo",sans-serif;font-weight:600;line-height:1.45}
+.checks span{color:var(--ink-2);line-height:1.5}
+@media(max-width:620px){.checks div{grid-template-columns:1fr}}
+
+/* phases */
+.phases{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.ph{background:var(--card);padding:18px 20px;display:grid;
+  grid-template-columns:minmax(0,140px) minmax(0,1fr);gap:6px 24px;align-items:start}
+.ph .when{display:flex;flex-direction:column;gap:3px}
+.ph .when em{font-family:"IBM Plex Mono",monospace;font-style:normal;font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.ph .when b{font-family:"Archivo",sans-serif;font-weight:700;font-size:16px;line-height:1.25}
+.ph ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:15.5px}
+.ph li{line-height:1.5;color:var(--ink-2)}
+@media(max-width:620px){.ph{grid-template-columns:1fr}}
+
+.note{margin:16px 0 0;font-size:15px;color:var(--ink-2);background:var(--card);
+  border:1px solid var(--rule);border-left:3px solid var(--ink-3);padding:13px 17px;
+  max-width:70ch;line-height:1.55}
+.warn{border-left-color:var(--warm)}
+
+footer{border-top:1px solid var(--rule);padding-top:18px;font-size:14px;color:var(--ink-3);
+  display:flex;flex-wrap:wrap;gap:6px 18px}
+footer span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">BHR Engineering Technology · Planning note</p>
+    <h1>The Shop Hub Plan</h1>
+    <p>One website that everything links to, hosted free on GitHub, updated by asking.
+      Classroom keeps doing what it is good at.</p>
+  </header>
+
+  <section>
+    <h2>Your question, answered</h2>
+    <p class="sub">You asked whether students could submit logbooks online, then clarified you
+      meant routing them to the right file rather than collecting work on the site.
+      That distinction is the whole plan.</p>
+    <div class="answer">
+      <b>Routing is easy. Collecting is not — and you do not need it.</b>
+      <p>A GitHub Pages site is static: files served to a browser, no server, no database.
+        It can send a student to a template, an assignment, a video or a rubric in one click.
+        It cannot receive anything back. That sounds like a limitation until you notice that
+        Classroom already does the receiving well — it hands each student their own copy,
+        collects it, timestamps it, and puts the grade in the gradebook.</p>
+      <p>So: the site is where things <em>are</em>. Classroom is where work <em>goes</em>.
+        No student work, names, or grades ever touch the site or the repository.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>How the three pieces fit</h2>
+    <p class="sub">The student's path is always the same, whatever the assignment.</p>
+    <div class="flow">
+      <div class="st">
+        <span class="lbl">Where they start</span>
+        <b>Google Classroom</b>
+        <span>The assignment. One or two lines, a due date, and a link to the site.
+          Attach the template here so each student gets their own copy.</span>
+      </div>
+      <div class="ar">&rarr;</div>
+      <div class="st mid">
+        <span class="lbl">Where they read</span>
+        <b>The Shop Hub</b>
+        <span>Instructions, examples, the rubric, safety, the pathway guides. Everything
+          that used to be pasted into a dozen assignments, written once.</span>
+      </div>
+      <div class="ar">&rarr;</div>
+      <div class="st">
+        <span class="lbl">Where they work</span>
+        <b>Their Drive</b>
+        <span>Their own copy of the template. They fill it in and turn it in through
+          Classroom, exactly as they do now.</span>
+      </div>
+    </div>
+    <p class="note">The thing you gain is that the middle box has one version. Today, when
+      the logbook expectations change, you edit however many assignments repeated them.
+      After this, you tell me, I edit one page, and every assignment ever written is
+      current — including last year's.</p>
+  </section>
+
+  <section>
+    <h2>What lives where</h2>
+    <p class="sub">The dividing line is whether it is the same for everyone.</p>
+    <div class="split">
+      <article class="yes">
+        <span class="tag">On the site</span>
+        <ul>
+          <li>The seven pathway guides</li>
+          <li>How the logbook works, with worked examples</li>
+          <li>Classroom rules, grading, uniform, safety</li>
+          <li>The welcome packet and pathway chooser</li>
+          <li>Assignment instructions and rubrics</li>
+          <li>Equipment and software how-tos</li>
+          <li>Links out to templates, videos, Festo, UR Academy</li>
+          <li>A glossary of the terms we actually use</li>
+        </ul>
+      </article>
+      <article class="no">
+        <span class="tag">Never on the site</span>
+        <ul>
+          <li>Student names, rosters or contact details</li>
+          <li>Student work, submissions or photographs</li>
+          <li>Grades, scores or comments</li>
+          <li>Anything from a student's Drive</li>
+          <li>Recommendation letters or evaluations</li>
+          <li>Budget, purchasing or personnel documents</li>
+        </ul>
+      </article>
+    </div>
+    <p class="note warn"><strong>Worth saying plainly:</strong> a GitHub Pages site is public
+      to anyone with the address, and a public repository's history keeps a copy of every file
+      ever committed &mdash; deleting a file later does not remove it from history. So the rule
+      is not &ldquo;take it down if it was a mistake,&rdquo; it is &ldquo;it never goes in.&rdquo;
+      Everything in the left column is material you would hand any student on day one, which
+      is why this works.</p>
+  </section>
+
+  <section>
+    <h2>How the repository is laid out</h2>
+    <p class="sub">Flat, obvious, and named so that a URL you read aloud is one a student can
+      type. Nothing clever.</p>
+    <pre class="tree"><b>bhr-engineering/</b>
+├── index.html              <i>← home: start here, four or five big links</i>
+├── <b>start/</b>
+│   ├── welcome.html        <i>the packet, as a web page</i>
+│   ├── rules.html
+│   ├── grading.html
+│   └── uniform.html
+├── <b>logbook/</b>
+│   └── index.html          <i>how it works, examples, the ten rules</i>
+├── <b>pathways/</b>
+│   ├── index.html          <i>choose one — the chooser doc</i>
+│   ├── industrial-design.html
+│   ├── architecture-civil.html
+│   ├── mechanical.html
+│   ├── electrical.html
+│   ├── software.html
+│   ├── automation-robotics.html
+│   └── project-management.html
+├── <b>skills/</b>
+│   └── ...                 <i>equipment and software how-tos, added over time</i>
+├── <b>assignments/</b>
+│   └── ...                 <i>one page per recurring assignment</i>
+├── <b>assets/</b>
+│   ├── style.css           <i>one stylesheet, so a colour change is one edit</i>
+│   └── img/
+└── README.md               <i>notes to yourself and to me</i></pre>
+    <p class="note">Addresses come out as
+      <code>bluehills-eng.github.io/pathways/mechanical</code>, or shorter if you ever attach
+      a domain. Either way the links you put in Classroom keep working, because the file
+      names never change &mdash; only their contents do.</p>
+  </section>
+
+  <section>
+    <h2>Linking to a Drive template so every student gets their own copy</h2>
+    <p class="sub">This is the mechanic that makes the routing idea work, and it has one
+      real gotcha.</p>
+    <ol class="steps">
+      <li><b>Open the template</b> and copy its normal URL. It ends in <code>/edit</code>
+        followed by some parameters.</li>
+      <li><b>Change the sharing to &ldquo;anyone with the link &mdash; viewer.&rdquo;</b>
+        The copy link does not work on a file that is not link-shared. This is also the step
+        your district may restrict, so it is on the check-first list below.</li>
+      <li><b>Replace everything from <code>/edit</code> onward with <code>/copy</code>.</b>
+        So <code>.../d/1z7mQ4.../edit?usp=sharing</code> becomes
+        <code>.../d/1z7mQ4.../copy</code>.</li>
+      <li><b>Put that link on the site.</b> A student clicking it gets a &ldquo;Make a
+        copy&rdquo; prompt, and the copy lands in their own Drive, leaving your original
+        untouched.</li>
+    </ol>
+    <p class="note warn"><strong>The gotcha:</strong> this trick does not survive being
+      attached inside a Google Classroom assignment &mdash; Classroom overrides the link and
+      shares the original instead. That is fine here, because the copy link lives on the
+      <em>site</em> and the student reaches it by clicking through. For work you are going to
+      collect and grade, keep using Classroom's own &ldquo;make a copy for each student&rdquo;
+      attachment, which is more reliable and connects to the gradebook.</p>
+  </section>
+
+  <section>
+    <h2>How updating actually works</h2>
+    <p class="sub">This is the part that matters most to you, so it is worth being concrete
+      about who does what.</p>
+    <dl class="defs">
+      <dt>You say what you want changed</dt>
+      <dd>In plain language, here. &ldquo;The eye protection line should say Makerspace only.&rdquo;
+        &ldquo;Add a page for the new resin printer.&rdquo; &ldquo;Automation needs a fourth project brief.&rdquo;</dd>
+      <dt>I make the edit and push it</dt>
+      <dd>I have the repository on your machine and can commit and push to GitHub directly.
+        GitHub Pages rebuilds on its own; the change is live in about a minute.</dd>
+      <dt>Nothing you linked ever breaks</dt>
+      <dd>Because the page addresses stay put, an assignment you wrote in October still points
+        at the current version in April. This is the entire benefit over pasting text into
+        assignments.</dd>
+      <dt>Everything is recoverable</dt>
+      <dd>Git keeps every version. If a change was wrong, going back to Tuesday's version is a
+        request, not a rescue operation. This also fixes the &ldquo;nothing lives on my
+        machine&rdquo; problem you raised &mdash; the repository is a real backup that exists in
+        two places.</dd>
+      <dt>You are never blocked on me</dt>
+      <dd>Every page is plain HTML in a folder you can open. GitHub's own web editor will let
+        you fix a typo from a phone if you ever need to.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Check these before we commit to it</h2>
+    <p class="sub">All five are quick, and any one of them could change the plan. Worth doing
+      before I build anything real.</p>
+    <div class="checks">
+      <div><b>Is github.io reachable on student devices?</b>
+        <span>Open one on a student Chromebook on the school network. Some districts filter
+          the whole domain. If it is blocked, the site is useless to students &mdash; and a
+          district-hosted page or a Google Site would be the fallback.</span></div>
+      <div><b>Can you link-share outside the domain?</b>
+        <span>Try setting one harmless template to &ldquo;anyone with the link.&rdquo; If the
+          admin console forbids it, the copy-link trick is out and templates stay attached in
+          Classroom instead. The site still works; it just links to the assignment rather than
+          the file.</span></div>
+      <div><b>Does the school want to own the repository?</b>
+        <span>A repo under your personal GitHub is yours and leaves with you. One under a
+          school organization outlives you in the role. There is a real trade-off here and it
+          is worth a conversation with whoever would inherit the shop.</span></div>
+      <div><b>Is anyone expecting this to be official?</b>
+        <span>A public page with the school's name on it reads as school communication. Worth
+          telling your principal what it is before a parent finds it, not after.</span></div>
+      <div><b>Accessibility</b>
+        <span>Public school content generally needs to meet accessibility standards. Plain
+          HTML with real headings and good contrast starts in a decent place, but if the
+          district has a stated standard, I should build to it from the start rather than
+          retrofit.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Suggested order</h2>
+    <p class="sub">Small enough at each step that stopping after any one of them still leaves
+      you better off.</p>
+    <div class="phases">
+      <div class="ph">
+        <div class="when"><em>Phase 1</em><b>Prove it</b></div>
+        <ul>
+          <li>You create the GitHub account and an empty repository.</li>
+          <li>I put up the home page and the seven pathway guides &mdash; already written.</li>
+          <li>Turn on Pages, confirm it loads on a student device.</li>
+          <li>Link one existing Classroom assignment to it and see how it feels.</li>
+        </ul>
+      </div>
+      <div class="ph">
+        <div class="when"><em>Phase 2</em><b>Move the core</b></div>
+        <ul>
+          <li>Welcome, rules, grading, uniform, logbook, pathway chooser &mdash; all built already.</li>
+          <li>Add the copy-links to the templates, if link sharing is permitted.</li>
+          <li>Rewrite your recurring Classroom assignments down to a line and a link.</li>
+        </ul>
+      </div>
+      <div class="ph">
+        <div class="when"><em>Phase 3</em><b>Grow it</b></div>
+        <ul>
+          <li>Skill and equipment how-tos, added when you notice you have explained something twice.</li>
+          <li>Assignment pages for the recurring ones.</li>
+          <li>Glossary, so the vocabulary stops drifting.</li>
+          <li>A teacher-only section, if you want the binder there too &mdash; it would need a separate private repository.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What I still need from you</h2>
+    <dl class="defs">
+      <dt>The GitHub account name</dt>
+      <dd>It becomes part of the address. Something institutional reads better than a personal
+        handle &mdash; and it is awkward to change later, since every link you have handed out
+        contains it.</dd>
+      <dt>The five checks above</dt>
+      <dd>Particularly the first two. Both are five-minute answers and either one could redirect
+        the whole plan.</dd>
+      <dt>What the home page should push people toward</dt>
+      <dd>My assumption is four doors: <em>New here</em>, <em>The logbook</em>,
+        <em>Pathways</em>, <em>Rules and grading</em>. If a student's most common reason for
+        visiting is something else, that should be a door instead.</dd>
+      <dt>Whether the other assignments you mentioned change this</dt>
+      <dd>You said you want to do other assignments. If some of them need students to
+        <em>produce</em> something structured rather than fill in a doc, tell me what &mdash;
+        there are things a static page can do in the browser without storing anything, and
+        that is worth designing for now rather than bolting on.</dd>
+    </dl>
+  </section>
+
+  <footer>
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology · Room E-126</span>
+    <span>Planning note · September 2026</span>
+  </footer>
+
+</div>

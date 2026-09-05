@@ -1,0 +1,835 @@
+<title>Independent Focus Pathway Guides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --paper:#f3f1f7;--card:#fff;--ink:#191622;--ink-2:#4a4359;--ink-3:#78718a;
+  --rule:#cdc6db;--rule-soft:#e3ddee;--accent:#5c3d8f;--accent-soft:#eee9f7;
+  --moss:#3d6b43;--moss-soft:#e2eee3;--warm:#a8541c;--warm-soft:#fbeade;
+  --shadow:0 1px 2px rgba(25,22,34,.05),0 8px 24px -14px rgba(25,22,34,.2);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#100d17;--card:#1a1622;--ink:#ece8f3;--ink-2:#bcb4cc;--ink-3:#877f99;
+  --rule:#332c42;--rule-soft:#262032;--accent:#b195e0;--accent-soft:#2a2140;
+  --moss:#8fbe95;--moss-soft:#1c2e1f;--warm:#e0965f;--warm-soft:#36230f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.75);
+}}
+:root[data-theme="dark"]{
+  --paper:#100d17;--card:#1a1622;--ink:#ece8f3;--ink-2:#bcb4cc;--ink-3:#877f99;
+  --rule:#332c42;--rule-soft:#262032;--accent:#b195e0;--accent-soft:#2a2140;
+  --moss:#8fbe95;--moss-soft:#1c2e1f;--warm:#e0965f;--warm-soft:#36230f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.75);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);
+  font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.shell{display:grid;grid-template-columns:216px minmax(0,1fr);gap:42px;
+  max-width:1140px;margin:0 auto;padding:28px 24px 90px;align-items:start}
+@media(max-width:900px){.shell{grid-template-columns:1fr;gap:24px}}
+
+nav{position:sticky;top:24px;font-family:var(--sans);
+  border-right:1px solid var(--rule);padding-right:18px}
+@media(max-width:900px){nav{position:static;border-right:0;
+  border-bottom:1px solid var(--rule);padding:0 0 18px}}
+.nt{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);
+  font-family:var(--mono);margin:0 0 11px}
+.nt.gap{margin-top:22px}
+.navgroup{display:flex;flex-direction:column;gap:1px}
+nav button{display:flex;width:100%;text-align:left;gap:9px;align-items:baseline;
+  background:none;border:0;cursor:pointer;color:var(--ink-2);font-size:13.5px;
+  font-weight:500;padding:6px 8px;border-radius:3px;font-family:inherit;line-height:1.35}
+nav button:hover{background:var(--accent-soft);color:var(--ink)}
+nav button.on{background:var(--accent-soft);color:var(--accent);font-weight:600}
+nav .std{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none;width:22px}
+nav button.on .std{color:var(--accent)}
+
+.view{display:none}
+.view.on{display:block}
+
+.ph{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:34px;
+  display:flex;flex-direction:column;gap:9px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0}
+h2{font-family:var(--sans);font-weight:800;
+  font-size:clamp(28px,4.6vw,42px);line-height:1.04;letter-spacing:-.028em;margin:0;
+  text-wrap:balance;max-width:18ch}
+.tag{margin:0;font-family:var(--sans);font-weight:600;font-size:18px;
+  color:var(--ink-2);max-width:52ch;line-height:1.35;text-wrap:balance}
+.intro{margin:4px 0 0;font-size:16.5px;color:var(--ink-2);max-width:64ch}
+.newflag{margin:6px 0 0;font-size:14px;color:var(--moss);background:var(--moss-soft);
+  border-radius:3px;padding:8px 12px;max-width:64ch;line-height:1.45}
+
+.topic{margin-bottom:44px}
+.th{display:flex;gap:15px;align-items:flex-start;margin-bottom:14px}
+.tn{font-family:var(--sans);font-weight:700;font-size:14px;color:var(--accent);
+  background:var(--accent-soft);width:28px;height:28px;flex:none;border-radius:4px;
+  display:grid;place-items:center;margin-top:2px}
+h3{font-family:var(--sans);font-weight:700;font-size:22px;letter-spacing:-.015em;
+  margin:0;line-height:1.2}
+.tq{margin:3px 0 0;font-size:14px;font-style:italic;color:var(--ink-3);max-width:60ch}
+.blurb{margin:0 0 16px;color:var(--ink-2);max-width:66ch}
+
+.roles{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.roles div{background:var(--card);padding:13px 18px;display:grid;
+  grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:3px 22px}
+.roles b{font-family:var(--sans);font-weight:600;font-size:15px;line-height:1.4}
+.roles span{color:var(--ink-2);font-size:15px;line-height:1.5}
+@media(max-width:620px){.roles div{grid-template-columns:1fr}}
+
+dl.defs{margin:0;display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+dl.defs dt{background:var(--card);padding:14px 18px 4px;font-family:var(--sans);
+  font-weight:600;font-size:15.5px;line-height:1.35}
+dl.defs dd{background:var(--card);margin:0;padding:0 18px 14px;color:var(--ink-2);
+  font-size:15.5px;line-height:1.55}
+
+.pullout{margin-top:16px;background:var(--card);border:1px solid var(--rule);
+  border-left:3px solid var(--accent);padding:15px 20px}
+.pullout b{font-family:var(--sans);font-weight:600;font-size:15.5px;display:block;
+  margin-bottom:4px}
+.pullout p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.55;max-width:66ch}
+
+.cred{background:var(--accent-soft);border:1px solid var(--rule);padding:15px 20px;
+  margin-bottom:16px;display:flex;flex-direction:column;gap:3px}
+.cred span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent)}
+.cred b{font-family:var(--sans);font-weight:700;font-size:17px;line-height:1.3;
+  color:var(--ink)}
+.cred em{font-style:normal;font-size:14px;color:var(--ink-2);margin-top:3px}
+
+ul.ticks,ul.files{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;
+  gap:1px;background:var(--rule);border:1px solid var(--rule)}
+ul.ticks li,ul.files li{background:var(--card);padding:11px 18px 11px 40px;position:relative;
+  font-size:15.5px;line-height:1.5}
+ul.ticks li::before{content:"";position:absolute;left:19px;top:20px;width:7px;height:7px;
+  border-radius:50%;background:var(--accent)}
+ul.files li a{text-decoration:none;color:var(--accent)}
+ul.files li a:hover{text-decoration:underline}
+ul.files .ext{font-family:var(--mono);font-size:9px;letter-spacing:.09em;margin-left:7px;padding:1px 5px;border:1px solid var(--rule);border-radius:2px;color:var(--ink-3)}
+ul.files li::before{content:"";position:absolute;left:18px;top:17px;width:9px;height:11px;
+  border:1.4px solid var(--accent);border-radius:1px}
+
+.briefs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.briefs article{background:var(--card);padding:16px 19px;display:flex;flex-direction:column;
+  gap:6px;box-shadow:0 0 0 1px var(--rule)}
+.briefs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.briefs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+
+/* briefs the shop has really run -- same grid, but tagged with the class it
+   ran in, so a student can see it is a real assignment rather than a seed */
+.runsh{margin:26px 0 6px;font-family:var(--sans);font-weight:700;font-size:17px;
+  letter-spacing:-.01em;color:var(--ink)}
+.runs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;
+  background:var(--card);border:1px solid var(--rule)}
+.runs article{background:var(--card);padding:16px 19px;display:flex;
+  flex-direction:column;gap:6px;box-shadow:0 0 0 1px var(--rule)}
+.runs .ry{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);font-weight:700}
+.runs b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3}
+.runs p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+
+.note{margin:16px 0 0;font-size:14.5px;color:var(--ink-2);background:var(--card);
+  border:1px solid var(--rule);border-left:3px solid var(--ink-3);padding:12px 16px;
+  max-width:70ch;line-height:1.5}
+
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--card);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th{font-family:var(--sans);font-weight:600;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);text-align:left;padding:11px 14px;
+  border-bottom:1.5px solid var(--rule);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:0}
+td.k{font-family:var(--sans);font-weight:600;white-space:nowrap}
+td.s{font-family:var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
+em{font-style:italic}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="shell">
+  <nav>
+    <p class="nt">Start here</p>
+    <div class="navgroup">
+      <button data-v="overview" class="on"><span class="std">&mdash;</span>All pathways</button>
+    </div>
+    <p class="nt gap">The seven</p>
+    <div class="navgroup">
+      <button data-v="industrial"><span class="std">S8</span>Industrial Design</button>
+<button data-v="architecture"><span class="std">S10</span>Architecture &amp; Civil</button>
+<button data-v="mechanical"><span class="std">S7</span>Mechanical</button>
+<button data-v="electrical"><span class="std">S5</span>Electrical</button>
+<button data-v="software"><span class="std">S6</span>Software</button>
+<button data-v="automation"><span class="std">S9</span>Automation &amp; Robotics</button>
+<button data-v="project"><span class="std">S4</span>Project Management</button>
+    </div>
+  </nav>
+  <main>
+
+<section class="view on" id="v-overview">
+  <div class="ph">
+    <p class="eyebrow">Independent Focus &middot; BHR Engineering Technology</p>
+    <h2>Pick a pathway, then use this</h2>
+    <p class="tag">Seven hubs. One structure. You pick the one you live in each term.</p>
+    <p class="intro">Your Independent Focus is not really a project. It is how you find out what you
+      want to do next. Engineering is an enormous field and a class can only stay in any
+      one part of it for so long &mdash; if you want to be a civil engineer, the regular
+      curriculum gives you maybe one project a year that looks like civil engineering.
+      Your Independent Focus is where you get to do that all year, and where you go looking for the
+      road out of here.</p>
+  </div>
+
+  <div class="topic">
+    <div class="th"><span class="tn">&mdash;</span><div><h3>Why this exists</h3>
+      <p class="tq">The project is the means. The path is the point.</p></div></div>
+    <p class="blurb">Your Independent Focus is not really a project. It is how you find out
+      what you want to do next. Engineering is an enormous field and a class can only stay
+      in any one part of it for so long &mdash; if you want to be a civil engineer, the
+      regular curriculum gives you maybe one project a year that looks like civil
+      engineering. Your focus is where you get to do that all year, and where you go
+      looking for the road out of here.</p>
+    <dl class="defs">
+      <dt>Go deep on something the curriculum only touches</dt>
+      <dd>Every pathway gets covered in the regular year, but briefly &mdash; there is too
+        much field and not enough calendar. Your Independent Focus is the part of the week where you
+        stay in one area long enough to find out whether you actually like it.</dd>
+      <dt>Get well rounded on purpose</dt>
+      <dd>Say you are set on civil. You will still be better at it with a term of Project
+        Management behind you, because someone has to run the schedule and the budget on a
+        site. Picking a second pathway is not a detour &mdash; it is how you become
+        someone worth hiring.</dd>
+      <dt>You pick your home hub each term</dt>
+      <dd>Stay in the same one all four terms and go deep. Or move each term and come out
+        broad. Or anything in between. Being certain you want civil and still spending a
+        term in Software because you enjoy it is a completely reasonable plan.</dd>
+      <dt>Changing your mind is the system working</dt>
+      <dd>The whole reason this resets every term is so that finding out you do not like
+        something costs you one term instead of four years. That is a good trade, and it
+        is the cheapest one you will ever be offered.</dd>
+      <dt>One term can carry into the next</dt>
+      <dd>Start fresh every term if you want to. Or keep going &mdash; set a goal for the
+        term, hit it, and pick the next one up where you left off. Both are normal.</dd>
+    </dl>
+  </div>
+
+  <div class="topic">
+    <div class="th"><span class="tn">&mdash;</span><div><h3>The words, once</h3>
+      <p class="tq">Five terms, and then we stop explaining them.</p></div></div>
+    <div class="tw"><table>
+      <thead><tr><th>Word</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Independent Focus</td><td>The whole thing, across your years here. You pick one each term. Out loud everyone just says <b>your focus</b>.</td></tr>
+        <tr><td class="k">Engineering Pathway</td><td>The field you picked for the term &mdash; Mechanical, Electrical, Architecture and so on. Seven supported, others by approval.</td></tr>
+        <tr><td class="k">Pathway Hub</td><td>The page you are reading. Where the resources for that pathway live.</td></tr>
+        <tr><td class="k">Independent Project</td><td>What you actually make or do this term. Not graded.</td></tr>
+        <tr><td class="k">Independent Research</td><td>The reading and finding-out end of the same work. Some terms this <em>is</em> the work.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="topic">
+    <div class="th"><span class="tn">&mdash;</span><div><h3>Worked example: you are building a radio</h3>
+      <p class="tq">This is the clearest version of how the hubs and the terms fit together.</p></div></div>
+    <p class="blurb">Say you decide to build a radio. That is not one kind of engineering,
+      and it does not have to happen in one term.</p>
+    <dl class="defs">
+      <dt>Term 1 &mdash; Electrical</dt>
+      <dd>The guts. Circuit, components, power, and getting a signal out of it. Your home
+        hub is <b>Electrical</b>, because that is the part you are actually doing.</dd>
+      <dt>Term 2 &mdash; Industrial Design</dt>
+      <dd>Now it needs to be a thing rather than a board. Enclosure, controls, how it sits
+        on a shelf, how it feels to use. Same radio, different hub &mdash; you move to
+        <b>Industrial Design</b> because that is where the work is now.</dd>
+      <dt>What that shows</dt>
+      <dd>Your hub follows the part of the problem you are on. You did not abandon
+        electrical and you are not dabbling &mdash; one project genuinely needed two
+        fields, which is what real engineering is like. And if instead you want a clean
+        break in Term 2 and a completely different project, that is equally fine.</dd>
+    </dl>
+  </div>
+
+  <div class="topic">
+    <div class="th"><span class="tn">&mdash;</span><div><h3>The seven pathways</h3>
+      <p class="tq">Each one is the home of one state technical standard.</p></div></div>
+    <p class="blurb">Standards 4 through 10 are the seven technical DESE standards, and they
+      map one to one onto the seven pathways. Pick by what you want to spend a term doing,
+      not by which sounds most impressive.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Pathway</th><th>Standard</th><th>Ask</th><th>You spend the term on</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Industrial Design</td><td class="s">8</td><td>Mr. Frank</td><td>Form, ergonomics, and designing for the machine that will make it</td></tr>
+        <tr><td class="k">Architecture &amp; Civil</td><td class="s">10</td><td>Mr. Frank</td><td>Structures, sites, drainage, and construction documents</td></tr>
+        <tr><td class="k">Mechanical</td><td class="s">7</td><td>Mr. Frank</td><td>Forces, motion, materials, and testing to failure</td></tr>
+        <tr><td class="k">Electrical</td><td class="s">5</td><td>Mr. Dryer</td><td>Circuits, power, and instrument measurement</td></tr>
+        <tr><td class="k">Software</td><td class="s">6</td><td>Mr. Dryer</td><td>Logic, code, and controlling physical hardware</td></tr>
+        <tr><td class="k">Automation &amp; Robotics</td><td class="s">9</td><td>Both</td><td>Mechatronics &mdash; all three of the above at once</td></tr>
+        <tr><td class="k">Project Management</td><td class="s">4</td><td>Both</td><td>Scope, schedule, resources, and getting it finished</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="topic">
+    <div class="th"><span class="tn">&mdash;</span><div><h3>Every hub has the same five topics</h3>
+      <p class="tq">If you cannot answer the sorting question, the resource belongs somewhere else.</p></div></div>
+    <div class="tw"><table>
+      <thead><tr><th>Topic</th><th>Sorting question</th><th>What belongs there</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Explore the Field</td><td>Would this help someone decide whether to pick this pathway?</td><td>Careers, roles, what practitioners actually do</td></tr>
+        <tr><td class="k">Learn the Concepts</td><td>Is this something you study to understand how the work works?</td><td>Texts, theory, the science behind the decisions</td></tr>
+        <tr><td class="k">Build Your Skills</td><td>Is this a procedure you practice until you can do it?</td><td>Software walkthroughs, equipment training, technique</td></tr>
+        <tr><td class="k">Find a Project</td><td>Is this something you could go build?</td><td>Design briefs, challenges, project seeds</td></tr>
+        <tr><td class="k">Get the Files</td><td>Would you open this while working, rather than read start to finish?</td><td>Templates, forms, rubrics, safety rules</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="topic">
+    <div class="th"><span class="tn">&mdash;</span><div><h3>True in every pathway</h3>
+      <p class="tq">You do not need to read this seven times.</p></div></div>
+    <dl class="defs">
+      <dt>OSHA 10 &mdash; Construction</dt>
+      <dd>Earned in Grade 10, by every student in the school. It is the credential
+        behind machine authorisation, not a gate on your focus &mdash; Grade 9 and 10
+        students have a focus too, and work within whatever they are authorised on.</dd>
+      <dt>The logbook</dt>
+      <dd>One set of rules, program-wide, in <em>Your Engineering Logbook</em>. Older hub guides
+        carried four different logbook rulebooks; those are retired.</dd>
+      <dt>Standard 11 &mdash; integrated research</dt>
+      <dd>A business plan for a design in an emerging field: the technical design, evidence of
+        market potential, and an implementation strategy. This is where entrepreneurship
+        (Standard 14) gets covered too.</dd>
+      <dt>Standard 12 &mdash; advanced elective area</dt>
+      <dd>A professional technical report on a system you reverse-engineered: how the components
+        interact, rebuilt digitally, and validated with simulation or testing.</dd>
+      <dt>Safety, always</dt>
+      <dd>Eye protection in the Makerspace. Never a tool you have not been trained and authorized on.
+        Never alone with power tools. Fifteen minutes of flowing water for anything in the eyes,
+        before treatment. Report every injury. Clean your area, including the floor.</dd>
+      <dt>How it is graded</dt>
+      <dd><b>Your Independent Project is not graded.</b> Build whatever you want, take
+        the risk, let it fail if it fails &mdash; none of that touches your grade. What
+        is graded is separate and sits beside it: your documentation and the term
+        requirements. Regular projects and assignments are where the work itself gets
+        marked. This one is yours, and the only thing we ask is that you write it
+        down.</dd>
+      <dt>The seven are the supported list, not the whole field</dt>
+      <dd>These seven are where we have put the resources &mdash; guides, files, training,
+        and two instructors who know the material. If you are an upperclassman and the
+        field you want is not one of the seven, ask. With approval you can go there, on
+        one condition: <b>the research is yours.</b> Nobody has built you a hub for
+        biomedical or aerospace or materials science, so you would be finding the
+        sources, the software and the standards yourself. That is a real option and it
+        is a real amount of work.</dd>
+      <dt>When it runs</dt>
+      <dd>Every student in the shop has an Independent Focus, and it runs until the Senior Capstone
+        starts. Your Independent Focus work <em>can</em> turn into your capstone if you want it to,
+        but there is no requirement that the two are connected at all.</dd>
+      <dt>How it ends</dt>
+      <dd>A portfolio and a defense &mdash; you present the work and justify the decisions, using
+        your logbook as the evidence.</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="view" id="v-industrial">
+<div class="ph">
+<p class="eyebrow">Standard S8 &middot; Mr. Frank</p>
+<h1>Industrial Design</h1>
+<p class="tag">How a thing looks, feels in the hand, and can actually be made.</p>
+<p class="intro">You take an idea that only exists as a sketch and turn it into an object somebody would pick up and use. That means caring about the shape and the feel of it, and caring just as much about whether a machine in this building can produce it.</p>
+</div>
+<div class="topic"><div class="th"><span class="tn">1</span><div><h3>Explore the Field</h3><p class="tq">Would this help someone decide whether to pick this pathway?</p></div></div>
+<p class="blurb">Industrial designers sit between the people who want a product and the machines that make it. The job is to make something that works, that people want to hold, and that can be manufactured without costing a fortune.</p>
+<div class="roles">
+<div><b>Product designer</b><span>Shapes the object around the person using it — size, grip, weight, how obvious it is to operate.</span></div>
+<div><b>Manufacturing engineer</b><span>Works out how to actually produce it, at what cost, at what rate, with what waste.</span></div>
+<div><b>Technical drafter</b><span>Produces the drawings a shop builds from, using GD&amp;T so there is no room to guess.</span></div>
+<div><b>Research engineer</b><span>Digs into materials and geometry to find out what is possible before anyone commits.</span></div>
+<div><b>Development engineer</b><span>Carries a concept through prototypes into something that can be produced.</span></div>
+</div>
+<p class="note">Your Career Vision Summary asks for working conditions, education, and pay. Look up current figures yourself — the Bureau of Labor Statistics Occupational Outlook Handbook is the source to use, and it is regional.</p>
+</div>
+<div class="topic"><div class="th"><span class="tn">2</span><div><h3>Learn the Concepts</h3><p class="tq">Is this something you study to understand how the work works?</p></div></div>
+<p class="blurb">Two ideas run through everything in this pathway: design decisions have to be justified by physics, and geometry has to be designed for the process that will produce it.</p>
+<dl class="defs">
+<dt>Engineering accounting</dt><dd>From Holtzapple &amp; Reece, <em>Foundations of Engineering</em>. Treats mass, energy and momentum like a ledger: input minus output plus generation minus consumption equals accumulation. It is how you check that a design is physically possible before you build it.</dd>
+<dt>Design for manufacturing</dt><dd>Additive geometry for 3D printing — overhangs, wall thickness, orientation. Subtractive geometry for laser and CNC — tool access, kerf, fixturing. The same part is drawn differently depending on how it will be made.</dd>
+<dt>User-centered design</dt><dd>Ergonomics and human factors. Form follows function, but function includes "a person can figure this out without instructions."</dd>
+<dt>Visual communication</dt><dd>Drafting standards that let a drawing say exactly one thing. Wallach, <em>Modern Drafting</em>, for descriptive geometry and ASME conventions; Madsen, <em>Engineering Drawing and Design</em>, for visualization and CAD practice.</dd>
+</dl>
+</div>
+<div class="topic"><div class="th"><span class="tn">3</span><div><h3>Build Your Skills</h3><p class="tq">Is this a procedure you practice until you can do it?</p></div></div>
+<div class="cred"><span>Credential of value</span><b>Autodesk Certified User — Fusion 360</b><em>Base requirement for every pathway: OSHA&nbsp;10 &mdash; Construction</em></div>
+<p class="blurb">Fusion 360 is the core tool here. You need both modeling styles, not just one.</p>
+<ul class="ticks">
+<li>Parametric modeling — history-driven, so changing one dimension updates everything downstream.</li>
+<li>Direct modeling — for fast iteration when you are still deciding what the thing is.</li>
+<li>Rendering, animation and exploded views, so someone who has never seen the part understands it.</li>
+<li>GD&amp;T on drawings — tolerances that say what actually matters on the part.</li>
+<li>3D scanners for reverse engineering an existing object.</li>
+<li>3D printers — additive protocols, material choice, print orientation.</li>
+<li>Laser engravers and CNC — subtractive setup and safety.</li>
+</ul></div>
+<div class="topic"><div class="th"><span class="tn">4</span><div><h3>Find a Project</h3><p class="tq">Is this something you could go build?</p></div></div>
+<p class="blurb">Start from one of these or bring your own. Every one of them runs the same loop: identify and research, sketch and mass out, model and prototype, test and redesign.</p>
+<div class="briefs">
+<article><b>Desk organizer</b><p>Constrained, fast, and unforgiving about ergonomics. Everyone thinks it is easy until they hold the first print.</p></article>
+<article><b>Kids toy</b><p>Adds safety constraints, durability and a user who cannot read instructions.</p></article>
+<article><b>Reverse-engineer and improve</b><p>Scan or measure an existing product, rebuild it in CAD, then change one thing and prove the change is better.</p></article>
+<article><b>Before-and-after case study</b><p>Take something badly designed and redesign it. The deliverable is the visual story — renders and photographs that make the improvement obvious without a paragraph of explanation.</p></article>
+</div>
+<h4 class="runsh">Projects this shop has already run</h4>
+<p class="blurb">Real briefs from other years, offered here as optional work. You do not have to be in that grade to take one on &mdash; ask first, then build it.</p>
+<div class="runs">
+<article><span class="ry">Gr 10</span><b>Furniture in a box</b><p>Model a piece of furniture down to the hardware, design the box it ships in, and produce two exploded animations &mdash; one coming out of the box, one from assembled to unassembled. Every part its own file.</p></article>
+<article><span class="ry">Gr 10</span><b>A table for eight that hides</b><p>Seating for eight, plus configurations for four and six, and it has to disappear when not in use because the apartment is small. Screw and hardware placement must be accounted for. Sketch, 3-view AutoCAD, Fusion model, then a physical scale model.</p></article>
+<article><span class="ry">Gr 9</span><b>A product re-imagined with AI in it</b><p>Take the industrial designer&rsquo;s approach &mdash; form and function first. Orthographic drawings with dimensions, a Fusion model, renders, and a promo piece. Packaging if there is time.</p></article>
+<article><span class="ry">Gr 10</span><b>Re-pitch an invention</b><p>Choose an existing invention and pitch it Shark Tank style: research the inventor and the original context, analyse the market, build real financial projections, then an annotated sketch and a 3D model of the original.</p></article>
+<article><span class="ry">Gr 10</span><b>Kitchen product redesign</b><p>Sketches, a 3D model, renders, orthographics and a presentation or poster. Short, and a good first industrial design brief.</p></article>
+</div>
+</div>
+<div class="topic"><div class="th"><span class="tn">5</span><div><h3>Get the Files</h3><p class="tq">Would you open this while working, rather than read start to finish?</p></div></div>
+<ul class="files">
+<li><a href="../files/BHR27-Daily-Logbook.docx" download><b>Daily Logbook</b></a><span class="ext">DOCX</span> &mdash; three intervals, daily</li>
+<li><a href="../files/BHR27-Design-Brief-and-Initial-Planner.docx" download><b>Design Brief and Initial Planner</b></a><span class="ext">DOCX</span> &mdash; fixes what &ldquo;finished&rdquo; means before you start</li>
+<li><a href="../files/BHR27-Part-List.xlsx" download><b>Part List</b></a><span class="ext">XLSX</span> &mdash; every part, material, quantity, made or bought</li>
+<li><a href="../files/BHR27-Decision-Matrix.xlsx" download><b>Decision Matrix</b></a><span class="ext">XLSX</span> &mdash; weighted criteria against your concepts</li>
+<li><a href="../files/BHR27-Do-Now-Reflection.docx" download><b>Do Now Reflection</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Proposal.docx" download><b>Independent Focus Proposal</b></a><span class="ext">DOCX</span> &mdash; first day of the term, for review</li>
+<li><a href="../files/BHR27-Independent-Focus-Reflection.docx" download><b>Independent Focus Reflection</b></a><span class="ext">DOCX</span> &mdash; last day of the term</li>
+<li><a href="../shop/makerspace.html"><b>Makerspace rules</b></a></li>
+</ul>
+<p class="note">Logbook rules are the same in every pathway &mdash; see <em>Your Engineering Logbook</em>. Anything you read in an older hub guide about logbook rules is superseded by it.</p>
+</div>
+</section>
+<section class="view" id="v-architecture">
+<div class="ph">
+<p class="eyebrow">Standard S10 &middot; Mr. Frank</p>
+<h1>Architecture and Civil Engineering</h1>
+<p class="tag">Buildings, sites, and the loads that hold them up.</p>
+<p class="intro">Everything in this pathway has to stand up, drain, and be legal. You work at a scale where a mistake is expensive and permanent, which is why the documentation in this pathway is the most demanding in the program.</p>
+</div>
+<div class="topic"><div class="th"><span class="tn">1</span><div><h3>Explore the Field</h3><p class="tq">Would this help someone decide whether to pick this pathway?</p></div></div>
+<p class="blurb">Architecture and civil engineering cover the built environment — how a structure carries load, how a site handles water and traffic, and how the whole thing gets documented so a contractor can build it.</p>
+<div class="roles">
+<div><b>Structural engineer</b><span>Proves the building will not fall down, and shows the math.</span></div>
+<div><b>Architectural designer</b><span>Resolves how a space is used into a form that can be built.</span></div>
+<div><b>Civil / site engineer</b><span>Grading, drainage, circulation, and how the site meets the road.</span></div>
+<div><b>BIM coordinator</b><span>Keeps the model coordinated across disciplines and catches clashes before they reach the field.</span></div>
+<div><b>Construction manager</b><span>Runs the build — sequence, safety, and compliance on site.</span></div>
+</div>
+<p class="note">Ask Mr. Dryer instead when your building gets smart — automated facades, sensors, controlled systems. The structure is here; the intelligence is over there.</p>
+</div>
+<div class="topic"><div class="th"><span class="tn">2</span><div><h3>Learn the Concepts</h3><p class="tq">Is this something you study to understand how the work works?</p></div></div>
+<p class="blurb">You are learning to see a building as a set of forces travelling to the ground.</p>
+<dl class="defs">
+<dt>Structural systems</dt><dd>Steel frames, concrete frames, and foundations. Model forces, moments and stability in MD Solids or equivalent. Trace how gravity load moves from the roof to the earth.</dd>
+<dt>Material behavior</dt><dd>Steel, concrete and timber under load. Moment of inertia calculations to evaluate resistance to bending; stress-strain diagrams to predict what a material does before it fails.</dd>
+<dt>Sustainable and regenerative design</dt><dd>Sustainable design reduces harm — energy efficiency, less waste. Regenerative design goes further and tries to leave the site and community better than it found them. Know which one you are claiming.</dd>
+<dt>Drafting standards</dt><dd>Madsen, <em>Engineering Drawing and Design</em>, is the reference for this pathway — ANSI/ASME standards, visualization, and descriptive geometry.</dd>
+</dl>
+</div>
+<div class="topic"><div class="th"><span class="tn">3</span><div><h3>Build Your Skills</h3><p class="tq">Is this a procedure you practice until you can do it?</p></div></div>
+<div class="cred"><span>Credential of value</span><b>Autodesk Certified User — Revit Architecture</b><em>Base requirement for every pathway: OSHA&nbsp;10 &mdash; Construction</em></div>
+<p class="blurb">Revit for the building, Fusion 360 for the components you fabricate.</p>
+<ul class="ticks">
+<li>Coordinated 3D modeling — walls, floors, roofs that update together.</li>
+<li>Clash detection — finding where the ductwork runs through a beam before anyone builds it.</li>
+<li>Schedules and interoperability — door and window schedules, IFC and DWG export.</li>
+<li>Sheet sets — title blocks, section cuts, a construction document set someone could build from.</li>
+<li>Total station — angle and distance measurement.</li>
+<li>Levels — elevation and grading.</li>
+<li>GPS — site mapping.</li>
+</ul></div>
+<div class="topic"><div class="th"><span class="tn">4</span><div><h3>Find a Project</h3><p class="tq">Is this something you could go build?</p></div></div>
+<p class="blurb">Two briefs, both of which end in a pitch to people who are not engineers.</p>
+<div class="briefs">
+<article><b>The unique structure</b><p>Design an original structure with a gravity-defying or unusual structural element — then prove it works, with MD Solids simulation or physical load testing. The proof is the assignment; the shape is the easy part.</p></article>
+<article><b>The revitalization pitch</b><p>Pick a real existing building and bring it back. Branding, usability, aesthetics, and a before-and-after that convinces a town board.</p></article>
+<article><b>Site design set</b><p>A complete professional site plan: soil testing results, cut and fill volume calculations, engineered drainage, parking, roads, and ADA circulation.</p></article>
+</div>
+<h4 class="runsh">Projects this shop has already run</h4>
+<p class="blurb">Real briefs from other years, offered here as optional work. You do not have to be in that grade to take one on &mdash; ask first, then build it.</p>
+<div class="runs">
+<article><span class="ry">Gr 9</span><b>City section around transit stops</b><p>Design four distinct transit stop areas, each with a featured building. A 2D site map in AutoCAD, 3D models of the featured buildings, one area modelled in full, then the map re-presented in CorelDraw with colour, labels and a legend.</p></article>
+<article><span class="ry">Gr 10</span><b>Architectural research and rebuild</b><p>Pick an iconic structure. Research it properly &mdash; architect, date, purpose, features, cultural context. Then a full day of sketching with no CAD at all, and only then three days rebuilding it in Revit, SketchUp or Fusion.</p></article>
+<article><span class="ry">Gr 10</span><b>Office shed, recreated exactly</b><p>Recreate a 10&times;12 lean-to office shed from a supplied document in AutoCAD: architectural units, separate layers per element, real line weights, dimensions matching the source, elevations of all four sides, and a title block on every sheet.</p></article>
+<article><span class="ry">Gr 10</span><b>Your own house in Revit</b><p>No tutorial. Recreate a floor of your own home from memory and estimate. All floors and the roof if you are feeling ambitious.</p></article>
+</div>
+</div>
+<div class="topic"><div class="th"><span class="tn">5</span><div><h3>Get the Files</h3><p class="tq">Would you open this while working, rather than read start to finish?</p></div></div>
+<ul class="files">
+<li><a href="../files/BHR27-Daily-Logbook.docx" download><b>Daily Logbook</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Design-Brief-and-Initial-Planner.docx" download><b>Design Brief and Initial Planner</b></a><span class="ext">DOCX</span> &mdash; site, criteria and constraints go here &mdash; soil, cut and fill, drainage, circulation</li>
+<li><a href="../files/BHR27-Part-List.xlsx" download><b>Part List</b></a><span class="ext">XLSX</span></li>
+<li><a href="../files/BHR27-Project-Gantt-Chart.xlsx" download><b>Project Gantt Chart</b></a><span class="ext">XLSX</span> &mdash; a drawing set has a lot of sheets; schedule them</li>
+<li><a href="../files/BHR27-Do-Now-Reflection.docx" download><b>Do Now Reflection</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Proposal.docx" download><b>Independent Focus Proposal</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Reflection.docx" download><b>Independent Focus Reflection</b></a><span class="ext">DOCX</span></li>
+<li><a href="../shop/makerspace.html"><b>Makerspace rules</b></a></li>
+</ul>
+<p class="note">Logbook rules are the same in every pathway &mdash; see <em>Your Engineering Logbook</em>. Anything you read in an older hub guide about logbook rules is superseded by it.</p>
+</div>
+</section>
+<section class="view" id="v-mechanical">
+<div class="ph">
+<p class="eyebrow">Standard S7 &middot; Mr. Frank</p>
+<h1>Mechanical Engineering</h1>
+<p class="tag">Forces, motion, materials, and whether the part survives.</p>
+<p class="intro">This is the pathway where you predict what will happen and then measure what does. Calculate the load, simulate it, print it, break it, and account for the difference between the three numbers.</p>
+</div>
+<div class="topic"><div class="th"><span class="tn">1</span><div><h3>Explore the Field</h3><p class="tq">Would this help someone decide whether to pick this pathway?</p></div></div>
+<p class="blurb">Mechanical engineering is the physics of things that move and things that carry load. It is the broadest of the pathways and it underlies most of the others.</p>
+<div class="roles">
+<div><b>Design engineer</b><span>Turns a requirement into a mechanism, with the calculations to back it.</span></div>
+<div><b>Test engineer</b><span>Designs the experiment that proves whether the design works, and measures honestly.</span></div>
+<div><b>Materials engineer</b><span>Selects material for the job and predicts how it behaves over its life.</span></div>
+<div><b>Manufacturing engineer</b><span>Gets it built at quality and at rate.</span></div>
+<div><b>Simulation / FEA analyst</b><span>Predicts failure on a computer so it does not happen in the field.</span></div>
+</div>
+</div>
+<div class="topic"><div class="th"><span class="tn">2</span><div><h3>Learn the Concepts</h3><p class="tq">Is this something you study to understand how the work works?</p></div></div>
+<p class="blurb">Nothing here is optional background. Every one of these shows up in a project.</p>
+<dl class="defs">
+<dt>Engineering accounting</dt><dd>Holtzapple &amp; Reece, <em>Foundations of Engineering</em>. Input &minus; output + generation &minus; consumption = accumulation. Mass, energy and momentum all balance, and if your design does not balance, it does not work.</dd>
+<dt>Newton, applied</dt><dd>Inertia is the basis of statics and structural equilibrium. F&nbsp;=&nbsp;ma predicts velocity and displacement in moving assemblies. Action and reaction resolves forces in joints, fasteners and supports.</dd>
+<dt>Statics and kinematics</dt><dd>Vector resolution into x, y and z components. Free body diagrams. Kinematic equations for displacement, velocity and acceleration. Stress and strain analysis for internal forces and deformation.</dd>
+<dt>FEA, and what it is doing</dt><dd>The manual vector calculations you do by hand are the same mathematics the solver runs at every mesh node. Understand the hand method first — otherwise a wrong simulation looks exactly like a right one.</dd>
+<dt>Materials and reliability</dt><dd>Classify materials — organics, metals, polymers, ceramics, composites — and connect micro-structure to performance. Mean time between failure as a way to think about design life rather than a single test.</dd>
+</dl>
+</div>
+<div class="topic"><div class="th"><span class="tn">3</span><div><h3>Build Your Skills</h3><p class="tq">Is this a procedure you practice until you can do it?</p></div></div>
+<div class="cred"><span>Credential of value</span><b>Autodesk Certified User — Inventor</b><em>Base requirement for every pathway: OSHA&nbsp;10 &mdash; Construction</em></div>
+<p class="blurb">Inventor for parametric assemblies, Fusion 360 for simulation and fabrication. Everything in this shop is Autodesk.</p>
+<ul class="ticks">
+<li>Parametric modeling — sketches, constraints, dimensions, extrusions.</li>
+<li>History-driven assemblies where changing a driving dimension updates the whole model.</li>
+<li>Assembly management and GD&amp;T on technical drawings.</li>
+<li>FEA setup — loads, constraints, mesh, and reading the result critically.</li>
+<li>Calipers and micrometers for precision measurement.</li>
+<li>Multimeters and oscilloscopes where a mechanism has electronics in it.</li>
+<li>Calibration — every instrument checked against a known standard before it produces data you will rely on.</li>
+</ul></div>
+<div class="topic"><div class="th"><span class="tn">4</span><div><h3>Find a Project</h3><p class="tq">Is this something you could go build?</p></div></div>
+<p class="blurb">All three of these are about the gap between prediction and reality.</p>
+<div class="briefs">
+<article><b>Parametric optimization</b><p>Build a smart assembly where changing one driving dimension correctly updates every related component without breaking design intent. Harder than it sounds, and the failures are instructive.</p></article>
+<article><b>Simulate, print, break</b><p>Design a bracket. Use FEA to predict where and at what load it fails. 3D print it, test it to destruction, and account for the difference between the two numbers. The analysis of the gap is the deliverable.</p></article>
+<article><b>Three simple machines</b><p>Design a system integrating at least three simple machines — gears, pulleys, levers. Calculate the mechanical advantage as output force over input force, then measure it and explain the loss.</p></article>
+</div>
+<h4 class="runsh">Projects this shop has already run</h4>
+<p class="blurb">Real briefs from other years, offered here as optional work. You do not have to be in that grade to take one on &mdash; ask first, then build it.</p>
+<div class="runs">
+<article><span class="ry">Gr 9</span><b>Take-apart toy car, reverse engineered</b><p>Disassemble a toy car, measure every part with calipers, model each one as its own file, then assemble with joints so it works like the real thing. Orthographic drawings, renders, a part list, and an exploded animation as a bonus.</p></article>
+<article><span class="ry">Gr 10</span><b>Pullback car redesign, measured</b><p>Redesign a pullback car for a <em>measurable</em> improvement. Baseline test it first, identify one or two real limitations, run a decision matrix over two concepts, build the prototype, then test against the baseline and account for the difference.</p></article>
+<article><span class="ry">Gr 10</span><b>CrunchLabs kit re-engineering</b><p>Take the components out of old kits and build something with a new or much better function. Every part modelled in its own Fusion file, assembled into one, with an explanation of how new parts integrate with old ones.</p></article>
+<article><span class="ry">Gr 9</span><b>ANW obstacle</b><p>Design an obstacle to the American Ninja Warrior Obstacle Design Challenge rules. Open-ended: sketches then a Fusion model is the suggested route, but the approach is yours.</p></article>
+<article><span class="ry">Gr 9</span><b>Rapid prototype: engraved and printed</b><p>One object, multiple parts, made using both the laser engraver and the 3D printer. Original design only, with every trial print and redesign documented.</p></article>
+</div>
+</div>
+<div class="topic"><div class="th"><span class="tn">5</span><div><h3>Get the Files</h3><p class="tq">Would you open this while working, rather than read start to finish?</p></div></div>
+<ul class="files">
+<li><a href="../files/BHR27-Daily-Logbook.docx" download><b>Daily Logbook</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Test-Log.xlsx" download><b>Test and Measurement Log</b></a><span class="ext">XLSX</span> &mdash; calculated, simulated, measured &mdash; and the difference between them</li>
+<li><a href="../files/BHR27-Decision-Matrix.xlsx" download><b>Decision Matrix</b></a><span class="ext">XLSX</span></li>
+<li><a href="../files/BHR27-Part-List.xlsx" download><b>Part List</b></a><span class="ext">XLSX</span></li>
+<li><a href="../files/BHR27-Do-Now-Reflection.docx" download><b>Do Now Reflection</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Proposal.docx" download><b>Independent Focus Proposal</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Reflection.docx" download><b>Independent Focus Reflection</b></a><span class="ext">DOCX</span></li>
+<li><a href="../shop/makerspace.html"><b>Makerspace rules</b></a></li>
+</ul>
+<p class="note">Logbook rules are the same in every pathway &mdash; see <em>Your Engineering Logbook</em>. Anything you read in an older hub guide about logbook rules is superseded by it.</p>
+</div>
+</section>
+<section class="view" id="v-electrical">
+<div class="ph">
+<p class="eyebrow">Standard S5 &middot; Mr. Dryer</p>
+<h1>Electrical Engineering</h1>
+<p class="tag">Circuits, power, and measuring what you cannot see.</p>
+<p class="intro">You cannot look at a circuit and tell whether it is working. Everything in this pathway depends on measuring properly and trusting the instrument — which means knowing how to calibrate it.</p>
+</div>
+<div class="topic"><div class="th"><span class="tn">1</span><div><h3>Explore the Field</h3><p class="tq">Would this help someone decide whether to pick this pathway?</p></div></div>
+<p class="blurb">Electrical engineering is the design and troubleshooting of the systems that move power and signal. It sits underneath robotics, software and anything with a sensor in it.</p>
+<div class="roles">
+<div><b>Electrical engineer</b><span>Designs power distribution and hardware architecture.</span></div>
+<div><b>Robotics engineer</b><span>Puts intelligence and motion into a system that has to act on the world.</span></div>
+<div><b>Systems integrator</b><span>Makes components from different disciplines work as one unit.</span></div>
+<div><b>Test technician</b><span>Finds the fault, with instruments, methodically, instead of by swapping parts.</span></div>
+</div>
+</div>
+<div class="topic"><div class="th"><span class="tn">2</span><div><h3>Learn the Concepts</h3><p class="tq">Is this something you study to understand how the work works?</p></div></div>
+<p class="blurb">Circuit theory is small in volume and unforgiving in application.</p>
+<dl class="defs">
+<dt>What materials do</dt><dd>Atomic structure and why it governs electrical behavior. Conductors let charge move, insulators contain it, semiconductors do either depending on conditions — which is what makes solid-state electronics possible.</dd>
+<dt>The four parts of any circuit</dt><dd>Source provides energy — a battery, a PV cell. Load consumes it — a motor, a resistor. Control regulates flow — a switch, a transistor. Conductors carry it — trace or wire. Every circuit you will ever draw is those four things.</dd>
+<dt>Ohm and Kirchhoff</dt><dd>V&nbsp;=&nbsp;IR for the relationship between voltage, current and resistance. Kirchhoff&rsquo;s current law for junctions and voltage law for loops, which is how you analyze anything more complicated than one path.</dd>
+<dt>Series, parallel, and both</dt><dd>Series: one path, resistances add. Parallel: multiple paths, voltage constant across branches. Series-parallel: what real systems actually look like.</dd>
+<dt>AC and DC</dt><dd>Direct current for microcontrollers and logic. Alternating current for power distribution. Know which one you are working with before you connect anything.</dd>
+<dt>Reference</dt><dd>Tokheim, <em>Digital Electronics</em>, for logic design, integrated circuits and systematic troubleshooting. Khan Academy and Brilliant for the supporting mathematics.</dd>
+</dl>
+</div>
+<div class="topic"><div class="th"><span class="tn">3</span><div><h3>Build Your Skills</h3><p class="tq">Is this a procedure you practice until you can do it?</p></div></div>
+<div class="cred"><span>Credential of value</span><b>Multimeter and oscilloscope proficiency</b><em>Base requirement for every pathway: OSHA&nbsp;10 &mdash; Construction</em></div>
+<p class="blurb">This pathway&rsquo;s credential is demonstrated instrument skill rather than a software certificate. It is assessed by whether your measurements can be trusted.</p>
+<ul class="ticks">
+<li>Multimeter — voltage, current, resistance, capacitance, and continuity.</li>
+<li>Oscilloscope — drawing and interpreting square, sawtooth and sine waveforms; determining time, fall time, frequency and amplitude.</li>
+<li>Calibration and self-test before any measurement you will report.</li>
+<li>Resistor color codes — reading value and tolerance without an instrument.</li>
+<li>Breadboarding: read the schematic, place components observing polarity on diodes and electrolytics, connect source, control and load with the right gauge, verify continuity and node voltage before full power-on.</li>
+<li>Arduino for firmware and digital logic.</li>
+<li>Festo LX for industrial automation and mechatronics tasks.</li>
+</ul></div>
+<div class="topic"><div class="th"><span class="tn">4</span><div><h3>Find a Project</h3><p class="tq">Is this something you could go build?</p></div></div>
+<p class="blurb">Both of these end with data, not with a working demo.</p>
+<div class="briefs">
+<article><b>Sensor and actuator integration</b><p>Build a system that senses something in the environment and produces a mechanical response. The engineering is in the threshold and the timing, not the wiring.</p></article>
+<article><b>Diagnostic challenge</b><p>Take a system with a fault in it and find the fault methodically — measurement, not part-swapping. Document the sequence of measurements that isolated it.</p></article>
+<article><b>Renewable energy analysis</b><p>Evaluate conversion efficiency and integration for a solar or wind setup. Measure real output against rated output and explain the difference.</p></article>
+</div>
+<h4 class="runsh">Projects this shop has already run</h4>
+<p class="blurb">Real briefs from other years, offered here as optional work. You do not have to be in that grade to take one on &mdash; ask first, then build it.</p>
+<div class="runs">
+<article><span class="ry">Gr 12</span><b>Reverse engineer a breadboard circuit</b><p>Take a working circuit apart to understand it, then rebuild it and reflect on what you learned in the taking apart.</p></article>
+<article><span class="ry">Gr 11</span><b>Arduino Education Starter, all ten lessons</b><p>Each lesson builds on the last, with its own logbook to fill in as you go. The most structured electronics route in the shop.</p></article>
+</div>
+</div>
+<div class="topic"><div class="th"><span class="tn">5</span><div><h3>Get the Files</h3><p class="tq">Would you open this while working, rather than read start to finish?</p></div></div>
+<ul class="files">
+<li><a href="../files/BHR27-Daily-Logbook.docx" download><b>Daily Logbook</b></a><span class="ext">DOCX</span> &mdash; schematics and as-built drawings go in here, dated</li>
+<li><a href="../files/BHR27-Test-Log.xlsx" download><b>Test and Measurement Log</b></a><span class="ext">XLSX</span> &mdash; predicted, measured, difference</li>
+<li><a href="../files/BHR27-Part-List.xlsx" download><b>Part List</b></a><span class="ext">XLSX</span></li>
+<li><a href="../files/BHR27-Do-Now-Reflection.docx" download><b>Do Now Reflection</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Proposal.docx" download><b>Independent Focus Proposal</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Reflection.docx" download><b>Independent Focus Reflection</b></a><span class="ext">DOCX</span></li>
+<li><a href="../shop/index.html"><b>Shop safety</b></a> &mdash; GFCI use, lockout/tagout, reporting frayed wiring</li>
+</ul>
+<p class="note">Logbook rules are the same in every pathway &mdash; see <em>Your Engineering Logbook</em>. Anything you read in an older hub guide about logbook rules is superseded by it.</p>
+</div>
+</section>
+<section class="view" id="v-software">
+<div class="ph">
+<p class="eyebrow">Standard S6 &middot; Mr. Dryer</p>
+<h1>Software Engineering</h1>
+<p class="tag">Logic, code, and making a machine decide something.</p>
+<p class="intro">Code in this shop is not an end in itself — it controls something physical, and physical things have voltage and torque and consequences. You write logic, then you prove on an oscilloscope that the logic is doing what you think.</p>
+</div>
+<div class="topic"><div class="th"><span class="tn">1</span><div><h3>Explore the Field</h3><p class="tq">Would this help someone decide whether to pick this pathway?</p></div></div>
+<p class="blurb">Software engineering here is about the intelligence layer: the logic that makes a system respond, decide, and report.</p>
+<div class="roles">
+<div><b>Software engineer</b><span>Designs the architecture of an application — how the pieces are organized and talk to each other.</span></div>
+<div><b>Computer engineer</b><span>Works where hardware and firmware meet.</span></div>
+<div><b>Robotics engineer</b><span>Writes control algorithms for autonomous motion.</span></div>
+<div><b>Systems integrator</b><span>Connects digital and mechanical subsystems into one working whole.</span></div>
+<div><b>Controls programmer</b><span>Programs the PLCs that run industrial equipment.</span></div>
+</div>
+</div>
+<div class="topic"><div class="th"><span class="tn">2</span><div><h3>Learn the Concepts</h3><p class="tq">Is this something you study to understand how the work works?</p></div></div>
+<p class="blurb">Logic first, syntax second. Every one of these is testable on paper before you touch a keyboard.</p>
+<dl class="defs">
+<dt>Boolean algebra</dt><dd>Build expressions and verify them with truth tables. This is how you check a circuit or a conditional is correct rather than hoping.</dd>
+<dt>Logic simplification</dt><dd>De Morgan&rsquo;s theorem and simplification to reduce an expression to its minimum form. Fewer gates, fewer branches, faster response.</dd>
+<dt>Flowcharting</dt><dd>Map the logic before writing syntax. A flowchart catches the error that would otherwise take an hour of debugging to find.</dd>
+<dt>Number systems</dt><dd>Binary, decimal and hexadecimal conversion, and why hex is how memory gets discussed.</dd>
+<dt>Reference</dt><dd>Brilliant for logic and computer science reasoning; Khan Academy for the supporting math.</dd>
+</dl>
+</div>
+<div class="topic"><div class="th"><span class="tn">3</span><div><h3>Build Your Skills</h3><p class="tq">Is this a procedure you practice until you can do it?</p></div></div>
+<div class="cred"><span>Credential of value</span><b>Demonstrated proficiency in Python, Arduino C, and PLC ladder logic</b><em>Base requirement for every pathway: OSHA&nbsp;10 &mdash; Construction</em></div>
+<p class="blurb">Three environments, because the job moves between them.</p>
+<ul class="ticks">
+<li>Python — algorithmic logic and data analysis with NumPy and Pandas; setting up an environment and managing dependencies.</li>
+<li>Arduino — firmware in C, I2C and SPI sensor communication, serial monitor debugging.</li>
+<li>PLC ladder logic through Festo LX — industrial control and computer integrated manufacturing.</li>
+<li>Pulse width modulation to control hardware torque and speed.</li>
+<li>Sensor calibration — a reading is worthless until the sensor is calibrated.</li>
+<li>Step-through debugging rather than guessing at a fix.</li>
+<li>Oscilloscope for signal timing and frequency analysis — how you verify PWM is actually doing what your code says.</li>
+</ul></div>
+<div class="topic"><div class="th"><span class="tn">4</span><div><h3>Find a Project</h3><p class="tq">Is this something you could go build?</p></div></div>
+<p class="blurb">Pick one and document the optimization, not just the working version.</p>
+<div class="briefs">
+<article><b>Robotic arm control</b><p>Program an arm with an end effector to solve a real materials-handling problem. The constraint is the work envelope and the gripper, not the code.</p></article>
+<article><b>Automated feed system</b><p>Sensors plus decision logic managing autonomous material flow. Decide what happens when the sensor is ambiguous — that case is the whole assignment.</p></article>
+<article><b>Data analyzer</b><p>Build something in Python that inspects and evaluates system parameters and recommends a change based on the data.</p></article>
+</div>
+<p class="note">Every project needs a before-and-after on your own code: show a logic simplification or algorithmic change, and give the measured improvement in response time. &ldquo;It felt faster&rdquo; is not a result.</p>
+<h4 class="runsh">Projects this shop has already run</h4>
+<p class="blurb">Real briefs from other years, offered here as optional work. You do not have to be in that grade to take one on &mdash; ask first, then build it.</p>
+<div class="runs">
+<article><span class="ry">Gr 9</span><b>3ds Max against Maya, in three days</b><p>Learn enough of each to judge them. One simple object built in each, then a recommendation for which suits a specific kind of shop work and why. A software evaluation, written as an engineer would.</p></article>
+<article><span class="ry">Gr 10</span><b>Program the SumoBot</b><p>Sensors, reactions and strategy in Spike. The mechanical build is only half of it.</p></article>
+</div>
+</div>
+<div class="topic"><div class="th"><span class="tn">5</span><div><h3>Get the Files</h3><p class="tq">Would you open this while working, rather than read start to finish?</p></div></div>
+<ul class="files">
+<li><a href="../files/BHR27-Daily-Logbook.docx" download><b>Daily Logbook</b></a><span class="ext">DOCX</span> &mdash; the iterative prototype log lives here: versions, what changed, what it measured</li>
+<li><a href="../files/BHR27-Test-Log.xlsx" download><b>Test and Measurement Log</b></a><span class="ext">XLSX</span> &mdash; response time before and after, in numbers</li>
+<li><a href="../files/BHR27-Do-Now-Reflection.docx" download><b>Do Now Reflection</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Proposal.docx" download><b>Independent Focus Proposal</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Reflection.docx" download><b>Independent Focus Reflection</b></a><span class="ext">DOCX</span></li>
+<li><a href="../shop/index.html"><b>Shop safety</b></a> &mdash; power down and unplug before cleaning or repairing</li>
+</ul>
+<p class="note">Logbook rules are the same in every pathway &mdash; see <em>Your Engineering Logbook</em>. Anything you read in an older hub guide about logbook rules is superseded by it.</p>
+</div>
+</section>
+<section class="view" id="v-automation">
+<div class="ph">
+<p class="eyebrow">Standard S9 &middot; Mr. Frank and Mr. Dryer</p>
+<h1>Automation and Robotics</h1>
+<p class="tag">Where the mechanical, the electrical and the code have to work as one system.</p>
+<p class="intro">This is the pathway that pulls the others together. A robot is a mechanism that has to be built, a circuit that has to be powered and sensed, and a program that has to decide — and it fails at whichever of the three you neglected. It is the only pathway with two instructors, because it genuinely needs both.</p>
+<p class="newflag">New guide &mdash; this hub had no written guide before. Built from the standards crosswalk and the Grade&nbsp;11 and 12 unit maps.</p>
+</div>
+<div class="topic"><div class="th"><span class="tn">1</span><div><h3>Explore the Field</h3><p class="tq">Would this help someone decide whether to pick this pathway?</p></div></div>
+<p class="blurb">Automation and robotics is mechatronics and computer integrated manufacturing: physical systems that sense, decide and act without a person driving them moment to moment.</p>
+<div class="roles">
+<div><b>Robotics engineer</b><span>Designs the whole system — mechanism, sensing, control — and owns the integration.</span></div>
+<div><b>Controls engineer</b><span>Programs and tunes the PLCs and controllers that run production equipment.</span></div>
+<div><b>Automation technician</b><span>Installs, commissions and troubleshoots automated cells on a live floor.</span></div>
+<div><b>Mechatronics engineer</b><span>Works deliberately across mechanical, electrical and software rather than specializing in one.</span></div>
+<div><b>CIM specialist</b><span>Coordinates CNC equipment, robots and material handling into one production system.</span></div>
+</div>
+<p class="note">Ask Mr. Frank for the physical side — chassis, drive systems, work envelope, manufacturability of the parts. Ask Mr. Dryer for the intelligence — control code, circuit troubleshooting, validation of the control loop.</p>
+</div>
+<div class="topic"><div class="th"><span class="tn">2</span><div><h3>Learn the Concepts</h3><p class="tq">Is this something you study to understand how the work works?</p></div></div>
+<p class="blurb">This pathway draws on four standards at once, which is the point of it. You need enough of each to make the system work.</p>
+<dl class="defs">
+<dt>From electrical (S5)</dt><dd>Analog circuit requirements, power distribution, and how sensors are wired and powered. A robot that browns out under load is an electrical problem, not a code problem.</dd>
+<dt>From digital and software (S6)</dt><dd>Boolean design, logic frameworks, and PLC programming. This is where the system&rsquo;s decisions live.</dd>
+<dt>From mechanical (S7)</dt><dd>Drive system design and assembly, kinematics of the work envelope, and fabricating a chassis that stays rigid. Backlash and flex show up as control problems and get blamed on the code.</dd>
+<dt>Automated systems (S9) &mdash; the anchor</dt><dd>CIM system components, robotic controllers, end-of-arm tooling, and the working relationship between CNC equipment and robotics.</dd>
+<dt>Feedback, specifically</dt><dd>Open loop means the system acts and hopes. Closed loop means it measures the result and corrects. Know which one you have built and be able to say why that was the right choice.</dd>
+</dl>
+</div>
+<div class="topic"><div class="th"><span class="tn">3</span><div><h3>Build Your Skills</h3><p class="tq">Is this a procedure you practice until you can do it?</p></div></div>
+<div class="cred"><span>Credential of value</span><b>Universal Robots Academy</b><em>Base requirement for every pathway: OSHA&nbsp;10 &mdash; Construction</em></div>
+<p class="blurb">Both platforms are self-paced and run in simulation, so you can get a long way before you touch a robot. Universal Robots issues a completion record; Festo LX is training only.</p>
+<ul class="ticks">
+<li>Festo LX — industrial automation, mechatronics and ladder logic modules.</li>
+<li>Universal Robots Academy — collaborative robot programming, free and online.</li>
+<li>PLC programming — ladder logic, inputs and outputs, timers and counters.</li>
+<li>Robot controller setup — teaching positions, defining a work envelope, setting safe speeds.</li>
+<li>End-of-arm tooling — selecting or designing the gripper for the part being handled.</li>
+<li>Sensor and actuator loops — limit switches, proximity, encoders, and acting on what they report.</li>
+<li>CAD and fabrication of the mechanism itself, in Inventor or Fusion 360.</li>
+<li>Systematic commissioning — power, then I/O verification, then motion at reduced speed, then full rate.</li>
+</ul></div>
+<div class="topic"><div class="th"><span class="tn">4</span><div><h3>Find a Project</h3><p class="tq">Is this something you could go build?</p></div></div>
+<p class="blurb">Pick something with a real cycle to it. A demo that runs once is not an automated system.</p>
+<div class="briefs">
+<article><b>Automated sorting cell</b><p>Sense a property of an incoming part — color, height, weight, material — and route it. Report the throughput and the error rate over a run of at least fifty parts.</p></article>
+<article><b>Pick and place with custom tooling</b><p>Design and fabricate the end effector yourself for a specific awkward part, then program the arm to handle it reliably. The gripper is the engineering.</p></article>
+<article><b>Machine tending</b><p>Use a robot to load and unload a piece of shop equipment. Cycle time and safe interaction are the constraints, and the safety interlock is not optional.</p></article>
+<article><b>Closed-loop control demo</b><p>Build something that holds a target — position, speed, level, temperature. Show the response with and without feedback and explain the difference in the data.</p></article>
+</div>
+<h4 class="runsh">Projects this shop has already run</h4>
+<p class="blurb">Real briefs from other years, offered here as optional work. You do not have to be in that grade to take one on &mdash; ask first, then build it.</p>
+<div class="runs">
+<article><span class="ry">Gr 10</span><b>Lego SumoBot</b><p>Design, build and program a bot to fight in the ring. Sensors and code for movement and reaction, then a documented design rationale and either a coloured 2D drawing set or a Fusion model.</p></article>
+<article><span class="ry">Gr 10</span><b>SumoBot trials, done properly</b><p>An experimental design sheet for three trials: can it stay in the circle, can it push an object out, and how heavy an object can it push. The experiment is the assignment, not the robot.</p></article>
+<article><span class="ry">Gr 10</span><b>Lego Week</b><p>Six tutorial activities in Spike, then two unit plans, then find a project worth recreating. Log everything, dated, with photos.</p></article>
+<article><span class="ry">Gr 9</span><b>fischertechnik</b><p>The museum manuals and the spare parts list, and permission to enjoy yourself.</p></article>
+</div>
+</div>
+<div class="topic"><div class="th"><span class="tn">5</span><div><h3>Get the Files</h3><p class="tq">Would you open this while working, rather than read start to finish?</p></div></div>
+<ul class="files">
+<li><a href="../files/BHR27-Daily-Logbook.docx" download><b>Daily Logbook</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-IO-Map-and-Commissioning.xlsx" download><b>I/O Map and Commissioning Checklist</b></a><span class="ext">XLSX</span> &mdash; every input and output, and the checklist you commission against</li>
+<li><a href="../files/BHR27-Test-Log.xlsx" download><b>Test and Measurement Log</b></a><span class="ext">XLSX</span> &mdash; cycle time and error rate, per run</li>
+<li><a href="../files/BHR27-Part-List.xlsx" download><b>Part List</b></a><span class="ext">XLSX</span></li>
+<li><a href="../files/BHR27-Do-Now-Reflection.docx" download><b>Do Now Reflection</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Proposal.docx" download><b>Independent Focus Proposal</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Reflection.docx" download><b>Independent Focus Reflection</b></a><span class="ext">DOCX</span></li>
+<li><a href="../shop/equipment.html"><b>Equipment checks</b></a> &mdash; guarding, lockout/tagout, safe interaction distances</li>
+</ul>
+<p class="note">Logbook rules are the same in every pathway &mdash; see <em>Your Engineering Logbook</em>. Anything you read in an older hub guide about logbook rules is superseded by it.</p>
+</div>
+</section>
+<section class="view" id="v-project">
+<div class="ph">
+<p class="eyebrow">Standard S4 &middot; Mr. Frank and Mr. Dryer</p>
+<h1>Project Management</h1>
+<p class="tag">Making a project finish on time, with the parts you actually ordered.</p>
+<p class="intro">This pathway is unusual: the technical work happens in the other six, and what you own here is whether it gets done. It is the pathway for people who want to run the project rather than build one part of it.</p>
+</div>
+<div class="topic"><div class="th"><span class="tn">1</span><div><h3>Explore the Field</h3><p class="tq">Would this help someone decide whether to pick this pathway?</p></div></div>
+<p class="blurb">Project management in engineering is scope, schedule, resources and risk. The engineering judgment is in deciding what to cut when something slips.</p>
+<div class="roles">
+<div><b>Project manager</b><span>Owns scope, schedule and budget, and makes the call when they conflict.</span></div>
+<div><b>Construction manager</b><span>Runs a build on site — sequence, safety, subcontractors, compliance.</span></div>
+<div><b>Systems integrator</b><span>Coordinates hardware and software work across teams that do not naturally talk.</span></div>
+<div><b>Quality engineer</b><span>Defines what &ldquo;acceptable&rdquo; means and builds the inspection that checks it.</span></div>
+</div>
+<p class="note">This pathway is co-led. Take the physical and fabrication side to Mr. Frank and the systems and software side to Mr. Dryer &mdash; but the schedule is yours.</p>
+</div>
+<div class="topic"><div class="th"><span class="tn">2</span><div><h3>Learn the Concepts</h3><p class="tq">Is this something you study to understand how the work works?</p></div></div>
+<p class="blurb">Four tools, all of which you will use on your capstone whether or not you choose this pathway.</p>
+<dl class="defs">
+<dt>Work breakdown structure</dt><dd>Decompose the whole scope into deliverables small enough to estimate. If a task cannot be estimated, it has not been broken down far enough.</dd>
+<dt>Gantt charts and the critical path</dt><dd>Map the breakdown onto a timeline, then find the sequence where any delay pushes the end date. Tasks off the critical path have slack; tasks on it do not. Track lead time for material procurement as its own task — parts that have not arrived are the most common reason a project misses.</dd>
+<dt>Decision matrices</dt><dd>Score competing solutions against weighted criteria. Its real value is that it forces you to write down what you are optimizing for before you know which option wins.</dd>
+<dt>Requirements analysis</dt><dd>Separate user needs — what the customer wants — from functional specifications — the measurable technical targets. Confusing the two is how projects deliver the wrong thing on time.</dd>
+</dl>
+<div class="pullout"><b>Agile and the design process</b><p>Software teams often work in sprints rather than one long plan. A sprint backlog is the same idea as planning a solution; the daily loop is improve and redesign; the sprint review is test and evaluate. Different vocabulary, same cycle, shorter turns.</p></div>
+</div>
+<div class="topic"><div class="th"><span class="tn">3</span><div><h3>Build Your Skills</h3><p class="tq">Is this a procedure you practice until you can do it?</p></div></div>
+<div class="cred"><span>Credential of value</span><b>Demonstrated work breakdown structure and Gantt chart mastery</b><em>Base requirement for every pathway: OSHA&nbsp;10 &mdash; Construction</em></div>
+<p class="blurb">Assessed on real project documents from your own capstone, not on an exam.</p>
+<ul class="ticks">
+<li>Build a work breakdown structure for a real project and decompose to estimable tasks.</li>
+<li>Produce a Gantt chart and identify the critical path.</li>
+<li>Track lead times and dependencies in a Bill of Materials.</li>
+<li>Run a decision matrix with weighted criteria and defend the weights.</li>
+<li>Write functional specifications that are measurable.</li>
+<li>Maintain a weekly milestone plan and update it when reality disagrees.</li>
+<li>Brilliant for the logic and mathematics behind critical path analysis.</li>
+</ul></div>
+<div class="topic"><div class="th"><span class="tn">4</span><div><h3>Find a Project</h3><p class="tq">Is this something you could go build?</p></div></div>
+<p class="blurb">Manage a real project — ideally somebody else&rsquo;s as well as your own.</p>
+<div class="briefs">
+<article><b>Full capstone plan</b><p>Take a junior or senior capstone and produce the complete management set: breakdown structure, Gantt with critical path, Bill of Materials with lead times, and a risk list. Then run it and record where the plan was wrong.</p></article>
+<article><b>The revitalization pitch</b><p>Act as lead developer for a proposal to transform an existing space, and pitch it to stakeholders. Before-and-after visuals, technical justification for every change, and a schedule and budget that hold up to questions.</p></article>
+<article><b>Post-mortem</b><p>Take a finished project — yours or a documented one — and analyze what drove the schedule. What was on the critical path, what slipped, and what would you have done differently at week one.</p></article>
+</div>
+<h4 class="runsh">Projects this shop has already run</h4>
+<p class="blurb">Real briefs from other years, offered here as optional work. You do not have to be in that grade to take one on &mdash; ask first, then build it.</p>
+<div class="runs">
+<article><span class="ry">Gr 9</span><b>Two projects, three days, one clock</b><p>A large-scale moonbase layout and a detailed grocery store floorplan, both in 2D AutoCAD, both due together. One needs a broad conceptual approach and the other needs dimensional accuracy &mdash; the assignment is really about allocating your time.</p></article>
+<article><span class="ry">Gr 9</span><b>Redesign this shop</b><p>Measure every room, every piece of furniture, every door, window and outlet. Draw the existing layout to scale in AutoCAD, then propose a redesign in Fusion &mdash; including modelling the furniture. One constraint: one classroom loses its computers.</p></article>
+<article><span class="ry">Gr 10</span><b>The full documentation set</b><p>Design brief, part list, decision matrix and Gantt chart for one project. Every form of shop documentation in one place, which is what the capstone will expect of you later.</p></article>
+<article><span class="ry">Gr 10</span><b>Compare four programs and present</b><p>Pick four of the programs you have used. Usage, features, samples, product information and your professional opinion &mdash; built to be presented to the class.</p></article>
+</div>
+</div>
+<div class="topic"><div class="th"><span class="tn">5</span><div><h3>Get the Files</h3><p class="tq">Would you open this while working, rather than read start to finish?</p></div></div>
+<ul class="files">
+<li><a href="../files/BHR27-Daily-Logbook.docx" download><b>Daily Logbook</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Weekly-Planner.docx" download><b>Weekly Planner</b></a><span class="ext">DOCX</span> &mdash; milestones, dates, resources</li>
+<li><a href="../files/BHR27-Project-Gantt-Chart.xlsx" download><b>Project Gantt Chart</b></a><span class="ext">XLSX</span> &mdash; the WBS column is the work breakdown structure; the calendar is the schedule</li>
+<li><a href="../files/BHR27-Part-List.xlsx" download><b>Part List</b></a><span class="ext">XLSX</span> &mdash; with made-or-bought, so lead time is visible</li>
+<li><a href="../files/BHR27-Order-Request-Form.xlsx" download><b>Order Request Form</b></a><span class="ext">XLSX</span> &mdash; unit cost, total, and the reason that gets it approved</li>
+<li><a href="../files/BHR27-Decision-Matrix.xlsx" download><b>Decision Matrix</b></a><span class="ext">XLSX</span></li>
+<li><a href="../files/BHR27-Instructor-Meeting-Notes.docx" download><b>Instructor Meeting Notes</b></a><span class="ext">DOCX</span> &mdash; action items with names and dates</li>
+<li><a href="../files/BHR27-Independent-Focus-Proposal.docx" download><b>Independent Focus Proposal</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Reflection.docx" download><b>Independent Focus Reflection</b></a><span class="ext">DOCX</span></li>
+<li><a href="../files/BHR27-Independent-Focus-Record.pdf" download><b>Independent Focus Record</b></a><span class="ext">PDF</span> &mdash; one row per term, kept in the binder</li>
+</ul>
+<p class="note">Logbook rules are the same in every pathway &mdash; see <em>Your Engineering Logbook</em>. Anything you read in an older hub guide about logbook rules is superseded by it.</p>
+</div>
+</section>
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('nav button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('nav button').forEach(function(x){x.classList.remove('on');});
+    document.querySelectorAll('.view').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');
+    var v=document.getElementById('v-'+b.dataset.v);
+    if(v){v.classList.add('on');}
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+</script>

@@ -1,0 +1,336 @@
+<title>Pick Your Pathway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+
+<style>
+:root{
+  --paper:#f0f3f6;--card:#fff;--ink:#131b24;--ink-2:#3d4c5a;--ink-3:#6b7a88;
+  --rule:#c6d2dc;--rule-soft:#dde5eb;--accent:#14607f;--accent-soft:#e2eef4;
+  --warm:#a8541c;--warm-soft:#fbeade;--moss:#3d6b43;--moss-soft:#e2eee3;
+  --shadow:0 1px 2px rgba(19,27,36,.05),0 10px 28px -16px rgba(19,27,36,.22);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0d141b;--card:#161f28;--ink:#e8eef3;--ink-2:#b5c2ce;--ink-3:#7f8d9a;
+  --rule:#2e3c48;--rule-soft:#222e39;--accent:#66b8d8;--accent-soft:#12313e;
+  --warm:#e0965f;--warm-soft:#36230f;--moss:#8fbe95;--moss-soft:#1c2e1f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -16px rgba(0,0,0,.75);
+}}
+:root[data-theme="dark"]{
+  --paper:#0d141b;--card:#161f28;--ink:#e8eef3;--ink-2:#b5c2ce;--ink-3:#7f8d9a;
+  --rule:#2e3c48;--rule-soft:#222e39;--accent:#66b8d8;--accent-soft:#12313e;
+  --warm:#e0965f;--warm-soft:#36230f;--moss:#8fbe95;--moss-soft:#1c2e1f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -16px rgba(0,0,0,.75);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Spectral",Georgia,serif;
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:36px 24px 100px;
+  display:flex;flex-direction:column;gap:44px}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:14px;padding-bottom:30px;
+  border-bottom:2px solid var(--ink)}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--accent);margin:0}
+h1{font-family:"Archivo",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(32px,6vw,52px);line-height:1.02;letter-spacing:-.03em;margin:0;
+  text-wrap:balance;max-width:16ch}
+.hero p{margin:0;font-size:19px;color:var(--ink-2);max-width:56ch}
+
+h2{font-family:"Archivo",sans-serif;font-weight:700;font-size:26px;letter-spacing:-.015em;
+  margin:0 0 16px;text-wrap:balance}
+h3{font-family:"Archivo",sans-serif;font-weight:600;font-size:17px;margin:0 0 6px}
+p{margin:0 0 13px;max-width:66ch}
+section{display:flex;flex-direction:column}
+
+/* choosing */
+.ask{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.ask div{background:var(--card);padding:20px 22px}
+.ask .q{font-family:"Archivo",sans-serif;font-weight:700;font-size:17px;margin:0 0 7px;
+  color:var(--accent)}
+.ask p{font-size:15.5px;color:var(--ink-2);margin:0}
+
+/* pathway cards */
+.paths{display:flex;flex-direction:column;gap:20px}
+.path{background:var(--card);border:1px solid var(--rule);box-shadow:var(--shadow);
+  display:grid;grid-template-columns:200px minmax(0,1fr)}
+@media(max-width:760px){.path{grid-template-columns:1fr}}
+.path-side{padding:22px;border-right:1px solid var(--rule);display:flex;
+  flex-direction:column;gap:12px}
+@media(max-width:760px){.path-side{border-right:0;border-bottom:1px solid var(--rule)}}
+.path-side h3{font-size:20px;line-height:1.15;letter-spacing:-.015em;margin:0;
+  text-wrap:balance}
+.side-item{display:flex;flex-direction:column;gap:2px}
+.side-item dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3)}
+.side-item dd{margin:0;font-family:"Archivo",sans-serif;font-weight:600;font-size:13.5px;
+  line-height:1.3}
+.path-body{padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.hook{font-size:18px;color:var(--ink);margin:0;max-width:60ch;font-style:italic}
+.path-body .block{display:flex;flex-direction:column;gap:4px}
+.path-body .block h4{font-family:"Archivo",sans-serif;font-weight:600;font-size:12px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0}
+.path-body .block p{margin:0;font-size:15.5px;color:var(--ink-2);max-width:62ch}
+.builds{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.builds span{font-family:"Archivo",sans-serif;font-size:13px;font-weight:500;
+  background:var(--accent-soft);color:var(--accent);padding:3px 9px;border-radius:2px}
+
+/* teachers */
+.teachers{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+@media(max-width:620px){.teachers{grid-template-columns:1fr}}
+.teach{background:var(--card);padding:22px}
+.teach h3{font-size:19px;margin:0 0 8px}
+.teach p{font-size:16px;color:var(--ink-2);margin:0 0 10px}
+.teach ul{margin:0;padding-left:19px;font-size:15.5px;color:var(--ink-2)}
+.teach li{margin-bottom:4px}
+
+/* steps */
+ol.steps{list-style:none;counter-reset:s;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+ol.steps li{background:var(--card);counter-increment:s;padding:18px 22px 18px 62px;
+  position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:22px;top:17px;
+  font-family:"Archivo",sans-serif;font-weight:700;font-size:15px;color:var(--accent);
+  border:1.5px solid var(--accent);width:26px;height:26px;display:grid;place-items:center;
+  border-radius:50%}
+ol.steps h3{margin-bottom:4px}
+ol.steps p{font-size:15.5px;color:var(--ink-2);margin:0}
+
+.note{background:var(--card);border-left:4px solid var(--warm);padding:18px 20px;
+  box-shadow:var(--shadow)}
+.ntag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--warm);margin:0 0 7px}
+.note p:last-child{margin-bottom:0}
+
+footer{border-top:1px solid var(--rule);padding-top:18px;font-size:14px;color:var(--ink-3);
+  max-width:70ch}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <p class="kicker">BHR Engineering &middot; Independent Focus</p>
+  <h1>Pick your pathway</h1>
+  <p>Once you know your way around the shop, you get to choose a direction and take it further than the regular class has time for. Seven to choose from. This is how you decide.</p>
+</header>
+
+<section>
+  <h2>What a pathway actually is</h2>
+  <p>A pathway isn't another class. It's a place to work on something <strong>you</strong> chose, for a term, with the tools and reading already gathered for you.</p>
+  <p>You still have your regular engineering class — that's where you're graded and where the whole group moves together. The pathway is where you take one thing further. You pick the project, you set the pace, and a teacher checks in rather than assigns.</p>
+  <p>Each pathway has five sections: <strong>Explore the Field</strong>, <strong>Learn the Concepts</strong>, <strong>Build Your Skills</strong>, <strong>Find a Project</strong>, and <strong>Get the Files</strong>. Same five in all seven, so once you know your way around one, you know your way around all of them.</p>
+</section>
+
+<section>
+  <h2>Three questions worth asking yourself</h2>
+  <div class="ask">
+    <div>
+      <p class="q">What do you want to be holding at the end?</p>
+      <p>A physical object you built? A machine that moves on its own? A drawing set someone could build from? Working code? Start from the finished thing and work backward.</p>
+    </div>
+    <div>
+      <p class="q">What part do you actually enjoy?</p>
+      <p>Some people like the figuring-out. Some like the making. Some like it when something finally works. All three are engineering — they just point at different pathways.</p>
+    </div>
+    <div>
+      <p class="q">What would you want to try before you have to commit?</p>
+      <p>You're not signing up for a career. Picking a pathway you end up not loving still teaches you something worth knowing about yourself.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Who helps you with what</h2>
+  <div class="teachers">
+    <div class="teach">
+      <h3>Mr. Frank</h3>
+      <p>Helps you <strong>make it real</strong> — how it looks, how it's drawn, how it gets built.</p>
+      <ul>
+        <li>Designing something in CAD that actually looks good</li>
+        <li>Getting a part ready to 3D print or laser cut</li>
+        <li>Making a structure that holds up</li>
+        <li>Drawings someone else could build from</li>
+        <li>Fixing a prototype that didn't come out right</li>
+      </ul>
+    </div>
+    <div class="teach">
+      <h3>Mr. Dryer</h3>
+      <p>Helps you <strong>make it work</strong> — circuits, code, and proving it performs.</p>
+      <ul>
+        <li>Designing or troubleshooting a circuit</li>
+        <li>Writing and debugging code for a microcontroller or robot</li>
+        <li>Figuring out why a system isn't behaving</li>
+        <li>Getting sensors and motors working together</li>
+        <li>Using data or simulation to show it works</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>The seven pathways</h2>
+  <div class="paths">
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Industrial Design</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Mr. Frank</dd></div>
+        <div class="side-item"><dt>Main tool</dt><dd>Fusion 360</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>Autodesk Certified User — Fusion 360</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Designing objects people actually pick up and use.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>How something feels in the hand. Why one shape works and another doesn't. Designing so a thing can actually be manufactured — which is a different problem from designing so it looks good, and you need both.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>Desk organizer</span><span>A kid's toy</span><span>Product redesign</span><span>Rendered concept</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Product design, manufacturing engineering, technical drafting. This is the pathway if you've ever picked something up and thought you could have designed it better.</p></div>
+      </div>
+    </article>
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Architecture &amp; Civil</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Mr. Frank</dd></div>
+        <div class="side-item"><dt>Main tool</dt><dd>Revit</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>Autodesk Certified User — Revit</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Buildings, bridges, and the ground they sit on.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>Structures and whether they stand up. Modeling a whole building rather than one part. Site work — drainage, grading, parking, accessibility. Learning to survey with a total station.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>A structure that shouldn't work but does</span><span>Revitalizing a real local space</span><span>Full drawing set</span><span>Tested scale model</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Architecture, civil engineering, construction management. Pick this if you look at buildings and wonder how they hold up — or at a run-down block and think about what it could be.</p></div>
+      </div>
+    </article>
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Mechanical Engineering</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Mr. Frank, with Mr. Dryer on the analysis</dd></div>
+        <div class="side-item"><dt>Main tools</dt><dd>Inventor, Fusion 360</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>ACU Inventor, then ACP Fusion 360</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Forces, motion, and whether the part survives.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>Working out the forces on something before you build it, then testing it. Simulating where a part will break, printing it, and breaking it — then explaining the difference between what you predicted and what happened.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>A bracket tested to failure</span><span>A gear or pulley system</span><span>A model that resizes itself</span><span>Reverse-engineered mechanism</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Mechanical engineering, product development, manufacturing. Pick this if you want to know <em>why</em> something held or broke, not just that it did.</p></div>
+      </div>
+    </article>
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Electrical Engineering</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Mr. Dryer</dd></div>
+        <div class="side-item"><dt>Main tools</dt><dd>Multimeter, oscilloscope, breadboard</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>Multimeter and oscilloscope proficiency</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Making electricity do what you want.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>Building circuits on a breadboard and measuring what they're actually doing rather than what you hoped. Reading a schematic and making it real. Learning to see a signal on a scope, which is the closest thing to a superpower in this shop.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>A circuit that reacts to its surroundings</span><span>Sensor-driven system</span><span>Solar or wind setup</span><span>Something broken, fixed</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Electrical engineering, robotics, systems integration. Pick this if you want to understand what's happening inside the things everyone else treats as a black box.</p></div>
+      </div>
+    </article>
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Software Engineering</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Mr. Dryer</dd></div>
+        <div class="side-item"><dt>Main tools</dt><dd>Python, Arduino</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>Python and Arduino proficiency</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Code that makes physical things behave.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>Writing code that runs on hardware, not just on a screen. Working out the logic on paper before you type — flowcharts, truth tables — because debugging a plan is faster than debugging a program. Then finding out why it still doesn't work.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>A robot that decides for itself</span><span>Sensor logging system</span><span>Automated control loop</span><span>Something that reacts in real time</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Software engineering, computer engineering, robotics. Pick this if you'd rather the machine be clever than pretty.</p></div>
+      </div>
+    </article>
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Automation &amp; Robotics</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Both — this one needs them</dd></div>
+        <div class="side-item"><dt>Main tools</dt><dd>PLCs, robot controllers, Festo LX</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>Festo LX, Universal Robots Academy</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Machines that run without anyone standing there.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>This is where the other pathways meet. A working robot needs a frame someone built, motors someone wired, code someone wrote, and sensors that tell it what's happening. You'd be the one making those four things agree.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>A robot arm with a custom gripper</span><span>Automated feed system</span><span>A machine tending another machine</span><span>Full production cell</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Robotics, automation engineering, advanced manufacturing. Pick this if you want the most demanding one — it uses everything the other six teach.</p></div>
+      </div>
+    </article>
+
+    <article class="path">
+      <div class="path-side">
+        <h3>Project Management</h3>
+        <div class="side-item"><dt>Ask</dt><dd>Either — it spans both</dd></div>
+        <div class="side-item"><dt>Main tools</dt><dd>Gantt charts, work breakdowns, decision matrices</dd></div>
+        <div class="side-item"><dt>You could earn</dt><dd>Scheduling and planning proficiency</dd></div>
+      </div>
+      <div class="path-body">
+        <p class="hook">Getting a real project finished on time, with a budget.</p>
+        <div class="block"><h4>What you'd spend time on</h4>
+          <p>Breaking a big project into pieces small enough to actually schedule. Working out which task, if it slips, pushes everything else. Deciding between options with something better than a hunch. Making the case for an idea to people who control the money.</p></div>
+        <div class="block"><h4>You could build</h4>
+          <div class="builds"><span>A pitch to real stakeholders</span><span>Business plan for a new product</span><span>Full project schedule</span><span>Budgeted parts list</span></div></div>
+        <div class="block"><h4>Where it leads</h4>
+          <p>Engineering management, construction management, systems integration. Pick this if you're the one who ends up organizing the group project anyway.</p></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section>
+  <h2>Once you've picked</h2>
+  <ol class="steps">
+    <li><h3>Start in Explore the Field</h3>
+      <p>Read enough to know what people in this field actually do all day. You're checking whether you still want it once you know more.</p></li>
+    <li><h3>Pick something to build</h3>
+      <p>Go to Find a Project and take one, or bring your own idea and talk it through with your teacher. Your own idea is usually better, because you'll care more when it stops working.</p></li>
+    <li><h3>Learn what that project needs</h3>
+      <p>Not everything — just what this build requires. Learn the Concepts for the theory, Build Your Skills for the tools. You'll come back for more as you hit things you can't do yet.</p></li>
+    <li><h3>Keep your logbook as you go</h3>
+      <p>Every day, in the moment — not from memory at the end of the week. It's how you show what you did and how you get credit for the parts nobody saw.</p></li>
+    <li><h3>Show your work</h3>
+      <p>At the end of the term you explain what you set out to do, what happened, and what you'd do differently. Things going wrong isn't a problem here. Not being able to explain why is.</p></li>
+  </ol>
+</section>
+
+<section>
+  <div class="note">
+    <p class="ntag">Before you start</p>
+    <p>You need your <strong>OSHA 10</strong> safety credential before doing shop work in any pathway. It's the same requirement across all seven, and it isn't a formality — it's the reason you're allowed near the equipment.</p>
+  </div>
+</section>
+
+<footer>
+  BHR Engineering Technology · Blue Hills Regional. Not sure which one? Talk to Mr. Frank or Mr. Dryer — describe the thing you'd want to build and they'll tell you which pathway gets you there fastest.
+</footer>
+
+</div>

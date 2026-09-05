@@ -1,0 +1,222 @@
+<title>BHR Engineering Word List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --paper:#eef2f5;--card:#fff;--ink:#141c26;--ink-2:#3f4e5d;--ink-3:#6d7c8a;
+  --rule:#c3d0da;--rule-soft:#dbe3ea;--accent:#14607f;--accent-soft:#e0edf3;
+  --amber:#8a5a12;--amber-soft:#f6ecd8;--crimson:#963129;--crimson-soft:#f7e3e1;
+  --moss:#3d6b43;--moss-soft:#e2eee3;
+  --shadow:0 1px 2px rgba(20,28,38,.05),0 8px 24px -14px rgba(20,28,38,.18);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0e151c;--card:#161f28;--ink:#e6ecf1;--ink-2:#b3c0cc;--ink-3:#7d8b98;
+  --rule:#2d3b47;--rule-soft:#232f3a;--accent:#63b5d6;--accent-soft:#13303d;
+  --amber:#d7a355;--amber-soft:#33280f;--crimson:#e0817a;--crimson-soft:#3a1e1b;
+  --moss:#8fbe95;--moss-soft:#1c2e1f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
+}}
+:root[data-theme="dark"]{
+  --paper:#0e151c;--card:#161f28;--ink:#e6ecf1;--ink-2:#b3c0cc;--ink-3:#7d8b98;
+  --rule:#2d3b47;--rule-soft:#232f3a;--accent:#63b5d6;--accent-soft:#13303d;
+  --amber:#d7a355;--amber-soft:#33280f;--crimson:#e0817a;--crimson-soft:#3a1e1b;
+  --moss:#8fbe95;--moss-soft:#1c2e1f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Spectral",Georgia,serif;
+  font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:30px 24px 90px;
+  display:flex;flex-direction:column;gap:38px}
+
+.masthead{border:1.5px solid var(--ink);background:var(--card)}
+.mh-top{padding:24px 26px 20px;border-bottom:1.5px solid var(--ink)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(27px,4.4vw,38px);
+  line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.mh-sub{margin:11px 0 0;color:var(--ink-2);max-width:62ch}
+.rule-bar{padding:14px 26px;font-family:"Archivo",sans-serif;font-weight:600;font-size:14.5px;
+  background:var(--accent-soft);color:var(--accent)}
+
+section{display:flex;flex-direction:column;gap:14px}
+h2{font-family:"Archivo",sans-serif;font-weight:700;font-size:23px;letter-spacing:-.012em;
+  margin:0;padding-bottom:8px;border-bottom:1.5px solid var(--ink);text-wrap:balance}
+p{margin:0;max-width:70ch}
+.lede{font-size:17px;color:var(--ink-2)}
+
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--card);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14.5px}
+th{font-family:"Archivo",sans-serif;font-weight:600;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);text-align:left;padding:10px 13px;
+  border-bottom:1.5px solid var(--rule);white-space:nowrap}
+td{padding:11px 13px;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.45}
+tr:last-child td{border-bottom:0}
+td.use{font-family:"Archivo",sans-serif;font-weight:600;font-size:14px;white-space:nowrap}
+td.old{color:var(--ink-3);font-style:italic}
+td.dese{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-2)}
+
+.banned{display:flex;flex-direction:column;gap:1px;background:var(--rule);
+  border:1px solid var(--rule)}
+.ban{background:var(--card);padding:13px 16px;display:grid;
+  grid-template-columns:minmax(140px,220px) 1fr;gap:16px;align-items:baseline}
+@media(max-width:620px){.ban{grid-template-columns:1fr;gap:4px}}
+.ban .term{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--crimson);
+  text-decoration:line-through}
+.ban .fix{font-size:14.5px;color:var(--ink-2)}
+
+.note{background:var(--card);border-left:4px solid var(--accent);padding:16px 18px;
+  box-shadow:var(--shadow)}
+.note.warn{border-left-color:var(--amber)}
+.ntag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 7px}
+.note.warn .ntag{color:var(--amber)}
+.note p+p{margin-top:9px}
+
+footer{border-top:1px solid var(--rule);padding-top:16px;font-size:13px;color:var(--ink-3);
+  max-width:72ch}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.86em}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="wrap">
+
+<div class="masthead">
+  <div class="mh-top">
+    <p class="eyebrow">BHR Engineering Technology</p>
+    <h1>BHR Engineering Word List</h1>
+    <p class="mh-sub">One word per thing. Check here before naming something in a new document — the word has probably already been decided.</p>
+  </div>
+  <div class="rule-bar">Rule: where the state has a word for it, the state's word wins.</div>
+</div>
+
+<section>
+  <h2>Why this exists</h2>
+  <p class="lede">Terms got re-coined every time a new document was written, because each document picked the best word available at that moment. The result is four names for the daily logbook and two for the same self-directed project.</p>
+  <p>A word list fixes that going forward: a new document can't invent a fifth name for the logbook, because the name is already settled here.</p>
+</section>
+
+<section>
+  <h2>Current terms</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Use this</th><th>Not these</th><th>State equivalent</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="use">Engineering Logbook</td>
+        <td class="old">Engineering Notebook · Engineering Daily Journal · Engineering Journal · Daily Log</td>
+        <td class="dese">S3-e "engineering journal"</td>
+      </tr>
+      <tr>
+        <td class="use">Independent Focus</td>
+        <td class="old">Elective Engineering Pathway (E.E.P.) · Independent Study · Advanced Elective</td>
+        <td class="dese">Standard 12 — Advanced Elective Area</td>
+      </tr>
+      <tr>
+        <td class="use">Explore the Field</td>
+        <td class="old">Pathway Foundational Knowledge</td>
+        <td class="dese">—</td>
+      </tr>
+      <tr>
+        <td class="use">Learn the Concepts</td>
+        <td class="old">Pathway Learning</td>
+        <td class="dese">—</td>
+      </tr>
+      <tr>
+        <td class="use">Build Your Skills</td>
+        <td class="old">Skill Training · the Skill Vault</td>
+        <td class="dese">—</td>
+      </tr>
+      <tr>
+        <td class="use">Find a Project</td>
+        <td class="old">Idea Lab</td>
+        <td class="dese">—</td>
+      </tr>
+      <tr>
+        <td class="use">Get the Files</td>
+        <td class="old">Resource Hub</td>
+        <td class="dese">—</td>
+      </tr>
+      <tr>
+        <td class="use">Engineering Design Process (EDP)</td>
+        <td class="old">design cycle · design loop</td>
+        <td class="dese">Standard 3 — Fundamentals of Engineering</td>
+      </tr>
+      <tr>
+        <td class="use">Mr. Frank (EDF) · Mr. Dryer (ESEC)</td>
+        <td class="old">Daniel · Colleague · [Colleague's Name]</td>
+        <td class="dese">—</td>
+      </tr>
+      <tr>
+        <td class="use">Industry Recognized Credential (IRC)</td>
+        <td class="old">certification · cert</td>
+        <td class="dese">Standard 15 — Digital Literacy</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="note warn">
+    <p class="ntag">One deliberate divergence</p>
+    <p>DESE skill <strong>S3-e</strong> says "maintain an <em>engineering journal</em>." We say <strong>Engineering Logbook</strong>, because that is the name printed on the template students actually open. This is the one place we knowingly depart from state wording — so every document that mentions the logbook should state once that it satisfies the S3-e engineering journal requirement. The divergence is a choice, not an accident.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Structures — keep these, they mean something</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Term</th><th>What it is</th><th>Origin</th></tr></thead>
+    <tbody>
+      <tr><td class="use">DESE Standards 1–15</td><td>The Massachusetts vocational framework. Standards 4–10 are technical and map one-to-one to the seven pathways; 1, 2, 3, 11–15 are the universal core.</td><td class="dese">State</td></tr>
+      <tr><td class="use">Foundational Pillars</td><td>Five: Knowledge Consumption (KC), Applied Learning (AL), Safety &amp; Operations (S&amp;O), Professional Practice (PP), Assessment &amp; Reflection (A&amp;R). The <em>how</em> of learning.</td><td class="dese">Local</td></tr>
+      <tr><td class="use">Program Content Categories</td><td>Ten (PCC 1–10). The <em>what</em> of the curriculum.</td><td class="dese">Local</td></tr>
+      <tr><td class="use">EDF / ESEC</td><td>Engineering Design &amp; Fabrication (Frank) · Engineering Systems &amp; Emerging Concepts (Dryer)</td><td class="dese">Local</td></tr>
+      <tr><td class="use">Engineering Accounting</td><td>Accounting for the physical and mathematical basis of every design decision. <strong>Cite the source on first use in each document.</strong></td><td class="dese"><em>Foundations of Engineering</em>, Holtzapple &amp; Reece</td></tr>
+      <tr><td class="use">Do Now!</td><td>Short focused activity at the start of class.</td><td class="dese">Local</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Retired — don't reintroduce</h2>
+  <p>Invented phrasing with no state equivalent and no meaning a plain sentence can't carry.</p>
+  <div class="banned">
+    <div class="ban"><span class="term">Dual-Axis Framework</span><span class="fix">Say what it is: the pillars describe <em>how</em> students learn, the content categories describe <em>what</em> they learn.</span></div>
+    <div class="ban"><span class="term">a-la-carte learning environment</span><span class="fix">Say <strong>self-directed</strong>, or describe the actual choice students get.</span></div>
+    <div class="ban"><span class="term">Knowledge Consumption pillar</span><span class="fix">Just <strong>Knowledge Consumption</strong>, or <strong>KC</strong>. The word "pillar" is already in the section heading.</span></div>
+    <div class="ban"><span class="term">vertical alignment</span><span class="fix">Say what aligns with what — for example, "the pathways map to post-secondary engineering disciplines."</span></div>
+    <div class="ban"><span class="term">strategic architectural shift</span><span class="fix">Say what changed.</span></div>
+    <div class="ban"><span class="term">invisible worlds of code</span><span class="fix">Say <strong>software and logic</strong>.</span></div>
+    <div class="ban"><span class="term">marketable technical competencies</span><span class="fix">Say <strong>skills employers hire for</strong>, or name the skills.</span></div>
+    <div class="ban"><span class="term">PCC 11 · PCC 12</span><span class="fix">These don't exist — there are ten PCCs. If you mean the standard, write <strong>Standard 11</strong> or <strong>Standard 12</strong>.</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Two numbering schemes, both correct</h2>
+  <div class="note">
+    <p class="ntag">The EDP</p>
+    <p>The binder names <strong>eight stages</strong>: Identify the Problem · Research &amp; Brainstorm · Develop Solutions · Plan a Solution · Create · Test &amp; Evaluate · Improve &amp; Redesign · Present Your Solution. That is the canonical description of the process.</p>
+    <p>The logbook uses <strong>five status codes</strong> as daily shorthand: <span class="mono">[PI] [DD] [FAB] [TE] [IR]</span>. A student picking a code at 9am shouldn't have to split hairs between adjacent planning stages. <em>Present Your Solution</em> has no code because it's a milestone, not a daily state.</p>
+    <p>Both are right. Documents describing the process use the eight; documents about daily work use the five; anything showing both states the mapping.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Still to settle</h2>
+  <div class="note warn">
+    <p class="ntag">Logbook rules</p>
+    <p>Four different rule sets are in circulation across the hub guides — a <strong>"Rule of 11"</strong> (Industrial Design), <strong>"17 strict rules"</strong> (Architecture/Civil), <strong>Kelley &amp; Wicklein</strong> (Mechanical), and <strong>Kelley plus the Tesla-versus-Marconi case</strong> (Project Management). Same underlying practice, four presentations, different counts. A student in two pathways currently gets two rulebooks. One set needs to win.</p>
+  </div>
+  <div class="note warn">
+    <p class="ntag">Metacognitive codes vs EDP codes</p>
+    <p>The Project Management guide has students tag logbook entries with <span class="mono">PI</span> and <span class="mono">AL</span> — mixing an EDP stage code with a pillar abbreviation. The logbook's own five codes are all EDP stages. Two schemes using overlapping letters for different things; pick one.</p>
+  </div>
+</section>
+
+<footer>
+  Compiled September 2026 from the eight-section binder, the seven pathway hub guides, the Standards to Hub Crosswalk, and the current logbook template. Add to this list whenever a term is settled — the point is that it stays the single place to check.
+</footer>
+
+</div>

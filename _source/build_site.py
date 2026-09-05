@@ -56,8 +56,8 @@ FONTS = {
 }
 FONT = os.environ.get('BHR_FONT', 'b')
 
-SRC = '/tmp/outputs'
-OUT = '/tmp/outputs/site'
+SRC = os.path.dirname(os.path.abspath(__file__))
+OUT = os.path.join(SRC, 'site')
 
 # ---------------------------------------------------------------- site chrome
 
@@ -356,8 +356,8 @@ HOME = '''
       <img class="bh-mark" src="assets/logo-240.png" alt="" width="112" height="96">
       <p class="kicker">Blue Hills Regional Technical School</p>
       <h1>Engineering Technology</h1>
-      <p class="bh-lede">Four years of designing things, building them, and
-        finding out whether you were right. This is where the shop keeps what
+      <p class="bh-lede">Four years of designing things, building them, testing
+        them, and improving them. This is where the shop keeps what
         it knows &mdash; the rules, the briefs, the training, and the seven
         directions you can take it.</p>
       <div class="bh-go">
@@ -395,7 +395,7 @@ HOME = '''
         <span>The status codes, the three intervals, and what a real entry looks like.</span>
       </a>
       <a href="pathways/index.html">
-        <span class="n">Juniors and seniors</span>
+        <span class="n">Every student, every term</span>
         <b>Pick a pathway</b>
         <span>Seven fields to spend a term going deep on. Start with the chooser.</span>
       </a>
@@ -1276,21 +1276,21 @@ def build_safety():
 # ---------------------------------------------------------------- go
 
 if __name__ == '__main__':
+    # The stylesheet, logos, icons and grade banners are SOURCE, kept in
+    # ./site-assets/ so a fresh checkout can build. (They used to live only
+    # inside the built site and be stashed across rebuilds, which meant a
+    # copy of the folder without site/ could not build at all.)
     assets = os.path.join(OUT, 'assets')
-    stash = None
-    if os.path.isdir(assets):
-        stash = os.path.join(SRC, '.assets-stash')
-        if os.path.isdir(stash):
-            shutil.rmtree(stash)
-        shutil.copytree(assets, stash)
+    src_assets = os.path.join(SRC, 'site-assets')
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
     os.makedirs(assets, exist_ok=True)
-    if stash:
-        for f in sorted(os.listdir(stash)):
-            shutil.copy2(os.path.join(stash, f), os.path.join(assets, f))
-            print('  %-42s %6d' % ('assets/' + f, os.path.getsize(os.path.join(assets, f))))
-        shutil.rmtree(stash)
+    if not os.path.isdir(src_assets):
+        raise SystemExit('site-assets/ is missing -- it holds site.css and the '
+                         'images; nothing can build without it.')
+    for f in sorted(os.listdir(src_assets)):
+        shutil.copy2(os.path.join(src_assets, f), os.path.join(assets, f))
+        print('  %-42s %6d' % ('assets/' + f, os.path.getsize(os.path.join(assets, f))))
 
     # stamp the chosen font stack into the stylesheet
     css_path = os.path.join(OUT, 'assets', 'site.css')
@@ -1354,21 +1354,40 @@ if __name__ == '__main__':
     build_resources()
     build_repo_files()
 
-    # Ship the build scripts inside the site, so the repository carries what
-    # made it. Automated rather than copied by hand -- a _source folder that
-    # silently goes stale is worse than none at all.
+    # Ship the COMPLETE source tree inside the site as _source/, so the
+    # repository is the handoff: fonts, images, binder sources, rubric
+    # exports, every builder, and HANDOFF.md. A fresh machine can unzip the
+    # site, cd _source, and rebuild. Built outputs and scratch are excluded.
     src_out = os.path.join(OUT, '_source')
-    os.makedirs(src_out, exist_ok=True)
-    for f in sorted(os.listdir(SRC)):
-        # Site modules, the harvests they read, and the two builders for the
-        # student hand-in documents. Those two are make_*, but they are the
-        # only record of how those documents get regenerated, so they travel
-        # with the repository rather than living on one laptop.
-        keep_make = f in ('make_student_docs.py', 'make_docs_guide.py')
-        if (f.endswith('.py')
-                and (keep_make or not f.startswith(('make_', 'test_')))) \
-                or f.startswith('PROJECT-INSTRUCTIONS-'):
-            shutil.copy2(os.path.join(SRC, f), os.path.join(src_out, f))
-    print('  %-42s %6d files' % ('_source/', len(os.listdir(src_out))))
+    if os.path.isdir(src_out):
+        shutil.rmtree(src_out)
+    SKIP_DIRS = {'site', 'admin', 'attachments', 'posters', 'student-docs',
+                 '_to_delete', 'stage', 'node_modules', '__pycache__',
+                 '.git', '.assets-stash'}
+    SKIP_EXT = ('.zip', '.png', '.pyc', '.log', '.js')
+    KEEP_PNG = {os.path.join('logo', 'header.png')}
+    n = 0
+    for root, dirs, files in os.walk(SRC):
+        rel = os.path.relpath(root, SRC)
+        top = rel.split(os.sep)[0]
+        if top in SKIP_DIRS:
+            dirs[:] = []
+            continue
+        dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
+        for f in files:
+            rp = os.path.normpath(os.path.join(rel, f))
+            fp = os.path.join(root, f)
+            if f in SKIP_DIRS or os.path.islink(fp) or not os.path.isfile(fp):
+                continue
+            keep_image = top == 'site-assets' or rp in KEEP_PNG
+            if f.endswith(SKIP_EXT) and not keep_image:
+                continue
+            if f.endswith(('.jpg', '.jpeg')) and not keep_image:
+                continue
+            dst = os.path.join(src_out, rp)
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            shutil.copy2(os.path.join(root, f), dst)
+            n += 1
+    print('  %-42s %6d files' % ('_source/', n))
 
     print('\ndone ->', OUT)
