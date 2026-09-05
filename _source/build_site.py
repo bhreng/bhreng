@@ -26,8 +26,11 @@ import search_ui as SUI         # noqa: E402  (search box, styles, behaviour)
 import pathway_nav as PNAV      # noqa: E402  (per-hub section summaries)
 import site_nav as SNAV        # noqa: E402  (the site-wide rail)
 import theme_ui as THEME       # noqa: E402  (light / dark switch)
-import build_grades as GR      # noqa: E402  (the four grade homes)
+import build_grades as GR
+import work_pages as WPG      # noqa: E402  (the four grade homes)
 import grade_data as GD        # noqa: E402
+import grade_work as GW        # noqa: E402
+import brief_text as BT        # noqa: E402
 import build_extras as EX      # noqa: E402  (instructors, Do Nows, links)
 import quick_bar as QBAR       # noqa: E402  (the grade / instructor strip)
 import build_engineering as ENG  # noqa: E402  (what engineering is, the design process)
@@ -501,6 +504,49 @@ def build_grades():
                     desc='Grade %d Engineering Technology at Blue Hills '
                          'Regional: units, assignments and what each one asks '
                          'for.' % g['num']))
+
+
+def build_work_pages():
+    """One page per assignment, plus the attachment files they offer."""
+    import shutil
+    have = WPG.available(SRC)
+    missing = [f for f in WPG.declared_files() if f not in have]
+    if missing:
+        print('  !! attachments declared but not found in %s/: %s'
+              % (WPG.SRC_DIR, ', '.join(missing)))
+    outdir = os.path.join(OUT, WPG.OUT_DIR)
+    os.makedirs(outdir, exist_ok=True)
+    for f in sorted(have):
+        shutil.copy2(os.path.join(SRC, WPG.SRC_DIR, f),
+                     os.path.join(outdir, f))
+    if have:
+        print('  %-42s %6d files' % (WPG.OUT_DIR + '/', len(have)))
+
+    n = 0
+    for g in GD.GRADES:
+        work = GW.WORK.get(g['key'])
+        if not work:
+            continue
+        briefs = BT.briefs(g['key'])
+        for i, a in enumerate(work):
+            same = [x for x in work if x['t'] == a['t']]
+            j = same.index(a)
+            prev_a = same[j - 1] if j > 0 else None
+            next_a = same[j + 1] if j + 1 < len(same) else None
+            block = GR.assignment(a, 1, full=briefs.get(a['title'], ''),
+                                  standalone=True)
+            dl = WPG.files_for(g['key'], a['title'], have)
+            body = WPG.render(g, a, briefs.get(a['title'], ''), block,
+                              prev_a, next_a, dl, depth=1)
+            path = WPG.page_name(g['key'], a['title'])
+            desc = re.sub(r'<[^>]+>', '',
+                          a['hook'] or a['title'])[:180]
+            write(path,
+                  shell(a['title'], body, depth=1, section='grades',
+                        path=path, page_css=GR.CSS + WPG.CSS,
+                        desc='Grade %d, %s. %s' % (g['num'], a['w'], desc)))
+            n += 1
+    print('  %-42s %6d pages' % ('work/', n))
 
 
 def build_engineering_page():
@@ -1259,6 +1305,7 @@ if __name__ == '__main__':
 
     build_home()
     build_grades()
+    build_work_pages()
     build_extras()
     build_engineering_page()
     build_404()

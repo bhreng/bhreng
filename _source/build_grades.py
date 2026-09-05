@@ -12,6 +12,7 @@ import grade_work as GW
 import build_hubs as B
 import brief_text as BT
 import shop_projects as SP
+import work_pages as WP
 
 PATH_NAMES = {p['key']: p['nav'] for p in B.P}
 
@@ -108,6 +109,19 @@ CSS = '''
 .asg .meta a{color:var(--g-ink);font-weight:600}
 .asg .anote{margin:12px 0 0;padding:10px 14px;border-left:3px solid var(--blue);
   background:var(--blue-soft);font-size:14px;line-height:1.5;color:var(--ink)}
+
+.asg h3 a.asglink{color:inherit;text-decoration:none;
+  border-bottom:1.5px solid transparent}
+.asg h3 a.asglink:hover{color:var(--g-ink);border-bottom-color:var(--g-ink)}
+.asg h3 a.asglink::after{content:"\2192";margin-left:7px;font-size:.86em;
+  color:var(--g-ink);opacity:0;transition:opacity .12s}
+.asg h3 a.asglink:hover::after{opacity:1}
+.asg.solo{border:1px solid var(--rule);border-left:5px solid var(--g-ink);
+  padding:24px 26px 26px}
+.asg.solo h1.asgt{margin:0;font-family:var(--sans);font-weight:var(--w-heavy);
+  font-size:clamp(24px,3.6vw,33px);line-height:1.1;letter-spacing:-.02em;
+  color:var(--ink)}
+.asg.solo .hook{font-size:17.5px;margin-top:11px}
 
 /* the full brief */
 .brief{margin:14px 0 0;border-top:1px solid var(--rule-soft);padding-top:12px}
@@ -221,11 +235,18 @@ def hero(g, depth):
                     g['teacher']))
 
 
-def assignment(a, depth, full=''):
+def assignment(a, depth, full='', gkey=None, standalone=False):
     r = '../' * depth
-    out = ['<article class="asg">',
+    if standalone:
+        head = '<h1 class="asgt">%s</h1>' % a['title']
+    elif gkey:
+        head = ('<h3><a class="asglink" href="%s%s">%s</a></h3>'
+                % (r, WP.page_name(gkey, a['title']), a['title']))
+    else:
+        head = '<h3>%s</h3>' % a['title']
+    out = ['<article class="asg%s">' % (' solo' if standalone else ''),
            '  <div class="ah">',
-           '    <h3>%s</h3>' % a['title'],
+           '    ' + head,
            '    <span class="wk">%s</span>' % a['w'],
            '    <span class="kind">%s</span>' % KIND_LABEL.get(a['kind'], ''),
            '  </div>']
@@ -336,7 +357,9 @@ def page(key, depth=1):
                        '<span class="tc">%d %s</span></div>'
                        % (tlabel, n, 'entry' if n == 1 else 'entries'))
             for a in items:
-                out.append(assignment(a, depth, full=briefs.get(a['title'], '')))
+                out.append(assignment(a, depth,
+                                      full=briefs.get(a['title'], ''),
+                                      gkey=key))
             out.append('</section>')
         out.append(
             '<section><div class="note acc"><p><strong>This is the reference '

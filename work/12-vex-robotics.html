@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VEX Robotics &middot; BHR Engineering</title>
+<meta name="description" content="Grade 12, Wk 3. VEX build and programming, day two onward.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="../assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/site.css?v=22273e7d">
+<style>
+/* --- grade pages -------------------------------------------------------- */
+/* Three variables per grade, set inline on the page:
+     --g-lt / --g-dk   the grade colour for light and for dark paper
+     --g-slt / --g-sdk its soft panel background, likewise
+   --g-band stays the deep colour in BOTH themes, because the hero scrim is a
+   solid block with white text on it -- swapping that to the light-theme-dark
+   variant would leave white on lilac. */
+.gradepage,.gcard{--g-ink:var(--g-lt);--g-soft:var(--g-slt);--g-band:var(--g-lt)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .gradepage,
+  :root:not([data-theme="light"]) .gcard{--g-ink:var(--g-dk);--g-soft:var(--g-sdk)}}
+:root[data-theme="dark"] .gradepage,:root[data-theme="dark"] .gcard{
+  --g-ink:var(--g-dk);--g-soft:var(--g-sdk)}
+.gradepage{--accent:var(--g-ink);--accent-soft:var(--g-soft)}
+
+.ghero{position:relative;margin:0 0 4px;border:1px solid var(--rule);
+  border-radius:8px;overflow:hidden;background:var(--g-soft)}
+.ghero img{display:block;width:100%;height:158px;object-fit:cover;
+  /* 84%, not centre: the left of every banner is the AI-generated tablet, whose
+     invented labels do not survive a close look. The right side -- the drawings,
+     the turbine, the panels -- is clean. */
+  object-position:84% 50%}
+.ghero .scrim{position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:center;padding:0 26px;
+  background:linear-gradient(90deg,var(--g-band) 0%,var(--g-band) 34%,
+    rgba(0,0,0,0) 78%)}
+.ghero .gnum{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.82);margin:0 0 4px}
+.ghero h1.gname{font-family:var(--sans);font-weight:var(--w-heavy);
+  font-size:clamp(26px,4.4vw,40px);line-height:1.02;color:#fff;margin:0;
+  letter-spacing:-.02em;text-shadow:0 1px 14px rgba(0,0,0,.3)}
+.ghero .gwho{font-family:var(--sans);font-size:13.5px;font-weight:600;
+  color:rgba(255,255,255,.88);margin:7px 0 0}
+
+.gradepage .lede,.gi .lede{font-size:18px;line-height:1.62;color:var(--ink-2);
+  max-width:64ch;margin:0}
+
+/* the grade chooser on the index */
+.gcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:16px}
+.gcard{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+  border-radius:8px;overflow:hidden;background:var(--card);transition:transform .12s}
+.gcard:hover{transform:translateY(-2px);border-color:var(--g-ink)}
+.gcard img{display:block;width:100%;height:96px;object-fit:cover;object-position:88% 50%}
+.gcard .cb{padding:14px 17px 16px}
+.gcard .cn{font-family:var(--mono);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--g-ink);font-weight:700}
+.gcard .ct{font-family:var(--sans);font-weight:700;font-size:19px;margin:3px 0 0;
+  color:var(--ink);letter-spacing:-.01em}
+.gcard .cs{font-size:14px;color:var(--ink-2);margin:6px 0 0;line-height:1.45}
+.gcard .cw{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);margin:9px 0 0}
+
+/* a term block */
+.term{margin:0 0 6px}
+.termhd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  padding:0 0 9px;border-bottom:2px solid var(--g-ink);margin:0 0 16px}
+.termhd h2{margin:0;font-size:1.5rem;letter-spacing:-.015em}
+.termhd .tc{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);margin-left:auto}
+
+/* one assignment */
+.asg{border:1px solid var(--rule);border-left:4px solid var(--g-ink);
+  border-radius:0 6px 6px 0;background:var(--card);margin:0 0 12px;
+  padding:17px 20px 18px}
+.asg .ah{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.asg h3{margin:0;font-family:var(--sans);font-weight:700;font-size:18.5px;
+  letter-spacing:-.01em;line-height:1.25}
+.asg .wk{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);border:1px solid var(--rule);
+  border-radius:2px;padding:1px 6px;flex:none}
+.asg .kind{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--g-ink);font-weight:700;margin-left:auto;
+  flex:none}
+.asg .hook{margin:8px 0 0;font-size:16px;line-height:1.5;color:var(--ink)}
+.asg .bd{margin:12px 0 0}
+.asg .bd p{margin:0 0 9px;font-size:15px;line-height:1.6;color:var(--ink-2)}
+.asg .bd p:last-child{margin-bottom:0}
+.asg .gives{margin:13px 0 0;padding:13px 16px;background:var(--g-soft);
+  border-radius:5px}
+.asg .gives .gl{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--g-ink);font-weight:700;margin:0 0 7px;
+  max-width:none}
+.asg .gives ul{margin:0;padding-left:18px}
+.asg .gives li{font-size:14.5px;line-height:1.5;color:var(--ink);margin:0 0 5px}
+.asg .gives li:last-child{margin:0}
+.asg .meta{display:flex;flex-wrap:wrap;gap:7px 16px;margin:13px 0 0;
+  padding-top:11px;border-top:1px solid var(--rule-soft);
+  font-family:var(--sans);font-size:12.5px;color:var(--ink-3)}
+.asg .meta b{color:var(--ink-2);font-weight:600}
+.asg .meta a{color:var(--g-ink);font-weight:600}
+.asg .anote{margin:12px 0 0;padding:10px 14px;border-left:3px solid var(--blue);
+  background:var(--blue-soft);font-size:14px;line-height:1.5;color:var(--ink)}
+
+.asg h3 a.asglink{color:inherit;text-decoration:none;
+  border-bottom:1.5px solid transparent}
+.asg h3 a.asglink:hover{color:var(--g-ink);border-bottom-color:var(--g-ink)}
+.asg h3 a.asglink::after{content:"92";margin-left:7px;font-size:.86em;
+  color:var(--g-ink);opacity:0;transition:opacity .12s}
+.asg h3 a.asglink:hover::after{opacity:1}
+.asg.solo{border:1px solid var(--rule);border-left:5px solid var(--g-ink);
+  padding:24px 26px 26px}
+.asg.solo h1.asgt{margin:0;font-family:var(--sans);font-weight:var(--w-heavy);
+  font-size:clamp(24px,3.6vw,33px);line-height:1.1;letter-spacing:-.02em;
+  color:var(--ink)}
+.asg.solo .hook{font-size:17.5px;margin-top:11px}
+
+/* the full brief */
+.brief{margin:14px 0 0;border-top:1px solid var(--rule-soft);padding-top:12px}
+.brief>summary{cursor:pointer;list-style:none;font-family:var(--mono);
+  font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--g-ink);font-weight:700;padding:3px 0;user-select:none}
+.brief>summary::-webkit-details-marker{display:none}
+/* a CSS caret rather than a glyph: the mono face has no triangle and renders
+   a tofu box in its place */
+.brief>summary::after{content:"";display:inline-block;margin:0 0 2px 8px;
+  width:5px;height:5px;border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;transform:rotate(-135deg)}
+.brief:not([open])>summary::after{transform:rotate(45deg);margin-bottom:0}
+.brief>summary:hover{text-decoration:underline}
+.brief .sm-c{display:none}
+.brief:not([open]) .sm-c{display:inline}
+.brief:not([open]) .sm-o{display:none}
+.bt{padding-top:6px}
+.bt p{margin:0 0 11px;font-size:15.5px;line-height:1.62;color:var(--ink)}
+.bt ul{margin:0 0 12px;padding-left:20px}
+.bt li{margin:0 0 7px;font-size:15px;line-height:1.55;color:var(--ink-2)}
+.bt li strong,.bt p strong{color:var(--ink);font-weight:600}
+.bt code{font-size:.86em}
+.bt .tw{margin:0 0 13px}
+.bt table{font-size:14.5px;min-width:0}
+
+/* the meaningful attachments and references */
+.alinks{margin:14px 0 0;border:1px solid var(--rule);border-radius:6px;
+  overflow:hidden}
+.alinks .gl{margin:0;max-width:none;padding:9px 15px;background:var(--g-soft);
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--g-ink);font-weight:700}
+.alinks a{display:block;padding:12px 15px;text-decoration:none;
+  border-top:1px solid var(--rule-soft)}
+.alinks a:hover{background:var(--g-soft)}
+.alinks b{display:block;font-family:var(--sans);font-size:15.5px;
+  color:var(--g-ink)}
+.alinks span{display:block;margin-top:3px;font-size:14px;line-height:1.5;
+  color:var(--ink-2);max-width:62ch}
+.alinks em{display:block;margin-top:4px;font-family:var(--mono);font-size:10.5px;
+  font-style:normal;color:var(--ink-3)}
+
+/* the unit map, used on every grade */
+.units{border:1px solid var(--rule);background:var(--card);border-radius:6px;
+  overflow:hidden}
+.units .u{display:flex;gap:15px;padding:14px 18px;border-bottom:1px solid var(--rule-soft)}
+.units .u:last-child{border-bottom:0}
+.units .n{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--g-ink);
+  flex:none;padding-top:2px;width:20px}
+.units .ut{font-family:var(--sans);font-weight:700;font-size:16px;margin:0;
+  color:var(--ink);line-height:1.3}
+.units .ud{margin:4px 0 0;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
+
+/* the exploratory section: for students in their exploratory week */
+.expl .exgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;
+  overflow:hidden}
+.expl .exgrid article{background:var(--card);padding:16px 19px}
+.expl .exgrid b{display:block;font-family:var(--sans);font-weight:700;
+  font-size:16px;line-height:1.3;color:var(--g-ink)}
+.expl .exgrid p{margin:6px 0 0;font-size:15px;line-height:1.55;color:var(--ink-2)}
+.expl .note ul{margin:8px 0 0;padding-left:20px}
+.expl .note li{margin:0 0 6px;font-size:15px;line-height:1.5}
+
+.gempty{border:1px dashed var(--rule);border-radius:6px;padding:20px 22px;
+  background:var(--card)}
+.gempty p{margin:0 0 9px;font-size:15px;line-height:1.6;color:var(--ink-2)}
+.gempty p:last-child{margin:0}
+
+/* On paper: a collapsed brief must still print, the control that collapses it
+   must not, and the blocks that are read as a unit should not be split across
+   a page break. */
+@media print{
+  .brief>summary{display:none}
+  .brief{border-top:0;padding-top:0}
+  .brief[open]>.bt,.brief:not([open])>.bt{display:block}
+  .asg{break-inside:auto;page-break-inside:auto}
+  .asg .gives,.asg .alinks,.asg .anote,.units .u{break-inside:avoid;
+    page-break-inside:avoid}
+  .asg .ah,.termhd{break-after:avoid;page-break-after:avoid}
+  .ghero img{height:96px}
+  .alinks a::after{content:" (" attr(href) ")";font-family:var(--mono);
+    font-size:10px;color:#555;word-break:break-all}
+}
+
+@media(max-width:640px){
+  .ghero img{height:124px}
+  .ghero .scrim{padding:0 18px;
+    background:linear-gradient(90deg,var(--g-band) 0%,var(--g-band) 52%,
+      rgba(0,0,0,.15) 100%)}
+  .asg{padding:15px 16px 16px}
+  .asg .kind{margin-left:0}
+}
+
+/* --- one assignment, on its own page ----------------------------------- */
+.workpage{--accent:var(--g-ink);--accent-soft:var(--g-soft)}
+.wtop{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.wtop a.back{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--g-ink);font-weight:700;
+  text-decoration:none;border:1px solid var(--rule);border-radius:3px;
+  padding:4px 9px}
+.wtop a.back:hover{background:var(--g-soft);border-color:var(--g-ink)}
+.wtop .crumb{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-3)}
+
+.whero{border:1px solid var(--rule);border-left:5px solid var(--g-ink);
+  border-radius:0 8px 8px 0;background:var(--card);padding:22px 26px 24px;
+  margin:0 0 20px}
+.whero .wtags{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
+.whero .wtags span{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;
+  text-transform:uppercase;font-weight:700;border:1px solid var(--rule);
+  border-radius:2px;padding:2px 7px;color:var(--ink-3)}
+.whero .wtags span.k{color:var(--g-ink);border-color:var(--g-ink)}
+.whero h1{margin:0;font-family:var(--sans);font-weight:var(--w-heavy);
+  font-size:clamp(24px,3.6vw,34px);line-height:1.1;letter-spacing:-.02em;
+  color:var(--ink)}
+.whero .whook{margin:11px 0 0;font-size:17.5px;line-height:1.5;
+  color:var(--ink-2);max-width:60ch}
+
+/* the downloads box */
+.dlbox{border:1px solid var(--rule);border-radius:7px;overflow:hidden;
+  margin:22px 0 0;background:var(--card)}
+.dlbox .dlh{margin:0;padding:10px 16px;background:var(--g-soft);
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--g-ink);font-weight:700}
+.dlbox a{display:flex;align-items:baseline;gap:12px;padding:13px 16px;
+  text-decoration:none;border-top:1px solid var(--rule-soft)}
+.dlbox a:hover{background:var(--g-soft)}
+.dlbox a b{font-family:var(--sans);font-size:15.5px;color:var(--g-ink);
+  flex:none}
+.dlbox a span{font-size:14px;line-height:1.45;color:var(--ink-2)}
+.dlbox a em{margin-left:auto;flex:none;font-style:normal;font-family:var(--mono);
+  font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);border:1px solid var(--rule);border-radius:2px;
+  padding:1px 6px}
+
+/* prev / next along the term */
+.wnav{display:flex;gap:12px;margin:24px 0 0;flex-wrap:wrap}
+.wnav a{flex:1 1 240px;border:1px solid var(--rule);border-radius:6px;
+  padding:12px 15px;text-decoration:none;background:var(--card)}
+.wnav a:hover{border-color:var(--g-ink);background:var(--g-soft)}
+.wnav .lb{display:block;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
+  margin:0 0 3px}
+.wnav .tt{display:block;font-family:var(--sans);font-weight:600;font-size:15px;
+  color:var(--g-ink);line-height:1.3}
+.wnav a.nx{text-align:right}
+</style>
+<script>
+(function(){try{var t=localStorage.getItem('bhr-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}
+catch(e){}})();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to the page content</a>
+
+<header class="sitebar">
+  <div class="in">
+    <a class="brand" href="../index.html">
+      <img class="mark" src="../assets/logo-96.png" alt="" width="34" height="29">
+      <span>Engineering&nbsp;Technology</span>
+    </a>
+<nav class="qnav" aria-label="Quick links">
+  <span class="lbl">Go to</span>
+  <a href="../grades/9.html" style="--ql:#a03c36;--qd:#e59089;--qsl:#fbeceb;--qsd:#3a1e1c"><span class="dot"></span><span class="lg">Grade 9</span><span class="sm">Gr 9</span></a>
+  <a href="../grades/10.html" style="--ql:#8a6410;--qd:#dcae4f;--qsl:#faf0d9;--qsd:#332a10"><span class="dot"></span><span class="lg">Grade 10</span><span class="sm">Gr 10</span></a>
+  <a href="../grades/11.html" style="--ql:#0b622c;--qd:#71bd88;--qsl:#e9f4ec;--qsd:#152c1c"><span class="dot"></span><span class="lg">Grade 11</span><span class="sm">Gr 11</span></a>
+  <a href="../grades/12.html" style="--ql:#4a2a70;--qd:#b998d0;--qsl:#f0eaf7;--qsd:#2b2038"><span class="dot"></span><span class="lg">Grade 12</span><span class="sm">Gr 12</span></a>
+  <span class="sep"></span>
+  <a class="who" href="../staff/frank.html"><span class="lg">Mr. Frank</span><span class="sm">Frank</span></a>
+  <a class="who" href="../staff/dryer.html"><span class="lg">Mr. Dryer</span><span class="sm">Dryer</span></a>
+</nav>
+      <div class="srch">
+        <span class="sbox">
+          <input type="search" id="q" placeholder="Search" autocomplete="off"
+                 aria-label="Search the site" aria-expanded="false" aria-controls="sres">
+          <kbd>/</kbd>
+        </span>
+        <div class="sres" id="sres" role="listbox" hidden></div>
+      </div>
+      <button class="themebtn" id="theme" type="button"
+              title="Switch between light and dark" aria-label="Switch theme">
+        <span class="ico" aria-hidden="true"></span><span class="lbl">Theme</span>
+      </button>
+  </div>
+</header>
+
+<div class="shell">
+<div class="rail">
+  <input type="checkbox" id="railtog" class="railtog" aria-label="Show site navigation">
+  <label for="railtog" class="railbtn"><span class="bars"></span>Browse the site<span class="chev">&#9660;</span></label>
+  <div class="railin">
+  <nav aria-label="Site"><ul>
+    <li><a href="../index.html" class="sec">Home</a>
+    </li>
+    <li><a href="../start/welcome.html" class="sec">Start here</a>
+    </li>
+    <li><a href="../grades/index.html" class="sec">Your year</a>
+    </li>
+    <li><a href="../staff/frank.html" class="sec">Your instructors</a>
+    </li>
+    <li><a href="../logbook/index.html" class="sec">Logbook</a>
+    </li>
+    <li><a href="../pathways/index.html" class="sec">The seven pathways</a>
+    </li>
+    <li><a href="../shop/index.html" class="sec">Shop safety</a>
+    </li>
+    <li><a href="../resources/index.html" class="sec">Training and credentials</a>
+    </li>
+    <li><a href="../extras/do-nows.html" class="sec">More</a>
+    </li>
+  </ul></nav>
+  </div>
+</div>
+<div class="main" id="main" tabindex="-1">
+<div class="wrap gradepage workpage" style="--g-lt:#4a2a70;--g-dk:#b998d0;--g-slt:#f0eaf7;--g-sdk:#2b2038">
+<div class="wtop">
+  <a class="back" href="../grades/12.html">&larr; Grade 12</a>
+  <span class="crumb">Engineering IV &middot; Wk 3</span>
+</div>
+<article class="asg solo">
+  <div class="ah">
+    <h1 class="asgt">VEX Robotics</h1>
+    <span class="wk">Wk 3</span>
+    <span class="kind">Project</span>
+  </div>
+  <p class="hook">VEX build and programming, day two onward.</p>
+  <details class="brief" open>
+    <summary><span class="sm-o">Hide</span><span class="sm-c">Read</span> the full brief</summary>
+    <div class="bt"><p>Day two of VEX. Yesterday was the hardware and how to assemble it; today is the software and what the robot can actually do.</p>
+<p><strong>What to do</strong></p>
+<ul><li>Get the bot up and running with the controller.</li><li>Explore the programming side of the VEX software suite. Work with the block programming and find out what it can do.</li><li>Start with the tutorials inside the software itself. Use the provided videos, or ones you find, to fill in from there.</li></ul>
+<p><strong>What you hand in</strong></p>
+<ul><li>One shared document per group, documenting what the group did. At least one person uploads it to the senior classroom at the end of the day.</li></ul></div>
+  </details>
+  <div class="meta"><span><b>Tools</b> VEX V5</span><span><b>Pathway</b> <a href="../pathways/automation.html">Automation &amp; Robotics</a></span></div>
+</article>
+<div class="dlbox">
+  <p class="dlh">Download</p>
+  <a href="../files/BHR-ENG-Daily-Logbook.docx" download><b>Daily Logbook</b><span>The running record of every shop day. Print it or keep it in Drive.</span><em>DOCX</em></a>
+</div>
+<div class="wnav">
+  <a class="pv" href="../work/12-intro-to-coreldraw.html"><span class="lb">Previous</span><span class="tt">Intro to CorelDraw</span></a>
+  <a class="nx" href="../work/12-holiday-ornament.html"><span class="lb">Next</span><span class="tt">Holiday Ornament</span></a>
+</div>
+<section><div class="note acc"><p><strong>This is the reference copy, not the gradebook.</strong> What is due, and when, lives in Google Classroom. This page exists so the brief stays findable, and so it can be linked to on its own.</p></div></section>
+</div>
+</div>
+</div>
+
+<footer class="sitefoot">
+  <div class="in">
+    <span>Blue Hills Regional Technical School</span>
+    <span>Engineering Technology &middot; Room E-126</span>
+    <span>Mr. Frank &middot; Mr. Dryer</span>
+    <span class="build">Build 05 Sep 2026, 2:14 pm</span>
+  </div>
+</footer>
+
+
+<script src="../assets/search-index.js?v=28a0af90" defer></script>
+<script defer>
+(function(){
+  var REL = '../';
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var box = document.getElementById('q'), out = document.getElementById('sres');
+    if (!box || !window.BHR_INDEX) return;
+    var IDX = window.BHR_INDEX, cur = -1, rows = [];
+
+    var KIND = {video:'Video',course:'Course',site:'Site',tool:'Tool',read:'Reading',
+      podcast:'Podcast',book:'Book',data:'Data',comp:'Competition',doc:'Doc',
+      software:'Software',page:'Page',rule:'Rule',check:'Safety check',
+      platform:'Training',sds:'Safety data',pathway:'Pathway',talk:'Talk',
+      playlist:'Playlist'};
+
+    function esc(s){ return s.replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+    function hi(s, terms){
+      s = esc(s);
+      terms.forEach(function(t){
+        if (t.length < 2) return;
+        s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'ig'),
+                      '<mark>$1</mark>');
+      });
+      return s;
+    }
+
+    // Score by where the match lands: a title hit beats a note hit, and a hit at
+    // the start of the title beats one in the middle. Every term must appear
+    // somewhere, so multi-word queries narrow rather than widen.
+    function score(r, terms){
+      var t = r.t.toLowerCase(), n = (r.n + ' ' + r.x).toLowerCase(),
+          w = r.w.toLowerCase(), s = 0;
+      for (var i = 0; i < terms.length; i++){
+        var q = terms[i], hit = 0;
+        if (t.indexOf(q) === 0) hit = 100;
+        else if (t.indexOf(' ' + q) > -1) hit = 70;
+        else if (t.indexOf(q) > -1) hit = 50;
+        else if (w.indexOf(q) > -1) hit = 30;
+        else if (n.indexOf(q) > -1) hit = 20;
+        if (!hit) return 0;
+        s += hit;
+      }
+      if (r.k === 'page' || r.k === 'pathway') s += 12;   // structure floats up
+      return s;
+    }
+
+    function run(){
+      var qv = box.value.trim().toLowerCase();
+      if (qv.length < 2){ close(); return; }
+      var terms = qv.split(/\s+/);
+      rows = IDX.map(function(r){ return {r:r, s:score(r, terms)}; })
+                .filter(function(x){ return x.s > 0; })
+                .sort(function(a,b){ return b.s - a.s || a.r.t.length - b.r.t.length; })
+                .slice(0, 30);
+      draw(terms);
+    }
+
+    function draw(terms){
+      if (!rows.length){
+        out.innerHTML = '<p class="none">Nothing matches &ldquo;' +
+          esc(box.value.trim()) + '&rdquo;.</p>';
+      } else {
+        var h = '<div class="hd">' + rows.length +
+                (rows.length === 30 ? '+ matches' : ' match' + (rows.length>1?'es':'')) +
+                '</div>';
+        rows.forEach(function(x, i){
+          var r = x.r,
+              ext = /^https?:/.test(r.u),
+              href = ext ? r.u : REL + r.u;
+          h += '<a href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') +
+               ' data-i="' + i + '" role="option">' +
+               '<span class="ti">' + hi(r.t, terms) +
+                 (ext ? ' <span class="ext">&#8599;</span>' : '') + '</span>' +
+               '<span class="me"><span class="kd">' + (KIND[r.k] || r.k) + '</span>' +
+               '<span class="wh">' + hi(r.w, terms) + '</span></span>' +
+               (r.n ? '<span class="nt">' + hi(r.n, terms) + '</span>' : '') +
+               '</a>';
+        });
+        out.innerHTML = h;
+      }
+      out.hidden = false; box.setAttribute('aria-expanded','true'); cur = -1;
+    }
+
+    function close(){ out.hidden = true; box.setAttribute('aria-expanded','false'); cur = -1; }
+
+    function move(d){
+      var links = out.querySelectorAll('a');
+      if (!links.length) return;
+      if (cur > -1) links[cur].classList.remove('on');
+      cur = (cur + d + links.length) % links.length;
+      links[cur].classList.add('on');
+      links[cur].scrollIntoView({block:'nearest'});
+    }
+
+    box.addEventListener('input', run);
+    box.addEventListener('focus', function(){ if (box.value.trim().length > 1) run(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter'){
+        var links = out.querySelectorAll('a');
+        if (cur > -1 && links[cur]){ e.preventDefault(); links[cur].click(); }
+      }
+      else if (e.key === 'Escape'){ close(); box.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if (!e.target.closest('.srch')) close();
+    });
+    // "/" from anywhere jumps to the box, the way every developer tool does it
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); box.focus(); box.select();
+      }
+    });
+  });
+})();
+</script>
+<script defer>
+// Track which in-page section you are actually looking at and mark it in the
+// rail. Only runs where the rail has anchor links.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var links = [].slice.call(document.querySelectorAll('.rail .anch a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {}, pos = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        pos[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null;
+      });
+      var best = null, near = Infinity;
+      Object.keys(pos).forEach(function(id){
+        if (pos[id] === null) return;
+        var d = Math.abs(pos[id] - 90);
+        if (d < near){ near = d; best = id; }
+      });
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if (best && map[best]) map[best].classList.add('on');
+    }, {rootMargin:'-70px 0px -55% 0px', threshold:[0,1]});
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id); if (el) io.observe(el);
+    });
+  });
+})();
+</script>
+<script defer>
+// Three states, cycled by one button: follow the system, force light, force dark.
+(function(){
+  function ready(fn){ document.readyState !== 'loading'
+    ? fn() : document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var btn = document.getElementById('theme'), root = document.documentElement;
+    if (!btn) return;
+    function get(){ try { return localStorage.getItem('bhr-theme') || 'system'; }
+                    catch(e){ return 'system'; } }
+    function label(){
+      var m = get();
+      btn.querySelector('.lbl').textContent =
+        m === 'system' ? 'Theme' : (m === 'light' ? 'Light' : 'Dark');
+      btn.title = m === 'system'
+        ? 'Following your computer. Click for light.'
+        : (m === 'light' ? 'Light. Click for dark.'
+                         : 'Dark. Click to follow your computer.');
+    }
+    function set(m){
+      try { m === 'system' ? localStorage.removeItem('bhr-theme')
+                           : localStorage.setItem('bhr-theme', m); } catch(e){}
+      if (m === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', m);
+      label();
+    }
+    label();
+    btn.addEventListener('click', function(){
+      var m = get();
+      set(m === 'system' ? 'light' : (m === 'light' ? 'dark' : 'system'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -18,6 +18,22 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
 
 import student_docs as SD
+
+def _unent(v):
+    """The data file is shared with the website builders, which want HTML
+    entities. Word wants the characters."""
+    if isinstance(v, str):
+        for a, b in (('&amp;', '&'), ('&rsquo;', '\u2019'),
+                     ('&mdash;', '\u2014'), ('&ldquo;', '\u201c'),
+                     ('&rdquo;', '\u201d'), ('&hellip;', '\u2026')):
+            v = v.replace(a, b)
+        return v
+    if isinstance(v, (list, tuple)):
+        return type(v)(_unent(x) for x in v)
+    if isinstance(v, dict):
+        return {k: _unent(x) for k, x in v.items()}
+    return v
+
 import student_doc_data as DATA
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -342,7 +358,7 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     made = []
     for spec in DATA.DOCS:
-        made.append(SD.build(spec, OUT))
+        made.append(SD.build(_unent(spec), OUT))
     for name, fn in SHEETS:
         p = os.path.join(OUT, name)
         fn(p)

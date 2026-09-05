@@ -28,55 +28,53 @@ DOCS.append(dict(
     identity=['Project engineer', 'Date', 'Project(s)',
               'Tools and software used'],
     body=[
-        ('h', 'Design process status codes'),
+        ('h2', 'Engineering design process (EDP) status codes'),
         ('note', 'Mark which stage you were in during each interval below. '
                  'You may be in a different one each time.'),
-        ('tbl', ['PI', 'DD', 'FAB', 'TE', 'IR'], 1),
-        ('note', 'PI — Problem identification and research   ·   '
-                 'DD — Detailed design, CAD and modelling   ·   '
-                 'FAB — Fabrication and development   ·   '
-                 'TE — Testing and evaluation   ·   '
-                 'IR — Improve and redesign'),
+        ('edp',),
 
-        ('h', 'Interval 1 — start of class to break            Status code: ___'),
-        ('note', 'Work highlights and observations. Tasks completed, '
-                 'consultations, reviews, anything that did not behave as '
-                 'expected.'),
-        ('box', 4),
-        ('note', 'Roadblocks. What specifically failed, and what you tried '
-                 'instead.'),
-        ('box', 3),
-        ('note', 'Visual evidence. Attach CAD renders, diagrams or '
-                 'photographs of the work — and caption each one.'),
-        ('box', 2),
+        ('h', 'Interval 1: Start of class to break', 'PI'),
+        ('label', 'Work highlights &amp; observations',
+         'Tasks completed: consultations, reviews, anomalies, etc.'),
+        ('bul', ['[Bullet point 1]', '[Bullet point 2]']),
+        ('label', 'Interval roadblocks',
+         'Document specific technical failures and what you tried instead.'),
+        ('box', 'm'),
+        ('label', 'Visual evidence', 'Caption and describe your images.'),
+        ('box', 'l', '[Attach CAD renderings, logic diagrams, or photographs '
+                     'of work done]'),
 
-        ('h', 'Interval 2 — break to lunch            Status code: ___'),
-        ('note', 'Work highlights and observations.'),
-        ('box', 4),
-        ('note', 'Roadblocks.'),
-        ('box', 3),
-        ('note', 'Visual evidence, captioned.'),
-        ('box', 2),
+        ('h', 'Interval 2: Break to lunch', 'DD'),
+        ('label', 'Work highlights &amp; observations',
+         'Tasks completed: consultations, reviews, anomalies, etc.'),
+        ('bul', ['[Bullet point 1]', '[Bullet point 2]']),
+        ('label', 'Interval roadblocks',
+         'Document specific technical failures and what you tried instead.'),
+        ('box', 'm'),
+        ('label', 'Visual evidence', 'Caption and describe your images.'),
+        ('box', 'l', '[Attach CAD renderings, logic diagrams, or photographs '
+                     'of work done]'),
 
-        ('h', 'Interval 3 — lunch to end of day            Status code: ___'),
-        ('note', 'Work highlights and observations.'),
-        ('box', 4),
-        ('note', 'Visual evidence, captioned.'),
-        ('box', 2),
+        ('h', 'Interval 3: Lunch to end of day', 'FAB'),
+        ('label', 'Work highlights &amp; observations',
+         'Tasks completed: consultations, reviews, anomalies, etc.'),
+        ('bul', ['[Bullet point 1]', '[Bullet point 2]']),
+        ('label', 'Visual evidence', 'Caption and describe your images.'),
+        ('box', 'l', '[Attach CAD renderings, logic diagrams, or photographs '
+                     'of work done]'),
 
-        ('h', 'Challenges and troubleshooting'),
-        ('note', 'Pull today’s failures together. What went wrong, and '
-                 'what you did about it.'),
-        ('box', 4),
-
-        ('h', 'Daily synthesis'),
-        ('note', 'A technical summary of the day. What you decided, why, and '
-                 'whether you are where you meant to be.'),
-        ('box', 5),
-
-        ('h', 'Next class'),
-        ('note', 'What you are doing first thing next session.'),
-        ('box', 3),
+        ('h', 'End of day'),
+        ('label', 'Challenges &amp; troubleshooting',
+         'Pull the day&rsquo;s failures together and say what you did about '
+         'them.'),
+        ('box', 'm'),
+        ('label', 'Daily synthesis',
+         'A technical summary of the day: what you decided, why, and whether '
+         'you are where you meant to be.'),
+        ('box', 'l', '[Type reflection here…]'),
+        ('label', 'Next class',
+         'What you are doing first thing next session.'),
+        ('box', 's'),
     ]))
 
 
@@ -102,12 +100,12 @@ DOCS.append(dict(
         ('h', 'Plan for the week'),
         ('note', 'How you will actually do it. Address each task above, and '
                  'say what the finished product looks like.'),
-        ('box', 7),
+        ('box', 'l'),
 
         ('h', 'Personal expectations'),
         ('note', 'In your own words: what you are hoping to get done, and '
                  'roughly how long you think each part will take.'),
-        ('box', 6),
+        ('box', 'm'),
     ]))
 
 
@@ -131,19 +129,19 @@ DOCS.append(dict(
         ('note', 'Did you finish any of the goals from Monday’s planner? '
                  'Did you move toward them? Have the goals themselves '
                  'changed?'),
-        ('box', 5),
+        ('box', 'm'),
 
         ('h', 'Reflection on the work'),
         ('note', 'What would you improve? Why did you make the choices you '
                  'made? What went wrong, and how did you solve it? Does any '
                  'of that change what you do next week? Attach screenshots '
                  'or photographs of the work.'),
-        ('box', 8),
+        ('box', 'l'),
 
         ('h', 'Reflection sketch'),
         ('note', 'Sketch the improvements you would make. If the change is '
                  'large, sketch just the area that changes.'),
-        ('box', 8),
+        ('box', 'xl'),
     ]))
 
 
@@ -166,19 +164,19 @@ DOCS.append(dict(
         ('h', 'Are you satisfied with this?'),
         ('note', 'A more useful version of that question: is this a fair '
                  'reflection of what you can actually do?'),
-        ('box', 5),
+        ('box', 's'),
 
         ('h', 'Reflection on the work'),
         ('note', 'What would you improve? Why did you make the choices you '
                  'made? What went wrong, and how did you solve it? If this '
                  'was a group project, cover how the group worked. Attach '
                  'screenshots or photographs.'),
-        ('box', 9),
+        ('box', 'l'),
 
         ('h', 'Reflection sketch'),
         ('note', 'Sketch the improvements you would make. If the change is '
                  'large, sketch just the area that changes.'),
-        ('box', 8),
+        ('box', 'xl'),
     ]))
 
 
@@ -199,17 +197,19 @@ DOCS.append(dict(
         ('h', 'Brief process summary'),
         ('note', 'In a few sentences: the steps you followed to use each new '
                  'skill.'),
-        ('box', 5),
+        ('box', 'm'),
 
         ('h', 'Future project application'),
         ('note', 'Where does this go next? How would you use it on your '
                  'current or upcoming project?'),
-        ('box', 4),
+        ('box', 'm'),
 
-        ('h', 'Confidence level'),
-        ('note', 'Could you do this again on your own tomorrow? Be honest — '
-                 'this is what tells us what to reteach.'),
-        ('box', 3),
+        ('pick', 'Confidence level',
+         ['Not yet', 'Only with help', 'On my own', 'I could teach it'],
+         'On my own', 'Could you do this again tomorrow without help?'),
+        ('h', 'Why that answer'),
+        ('note', 'Be honest. This is what tells us what to reteach.'),
+        ('box', 's'),
     ]))
 
 
@@ -222,9 +222,10 @@ DOCS.append(dict(
                'out here that something will not work than in week four.',
     identity=ID_BASIC,
     body=[
-        ('h', 'Phase of project'),
-        ('note', 'Circle or mark where you are right now.'),
-        ('tbl', ['Planning', 'Design', 'Development'], 1),
+        ('pick', 'Phase of project',
+         ['Planning', 'Design', 'Development', 'Testing', 'Refinement'],
+         'Design', 'Where the project actually is right now, not where the '
+                   'schedule says it should be.'),
 
         ('h', 'Remaining tasks'),
         ('note', 'What still has to happen for this project to be finished.'),
@@ -234,21 +235,21 @@ DOCS.append(dict(
         ('h', 'Conceptual design justification'),
         ('note', 'Why this concept and not the others you considered. Name '
                  'any decision that was risky, and say why you think it holds.'),
-        ('box', 7),
+        ('box', 'l'),
 
         ('h', 'Feasibility and risk check'),
         ('note', 'Is this design viable against time, budget and the '
                  'knowledge you have? Which resource is the biggest problem? '
                  'And: what is the single element most likely to fail, that '
                  'has to be tested before you can trust the whole concept?'),
-        ('box', 8),
+        ('box', 'm'),
 
         ('h', 'Feedback and action items'),
         ('note', 'Seeking and using feedback is part of engineering. Which '
                  'routes have you used — instructor one-on-one, peer review, '
                  'something else? Based on what you heard, what are your next '
                  'steps to validate or redesign?'),
-        ('box', 7),
+        ('box', 'm'),
     ]))
 
 
@@ -265,12 +266,12 @@ DOCS.append(dict(
         ('h', 'Problem statement'),
         ('note', 'What the client’s problem, need or want actually is. '
                  'Describe the problem, not your solution to it.'),
-        ('box', 5),
+        ('box', 's'),
 
         ('h', 'Design statement'),
         ('note', 'The challenge to you, the engineer: what you are going to '
                  'do about that problem.'),
-        ('box', 4),
+        ('box', 'm'),
 
         ('h', 'Criteria'),
         ('note', 'The standards this design will be judged against.'),
@@ -296,7 +297,7 @@ DOCS.append(dict(
         ('h', 'Personal expectations'),
         ('note', 'In your own words: what you are hoping to accomplish, and '
                  'roughly how long you expect each part to take.'),
-        ('box', 6),
+        ('box', 'xl'),
     ]))
 
 
@@ -322,7 +323,7 @@ DOCS.append(dict(
         ('h', 'Notes'),
         ('note', 'What was actually said. Detailed enough that it is useful '
                  'to you in three weeks.'),
-        ('box', 10),
+        ('box', 's'),
 
         ('h', 'Action items'),
         ('note', 'Things that now need doing, and who is doing them.'),
@@ -330,5 +331,5 @@ DOCS.append(dict(
 
         ('h', 'For the next meeting'),
         ('note', 'What you want to raise next time.'),
-        ('box', 4),
+        ('box', 's'),
     ]))
