@@ -1,0 +1,28 @@
+{
+ "name": "BHR Engineering Technology",
+ "short_name": "BHR Eng",
+ "description": "Blue Hills Regional Engineering Technology: the shop, the projects, the pathways.",
+ "start_url": "./index.html",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#fbfaf7",
+ "theme_color": "#6b4785",
+ "icons": [
+  {
+   "src": "assets/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "assets/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "assets/icon-512-maskable.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
