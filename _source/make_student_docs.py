@@ -270,10 +270,71 @@ def gantt(path):
     wb.save(path)
 
 
+# ------------------------------------------------------------------ part list
+def part_list(path):
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = 'Part List'
+    heads = ['Item', 'Part name', 'Qty', 'Material or spec',
+             'Made or bought', 'Source / part number', 'Unit cost',
+             'Total', 'Notes']
+    widths = [6, 32, 6, 26, 15, 30, 11, 11, 34]
+    _sheet_head(ws, 'Part List',
+                'Every part in the design, including the fasteners. If it is '
+                'not on this list it does not exist when you go to build.',
+                len(heads))
+    _identity_rows(ws, 5, ['Name', 'Project', 'Revision', 'Date'])
+    hrow = 11
+    _header_row(ws, hrow, heads, widths)
+    last = hrow + 40
+    _blank_rows(ws, hrow + 1, last, len(heads))
+    for r in range(hrow + 1, last + 1):
+        ws.cell(row=r, column=1).value = r - hrow
+        ws.cell(row=r, column=1).font = Font(name='Calibri', size=9,
+                                             color=INK3)
+        ws.cell(row=r, column=8).value = (
+            '=IF(OR(C%d="",G%d=""),"",C%d*G%d)' % (r, r, r, r))
+        ws.cell(row=r, column=7).number_format = '$#,##0.00'
+        ws.cell(row=r, column=8).number_format = '$#,##0.00'
+
+    tot = last + 2
+    c = ws.cell(row=tot, column=7, value='Total')
+    c.font = Font(name='Calibri', size=10, bold=True, color=PURPLE)
+    c.alignment = Alignment(horizontal='right')
+    t = ws.cell(row=tot, column=8,
+                value='=SUM(H%d:H%d)' % (hrow + 1, last))
+    t.font = Font(name='Calibri', size=11, bold=True, color=INK)
+    t.number_format = '$#,##0.00'
+    t.border = BOX
+
+    ws.cell(row=tot + 2, column=1,
+            value='Count the fasteners. A part list that says "screws" '
+                  'instead of "M3 x 12 socket head, 8 off" is not finished.'
+            ).font = Font(name='Calibri', size=9, italic=True, color=INK3)
+
+    lists = wb.create_sheet('Lists')
+    lists['A1'] = 'Made or bought'
+    lists['A1'].font = Font(bold=True, color=PURPLE)
+    kinds = ['Make — 3D print', 'Make — laser', 'Make — CNC',
+             'Make — hand/shop', 'Buy — stock', 'Buy — order',
+             'Reuse — salvaged']
+    for i, v in enumerate(kinds, start=2):
+        lists.cell(row=i, column=1, value=v)
+    lists.column_dimensions['A'].width = 22
+    dv = DataValidation(type='list',
+                        formula1='=Lists!$A$2:$A$%d' % (len(kinds) + 1),
+                        allow_blank=True)
+    ws.add_data_validation(dv)
+    dv.add('E%d:E%d' % (hrow + 1, last))
+    ws.freeze_panes = ws.cell(row=hrow + 1, column=1)
+    wb.save(path)
+
+
 SHEETS = [
     ('BHR-ENG-Research-Log.xlsx', research_log),
     ('BHR-ENG-Order-Request-Form.xlsx', order_request),
     ('BHR-ENG-Project-Gantt-Chart.xlsx', gantt),
+    ('BHR-ENG-Part-List.xlsx', part_list),
 ]
 
 

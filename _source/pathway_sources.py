@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Sources for the E.E.P. pathway hubs, sorted into the five topics.
+Sources for the pathway hubs, sorted into the five topics.
 
 Origin: the Gemini Notebook built for each pathway. Those notebooks were
 assembled by Gemini's source-discovery feature, which answered "what is this
@@ -62,7 +62,7 @@ add('architecture', 'field', 'First year architecture student project',
 
 add('architecture', 'field', 'How to create an architecture portfolio',
     'https://www.youtube.com/watch?v=-hdmy7cK6cI', 'start', 'video',
-    'DamiLee. Relevant sooner than you think &mdash; your E.E.P. work is the '
+    'DamiLee. Relevant sooner than you think &mdash; your Independent Focus work is the '
     'portfolio.')
 
 add('architecture', 'field', 'Peter Cook on the benefits of drawing by hand',
@@ -751,7 +751,7 @@ add('electrical', 'build', 'Build an 8-bit computer on breadboards',
     'https://eater.net/8bit', 'deeper', 'course',
     'Ben Eater. Forty-four videos and free schematics, building a working '
     'computer from logic chips by hand. The most respected breadboarding '
-    'project on the internet, and a serious E.E.P. capstone.')
+    'project on the internet, and a serious capstone.')
 
 add('electrical', 'files', 'Falstad circuit simulator',
     'https://www.falstad.com/circuit/', 'start', 'tool',

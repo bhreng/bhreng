@@ -52,7 +52,7 @@ MAP_11 = {
         'Reflection Portfolio Presentation',
     'Final — Gmetrix': 'Gmetrix',
     'Running all year — Independent Study Project':
-        'Independent Study Project',
+        'Independent Focus',
 }
 
 MAP_12 = {
@@ -70,7 +70,7 @@ MAP_12 = {
     'Term 2 Week 5 — Mars Colony Design': 'Mars Colony Design',
     'Term 2 Week 5 — Bunker House Design': 'Bunker House Design',
     'Term 2 Week 5 through Term 4 — Senior Capstone': 'Senior Capstone',
-    'Running all year — Independent Study': 'Independent Study',
+    'Running all year — Independent Study': 'Independent Focus',
     'Running all year — Platform training': 'Platform training',
 }
 

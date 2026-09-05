@@ -147,13 +147,15 @@ RUNS = {
 }
 
 
-# --------------------------------------------- grade 9's exploratory visitors
+# ------------------------------------------------ the exploratory week
 
 EXPLORATORY = dict(
     title='Exploratory week',
-    lede='Before you join a shop you spend one week in each of nine of them. '
-         'If this is your exploratory week, this section is for you &mdash; '
-         'the rest of the page is what the year looks like if you choose us.',
+    lede='Exploratory runs across Terms 1 and 2. Two mini exploratory days '
+         'show you all eighteen shops between them, and from those you pick '
+         'nine to spend a full week in. If this is your week with us, this '
+         'section is for you &mdash; the rest of the page is what the year '
+         'looks like once you choose us.',
     what=[
         ('Engineering technology is not one job',
          'It is at least seven. Someone designs the part, someone works out '
@@ -161,11 +163,12 @@ EXPLORATORY = dict(
          'someone gets it manufactured, someone manages the schedule so it '
          'ships. All of those are engineering, and they suit very different '
          'people.'),
-        ('It is a trade and a degree path at the same time',
-         'People leave this shop and go straight into work with certifications '
-         'that employers recognise. People also leave it and go to '
-         'engineering school with four years of CAD, documentation and '
-         'project work behind them. Neither route is the fallback.'),
+        ('It opens more than one road',
+         'Most students who leave this shop go on to college, and they go '
+         'with four years of CAD, documentation and project work already '
+         'behind them. Others decide on a more direct route into the field. '
+         'The shop is built so that both stay open to you &mdash; what you '
+         'do with it is your call.'),
         ('The work is making things that have to actually work',
          'Not models of things. A part that comes off the printer and fits. A '
          'circuit that does what you said it would. A drawing someone else '

@@ -300,71 +300,7 @@ DOCS.append(dict(
     ]))
 
 
-# -------------------------------------------------- 8. independent study week
-DOCS.append(dict(
-    file='BHR-ENG-Independent-Study-Weekly-Journal.docx',
-    name='BHR ENG — Independent Study Weekly Journal',
-    title='Independent Study — Weekly Journal',
-    standfirst='One entry a week on your own project. Informal, but it has to '
-               'exist — it is how a year of independent work becomes '
-               'something you can show.',
-    identity=ID_BASIC,
-    body=[
-        ('h', 'The week in bullet points'),
-        ('note', 'Separate by day if that makes more sense.'),
-        ('bul', ['Item 1', 'Item 2', '… add as many as you need']),
-
-        ('h', 'Notes for the week'),
-        ('note', 'What happened, what changed, what you would have done '
-                 'differently. Informal is fine. Aim for 50 words or more — '
-                 'a tweet is 280 characters, and that is the floor, not the '
-                 'target.'),
-        ('box', 8),
-
-        ('h', 'Next shop week'),
-        ('note', 'Do you know what you are doing next week? Write it here — '
-                 'the next step, the next task, or the next project. A note '
-                 'to yourself.'),
-        ('box', 4),
-
-        ('h', 'Images from the week'),
-        ('note', 'Date and label each one. Across a term these should show '
-                 'the work progressing.'),
-        ('box', 9),
-    ]))
-
-
-# ----------------------------------------------------- 9. field trip reflection
-DOCS.append(dict(
-    file='BHR-ENG-Field-Trip-Reflection.docx',
-    name='BHR ENG — Field Trip Reflection',
-    title='Field Trip Reflection',
-    standfirst='What you saw outside the shop, and what it has to do with '
-               'what you are doing inside it.',
-    identity=['Name', 'Date', 'Trip destination', 'Host organisation'],
-    body=[
-        ('h', 'Equipment and software you saw'),
-        ('bul', ['Equipment or software 1', 'Equipment or software 2',
-                 '… add as many as you need']),
-
-        ('h', 'Engineering roles and fields you saw'),
-        ('note', 'Which of the seven roles were people actually working in?'),
-        ('bul', ['Role or field 1', 'Role or field 2', 'Role or field 3',
-                 '… add as many as you need']),
-
-        ('h', 'Reflection on the trip'),
-        ('note', 'Describe the experience. How did it connect to this shop, '
-                 'or to what we are working on now? What was your favourite '
-                 'part? Was there anything you did not like?'),
-        ('box', 9),
-
-        ('h', 'General observations'),
-        ('note', 'Anything else that stuck out.'),
-        ('box', 6),
-    ]))
-
-
-# ------------------------------------------------ 10. instructor meeting notes
+# ------------------------------------------------- 8. instructor meeting notes
 DOCS.append(dict(
     file='BHR-ENG-Instructor-Meeting-Notes.docx',
     name='BHR ENG — Instructor Meeting Notes',

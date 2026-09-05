@@ -655,7 +655,7 @@ def build_pathways():
     write('pathways/index.html',
           shell('Pick Your Pathway', ch_body, depth=1, section='pathways',
                 path='pathways/index.html', page_css=ch_css + css,
-                desc='Choose one of the seven Elective Engineering Pathways, and what '
+                desc='Choose one of the seven Engineering Pathways, and what '
                      'each hub is for.'))
 
 

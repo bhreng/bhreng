@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Training platforms and credentials for the E.E.P. hubs.
+Training platforms and credentials for the pathway hubs.
 
 Every entry was verified against a primary source in September 2026. The
 `cost` field is deliberately blunt, because the difference between "free"

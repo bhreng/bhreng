@@ -10,7 +10,7 @@ link rather than a new assignment.
 
 Entries are tagged twice, because they serve two places:
   tool   the software or platform it is about
-  paths  which E.E.P. pathways it belongs in, under "Build Your Skills"
+  paths  which Engineering Pathways it belongs in, under "Build Your Skills"
 
 status:
   live      currently in use; students see it
@@ -79,7 +79,7 @@ add(id='house-plans', title='Recreate a set of house plans',
     tool='CAD', paths=['architecture'],
     source=['Do Now! - Recreate House plans (Eng III)'])
 
-add(id='is-log', title='Monday morning independent study log',
+add(id='is-log', title='Monday morning focus log',
     tool='', paths=['project'],
     source=['Do Now! - Monday Morning Independent Study Log (Eng III)'])
 

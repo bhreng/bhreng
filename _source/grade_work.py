@@ -459,12 +459,15 @@ G11 = [
                'Classroom.'],
          gives=[], tool='Gmetrix', path='', note=''),
 
-    dict(t='always', w='All year', title='Independent Study Project',
+    dict(t='always', w='All year', title='Independent Focus',
          kind='project',
-         hook='A year-long project in whatever part of engineering actually '
-              'interests you.',
-         body=['This is the one you run at your own pace, treated like a '
-               'personal engineering hobby. It breaks into three areas, which '
+         hook='The part of the year where you chase the kind of engineering '
+              'you might actually want to do.',
+         body=['You pick a home pathway each term &mdash; the same one all '
+               'four terms if you want to go deep, or a different one each '
+               'term if you want to come out broad. This is your own work &mdash; you '
+               'work: you set the direction and you keep it moving.',
+               'It breaks into three areas, which '
                'can all serve one big idea or stay completely separate.',
                '<b>Research</b> &mdash; a deep dive into a concept, theory or '
                'process that sparks your curiosity, using reputable sources, '
@@ -474,8 +477,8 @@ G11 = [
                'custom phone case.',
                '<b>Development</b> &mdash; take something that already exists '
                'and fix, modify or improve it.'],
-         gives=['A weekly journal &mdash; findings, learnings, problems. '
-                'Sketches, notes and video logs all count',
+         gives=['Your logbook, kept as you go &mdash; findings, learnings, '
+                'problems. Sketches, notes and video logs all count',
                 'Mid-year and end-of-year reflections for each project'],
          tool='', path='',
          note='If you have no idea yet, build a skill tree in these areas so '
@@ -630,10 +633,14 @@ G12 = [
               'Texture Extrude land in capstone week 5 &mdash; the resin '
               'printing and rendering skills, right when projects need them.'),
 
-    dict(t='always', w='All year', title='Independent Study', kind='project',
-         hook='The parallel track: your own project in research, design '
-              'and/or development, running alongside everything else.',
-         body=['It feeds directly into the capstone concept, so what you '
+    dict(t='always', w='All year', title='Independent Focus',
+         kind='project',
+         hook='The parallel track: the field you want to go into, explored '
+              'properly, running alongside everything else.',
+         body=['You pick a home pathway each term. By senior year you have '
+               'had several goes at this, and the pattern of what you kept '
+               'choosing tells you something worth listening to.',
+               'It feeds directly into the capstone concept, so what you '
                'choose here matters more than it looks.',
                'The Term 1 reflection is where you stop, assess your progress '
                'and set your strategy for the rest of the year. Plans '

@@ -161,7 +161,7 @@ CSS = '''
   color:var(--ink);line-height:1.3}
 .units .ud{margin:4px 0 0;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
 
-/* the exploratory section: for the visitors, not the students */
+/* the exploratory section: for students in their exploratory week */
 .expl .exgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;
   overflow:hidden}
@@ -438,9 +438,10 @@ def index(depth=1):
     out.append('</section>')
     out.append(
         '<section><h2>How the four years fit together</h2>'
-        '<p>Grade 9 is one exploratory week. Grade 10 is the year the shop '
-        'becomes yours &mdash; certifications, OSHA, and a real documentation '
-        'standard. Grade 11 is the widest year, with projects across every '
+        '<p>Grade 9 is the half-year you join the shop and start building in '
+        'it. Grade 10 adds the certifications &mdash; OSHA among them &mdash; '
+        'and raises the documentation standard. '
+        'Grade 11 is the widest year, with projects across every '
         'pathway. Grade 12 narrows again: two terms of sharp briefs, then one '
         'capstone you choose and run yourself.</p>'
         '<div class="note"><p><strong>Who teaches what.</strong> '

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds the seven E.E.P. pathway hub guides as one HTML artifact."""
+"""Builds the seven Independent Focus pathway hub guides as one HTML artifact."""
 
 import shop_projects as SP   # briefs the shop has really run, per pathway
 
@@ -70,7 +70,7 @@ P.append(dict(
     files=['Logbook template — three intervals, daily.',
            'Bill of Materials worksheet — every part, material, quantity, unit cost.',
            '&ldquo;Do Now!&rdquo; reflection.',
-           'E.E.P. term-end reflection.',
+           'Independent Focus term-end reflection.',
            'Makerspace safety rules.',
            'Design brief template.'],
 ))
@@ -129,7 +129,7 @@ P.append(dict(
            'Site design checklist — soil, cut and fill, drainage, circulation.',
            'Bill of Materials worksheet.',
            'Sheet set title block template.',
-           '&ldquo;Do Now!&rdquo; reflection and E.E.P. term-end reflection.',
+           '&ldquo;Do Now!&rdquo; reflection and Independent Focus term-end reflection.',
            'Makerspace safety rules.'],
 ))
 
@@ -193,7 +193,7 @@ P.append(dict(
            'Test data log.',
            'Bill of Materials worksheet.',
            'Decision matrix template.',
-           '&ldquo;Do Now!&rdquo; reflection and E.E.P. term-end reflection.',
+           '&ldquo;Do Now!&rdquo; reflection and Independent Focus term-end reflection.',
            'Makerspace safety rules.'],
 ))
 
@@ -256,7 +256,7 @@ P.append(dict(
            'Schematic template.',
            'As-built drawing set — the final state of the system, not the plan.',
            'Test and measurement log.',
-           '&ldquo;Do Now!&rdquo; reflection and E.E.P. term-end reflection.',
+           '&ldquo;Do Now!&rdquo; reflection and Independent Focus term-end reflection.',
            'Electrical safety rules — GFCI use, lockout/tagout, reporting frayed wiring.'],
 ))
 
@@ -314,7 +314,7 @@ P.append(dict(
            'Iterative prototype log — versions, what changed, what it measured.',
            'Flowchart and truth table templates.',
            'Code comment and documentation standard.',
-           '&ldquo;Do Now!&rdquo; reflection and E.E.P. term-end reflection.',
+           '&ldquo;Do Now!&rdquo; reflection and Independent Focus term-end reflection.',
            'Electrical and machine safety rules — power down and unplug before cleaning or repairing.'],
 ))
 
@@ -383,7 +383,7 @@ P.append(dict(
            'Commissioning checklist.',
            'Cycle time and error rate log.',
            'Bill of Materials worksheet.',
-           '&ldquo;Do Now!&rdquo; reflection and E.E.P. term-end reflection.',
+           '&ldquo;Do Now!&rdquo; reflection and Independent Focus term-end reflection.',
            'Machine safety rules — guarding, lockout/tagout, and safe interaction distances.'],
     isnew=True,
 ))
@@ -448,7 +448,7 @@ P.append(dict(
            'Gantt chart template.',
            'Bill of Materials worksheet with lead time and unit cost.',
            'Decision matrix template.',
-           'E.E.P. term-end reflection.'],
+           'Independent Focus term-end reflection.'],
 ))
 
 # ---------------------------------------------------------------- render
@@ -564,12 +564,84 @@ def render_pathway(p):
 overview = '''
 <section class="view on" id="v-overview">
   <div class="ph">
-    <p class="eyebrow">Elective Engineering Pathway &middot; BHR Engineering Technology</p>
+    <p class="eyebrow">Independent Focus &middot; BHR Engineering Technology</p>
     <h2>Pick a pathway, then use this</h2>
-    <p class="tag">Seven hubs. One structure. Each one is a place to go deep on a field for a term.</p>
-    <p class="intro">The E.E.P. is self-directed work in an emerging engineering field, for
-      juniors and seniors. You anchor in one pathway, but you pull from the others when
-      your project needs it &mdash; almost every good project does.</p>
+    <p class="tag">Seven hubs. One structure. You pick the one you live in each term.</p>
+    <p class="intro">Your Independent Focus is not really a project. It is how you find out what you
+      want to do next. Engineering is an enormous field and a class can only stay in any
+      one part of it for so long &mdash; if you want to be a civil engineer, the regular
+      curriculum gives you maybe one project a year that looks like civil engineering.
+      Your Independent Focus is where you get to do that all year, and where you go looking for the
+      road out of here.</p>
+  </div>
+
+  <div class="topic">
+    <div class="th"><span class="tn">&mdash;</span><div><h3>Why this exists</h3>
+      <p class="tq">The project is the means. The path is the point.</p></div></div>
+    <p class="blurb">Your Independent Focus is not really a project. It is how you find out
+      what you want to do next. Engineering is an enormous field and a class can only stay
+      in any one part of it for so long &mdash; if you want to be a civil engineer, the
+      regular curriculum gives you maybe one project a year that looks like civil
+      engineering. Your focus is where you get to do that all year, and where you go
+      looking for the road out of here.</p>
+    <dl class="defs">
+      <dt>Go deep on something the curriculum only touches</dt>
+      <dd>Every pathway gets covered in the regular year, but briefly &mdash; there is too
+        much field and not enough calendar. Your Independent Focus is the part of the week where you
+        stay in one area long enough to find out whether you actually like it.</dd>
+      <dt>Get well rounded on purpose</dt>
+      <dd>Say you are set on civil. You will still be better at it with a term of Project
+        Management behind you, because someone has to run the schedule and the budget on a
+        site. Picking a second pathway is not a detour &mdash; it is how you become
+        someone worth hiring.</dd>
+      <dt>You pick your home hub each term</dt>
+      <dd>Stay in the same one all four terms and go deep. Or move each term and come out
+        broad. Or anything in between. Being certain you want civil and still spending a
+        term in Software because you enjoy it is a completely reasonable plan.</dd>
+      <dt>Changing your mind is the system working</dt>
+      <dd>The whole reason this resets every term is so that finding out you do not like
+        something costs you one term instead of four years. That is a good trade, and it
+        is the cheapest one you will ever be offered.</dd>
+      <dt>One term can carry into the next</dt>
+      <dd>Start fresh every term if you want to. Or keep going &mdash; set a goal for the
+        term, hit it, and pick the next one up where you left off. Both are normal.</dd>
+    </dl>
+  </div>
+
+  <div class="topic">
+    <div class="th"><span class="tn">&mdash;</span><div><h3>The words, once</h3>
+      <p class="tq">Five terms, and then we stop explaining them.</p></div></div>
+    <div class="tw"><table>
+      <thead><tr><th>Word</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Independent Focus</td><td>The whole thing, across your years here. You pick one each term. Out loud everyone just says <b>your focus</b>.</td></tr>
+        <tr><td class="k">Engineering Pathway</td><td>The field you picked for the term &mdash; Mechanical, Electrical, Architecture and so on. Seven supported, others by approval.</td></tr>
+        <tr><td class="k">Pathway Hub</td><td>The page you are reading. Where the resources for that pathway live.</td></tr>
+        <tr><td class="k">Independent Project</td><td>What you actually make or do this term. Not graded.</td></tr>
+        <tr><td class="k">Independent Research</td><td>The reading and finding-out end of the same work. Some terms this <em>is</em> the work.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="topic">
+    <div class="th"><span class="tn">&mdash;</span><div><h3>Worked example: you are building a radio</h3>
+      <p class="tq">This is the clearest version of how the hubs and the terms fit together.</p></div></div>
+    <p class="blurb">Say you decide to build a radio. That is not one kind of engineering,
+      and it does not have to happen in one term.</p>
+    <dl class="defs">
+      <dt>Term 1 &mdash; Electrical</dt>
+      <dd>The guts. Circuit, components, power, and getting a signal out of it. Your home
+        hub is <b>Electrical</b>, because that is the part you are actually doing.</dd>
+      <dt>Term 2 &mdash; Industrial Design</dt>
+      <dd>Now it needs to be a thing rather than a board. Enclosure, controls, how it sits
+        on a shelf, how it feels to use. Same radio, different hub &mdash; you move to
+        <b>Industrial Design</b> because that is where the work is now.</dd>
+      <dt>What that shows</dt>
+      <dd>Your hub follows the part of the problem you are on. You did not abandon
+        electrical and you are not dabbling &mdash; one project genuinely needed two
+        fields, which is what real engineering is like. And if instead you want a clean
+        break in Term 2 and a completely different project, that is equally fine.</dd>
+    </dl>
   </div>
 
   <div class="topic">
@@ -627,6 +699,25 @@ overview = '''
       <dd>Eye protection in the Makerspace. Never a tool you have not been trained and authorized on.
         Never alone with power tools. Fifteen minutes of flowing water for anything in the eyes,
         before treatment. Report every injury. Clean your area, including the floor.</dd>
+      <dt>How it is graded</dt>
+      <dd><b>Your Independent Project is not graded.</b> Build whatever you want, take
+        the risk, let it fail if it fails &mdash; none of that touches your grade. What
+        is graded is separate and sits beside it: your documentation and the term
+        requirements. Regular projects and assignments are where the work itself gets
+        marked. This one is yours, and the only thing we ask is that you write it
+        down.</dd>
+      <dt>The seven are the supported list, not the whole field</dt>
+      <dd>These seven are where we have put the resources &mdash; guides, files, training,
+        and two instructors who know the material. If you are an upperclassman and the
+        field you want is not one of the seven, ask. With approval you can go there, on
+        one condition: <b>the research is yours.</b> Nobody has built you a hub for
+        biomedical or aerospace or materials science, so you would be finding the
+        sources, the software and the standards yourself. That is a real option and it
+        is a real amount of work.</dd>
+      <dt>When it runs</dt>
+      <dd>Every student in the shop has an Independent Focus, and it runs until the Senior Capstone
+        starts. Your Independent Focus work <em>can</em> turn into your capstone if you want it to,
+        but there is no requirement that the two are connected at all.</dd>
       <dt>How it ends</dt>
       <dd>A portfolio and a defense &mdash; you present the work and justify the decisions, using
         your logbook as the evidence.</dd>
@@ -639,7 +730,7 @@ nav_items = '\n'.join(
     '<button data-v="%s"><span class="std">%s</span>%s</button>' % (p['key'], p['std'], p['nav'])
     for p in P)
 
-html = '''<title>E.E.P. Pathway Guides</title>
+html = '''<title>Independent Focus Pathway Guides</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">

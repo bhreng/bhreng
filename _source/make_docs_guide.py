@@ -114,15 +114,12 @@ ROWS = [
     ('Instructor Meeting Notes', 'After every one-on-one',
      'Follow-up, new business, what was said, and the action items with '
      'names and dates against them.'),
-    ('Independent Study Weekly Journal', 'Weekly, all year',
-     'An informal account of your own project. Fifty words or more, plus '
-     'dated and labelled images.'),
-    ('Field Trip Reflection', 'After a trip',
-     'Equipment and roles you saw, how it connects to the shop, and what '
-     'stuck with you.'),
-    ('Research Log', 'Capstone and independent study',
+    ('Research Log', 'Capstone and Independent Focus',
      'A spreadsheet. One new source a day is the target; more during '
      'brainstorming and research.'),
+    ('Part List', 'Any project with more than one part',
+     'A spreadsheet. Every part in the design including the fasteners, what '
+     'it is made of, and whether you make it or buy it.'),
     ('Order Request Form', 'When you need parts',
      'A spreadsheet. Quantity, cost, links, and the reason — the reason '
      'is the column that gets it approved.'),

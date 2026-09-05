@@ -84,8 +84,9 @@ GROUPS = [
              'A checkpoint partway through the Senior Capstone, so a project '
              'that has drifted gets caught in week three rather than week six.',
              '12', ''),
-            ('Monday morning independent study log',
-             '', 'The weekly restart on your independent study project.',
+            ('Monday morning focus log',
+             '', 'The weekly restart on your Independent Focus '
+             'project.',
              '11', ''),
             ('Post-lecture reflection: theory of the week', '',
              'A written reflection on the week&rsquo;s theory lecture.',

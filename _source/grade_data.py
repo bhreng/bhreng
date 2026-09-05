@@ -18,7 +18,11 @@ variant chosen to clear 4.5:1 on the dark paper.
 
 Unit names are quoted from the four Drive documents
 "BHR Eng - <n>th Grade - EDF Unit Breakdown". Assignment lists are harvested
-from the live Google Classroom classes. Nothing here is invented.
+from the live Google Classroom classes.
+
+What is NOT sourced: the one-line description under each Grade 9 and Grade 10
+unit, and all four grade ledes. Those are written here to explain the unit to
+a student, and are unverified. See INVENTED-GR9-GR10.md.
 """
 
 # ---------------------------------------------------------------- the grades
@@ -28,10 +32,12 @@ GRADES = [
         key='9', num=9, course='Engineering I', teacher='Mr. Dryer',
         banner='grade-1.jpg',
         ink='#a03c36', ink_dark='#e59089', soft='#fbeceb', soft_dark='#3a1e1c',
-        lede='Grade 9 in this shop is <b>Terms 3 and 4</b>. You spend the '
-             'first half of the year on exploratory, one week in each of nine '
-             'shops, and you join us for the back half once you have chosen. '
-             'So this is half a year, and it moves quickly.',
+        lede='Grade 9 in this shop is <b>Terms 3 and 4</b>. Terms 1 and 2 are '
+             'exploratory &mdash; two mini exploratory days that between them '
+             'show you all eighteen shops, then a full week in each of the '
+             'nine you choose. You join us for the back half of the year once '
+             'you have picked. It is half a year, so it moves quickly &mdash; '
+             'but from the day you walk in, this is your shop.',
         exploratory=True,
         units=[
             ('Exploratory &amp; Shop Readiness',
@@ -54,17 +60,20 @@ GRADES = [
         key='10', num=10, course='Engineering II', teacher='Mr. Dryer',
         banner='grade-2.jpg',
         ink='#8a6410', ink_dark='#dcae4f', soft='#faf0d9', soft_dark='#332a10',
-        lede='Grade 10 is where the safety certifications get real and the '
-             'documentation standard goes up. You are no longer visiting.',
+        lede='Grade 10 is your first full year in the shop. The safety '
+             'certifications get real, and the documentation standard goes up '
+             'to match.',
         exploratory=False,
         units=[
             ('Review, Safety Certification &amp; Prep',
-             'Back in the shop, re-certified, before anything is switched on.'),
+             'Back in the shop, and signed off on safety before anything is '
+             'switched on.'),
             ('Skill Reinforcement: Technical Documentation Mastery',
              'The notebook and the drawing set, held to a higher standard than '
              'last year.'),
             ('Safety &amp; Certification (OSHA Prep)',
-             'The OSHA unit. This is the one that follows you out of school.'),
+             'Every Grade 10 student earns the OSHA 10 card, whichever shop '
+             'they are in. It stays with you after school.'),
             ('Intro to Quality Assurance &amp; Testing',
              'Measuring whether it actually works, rather than assuming.'),
             ('Civil/Architectural Foundations',
